@@ -1,6 +1,7 @@
-language: java
+language: groovy
 jdk:
  - oraclejdk7
+install: true
 before_script:
  - chmod 755 grailsw
  - chmod 755 gradlew
