@@ -1,8 +1,10 @@
 language: groovy
 jdk:
- - oraclejdk7
+ - oraclejdk8
 install: true
 before_script:
  - chmod 755 grailsw
  - chmod 755 gradlew
-script: ./grailsw clean && ./grailsw “test-app unit:”
+script: 
+ - ./grailsw clean 
+ - ./grailsw “test-app unit:”
