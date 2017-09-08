@@ -7,4 +7,4 @@ before_script:
  - chmod 755 gradlew
 script: 
  - ./grailsw clean 
- - ./grailsw “test-app unit:”
+ - ./grailsw test-app
