@@ -1,0 +1,8 @@
+#!/bin/bash
+
+title running program
+echo starting
+echo running....
+
+grailsw run-app
+pause
