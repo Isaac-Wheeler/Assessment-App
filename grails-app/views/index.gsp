@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="tabIcon" href="palm.ico" />
             <title>Data Assesment</title>
-            <link rel="stylesheet" type="text/css" href="style.css">
+            <link rel="stylesheet" type="text/css" href="stylesheet/loginStyle.css">
     </head>
     <body>
         <div class="welcomeMessage">
