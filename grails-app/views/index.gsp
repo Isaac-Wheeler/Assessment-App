@@ -1,79 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta name="layout" content="main"/>
-    <title>Welcome to Grails</title>
-
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
-</head>
-<body>
-    <content tag="nav">
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Application Status <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Environment: ${grails.util.Environment.current.name}</a></li>
-                <li><a href="#">App profile: ${grailsApplication.config.grails?.profile}</a></li>
-                <li><a href="#">App version:
-                    <g:meta name="info.app.version"/></a>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Grails version:
-                    <g:meta name="info.app.grailsVersion"/></a>
-                </li>
-                <li><a href="#">Groovy version: ${GroovySystem.getVersion()}</a></li>
-                <li><a href="#">JVM version: ${System.getProperty('java.version')}</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artefacts <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Controllers: ${grailsApplication.controllerClasses.size()}</a></li>
-                <li><a href="#">Domains: ${grailsApplication.domainClasses.size()}</a></li>
-                <li><a href="#">Services: ${grailsApplication.serviceClasses.size()}</a></li>
-                <li><a href="#">Tag Libraries: ${grailsApplication.tagLibClasses.size()}</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installed Plugins <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-                    <li><a href="#">${plugin.name} - ${plugin.version}</a></li>
-                </g:each>
-            </ul>
-        </li>
-    </content>
-
-    <div class="svg" role="presentation">
-        <div class="grails-logo-container">
-            <asset:image src="grails-cupsonly-logo-white.svg" class="grails-logo"/>
+    <head>
+        <script type="text/javascript">
+            if (screen.width <= 800) {
+                window.location = "/MobileLogin.html";
+            }
+        </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="tabIcon" href="palm.ico" />
+            <title>Data Assesment</title>
+            <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="welcomeMessage">
+            <h1>Welcome</h1>
+            <p>Our mission is to be the quality leader, service leader, technology leader and value-added leader in all areas of reprographics, especially large format presentation graphics. We will provide a variety of solutions to the design community and the corporate world for the imaging and dissemination of their designs and documents. We will support our customers by providing the most diverse choice of quality products and services that they require to be the leaders in their field, to improve their performance, be more efficient and enhance their competitive position. We will endeavor to serve our customers in such a manner that they will be totally satisfied with [Company Name] and will not want to use anyone else for their reprographic needs.
+            
+            We will continually reinforce our reputation for superior personal service by providing respect, training, involvement, recognition, reward, security and advancement opportunities to our associates.
+            
+            We will conduct research and development, use state-of-the-art equipment and review our methods of operation in a never ending effort to continually improve the quality of the products and services we offer.</p>
         </div>
-    </div>
-
-    <div id="content" role="main">
-        <section class="row colset-2-its">
-            <h1>Welcome to My First Grails Project</h1>
-
-            <p>
-                Congratulations, you have successfully started your first Grails application! At the moment
-                this is the default page, feel free to modify it to either redirect to a controller or display
-                whatever content you may choose. Below is a list of controllers that are currently deployed in
-                this application, click on each to execute its default action:
-            </p>
-
-            <div id="controllers" role="navigation">
-                <h2>Available Controllers:</h2>
-                <ul>
-                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                        <li class="controller">
-                            <g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>
-                        </li>
-                    </g:each>
-                </ul>
-            </div>
-        </section>
-    </div>
-
-</body>
+        <div class="loginBox">
+            <div class="banner">
+                <p>Login</p>
+            <div>
+            <input type="text" name="username" placeholder="Username">
+            <input type="text" name="password" placeholder="Password">
+            <br>
+            <input type="submit" value="Login"</input>
+            <input type="submit" value="Register"</input>
+        </div>
+    </body>
 </html>
