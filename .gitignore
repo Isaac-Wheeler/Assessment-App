@@ -9,3 +9,6 @@ build/
 .project
 .settings
 .classpath
+*.class
+gradle.properties
+gradle.properties
