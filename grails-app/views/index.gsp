@@ -24,7 +24,7 @@
             <div class="banner">
                 <p>Login</p>
             </div>
-            <g:form action="login">
+            <g:form controller="Login" action="Login">
                 <input type="text" name="username" placeholder="Username">
                 <input type="password" name="password" placeholder="Password">
                 <br>
