@@ -1,0 +1,64 @@
+/* main body of the website*/
+body{
+    text-align: left;
+    background-color: #389244;
+}
+/*box containg login inputs*/
+.loginBox{
+    background-color: #84bd41;
+    float: right;
+    text-align: center;
+    width: 40%;
+    height: 30%;
+    margin-right: 50px;
+    margin-top: 10%;
+    padding-bottom: 1%;
+}
+/*box containg login inputs*/
+.welcomeMessage{
+    float: left;
+    color: white;
+    text-align:center;
+    margin-left: 50px;
+    width: 40%;
+}
+/*"Welcome" on the message on the left*/
+h1{
+    font-size:52px;
+}
+/*buttons under the login*/
+input[type=submit] {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 30%;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+/*inputs in the login box*/
+input[type=text] {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.banner{
+    margin-top: 20px;
+    margin-left: -5%;
+    text-align: center;
+    background-color: #d3d3d3;
+    border: solid;
+    border-width: 2px;
+    width: 110%;
+    height: 1%;
+    font-size: 20px;
+    
+}
