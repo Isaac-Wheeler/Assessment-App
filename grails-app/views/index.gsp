@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="tabIcon" href="palm.ico" />
             <title>Data Assesment</title>
-            <link rel="stylesheet" type="text/css" href="stylesheets/loginStyle.css">
+            <g:if env="development"><asset:stylesheet src="style.css"/></g:if>
     </head>
     <body>
         <div class="welcomeMessage">
