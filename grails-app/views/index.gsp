@@ -23,7 +23,7 @@
         <div class="loginBox">
             <div class="banner">
                 <p>Login</p>
-            <div>
+            </div>
             <input type="text" name="username" placeholder="Username">
             <input type="text" name="password" placeholder="Password">
             <br>
