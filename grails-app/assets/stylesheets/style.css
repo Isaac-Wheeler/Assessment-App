@@ -49,6 +49,14 @@ input[type=text] {
     margin-top: 20px;
     margin-left: 20px;
 }
+input[type=password] {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-left: 20px;
+}
 .banner{
     margin-top: 5%;
     margin-bottom: 5%;
