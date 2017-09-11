@@ -8,6 +8,7 @@ body{
     background-color: #84bd41;
     float: right;
     text-align: center;
+    box-shadow: 2px 2px 4px #000000;
     width: 40%;
     margin-right: 50px;
     margin-top: 10%;
@@ -17,6 +18,7 @@ body{
 .welcomeMessage{
     float: left;
     color: white;
+    text-shadow: 2px 2px 4px #000000;
     text-align:center;
     margin-left: 50px;
     width: 40%;
@@ -24,6 +26,7 @@ body{
 /*"Welcome" on the message on the left*/
 h1{
     font-size:52px;
+    text-shadow: 2px 2px 4px #000000;
 }
 /*buttons under the login*/
 input[type=submit] {
@@ -39,6 +42,10 @@ input[type=submit] {
     margin-right: 5%;
     margin-top: 5%;
     margin-left: 20px;
+}
+/*Click will give a shadow*/
+input[type=submit]:active {
+    box-shadow: 2px 2px 4px #000000;
 }
 /*inputs in the login box*/
 input[type=text] {
@@ -61,10 +68,10 @@ input[type=password] {
     margin-top: 5%;
     margin-bottom: 5%;
     margin-left: -5%;
+    padding: .5%;
     text-align: center;
     background-color: #d3d3d3;
-    border: solid;
-    border-width: 2px;
+    box-shadow: 2px 2px 4px #000000;
     width: 110%;
     height: 1%;
     font-size: 20px;
