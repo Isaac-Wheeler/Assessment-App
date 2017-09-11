@@ -64,6 +64,10 @@ input[type=password] {
     margin-top: 20px;
     margin-left: 20px;
 }
+small{
+    color: red;
+    
+}
 .banner{
     margin-top: 5%;
     margin-bottom: 5%;
