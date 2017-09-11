@@ -12,3 +12,6 @@ build/
 grailsw
 run
 run
+*.class
+gradle.properties
+gradle.properties
