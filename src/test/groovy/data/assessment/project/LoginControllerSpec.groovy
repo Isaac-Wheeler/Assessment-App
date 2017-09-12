@@ -12,7 +12,6 @@ class LoginControllerSpec extends Specification implements ControllerUnitTest<Lo
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+        //TODO: do something
     }
 }
