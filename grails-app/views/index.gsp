@@ -24,11 +24,11 @@
             <div class="banner">
                 <p>Login</p>
             </div>
-            <g:form controller="Login" action="Login">
+            <g:form controller="Login" action="login">
                 <input type="text" name="username" placeholder="Username">
                 <input type="password" name="password" placeholder="Password">
                 <br>
-                <input type="submit" value="Login"</input>
+                <input type="submit" </input>
             </g:form>
         </div>
     </body>

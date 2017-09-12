@@ -28,6 +28,8 @@
                 <input type="text" name="username" placeholder="Username">
                 <input type="password" name="password" placeholder="Password">
                 <br>
+                <small>* Your Username and/or Password was incorrect</small>
+                <br>
                 <input type="submit" value="Login"</input>
             </g:form>
         </div>
