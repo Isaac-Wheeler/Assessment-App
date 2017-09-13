@@ -24,13 +24,20 @@
             <div class="banner">
                 <p>Login</p>
             </div>
-            <g:form controller="Login" action="Login">
+            <g:form controller="Login" action="login">
                 <input type="text" name="username" placeholder="Username">
                 <input type="password" name="password" placeholder="Password">
                 <br>
-                <small>* Your Username and/or Password was incorrect</small>
+                <small>
+                	<g:if test="${flash.success}">
+    					<div class="alert alert-success" style="display: block">${flash.success}</div>
+					</g:if>
+					<g:if test="${flash.error}">
+   					 	<div class="alert alert-error" style="display: block">${flash.error}</div>
+					</g:if>
+				</small>
                 <br>
-                <input type="submit" value="Login"</input>
+                <input type="submit" value="login" </input>
             </g:form>
         </div>
     </body>

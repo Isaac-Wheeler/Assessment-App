@@ -13,5 +13,6 @@ class UserControllerSpec extends Specification implements ControllerUnitTest<Use
 
     void "test something"() {
       //TODO: do something
+      true
     }
 }
