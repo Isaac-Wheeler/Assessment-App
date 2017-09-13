@@ -1,0 +1,7 @@
+language: groovy
+jdk:
+ - oraclejdk7
+before_script:
+ - chmod +x grailsw
+ - chmod +x gradlew
+script: ./grailsw clean && ./grailsw refresh-dependencies && ./grailsw “test-app unit:”
