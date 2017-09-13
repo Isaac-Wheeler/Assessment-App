@@ -7,14 +7,14 @@
             <h1>Welcome</h1>
             <p class="info">
         	tempory register button <br>
-        	<g:link controller="User" action="register">Sign up now!</g:link>
+        	<g:link controller="user" action="register">Sign up now!</g:link>
      		 </p>
         </div>
         <div class="loginBox">
             <div class="banner">
                 <p>Login</p>
             </div>
-            <g:form class="simpleform" controller='User', action ='login'>
+            <g:form class="simpleform" url="/login">
                 <input type="text" name="username" placeholder="Username">
                 <input type="password" name="password" placeholder="Password">
                 <br>
