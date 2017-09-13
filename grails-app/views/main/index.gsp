@@ -3,6 +3,10 @@
     <head>
     </head>
     <body>
+      <g:if test="${session?.user}">
+      <!-- put homepage code here -->
+      </g:if>
+      <g:else>
         <div class="welcomeMessage">
             <h1>Welcome</h1>
             <p class="info">
@@ -30,5 +34,6 @@
                 <g:submitButton class="button" name="submitButton" value="Login" />
             </g:form>
         </div>
+        </g:else>
     </body>
 </html>
