@@ -27,3 +27,6 @@
 /stylesheets/
 /user/
 /adminProfileAssessmentGoals.gsp
+/main/
+/old_index.gsp
+/PasswordCodec.groovy
