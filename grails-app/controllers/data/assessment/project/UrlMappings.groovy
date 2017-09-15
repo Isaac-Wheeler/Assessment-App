@@ -13,5 +13,6 @@ class UrlMappings {
         "404"(view:'/notFound')
         "/register"(controller:"User", action:"register")
         "/login"(controller:"User", action:"login")
+        "/adminProfileAssessmentGoals"(view:'/adminProfileAssessmentGoals')
     }
 }

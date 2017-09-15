@@ -16,7 +16,7 @@
             <div class="profileInfo">
                 <img class="img-circle" src="blankPerson.jpg">
                 <br>
-                <p>D.Babcock<p>
+                <p>${session?.user?.firstName} ${session?.user?.lastName}<p>
             </div>
             <button class="button">Assessment Goals</button>
             <br>
