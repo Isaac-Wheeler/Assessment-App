@@ -20,3 +20,5 @@ stacktrace.log
 /build
 .project
 .classpath
+/bin
+.gradle
