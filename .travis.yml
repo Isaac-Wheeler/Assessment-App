@@ -1,12 +1,6 @@
 language: groovy
 jdk:
 - oraclejdk8
-env:
-  global:
-     # $AWS_ACCESS_KEY_ID
-     - secure: "ieByjxjDgPSnARvWkaz7LSSvehjqKHcaKKCO48HnH8nNLSq4swpbkUbJnOyN/jC0J5mMpuMxeu/k6IP6MPjCZOKkDFAOhwPtCDmhyuuEiFuDs/6dpzoc2H09yEEvzU1AOaOKonRjSf9pHmuTyiRS1OpLB+A8kez03VnMoxySOs2poz9VD0ha2azHOgDpgNYkA/hZlj/8CRbM2iOqgqHWw2URCliKBWsrTUrmyH7hsqAdFhkXVsL45h/Epw+NrfnrbM/vQ7fu/ahi687dcK5KIGdAqnuR6mzCWawGnPkXTXr4kmXqJ1vHb7CL6OR87ksR/ql+EGEG7lIsKq8en4vk8y6bxKta4/DP1RAhnKHfHKOmb56CPRQjX6PCCrYS0asTZAyGLsb2NvEX1gO4u+cdm6xFlLnmt05UIQ0VJG6TcmxJYkR/31HjWOznpNuTDO12rqAej5o0x+3J9KNHTO6I2vauIFjBiytTNAExRME0BgAKqRVLYrmhLfxHDURRQoMSsu3xMbZ5nZmkq8RVxNJjXKZCFJ0tWkB38YFcBvlMhj6s9aLWqLoBwP1qgEuGJs9UYvSQfotuX+ukp8X8mFHYDuySQRNVZbNoQtHieSCeAsnt8ZNiNPYmNIV8lqkMqgcnY3C7rRJORWtBeNNsewldKqrWEQJQdpkrWjREryJh7pA="
-     # $AWS_SECRET_ACCESS_KEY
-     - secure: "YVtQy5RCSBMrvSy19i62UmGs+YDzv9dqPd8wakV2zJOEdE5DdaRXF2U3Zgjyxg9W6SHvMjGKqilYmxg4+6yaf2briJWwte6sXb+AEf+8ppF+7OLsOUNOpabB1dyVrtrwZ6w3G7yJGFUKv1ClwvszcY9sWuPQBdIgwwppjFjdZzqxEwp4BwcnklULviLDxF4i3iqle4xRyNK69CEFEr9ERYE0W6e9LTlkJdQBAk8Af6BEO8IGUfFW2eSmAD2lSjggmYRyxOUf5DDO0tOjshgkDNuT8jvwCIB6ecy5FlOXyJvtHq5UJL+o+JIIKh4YBbiFps49QXCbmZ4cPTNuzXJYpLYcfvbiijGdT98LGODr5Y7DL5iRj5rRq7g0DHt7S2m8JjueBUY688jCUF3ZGgDEkuls6e4dbM+o2GldEhsU/eBF0HQKzb3nLAW3Pkwyb1B7TAFwgL/Vqp38liSp4BmQ3h89QZqw1VDBLFAkf/Luf6e+6r1d7YL2Q313YFxMe8MRKfTQgt2y8hvKGrtWzbz7uXnZYyKI7ONeYUT4QIFRoKOvCUF0SdgmLtZF35KRNXS0WD7O1s0hSP4gElIytw8CswIUjKRU/buKUAeHR+8pFss0BDnznEMPrzJ8vk0vf8TFDUZ24wKJWVXYZbNKmBl0KfY/7OaO4hlmj3lbzBPVLUs="
 install: true
 before_script:
 - chmod 755 grailsw
@@ -14,6 +8,3 @@ before_script:
 script:
 - "./grailsw clean"
 - "./grailsw test-app"
-- "./grailsw package"
-- mv build/libs/CS481-Project-0.1.war CS481-Project-0.1.war
-- "./gradlew deployBeta"
