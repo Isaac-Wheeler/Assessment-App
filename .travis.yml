@@ -9,5 +9,5 @@ script:
 - "./grailsw clean"
 - "./grailsw test-app"
 - "./grailsw package"
-- "mv build/lib/CS481-Project-0.1.war CS481-Project-0.1.war"
+- "mv build/libs/CS481-Project-0.1.war CS481-Project-0.1.war"
 - "./gradlew deployBeta"
