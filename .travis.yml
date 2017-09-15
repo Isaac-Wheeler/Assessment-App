@@ -8,6 +8,6 @@ before_script:
 script:
 - "./grailsw clean"
 - "./grailsw test-app"
-- "./grails package"
+- "./grailsw package"
 - "./mv build/lib/CS481-Project-0.1.war CS481-Project-0.1.war"
 - "./gradlew deployBeta"
