@@ -24,7 +24,9 @@
             <br>
             <button class="button button2">Teachers</button>
             <br>
-            <button class="button button2">Log Out</button>
+            <g:link controller="user" action="logout">
+                <button class="button button2">Log Out</button>
+            </g:link>
         </div>
         <div class="rightPanel">
             <div class="newTab">

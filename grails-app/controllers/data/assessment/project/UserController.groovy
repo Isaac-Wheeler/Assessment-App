@@ -2,7 +2,7 @@ package data.assessment.project
 
 class UserController {
 
-    
+
     def register = {
         // new user posts his registration details
         if (request.method == 'POST') {
@@ -22,7 +22,7 @@ class UserController {
             redirect(controller:'main')
         }
     }
- 
+
     def login = {
         if (request.method == 'POST') {
             def passwordHashed = params.password.encodeAsPassword()
@@ -32,7 +32,7 @@ class UserController {
                 session.user = u
                 redirect(controller:'main')
             } else {
-                flash.message = "User not found"
+                flash.error = "User/Password not found"
                 redirect(controller:'main')
             }
         } else if (session.user) {
@@ -40,7 +40,7 @@ class UserController {
             redirect(controller:'main')
         }
     }
- 
+
     def logout = {
         session.invalidate()
         redirect(controller:'main')
