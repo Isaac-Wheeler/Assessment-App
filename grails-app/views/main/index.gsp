@@ -11,8 +11,6 @@
             <h1>Welcome</h1>
             <p class="info">
 		    <p>York College prepares its graduates for productive and purposeful lives. As a diverse community of educators and learners, we provide a high-quality, private education that emphasizes personal development, close faculty/student mentoring relationships, and real-world experiences. We partner with our community for the benefit of both our students and the broader region. We strive to make this world-class, private education financially accessible.</p>
-        	tempory register button <br>
-        	<g:link controller="user" action="register">Sign up now!</g:link>
      		 </p>
         </div>
         <div class="loginBox">
