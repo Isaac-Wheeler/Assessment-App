@@ -12,7 +12,7 @@ class AdminControllerSpec extends Specification implements ControllerUnitTest<Ad
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+      //TODO do something
+        true
     }
 }

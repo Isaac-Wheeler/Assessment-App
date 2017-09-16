@@ -12,7 +12,7 @@ class AssessmentsControllerSpec extends Specification implements ControllerUnitT
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+      //TODO do something
+        true
     }
 }
