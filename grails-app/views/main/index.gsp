@@ -5,6 +5,9 @@
     <body>
       <g:if test="${session?.user}">
       <!-- put homepage code here -->
+        <g:if test="${session?.user.admin == true}">
+        <p> is admin </p>
+        </g:if>
       </g:if>
       <g:else>
         <div class="welcomeMessage">
