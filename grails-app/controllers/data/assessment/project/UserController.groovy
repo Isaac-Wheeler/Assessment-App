@@ -17,9 +17,7 @@ class UserController {
                 session.user = u
                 redirect(controller:'main')
             }
-        } else if (session.user) {
-            // don't allow registration while user is logged in
-            redirect(controller:'main', action:"home")
+        
         }
     }
 
@@ -37,7 +35,7 @@ class UserController {
             }
         } else if (session.user) {
             // don't allow login while user is logged in
-            redirect(controller:'main', action:"home")
+            redirect(controller:'main')
         }
     }
 
