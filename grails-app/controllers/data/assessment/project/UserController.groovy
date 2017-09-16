@@ -19,7 +19,7 @@ class UserController {
             }
         } else if (session.user) {
             // don't allow registration while user is logged in
-            redirect(controller:'main' action:"home")
+            redirect(controller:'main', action:"home")
         }
     }
 
@@ -30,14 +30,14 @@ class UserController {
             if (u) {
                 // username and password match -> log in
                 session.user = u
-                redirect(controller:'main' action:"home")
+                redirect(controller:'main', action:"home")
             } else {
                 flash.error = "User/Password not found"
                 redirect(controller:'main')
             }
         } else if (session.user) {
             // don't allow login while user is logged in
-            redirect(controller:'main' action:"home")
+            redirect(controller:'main', action:"home")
         }
     }
 
