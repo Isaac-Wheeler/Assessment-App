@@ -24,7 +24,9 @@
             <br>
             <button class="button button2">Teachers</button>
             <br>
-            <button class="button button2">Register</button>
+            <g:link controller="user" action="register">
+            	<button class="button button2">Register</button>
+            </g:link>
             <br>
             <g:link controller="user" action="logout">
                 <button class="button button2">Log Out</button>
