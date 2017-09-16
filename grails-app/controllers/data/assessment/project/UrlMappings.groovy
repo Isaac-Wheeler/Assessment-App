@@ -16,6 +16,6 @@ class UrlMappings {
         "/adminProfileAssessmentGoals"(view:'/adminProfileAssessmentGoals')
         "/admin"(controller:"admin")
         "/client"(controller:"client")
-        "/createAssessment"(controller:"ssessment", action:"create")
+        "/createAssessment"(view:'/assessments/creatingAssessments')
     }
 }

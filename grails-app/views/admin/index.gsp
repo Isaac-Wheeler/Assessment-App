@@ -34,7 +34,11 @@
         </div>
         <div class="rightPanel">
             <div class="newTab">
-                <p>Assessment Goals <button class="add">New <div class="plus"> &oplus; </div></button></p>
+                <p>Assessment Goals
+                  <g:link controller"assessment", action="create">
+                    <button class="add">New<div class="plus"> &oplus;</div></button>
+                </g:link>
+                </p>
             </div>
         </div>
     </body>

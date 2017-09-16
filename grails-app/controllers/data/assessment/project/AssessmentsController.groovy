@@ -5,6 +5,6 @@ class AssessmentsController {
     def index() { }
 
     def create() {
-      
+      redirect(view="creatingAssessment")
     }
 }
