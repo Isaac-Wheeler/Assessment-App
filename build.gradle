@@ -24,18 +24,7 @@ apply plugin:"org.grails.grails-web"
 apply plugin:"asset-pipeline"
 apply plugin:"org.grails.grails-gsp"
 
-beanstalk {
-    s3Endpoint = "s3-eu-west-1.amazonaws.com"
-    beanstalkEndpoint = "elasticbeanstalk.eu-west-1.amazonaws.com"
-    deployments {
-        // Example to deploy to the same env
-        beta {
-            war = 'CS481-Project-0.1.war'
-            application = 'Assessment-Web-App2'
-            environment = 'AssessmentWebApp2-env'
-        }
-    }
-}
+
 
 repositories {
     mavenLocal()
