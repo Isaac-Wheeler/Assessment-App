@@ -40,6 +40,10 @@
       <g:textField name="lastName" value="${user?.lastName}"
         class="${hasErrors(bean:user,field:'lastName','errors')}" />
     </p>
+    <p>
+      <label for"admin">Admin</label>
+      <g:checkBox name="admin" value="${user?.admin}" />
+    </p>
     <p class="button">
       <label>&nbsp;</label>
       <g:submitButton class="button" name="submitButton" value="Create Account" />

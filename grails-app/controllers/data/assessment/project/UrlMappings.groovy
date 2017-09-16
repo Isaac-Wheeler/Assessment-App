@@ -14,5 +14,8 @@ class UrlMappings {
         "/register"(controller:"User", action:"register")
         "/login"(controller:"User", action:"login")
         "/adminProfileAssessmentGoals"(view:'/adminProfileAssessmentGoals')
+        "/admin"(controller:"admin")
+        "/client"(controller:"client")
+        "/createAssessment"(controller:"ssessment", action:"create")
     }
 }
