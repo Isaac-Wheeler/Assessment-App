@@ -16,7 +16,7 @@
             <div class="profileInfo">
                 <img class="img-circle" src="blankPerson.jpg">
                 <br>
-                <p>D.Babcock<p>
+                <p>${session?.user?.firstName} ${session?.user?.lastName}<p>
             </div>
             <button class="button">Assessment Goals</button>
             <br>
@@ -24,7 +24,11 @@
             <br>
             <button class="button button2">Teachers</button>
             <br>
-            <button class="button button2">Log Out</button>
+            <button class="button button2">Register</button>
+            <br>
+            <g:link controller="user" action="logout">
+                <button class="button button2">Log Out</button>
+            </g:link>
         </div>
         <div class="rightPanel">
             <div class="newTab">
