@@ -4,9 +4,9 @@ class Outcomes {
 
     static constraints = {
       int Id
-      Char Name
+      char Name
       String Desc
-      int ExtId[]
+      int[] ExtId
 
     }
 }
