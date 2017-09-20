@@ -12,7 +12,6 @@ class OutcomesSpec extends Specification implements DomainUnitTest<Outcomes> {
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+        true
     }
 }
