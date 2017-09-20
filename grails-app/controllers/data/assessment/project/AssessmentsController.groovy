@@ -5,6 +5,7 @@ class AssessmentsController {
     def index() { }
 
     def create() {
-      redirect(view="creatingAssessment")
+      System.out.println("Hit")
+      redirect(uri: "/createAssessment")
     }
 }
