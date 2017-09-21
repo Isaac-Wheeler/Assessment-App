@@ -31,7 +31,7 @@
                 <p>Assessment Goals
                   <g:link controller="Assessments" action="create">
                     <button class="add">New<div class="plus"> &oplus;</div></button>
-                </g:link>
+                	  </g:link>
                 </p>
             </div>
             <div class="mainArea">
