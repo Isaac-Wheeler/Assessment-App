@@ -1,0 +1,21 @@
+/* main body of the website*/
+body{
+    width:100%;
+    height:100%;
+    padding:0;
+    margin:0;
+    background-color: #389244;
+    text-align: center;
+}
+
+/* Main Center */
+.main{
+    background-color: #464646;
+    width: 60%;
+    height:80%;
+    text-align: left;
+}
+h1{
+    font-style: bold;
+    
+}

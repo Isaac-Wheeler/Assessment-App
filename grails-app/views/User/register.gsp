@@ -3,6 +3,7 @@
 <head>
   <title>User Registration</title>
   <meta name="layout" content="main" />
+  <g:if env="development"><asset:stylesheet src="assessments.css"/></g:if>
 </head>
 <body>
 <g:form class="simpleform" url="/register">
