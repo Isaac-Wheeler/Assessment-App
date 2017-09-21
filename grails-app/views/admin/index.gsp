@@ -22,7 +22,9 @@
             <br>
             <button class="button button2">Completed Courses</button>
             <br>
-            <button class="button button2">Teachers</button>
+            <g:link controller="teachers">
+              <button class="button button2">Teachers</button>
+            </g:link>
             <br>
             <g:link controller="user" action="register">
             	<button class="button button2">Register</button>

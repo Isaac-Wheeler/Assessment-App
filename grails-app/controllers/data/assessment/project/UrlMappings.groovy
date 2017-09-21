@@ -17,5 +17,6 @@ class UrlMappings {
         "/admin"(controller:"admin")
         "/client"(controller:"client")
         "/createAssessment"(view:'/assessments/creatingAssessments')
+        "/teachers"(controller:"Teachers")
     }
 }

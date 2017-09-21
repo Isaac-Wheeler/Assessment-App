@@ -45,7 +45,7 @@
             		<g:each in="${teachers}" var="teacher" status="i">
             			<div class="listings">
                 			<h1>${i+1}. ${teacher.lastName}, ${teacher.firstName}</h1>
-                     	<p>Registered: ${person.registerDate}</p>
+                     	<p>Registered: ${teacher.dateCreated}</p>
                      </div>
                 		<br/>
             		</g:each>

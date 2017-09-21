@@ -2,5 +2,8 @@ package data.assessment.project
 
 class TeachersController {
 
-    def index() { }
+    def index() {
+      def Teachers = User.list()
+      [Teachers:Teachers]
+     }
 }
