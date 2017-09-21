@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="tabIcon" href="palm.ico" />
             <title>Data Assessment</title>
-            <g:if env="development"><asset:stylesheet src="assessment.css"/></g:if>
+            <asset:stylesheet src="assessment.css"/>
     </head>
     <body>
         <div class="pageTitle">
