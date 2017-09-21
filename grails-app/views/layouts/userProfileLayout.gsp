@@ -18,7 +18,11 @@
                 <br>
                 <p>${session?.user?.firstName} ${session?.user?.lastName}<p>
             </div>
-            <button class="button">Assessment Goals</button>
+            <g:link controller="user" action="home">
+            <button class="button">Home</button>
+            </g:link>
+            <br>
+            <button class="button">Current Assessments</button>
             <br>
             <button class="button button2">Completed Courses</button>
             <br>
