@@ -30,7 +30,7 @@
             		<button class="button button2">Completed Assessments</button>
             </g:link>
             <br>
-            <g:link controller="admin" action="teachers">
+            <g:link controller="teachers">
             		<button class="button button2">Teachers</button>
             </g:link>
             <br>

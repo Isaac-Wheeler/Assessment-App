@@ -4,6 +4,6 @@ class TeachersController {
 
     def index() {
       def Teachers = User.list()
-      [Teachers:Teachers]
+      [Teachers:User]
      }
 }
