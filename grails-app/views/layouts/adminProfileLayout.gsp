@@ -18,15 +18,21 @@
                 <br>
                 <p>${session?.user?.firstName} ${session?.user?.lastName}<p>
             </div>
-            <g:link controller="admin" action="home">
+            <g:link controller="user" action="home">
             <button class="button">Home</button>
             </g:link>
             <br>
-            <button class="button">Current Assessments</button>
+            <g:link controller="user" action="currentAssessments">
+            <button class="button button2">Current Assessments</button>
+            </g:link>
             <br>
-            <button class="button button2">Completed Courses</button>
+            <g:link controller="user" action="completedAssessments">
+            <button class="button button2">Completed Assessments</button>
+            </g:link>
             <br>
+            <g:link controller="user" action="teachers">
             <button class="button button2">Teachers</button>
+            </g:link>
             <br>
             <g:link controller="user" action="register">
             	<button class="button button2">Register</button>
