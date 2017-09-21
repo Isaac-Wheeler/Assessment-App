@@ -1,56 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>User Registration</title>
-  <meta name="layout" content="main" />
-  <g:if env="development"><asset:stylesheet src="assessments.css"/></g:if>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="tabIcon" href="palm.ico" />
+            <title>Data Assessment</title>
+            <g:if env="development"><asset:stylesheet src="assessment.css"/></g:if>
 </head>
 <body>
 <g:form class="simpleform" url="/register">
-  <fieldset>
-    <legend>User Registration</legend>
-    <p class="info">
-      Complete the form below to create an account!
-    </p>
+	<div class="pageTitle">
+    		<h1>User Registration</h1>
+      	<p>Complete the form below to create an account!</p>
+    </div>
     <g:hasErrors bean="${user}">
       <div class="errors">
         <g:renderErrors bean="${user}"/>
       </div>
     </g:hasErrors>
-    <p>
-      <label for="username">Username</label>
-      <g:textField name="username" value="${user?.username}"
-        class="${hasErrors(bean:user,field:'username','errors')}"/>
-    </p>
-    <p>
-      <label for="password">Password</label>
-      <g:passwordField name="password"
-        class="${hasErrors(bean:user,field:'password','errors')}" />
-    </p>
-    <p>
-      <label for="confirm">Confirm Password</label>
-      <g:passwordField name="confirm"
-        class="${hasErrors(bean:user,field:'password','errors')}" />
-    </p>
-    <p>
-      <label for="firstName">First Name</label>
-      <g:textField name="firstName" value="${user?.firstName}"
-        class="${hasErrors(bean:user,field:'firstName','errors')}" />
-    </p>
-    <p>
-      <label for="lastName">Last Name</label>
-      <g:textField name="lastName" value="${user?.lastName}"
-        class="${hasErrors(bean:user,field:'lastName','errors')}" />
-    </p>
-    <p>
-      <label for"admin">Admin</label>
-      <g:checkBox name="admin" value="${user?.admin}" />
-    </p>
-    <p class="button">
-      <label>&nbsp;</label>
-      <g:submitButton class="button" name="submitButton" value="Create Account" />
-    </p>
-  </fieldset>
+    <div class="backgrounds">
+            <div class="labels">
+            <br>
+      		<label for="username">Username:</label>
+      		<br>
+      		<g:textField name="username" value="${user?.username}" class="${hasErrors(bean:user,field:'username','errors')}"/>
+    			<br>
+      		<label for="password">Password:</label>
+      		<br>
+      		<g:passwordField name="password" class="${hasErrors(bean:user,field:'password','errors')}" />
+			<br>
+      		<label for="confirm">Confirm Password:</label>
+      		<br>
+      		<g:passwordField name="confirm" class="${hasErrors(bean:user,field:'password','errors')}" />
+			<br>
+      		<label for="firstName">First Name:</label>
+      		<br>
+      		<g:textField name="firstName" value="${user?.firstName}" class="${hasErrors(bean:user,field:'firstName','errors')}" />
+      		<br>
+      		<label for="lastName">Last Name:</label>
+      		<br>
+      		<g:textField name="lastName" value="${user?.lastName}" class="${hasErrors(bean:user,field:'lastName','errors')}" />
+			<br>
+      		<label for"admin">Admin:</label>
+      		<g:checkBox name="admin" value="${user?.admin}" />
+      		<br>
+      		
+
+      		<g:submitButton class="button" name="submitButton" value="Create Account" />
 </g:form>
 </body>
 </html>
