@@ -77,3 +77,15 @@ body{
     font-size: 120%;
     color: #87bd4b;
 }
+.mainArea{
+	text-align: center;
+}
+.listings{
+	width: 50%;
+	color: #464646;
+	padding: 1%;
+	margin: 3%;
+	margin-left: 25%;
+	border-radius:8px;
+	background-color: white;
+}

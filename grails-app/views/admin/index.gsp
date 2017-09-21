@@ -40,7 +40,15 @@
                 </g:link>
                 </p>
             </div>
-            
+            <div class="mainArea">
+            			<g:each in="${currentAssessment}" var="currentAssessment" status="i">
+            			<div class="listings">
+                			<h1>${currentAssessment.title}</h1>
+                     	<p>Completed: ${currentAssessment.completed}</p>
+                     </div>
+                		<br/>
+            		</g:each>
+            </div>
         </div>
     </body>
 </html>
