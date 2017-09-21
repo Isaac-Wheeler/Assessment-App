@@ -25,3 +25,6 @@ stacktrace.log
 grails-app/controllers/data/assessment/project/UrlMappings.groovy
 grails-app/controllers/data/assessment/project/UrlMappings.groovy
 grails-app/views/Teachers/teacherList.gsp
+grails-app/views/layouts/adminProfileLayout.gsp
+grails-app/views/Teachers/index.gsp
+grails-app/views/Teachers/teacherList.gsp
