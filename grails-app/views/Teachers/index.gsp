@@ -1,18 +1,19 @@
-
 <!DOCTYPE html>
 <html>
     <head>
-        <!--<script type="text/javascript">
-            if (screen.width <= 800) {
-                window.location = "/MobileLogin.html";
-            }
-        </script>-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="tabIcon" href="palm.ico" />
-            <title>Data Assesment</title>
-            <asset:stylesheet src="adminProfile.css"/>
+        <meta name="layout" content="adminProfileLayout"/>
+        <asset:stylesheet src="adminProfile.css"/>
     </head>
     <body>
+<<<<<<< HEAD:grails-app/views/Teachers/teacherList.gsp
+        <g:each in="${teachers}" var="teacher" status="i">
+        		<div class="listings">
+             	<h1>${i+1}. ${teacher.lastName}, ${teacher.firstName}</h1>
+             	<p>Registered: ${person.registerDate}</p>
+             </div>
+             <br/>
+        </g:each>
+=======
         <div class=leftPanel>
             <div class="profileInfo">
                 <img class="img-circle" src="blankPerson.jpg">
@@ -45,12 +46,13 @@
             		<g:each in="${teachers}" var="teacher" status="i">
             			<div class="listings">
                 			<h1>${i+1}. ${teacher.lastName}, ${teacher.firstName}</h1>
-                     	<p>Registered: ${person.registerDate}</p>
+                     	<p>Registered: ${teacher.dateCreated}</p>
                      </div>
                 		<br/>
             		</g:each>
             </div>
             
         </div>
+>>>>>>> 4ab201d1ba88074bbadd07f73671f430e6af34fe:grails-app/views/Teachers/index.gsp
     </body>
 </html>

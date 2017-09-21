@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="adminProfileLayout"/>
-        <asset:stylesheet src="adminProfile.css"/>
+        <!--<script type="text/javascript">
+            if (screen.width <= 800) {
+                window.location = "/MobileLogin.html";
+            }
+        </script>-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="tabIcon" href="palm.ico" />
+            <title>Data Assesment</title>
+            <g:layoutHead/>
     </head>
     <body>
-<<<<<<< HEAD
-        <g:each in="${currentAssessment}" var="currentAssessment" status="i">
-            	<div class="listings">
-                	<h1>${currentAssessment.title}</h1>
-                 <p>Completed: ${currentAssessment.completed}</p>
-             </div>
-             <br/>
-        </g:each>
-=======
         <div class=leftPanel>
             <div class="profileInfo">
                 <img class="img-circle" src="blankPerson.jpg">
@@ -24,9 +22,7 @@
             <br>
             <button class="button button2">Completed Courses</button>
             <br>
-            <g:link controller="teachers">
-              <button class="button button2">Teachers</button>
-            </g:link>
+            <button class="button button2">Teachers</button>
             <br>
             <g:link controller="user" action="register">
             	<button class="button button2">Register</button>
@@ -45,15 +41,8 @@
                 </p>
             </div>
             <div class="mainArea">
-            			<g:each in="${currentAssessment}" var="currentAssessment" status="i">
-            			<div class="listings">
-                			<h1>${currentAssessment.title}</h1>
-                     	<p>Completed: ${currentAssessment.completed}</p>
-                     </div>
-                		<br/>
-            		</g:each>
+            		<g:layoutBody/>
             </div>
         </div>
->>>>>>> 4ab201d1ba88074bbadd07f73671f430e6af34fe
     </body>
 </html>
