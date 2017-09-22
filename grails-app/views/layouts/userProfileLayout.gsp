@@ -23,7 +23,7 @@
             </g:link>
             <br>
             <g:link controller="user" action="currentAssessments">
-            		<button class="button button2">Current Assessments</button>
+            		<button class="button button2">Assessments</button>
             </g:link>
             <br>
             <g:link controller="user" action="completedAssessments">
