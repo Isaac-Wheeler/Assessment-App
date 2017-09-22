@@ -31,6 +31,9 @@
                 			<h1>${i+1}. ${u.lastName}, ${u.firstName}</h1>
                 			<p>Registered: ${u.dateCreated}</p>
                       <P>Is Admin: ${u.admin}</p>
+<<<<<<< HEAD
+>>>>>>> 0a53cfcbd5ff03005958b94ed69b1db2a5d333f9
+=======
 >>>>>>> 0a53cfcbd5ff03005958b94ed69b1db2a5d333f9
         				</div>
         				<br/>
