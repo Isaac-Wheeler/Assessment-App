@@ -16,6 +16,7 @@
             		<g:each in="${User}" var="u" status="i">
             			<div class="listings">
                 			<h1>${u.lastName}, ${u.firstName}</h1>
+                			<p>Username: ${u.userName}</p>
                 			<g:if test="${true == u.admin}">
                 					<p>Admin</p>
 						</g:if>
