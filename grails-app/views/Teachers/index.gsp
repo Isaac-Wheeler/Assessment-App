@@ -17,6 +17,7 @@
             			<div class="listings">
                 			<h1>${i+1}. ${u.lastName}, ${u.firstName}</h1>
                 			<p>Registered: ${u.dateCreated}</p>
+                      <P>Is Admin: ${u.admin}</p>
         				</div>
         				<br/>
         			</g:each>
