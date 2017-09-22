@@ -18,7 +18,7 @@
                 <br>
                 <p>${session?.user?.firstName} ${session?.user?.lastName}<p>
             </div>
-            <g:link controller="admin" action="home">
+            <g:link controller="admin">
             		<button class="button">Home</button>
             </g:link>
             <br>
