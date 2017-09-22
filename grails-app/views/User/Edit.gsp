@@ -43,9 +43,7 @@
       		<label for"admin">Admin:</label>
       		<g:checkBox name="admin" value="${user?.admin}" />
       		<br>
-      		
-
-      		<g:submitButton class="button" name="submitButton" value="Create Account" />
+      		<g:submitButton class="button" name="submitButton" value="Edit Account" />
 </g:form>
 </body>
 </html>
