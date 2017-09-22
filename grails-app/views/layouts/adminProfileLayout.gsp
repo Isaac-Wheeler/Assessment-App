@@ -23,7 +23,7 @@
             </g:link>
             <br>
             <g:link controller="admin" action="currentAssessments">
-            		<button class="button button2">Current Assessments</button>
+            		<button class="button button2">Assessments</button>
             </g:link>
             <br>
             <g:link controller="admin" action="completedAssessments">
@@ -32,10 +32,6 @@
             <br>
             <g:link controller="teachers">
             		<button class="button button2">Teachers</button>
-            </g:link>
-            <br>
-            <g:link controller="user" action="register">
-            		<button class="button button2">Register</button>
             </g:link>
             <br>
             <g:link controller="user" action="logout">

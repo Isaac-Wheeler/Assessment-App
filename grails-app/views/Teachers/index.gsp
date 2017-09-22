@@ -7,8 +7,8 @@
     <body>
     		<div class="newTab">
                 <p>Teachers
-                  <g:link controller="Assessments" action="create">
-                    <button class="add">New<div class="plus"> &oplus;</div></button>
+                  <g:link controller="user" action="register">
+                    <button class="add">Register<div class="plus"> &oplus;</div></button>
                 </g:link>
                 </p>
             </div>
