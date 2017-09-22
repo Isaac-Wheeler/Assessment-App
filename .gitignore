@@ -28,3 +28,8 @@ grails-app/views/Teachers/teacherList.gsp
 grails-app/views/layouts/adminProfileLayout.gsp
 grails-app/views/Teachers/index.gsp
 grails-app/views/Teachers/teacherList.gsp
+grails-app/views/Teachers/index.gsp
+grails-app/controllers/data/assessment/project/UserController.groovy
+grails-app/init/data/assessment/project/BootStrap.groovy
+grails-app/views/layouts/adminProfileLayout.gsp
+grails-app/views/Teachers/index.gsp

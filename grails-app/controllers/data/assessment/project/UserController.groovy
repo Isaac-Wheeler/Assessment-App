@@ -13,11 +13,9 @@ class UserController {
                 // validation failed, render registration page again
                 return [user:u]
             } else {
-                // validate/save ok, store user in session, redirect to homepage
-                session.user = u
                 redirect(controller:'main')
             }
-        
+
         }
     }
 
@@ -28,7 +26,7 @@ class UserController {
             if (u) {
                 // username and password match -> log in
                 session.user = u
-                redirect(controller:'main', action:"home")
+                redirect(controller:'main')
             } else {
                 flash.error = "User/Password not found"
                 redirect(controller:'main')
