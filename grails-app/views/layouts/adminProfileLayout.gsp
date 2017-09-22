@@ -14,7 +14,7 @@
     <body>
         <div class=leftPanel>
             <div class="profileInfo">
-                <img class="img-circle" src="blankPerson.jpg">
+                <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
                 <br>
                 <p>${session?.user?.firstName} ${session?.user?.lastName}<p>
             </div>
