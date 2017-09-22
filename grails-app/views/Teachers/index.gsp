@@ -16,9 +16,10 @@
             		<g:each in="${User}" var="u" status="i">
             			<div class="listings">
                 			<h1>${u.lastName}, ${u.firstName}</h1>
+                			<g:img class="img-teach" dir="images" file="blankPerson.jpg"/>
                 			<p>Username: ${u.username}</p>
                 			<g:if test="${true == u.admin}">
-                					<p>Admin</p>
+                				<p>Admin</p>
 						</g:if>
 						<p>Registered: ${u.dateCreated}</p>
 						<g:link controller="user" action="edit">
