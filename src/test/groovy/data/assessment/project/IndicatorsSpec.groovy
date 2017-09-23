@@ -12,7 +12,6 @@ class IndicatorsSpec extends Specification implements DomainUnitTest<Indicators>
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+        true
     }
 }

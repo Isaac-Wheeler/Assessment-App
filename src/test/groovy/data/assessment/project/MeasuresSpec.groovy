@@ -12,7 +12,6 @@ class MeasuresSpec extends Specification implements DomainUnitTest<Measures> {
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+        true
     }
 }

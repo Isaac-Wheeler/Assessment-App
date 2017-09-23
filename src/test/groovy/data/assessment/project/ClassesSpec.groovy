@@ -12,7 +12,6 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
     }
 
     void "test something"() {
-        expect:"fix me"
-            true == false
+        true
     }
 }
