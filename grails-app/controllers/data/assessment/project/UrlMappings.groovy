@@ -13,6 +13,7 @@ class UrlMappings {
         "404"(view:'/notFound')
         "/register"(controller:"User", action:"register")
         "/login"(controller:"User", action:"login")
+        "/edit"(controller:"User", action:"edit")
         "/adminProfileAssessmentGoals"(view:'/adminProfileAssessmentGoals')
         "/admin"(controller:"admin")
         "/client"(controller:"client")

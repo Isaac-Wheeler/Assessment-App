@@ -47,4 +47,31 @@ class UserController {
       u.delete(flush:true)
       redirect(controller:'teachers')
     }
+
+    def edit ={
+      if (request.method == 'POST') {
+          // create domain object and assign parameters using data binding
+          def u = User.get(params.id)
+          u.username = params.username
+          u.lastName = params.lastName
+          u.firstName = params.firstName
+          u.admin = params.admin
+          if(params.password == null){
+          u.password = params.password
+          u.confirm = params.confirm
+          u.passwordHashed = u.password.encodeAsPassword()
+          }
+          if (! u.save(flush:true)) {
+              // validation failed, render registration page again
+              return [user:u, id:u.id]
+          } else {
+              redirect(controller:'Teachers')
+          }
+
+      }else{
+        def u = User.get(params.teacher)
+        return [user:u, id:u.id]
+        redirect(view:'edit')
+      }
+    }
 }

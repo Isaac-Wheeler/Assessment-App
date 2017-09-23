@@ -7,7 +7,7 @@
             <asset:stylesheet src="assessment.css"/>
 </head>
 <body>
-<g:form class="simpleform" url="/register">
+<g:form class="simpleform" url="/edit">
 	<div class="pageTitle">
     		<h1>User Registration</h1>
       	<p>Complete the form below to create an account!</p>
@@ -43,6 +43,7 @@
       		<label for"admin">Admin:</label>
       		<g:checkBox name="admin" value="${user?.admin}" />
       		<br>
+          <g:hiddenField name="id" value="${id}" />
       		<g:submitButton class="button" name="submitButton" value="Edit Account" />
 </g:form>
 </body>

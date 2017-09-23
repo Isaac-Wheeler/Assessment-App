@@ -22,7 +22,7 @@
                 				<p>Admin</p>
 						          </g:if>
 						          <p>Registered: ${u.dateCreated}</p>
-						          <g:link controller="user" action="edit">
+						          <g:link controller="user" action="edit" params="[teacher:u.id]">
 							             <button class="add">Edit</button>
 						          </g:link>
 						          <g:link controller="user" action="delete" params="[teacher:u.id]">
