@@ -12,7 +12,7 @@
             <g:layoutHead/>
     </head>
     <body>
-      <g:if test="!${session?.user}">
+      <g:if test="${session?.user?.admin == false}">
         ${response.sendRedirect("/")}
       </g:if>
         <div class=leftPanel>
