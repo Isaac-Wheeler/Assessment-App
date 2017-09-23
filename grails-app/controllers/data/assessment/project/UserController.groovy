@@ -41,4 +41,10 @@ class UserController {
         session.invalidate()
         redirect(controller:'main')
     }
+
+    def delete = {
+      def u = User.get(params.teacher)
+      u.delete(flush:true)
+      redirect(controller:'teachers')
+    }
 }
