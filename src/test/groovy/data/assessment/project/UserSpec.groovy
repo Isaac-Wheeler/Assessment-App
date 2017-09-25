@@ -12,7 +12,6 @@ class UserSpec extends Specification implements DomainUnitTest<User> {
     }
 
     void "test something"() {
-      //TODO: do something
-      true
+        true
     }
 }

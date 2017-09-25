@@ -2,7 +2,7 @@ package data.assessment.project
 
 class Measures {
 
-      int measure_id;
+      //int measure_id;       *may not need. It looks like grails creates tables with id calumn automatically
       String measure_title;
       String measure_description;
       int[] indicator_id;

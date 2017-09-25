@@ -2,6 +2,8 @@ package data.assessment.project
 
 
 class User {
+
+
     // time stamps: automatically populated by GORM
     Date dateCreated
     Date lastUpdated
