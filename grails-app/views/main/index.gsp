@@ -12,9 +12,9 @@
             <asset:stylesheet src="style.css"/>
     </head>
     <body>
-      <g:if test="${session?.user}">
+      <g:if test="${session?.teacher}">
       <!-- put homepage code here -->
-        <g:if test="${session?.user.admin == true}">
+        <g:if test="${session?.teacher.admin == true}">
         <p> is admin </p>
         </g:if>
       </g:if>

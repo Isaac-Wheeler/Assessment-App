@@ -3,20 +3,20 @@ package data.assessment.project
 class MainController {
 
     def index() {
-      if(session.user){
-        if(session.user.admin == true){
+      if(session.teacher){
+        if(session.teacher.admin == true){
           redirect(controller:"admin")
-        }else if (session.user.admin == false){
+        }else if (session.teacher.admin == false){
           redirect(controller:"client")
         }
       }
      }
 
      def home(){
-       if(session.user){
-         if(session.user.admin == true){
+       if(session.teacher){
+         if(session.teacher.admin == true){
            redirect(controller:"admin")
-         }else if (session.user.admin == false){
+         }else if (session.teacher.admin == false){
            redirect(controller:"client")
          }
        }

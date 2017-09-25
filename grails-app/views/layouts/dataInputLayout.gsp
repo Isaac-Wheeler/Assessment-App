@@ -9,9 +9,9 @@
 </head>
 <body>
 <g:form class="simpleform" url="/register">
-    <g:hasErrors bean="${user}">
+    <g:hasErrors bean="${teacher}">
       <div class="errors">
-        <g:renderErrors bean="${user}"/>
+        <g:renderErrors bean="${teacher}"/>
       </div>
     </g:hasErrors>
     <g:layoutBody/>
