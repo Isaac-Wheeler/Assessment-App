@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div class="pageTitle">
-    		<h1>Create Outcome</h1>
+    		<h1>Create Indicator</h1>
       	<p>Complete the form below to create an Outcome</p>
     </div>
     <g:form class="simpleform" url="/createIndicator">
