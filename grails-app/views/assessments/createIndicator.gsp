@@ -8,7 +8,7 @@
     		<h1>Create Outcome</h1>
       	<p>Complete the form below to create an Outcome</p>
     </div>
-    <g:form class="simpleform" url="/register">
+    <g:form class="simpleform" url="/createIndicator">
    			 <g:hasErrors bean="${teacher}">
       			<div class="errors">
         				<g:renderErrors bean="${teacher}"/>
