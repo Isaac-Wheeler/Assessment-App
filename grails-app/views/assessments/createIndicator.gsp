@@ -6,7 +6,7 @@
 <body>
 	<div class="pageTitle">
     		<h1>Create Indicator</h1>
-      	<p>Complete the form below to create an Outcome</p>
+      	<p>Complete the form below to create an Indicator</p>
     </div>
     <g:form class="simpleform" url="/createIndicator">
    			 <g:hasErrors bean="${teacher}">

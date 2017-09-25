@@ -6,7 +6,7 @@
 <body>
 	<div class="pageTitle">
     		<h1>Edit Outcome</h1>
-      	<p>Complete the form below to create an Outcome</p>
+      	<p>Complete the form below to edit an Outcome</p>
     </div>
     <g:form class="simpleform" url="/editOutcome">
    			 <g:hasErrors bean="${teacher}">
