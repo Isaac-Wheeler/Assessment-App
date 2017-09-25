@@ -12,14 +12,14 @@
             <g:layoutHead/>
     </head>
     <body>
-      <g:if test="${session?.user?.admin == false}">
+      <g:if test="${session?.teacher?.admin == false}">
         ${response.sendRedirect("/")}
       </g:if>
         <div class=leftPanel>
             <div class="profileInfo">
                 <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
                 <br>
-                <p>${session?.user?.firstName} ${session?.user?.lastName}<p>
+                <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
             </div>
             <g:link controller="admin">
             		<button class="button">Home</button>

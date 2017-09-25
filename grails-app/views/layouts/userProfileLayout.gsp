@@ -16,7 +16,7 @@
             <div class="profileInfo">
                 <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
                 <br>
-                <p>${session?.user?.firstName} ${session?.user?.lastName}<p>
+                <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
             </div>
             <g:link controller="user" action="home">
             		<button class="button">Home</button>

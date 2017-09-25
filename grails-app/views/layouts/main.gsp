@@ -13,9 +13,9 @@
     </head>
 <body>
 	<!-- username | logout link -->
-    <g:if test="${session?.user}">
+    <g:if test="${session?.teacher}">
 		<div id="login">
-        	${session?.user?.firstName} ${session?.user?.lastName} |
+        	${session?.teacher?.firstName} ${session?.teacher?.lastName} |
         	<g:link controller="user" action="logout">Logout</g:link>
         </div>
     </g:if>
