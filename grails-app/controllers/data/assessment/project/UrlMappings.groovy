@@ -20,5 +20,6 @@ class UrlMappings {
         "/createOutcome"(view:'/assessments/createOutcome')
         "/editOutcome"(view:'/assessments/editOutcome')
         "/teachers"(controller:"Teachers")
+        "/accessDenied"(view:'/accessDenied')
     }
 }
