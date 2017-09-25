@@ -8,13 +8,6 @@
             <g:layoutHead/>
 </head>
 <body>
-<g:form class="simpleform" url="/register">
-    <g:hasErrors bean="${teacher}">
-      <div class="errors">
-        <g:renderErrors bean="${teacher}"/>
-      </div>
-    </g:hasErrors>
     <g:layoutBody/>
-</g:form>
 </body>
 </html>
