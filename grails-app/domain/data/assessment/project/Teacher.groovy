@@ -26,7 +26,7 @@ class Teacher {
       username  blank:false, size:5..15, matches:/[\S]+/, unique:true
       password  blank:false, size:5..15, matches:/[\S]+/, validator:{ val, obj ->
           if (obj.password != obj.confirm)
-              return 'user.password.dontmatch'
+              return 'teacher.password.dontmatch'
       }
     }
 }
