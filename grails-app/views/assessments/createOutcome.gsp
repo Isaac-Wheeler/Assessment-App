@@ -8,7 +8,13 @@
     		<h1>Create Outcome</h1>
       	<p>Complete the form below to create an Outcome</p>
     </div>
-    <div class="backgrounds">
+    <g:form class="simpleform" url="/register">
+   			 <g:hasErrors bean="${teacher}">
+      			<div class="errors">
+        				<g:renderErrors bean="${teacher}"/>
+      			</div>
+    			</g:hasErrors>
+    		<div class="backgrounds">
             <div class="labels">
                 <label for="outcomeTitle">Outcome Title:</label>
                 <br>
@@ -21,5 +27,6 @@
                 <g:submitButton class="button" name="cancelButton" value="Cancel" />
             </div>
         </div>
+      </g:form>
     </body>
 </html>
