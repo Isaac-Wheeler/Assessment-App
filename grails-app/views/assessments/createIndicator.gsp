@@ -10,13 +10,13 @@
     </div>
     <div class="backgrounds">
             <div class="labels">
-                <label for="outcomeTitle">Outcome Title:</label>
+                <label for="indicatorTitle">Indicator Title:</label>
                 <br>
-                <g:textField type="text" id="outcomeTitle" name="outcomeTitle" value="${outcome?.title}" placeholder="Title" class="${hasErrors(bean:outcome,field:'outcomeTitle','errors')}"/>
+                <g:textField type="text" id="indicatorTitle" name="indicatorTitle" value="${indicator?.title}" placeholder="Title" class="${hasErrors(bean:indicator,field:'indicatorTitle','errors')}"/>
                 <br>
-                <label for="outcomeDesc">Outcome Description:</label>
+                <label for="indicatorDesc">Indicator Description:</label>
                 <br>
-                <g:textArea id="outcomeDesc" name="outcomeDesc" value="${outcome?.desc}" rows="10" cols="50"/>
+                <g:textArea id="indicatorDesc" name="indicatorDesc" value="${indicator?.desc}" rows="10" cols="50"/>
                 <g:submitButton class="button" name="submitButton" value="Create Outcome" />
                 <g:submitButton class="button" name="cancelButton" value="Cancel" />
             </div>
