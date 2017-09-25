@@ -13,7 +13,7 @@
                 </p>
             </div>
             <div class="mainArea">
-            		<g:each in="${User}" var="u">
+            		<g:each in="${Teacher}" var="u">
             			<div class="listings">
                 			<h1>${u.lastName}, ${u.firstName}</h1>
                 			<g:img class="img-teach" dir="images" file="blankPerson.jpg"/>

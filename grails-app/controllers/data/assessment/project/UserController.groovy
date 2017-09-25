@@ -7,11 +7,11 @@ class UserController {
         // new user posts his registration details
         if (request.method == 'POST') {
             // create domain object and assign parameters using data binding
-            def u = new User(params)
+            def u = new Teacher(params)
             u.passwordHashed = u.password.encodeAsPassword()
             if (! u.save()) {
                 // validation failed, render registration page again
-                return [user:u]
+                return [teacher:u]
             } else {
                 redirect(controller:'main')
             }
@@ -22,16 +22,16 @@ class UserController {
     def login = {
         if (request.method == 'POST') {
             def passwordHashed = params.password.encodeAsPassword()
-            def u = User.findByUsernameAndPasswordHashed(params.username, passwordHashed)
+            def u = Teacher.findByUsernameAndPasswordHashed(params.username, passwordHashed)
             if (u) {
                 // username and password match -> log in
-                session.user = u
+                session.teacher = u
                 redirect(controller:'main')
             } else {
                 flash.error = "User/Password not found"
                 redirect(controller:'main')
             }
-        } else if (session.user) {
+        } else if (session.teacher) {
             // don't allow login while user is logged in
             redirect(controller:'main')
         }
@@ -43,7 +43,7 @@ class UserController {
     }
 
     def delete = {
-      def u = User.get(params.teacher)
+      def u = Teacher.get(params.teacher)
       u.delete(flush:true)
       redirect(controller:'teachers')
     }
@@ -51,7 +51,7 @@ class UserController {
     def edit ={
       if (request.method == 'POST') {
           // create domain object and assign parameters using data binding
-          def u = User.get(params.id)
+          def u = Teacher.get(params.id)
           u.username = params.username
           u.lastName = params.lastName
           u.firstName = params.firstName
@@ -63,14 +63,14 @@ class UserController {
           }
           if (! u.save(flush:true)) {
               // validation failed, render registration page again
-              return [user:u, id:u.id]
+              return [teacher:u, id:u.id]
           } else {
               redirect(controller:'Teachers')
           }
 
       }else{
-        def u = User.get(params.teacher)
-        return [user:u, id:u.id]
+        def u = Teacher.get(params.teacher)
+        return [teacher:u, id:u.id]
         redirect(view:'edit')
       }
     }

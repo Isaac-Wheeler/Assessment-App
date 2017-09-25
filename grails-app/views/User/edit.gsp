@@ -13,7 +13,7 @@
             		<br>
       			<label for="username">Username:</label>
       			<br>
-      			<g:textField name="username" value="${user?.username}" class="${hasErrors(bean:user,field:'username','errors')}"/>
+      			<g:textField name="username" value="${teacher?.username}" class="${hasErrors(bean:user,field:'username','errors')}"/>
     				<br>
       			<label for="password">Password:</label>
       			<br>
@@ -25,14 +25,14 @@
 				<br>
       			<label for="firstName">First Name:</label>
       			<br>
-      			<g:textField name="firstName" value="${user?.firstName}" class="${hasErrors(bean:user,field:'firstName','errors')}" />
+      			<g:textField name="firstName" value="${teacher?.firstName}" class="${hasErrors(bean:user,field:'firstName','errors')}" />
       			<br>
       			<label for="lastName">Last Name:</label>
       			<br>
-      			<g:textField name="lastName" value="${user?.lastName}" class="${hasErrors(bean:user,field:'lastName','errors')}" />
+      			<g:textField name="lastName" value="${teacher?.lastName}" class="${hasErrors(bean:user,field:'lastName','errors')}" />
 				<br>
       			<label for"admin">Admin:</label>
-      			<g:checkBox name="admin" value="${user?.admin}" />
+      			<g:checkBox name="admin" value="${teacher?.admin}" />
       			<br>
           		<g:hiddenField name="id" value="${id}" />
       			<g:submitButton class="button" name="submitButton" value="Edit Account" />
