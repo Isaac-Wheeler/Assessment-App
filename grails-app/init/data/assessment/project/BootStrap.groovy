@@ -7,7 +7,7 @@ class BootStrap {
        def u = new Teacher(firstName:"admin", lastName:"DeleteMe", username:"admin", password:"password", confirm:"password", admin:true)
        u.passwordHashed = u.password.encodeAsPassword()
        u.save()
-       System.out.println("added defualt admin")
+       System.out.println("added default admin")
       }
     }
     def destroy = {
