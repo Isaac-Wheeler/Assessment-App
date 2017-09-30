@@ -22,6 +22,8 @@ class Teacher {
 
     static constraints = {
       firstName blank:false
+      admin blank:false
+      confirm blank:false
       lastName  blank:false
       username  blank:false, size:5..15, matches:/[\S]+/, unique:true
       password  blank:false, size:5..15, matches:/[\S]+/, validator:{ val, obj ->
