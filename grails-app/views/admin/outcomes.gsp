@@ -7,7 +7,7 @@
     <body>
     		<div class="newTab">
                 <p>Outcomes
-                  <g:link controller="outcome" action="createOutcome">
+                  <g:link url="/outcomes/create">
                     <button class="add">New<div class="plus"> &oplus;</div></button>
                 </g:link>
                 </p>
@@ -17,12 +17,12 @@
             			<div class="listings">
                 			<h1>$o.title</h1>
                 			<p>Desc: ${o.desc}</p>
-                			<g:link controller="outcome" action="edit" params="[outcome:o.id]">
+                			<g:link controller="assessments" action="editOutcome" params="[outcome:o.id]">
 							<button class="add">Edit</button>
 						</g:link>
-						<g:link controller="outcome" action="delete" params="[outcome:o.id]">
+						<g:link controller="assessments" action="deleteOutcome" params="[outcome:o.id]">
 							<button class="add">Delete</button>
-						</g:link> 
+						</g:link>
         				</div>
         				<br/>
         			</g:each>
