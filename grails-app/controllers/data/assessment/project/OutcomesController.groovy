@@ -8,12 +8,17 @@ class OutcomesController {
 
   def createOutcome() {
     if (request.method == 'POST') {
-    System.out.println(params)
-
-    } else{
-      redirect(view:'/admin/outcomes')
+      if(!params.submitButton.contains("Cancel")){
+        def o = new Outcomes(params)
+          if(!o.save()){
+            System.out.println("failed to save")
+            //return [outcome:o]
+          }else{
+          System.out.println("created outcome " + o)
+        }
+      }
     }
-    redirect(view:'/admin/outcomes')
+    redirect(view:"/outcome/index")
   }
 
   def editOutcome() {

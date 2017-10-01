@@ -18,13 +18,13 @@
             <div class="labels">
                 <label for="outcomeTitle">Outcome Title:</label>
                 <br>
-                <g:textField type="text" id="outcomeTitle" name="outcomeTitle" value="${outcome?.title}" placeholder="Title" class="${hasErrors(bean:outcome,field:'outcomeTitle','errors')}"/>
+                <g:textField type="text" id="outcome_category" name="outcome_category" value="${outcome?.outcome_category}" placeholder="Title" class="${hasErrors(bean:outcome,field:'outcomeTitle','errors')}"/>
                 <br>
                 <label for="outcomeDesc">Outcome Description:</label>
                 <br>
-                <g:textArea id="outcomeDesc" name="outcomeDesc" value="${outcome?.desc}" rows="10" cols="50"/>
+                <g:textArea id="outcome_category_description" name="outcome_category_description" value="${outcome?.outcome_category_description}" rows="10" cols="50"/>
                 <g:submitButton class="button" name="submitButton" value="Create Outcome" />
-                <g:submitButton class="button" name="cancelButton" value="Cancel" />
+                <g:submitButton class="button" name="submitButton" value="Cancel" />
             </div>
         </div>
       </g:form>
