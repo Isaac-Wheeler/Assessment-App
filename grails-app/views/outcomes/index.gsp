@@ -13,14 +13,14 @@
                 </p>
             </div>
             <div class="mainArea">
-            		<g:each in="${Outcome}" var="o">
+            		<g:each in="${Outcomes}" var="o">
             			<div class="listings">
-                			<h1>$o.title</h1>
-                			<p>Desc: ${o.desc}</p>
+                			<h1>${o.outcome_category}</h1>
+                			<p>Desc: ${o.outcome_category_description}</p>
                 			<g:link controller="assessments" action="editOutcome" params="[outcome:o.id]">
 							<button class="add">Edit</button>
 						</g:link>
-						<g:link controller="assessments" action="deleteOutcome" params="[outcome:o.id]">
+						<g:link controller="Outcomes" action="deleteOutcome" params="[outcome:o.id]">
 							<button class="add">Delete</button>
 						</g:link>
         				</div>
