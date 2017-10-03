@@ -15,13 +15,19 @@
             <div class="mainArea">
             		<g:each in="${Outcomes}" var="o">
             			<div class="listings">
-                			<h1>${o.outcome_category}</h1>
-                			<p>Desc: ${o.outcome_category_description}</p>
+                			<h1>${o.outcomeCategory}</h1>
+                			<div class="outcomeDesc">Desc: ${o.outcome_category_description}</div>
+                			<div class="indicatorList"><g:each in="${o.outcomeIndicators}" var="i">
+                				Indicators.get(i).indicator_name
+                			</div>
                 			<g:link controller="Outcomes" action="editOutcome" params="[outcome:o.id]">
 							<button class="add">Edit</button>
 						</g:link>
 						<g:link controller="Outcomes" action="deleteOutcome" params="[outcome:o.id]">
 							<button class="add">Delete</button>
+						</g:link>
+						<g:link controller="Indicators" action="/Indicators/create" params="[outcome:o.id]">
+							<button class="add">Add Indicator</button>
 						</g:link>
         				</div>
         				<br/>
