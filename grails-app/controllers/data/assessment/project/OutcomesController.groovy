@@ -4,7 +4,8 @@ class OutcomesController {
 
   def index (){
     def outcomes = Outcomes.list()
-    [Outcomes:outcomes]
+    def indicators = Indicators.list()
+    [Outcomes:outcomes, Indicators:indicators]
   }
 
   def createOutcome() {

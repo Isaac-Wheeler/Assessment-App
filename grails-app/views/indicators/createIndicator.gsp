@@ -23,6 +23,7 @@
                 <label for="indicatorDesc">Indicator Description:</label>
                 <br>
                 <g:textArea id="indicator_description" name="indicator_description" value="${indicator?.indicator_description}" rows="10" cols="50"/>
+                <g:hiddenField name="outcome_id" value="${indicator?.outcome_id}${outcome_id}" />
                 <g:submitButton class="button" name="submitButton" value="Create Outcome" />
                 <g:submitButton class="button" name="submitButton" value="Cancel" />
             </div>
