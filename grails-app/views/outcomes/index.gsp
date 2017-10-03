@@ -17,7 +17,7 @@
             			<div class="listings">
                 			<h1>${o.outcome_category}</h1>
                 			<p>Desc: ${o.outcome_category_description}</p>
-                			<g:link controller="assessments" action="editOutcome" params="[outcome:o.id]">
+                			<g:link controller="Outcomes" action="editOutcome" params="[outcome:o.id]">
 							<button class="add">Edit</button>
 						</g:link>
 						<g:link controller="Outcomes" action="deleteOutcome" params="[outcome:o.id]">

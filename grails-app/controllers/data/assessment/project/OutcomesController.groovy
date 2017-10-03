@@ -10,23 +10,34 @@ class OutcomesController {
   def createOutcome() {
     if (request.method == 'POST') {
       if(!params.submitButton.contains("Cancel")){
-        System.out.println(params)
         def o = new Outcomes(outcome_category: params.outcome_category, outcome_category_description: params.outcome_category_description)
           if(!o.save()){
-            o.errors.each {
-                println it
-              }
-            //return [outcome:o]
-          }else{
-            System.out.println("created outcome " + o)
-        }
+            return [outcome:o]
+            redirect(view:"/outcome/create")
+          }
       }
+      redirect(view:"/outcome/index")
     }
-    redirect(view:"/outcome/index")
   }
 
   def editOutcome() {
-
+    if (request.method == 'POST') {
+      if(!params.submitButton.contains("Cancel")){
+        def o = Outcomes.get(params.id)
+        o.outcome_category = params.outcome_category
+        o.outcome_category_description = params.outcome_category_description
+          if(!o.save(flush:true)){
+            return [outcome:o, id:o.id]
+            redirect(view:"/outcome/editOutcome")
+            System.out.println("Error")
+          }
+      }
+      redirect(view:"/outcome/index")
+    }else{
+      def o = Outcomes.get(params.outcome)
+      return [outcome:o, id:o.id]
+      redirect(view:"/outcome/editOutcome")
+    }
   }
 
   def deleteOutcome() {
