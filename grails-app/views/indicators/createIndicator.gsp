@@ -8,7 +8,7 @@
     		<h1>Create Indicator</h1>
       	<p>Complete the form below to create an Indicator</p>
     </div>
-    <g:form class="simpleform" url="/createIndicator">
+    <g:form class="simpleform" url="createIndicator">
    			 <g:hasErrors bean="${teacher}">
       			<div class="errors">
         				<g:renderErrors bean="${teacher}"/>
@@ -18,13 +18,13 @@
             <div class="labels">
                 <label for="indicatorTitle">Indicator Title:</label>
                 <br>
-                <g:textField type="text" id="indicatorTitle" name="indicatorTitle" value="${indicator?.title}" placeholder="Title" class="${hasErrors(bean:indicator,field:'indicatorTitle','errors')}"/>
+                <g:textField type="text" id="indicator_name" name="indicator_name" value="${indicator?.indicator_name}" placeholder="Title" class="${hasErrors(bean:indicator,field:'indicatorTitle','errors')}"/>
                 <br>
                 <label for="indicatorDesc">Indicator Description:</label>
                 <br>
-                <g:textArea id="indicatorDesc" name="indicatorDesc" value="${indicator?.desc}" rows="10" cols="50"/>
+                <g:textArea id="indicator_description" name="indicator_description" value="${indicator?.indicator_description}" rows="10" cols="50"/>
                 <g:submitButton class="button" name="submitButton" value="Create Outcome" />
-                <g:submitButton class="button" name="cancelButton" value="Cancel" />
+                <g:submitButton class="button" name="submitButton" value="Cancel" />
             </div>
         </div>
       </g:form>

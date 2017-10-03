@@ -7,7 +7,7 @@
     <body>
     		<div class="newTab">
                 <p>Indicator
-                  <g:link controller="assessments" action="createIndicator">
+                  <g:link controller="Indicators" action="create">
                     <button class="add">New<div class="plus"> &oplus;</div></button>
                 </g:link>
                 </p>
