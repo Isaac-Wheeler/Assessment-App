@@ -4,14 +4,15 @@ class Outcomes {
 
 
     //NOTE: DB creates ID for table
-    char outcome_category;
-    String outcome_category_description;
+    char outcomeCategory;
+    String outcomeCategoryDescription;
+    int[] outcomeIndicators;
 
 
 
     static constraints = {
-      outcome_category blank:false, size: 1..1, unique:true
-      outcome_category_description blank:false
-
+      outcomeCategory blank:false, size: 1..1, unique:true
+      outcomeCategoryDescription blank:false
+      outcomeIndicators nullable:true
     }
 }
