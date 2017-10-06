@@ -17,9 +17,10 @@ class UrlMappings {
         "/adminProfileAssessmentGoals"(view:'/adminProfileAssessmentGoals')
         "/admin"(controller:"admin")
         "/client"(controller:"client")
-        "/createOutcome"(view:'/assessments/createOutcome')
-        "/editOutcome"(view:'/assessments/editOutcome')
         "/teachers"(controller:"Teachers")
         "/accessDenied"(view:'/accessDenied')
+        "/admin/outcomes"(view:'/admin/outcomes')
+        "/admin/indicators"(view:'/admin/indicators')
+        "/outcomes/create"(view:'/outcomes/create')
     }
 }

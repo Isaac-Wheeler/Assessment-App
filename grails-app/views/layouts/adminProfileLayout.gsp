@@ -25,12 +25,8 @@
             		<button class="button">Home</button>
             </g:link>
             <br>
-            <g:link controller="admin" action="outcomes">
+            <g:link controller="outcomes">
             		<button class="button button2">Outcomes</button>
-            </g:link>
-            <br>
-            <g:link controller="admin" action="indicators">
-            		<button class="button button2">Indicators</button>
             </g:link>
             <br>
             <g:link controller="admin" action="currentAssessments">

@@ -1,0 +1,149 @@
+/* main body of the website*/
+body{
+    width:100%;
+    height:100%;
+    padding:0;
+    margin:0;
+}
+/*lables for the switch bar*/
+.switchLabel{
+    color: white;
+    /*display: inline-block;*/
+    font-size: 36px;
+}
+/*start of the round switch at the top of the page */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 34px;
+    margin-top: 10px;
+}
+
+.switch input {display:none;}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(67px);
+    -ms-transform: translateX(67px);
+    transform: translateX(67px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+.slider:after
+{
+    content:'Class';
+    color: white;
+    display: block;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    font-size: 10px;
+    font-family: Verdana, sans-serif;
+}
+
+input:checked + .slider:after
+{
+    content:'Outcome';
+}
+/* end of the round switch at the top of the page */
+.main{
+    background-color: #464646;
+    color: white;
+    float: right;
+    position: absolute;
+    height:100%;
+    right: 0;
+    left:200px;
+    margin-top:10px;
+    z-index: 0;
+    
+}
+.sidebar{
+    text-align:center;
+    background-color: #389244;
+    margin-top:10px;
+    width: 30%;
+    float: left;
+    position: absolute;
+    height: 100%;
+    overflow-y: hidden;
+    resize: horizontal;
+    z-index: 1;
+    border-right: solid;
+}
+.arrow {
+    font-style: bold;
+}
+
+.fileFolders{
+    text-align:left;
+    margin-left: 10%;
+}
+#btnControl {
+    display: none;
+}
+
+#btnControl:checked + label {
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.info{
+    float: right;
+    margin-right: 10%;
+    
+}
+.oneChar{
+    width: 20px;
+}
+.plus{
+    margin-left: 100px;
+}
+.targetGoal{
+    width: 20px;
+    margin-left: 30px;
+}
+.labelEx{
+    margin-left: 40px;
+}
+
+

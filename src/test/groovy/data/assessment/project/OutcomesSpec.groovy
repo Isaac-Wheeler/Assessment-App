@@ -71,4 +71,21 @@ class OutcomesSpec extends Specification implements DomainUnitTest<Outcomes> {
 
     }
 
+      void "testing relationship among outcomes and indicators"() {
+
+        when: 'Adding many new Outcomes '
+        def u = new Outcomes(outcomeCategory: 'a', outcomeCategoryDescription: "Students will learn how to blah", outcomeIndicators: null)
+        def v = new Outcomes(outcomeCategory: 'b', outcomeCategoryDescription: "Students will learn how to blah blah", outcomeIndicators: null)
+        def w = new Outcomes(outcomeCategory: 'c', outcomeCategoryDescription: "Students will learn how to blah blah blah", outcomeIndicators: null)
+        u.save()
+        v.save()
+        w.save()
+
+          then: 'Outcome should be saved successfully'
+          Outcomes.count() == 3
+
+
+
+      }
+
 }

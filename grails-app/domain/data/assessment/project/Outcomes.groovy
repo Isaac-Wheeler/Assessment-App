@@ -6,7 +6,7 @@ class Outcomes {
     //NOTE: DB creates ID for table
     char outcomeCategory;
     String outcomeCategoryDescription;
-    int[] outcomeIndicators
+    int[] outcomeIndicators;
 
 
 

@@ -2,10 +2,35 @@ package data.assessment.project
 
 class AssessmentsController {
 
-    def index() { }
+    def createOutcome() {
+      if (request.method == 'POST') {
+      System.out.println(parms)
+      } else{
+        redirect(view:'/assessments/createOutcome')
+      }
+    }
 
-    def create() {
-      System.out.println("Hit")
-      redirect(uri: "/createAssessment")
+    def editOutcome() {
+
+    }
+
+    def deleteOutcome() {
+
+    }
+
+    def createIndicator() {
+      if (request.method == 'POST') {
+      System.out.println(parms)
+      } else{
+        redirect(view:'/assessments/createIndicator')
+      }
+    }
+
+    def editIndicator() {
+
+    }
+
+    def deleteIndicator(){
+
     }
 }
