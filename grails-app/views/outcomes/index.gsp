@@ -16,9 +16,14 @@
             		<g:each in="${Outcomes}" var="o">
             			<div class="listings">
                 			<h1>${o.outcomeCategory}</h1>
-                			<div class="outcomeDesc">Desc: ${o.outcome_category_description}</div>
-                			<div class="indicatorList"><g:each in="${o.outcomeIndicators}" var="i">
-                				Indicators.get(i).indicator_name
+                			<div class="outcomeDesc">Desc: ${o.outcomeCategoryDescription}</div>
+                			<div class="indicatorList">
+                        <g:if test="${o.outcomeIndicators != NULL}">
+                          <g:each in="${o.outcomeIndicators.toList()}" var="i">
+                            ${o.outcomeIndicators[0]}
+                          </g:each>
+                        </g:if>
+
                 			</div>
                 			<g:link controller="Outcomes" action="editOutcome" params="[outcome:o.id]">
 							<button class="add">Edit</button>
@@ -26,7 +31,7 @@
 						<g:link controller="Outcomes" action="deleteOutcome" params="[outcome:o.id]">
 							<button class="add">Delete</button>
 						</g:link>
-						<g:link controller="Indicators" action="/Indicators/create" params="[outcome:o.id]">
+						<g:link controller="Indicators" action="create" params="[givenOutcomeId:o.id]">
 							<button class="add">Add Indicator</button>
 						</g:link>
         				</div>

@@ -4,7 +4,7 @@ class IndicatorsController {
 
     def index() { }
 
-    def create(int givenOutcomeId) {
+    def create() {
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
           def i = new Indicators()
@@ -16,6 +16,13 @@ class IndicatorsController {
               return [indicator:o]
               redirect(view:"/indicators/create")
             }
+          def o = Outcomes.get(params.outcome_id)
+          if(o.outcomeIndicators == null){
+            o.outcomeIndicators = [i.id]
+          }else{
+          o.outcomeIndicators[] + [i.id]
+          }
+          o.save(flush:true)
         }
         redirect(view:"/indicators/index")
       }
