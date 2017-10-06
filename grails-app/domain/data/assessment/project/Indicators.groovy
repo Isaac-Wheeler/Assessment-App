@@ -3,18 +3,20 @@ package data.assessment.project
 class Indicators {
 
       //NOTE: DB creates ID for table
-      String indicator_name;
-      String indicator_description;
-      int outcome_id;
-      int classes_id;
-
+      String indicatorName;
+      String indicatorDescription;
+      int outcomeId;
+      int classesId;
+      int[] indicatorMeasures
 
 
 
     static constraints = {
 
-      indicator_name  maxSize: 4
-
-
+      indicatorName blank:false, size: 3..4
+      indicatorDescription blank:false
+      outcomeId blank:false
+      classesId blank:false
+      indicatorMeasures nullable:true
     }
 }

@@ -5,11 +5,13 @@ class Classes {
       //properties
       //NOTE: DB creates ID for table
       String title;
+      int[] classIndicators
 
 
     static constraints = {
 
-      title  blank:false, maxSize: 5, unique:true
+      title  blank:false, size: 5..6, unique:true
+      classIndicators nullable:true
 
     }
 }
