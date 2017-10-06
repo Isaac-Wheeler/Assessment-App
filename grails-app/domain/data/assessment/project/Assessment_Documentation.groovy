@@ -6,6 +6,7 @@ class Assessment_Documentation {
     int measureID;
     int targetGoal;
     //workUsed;     **leaving as a comment for now until ready to implement file uploads.
+    int numberOfStudents;
     int needsImprovement;
     int meetsExpectations;
     int exceedsExpectations;
@@ -20,6 +21,16 @@ class Assessment_Documentation {
 
     static constraints = {
 
+      measureID blank:false
+      targetGoal blank:false
+      needsImprovement blank:false
+      meetsExpectations blank:false
+      exceedsExpectations blank:false
+      summary blank:false
+      requiredAction blank:false
+      resultComment blank:false
+      academicSemester blank:false
+      complete blank:false
 
     }
 }

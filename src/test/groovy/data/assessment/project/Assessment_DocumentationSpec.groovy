@@ -11,7 +11,11 @@ class Assessment_DocumentationSpec extends Specification implements DomainUnitTe
     def cleanup() {
     }
 
-    void "test something"() {
+    void "testing adding and deleting a new Assessment_Documentation"() {
+
         true
+
+
+
     }
 }
