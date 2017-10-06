@@ -13,7 +13,7 @@ class OutcomesSpec extends Specification implements DomainUnitTest<Outcomes> {
 
     void "testing adding and deleting an Outcome"() {
 
-      when: 'Adding a new Outcome "a" with correct fields '
+      when: 'Adding a new Outcome "a" with correct properties '
       def u = new Outcomes(outcomeCategory: 'a', outcomeCategoryDescription: "Students will learn how to", outcomeIndicators: null)
       u.save()
 

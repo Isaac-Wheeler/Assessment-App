@@ -3,11 +3,20 @@ package data.assessment.project
 class Measures {
 
       //NOTE: DB creates ID for table
-      String measure_title;
-      String measure_description;
-      int indicator_id;
+      String measureTitle;
+      String measureDescription;
+      int indicatorId;
+      int assessmentDoc;
+
+
+
+
 
     static constraints = {
+      measureDescription blank: false
+      indicatorId blank:false
+      measureTitle blank: false
+      assessmentDoc blank:false
 
-    }
+}
 }

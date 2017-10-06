@@ -1,5 +1,6 @@
 package data.assessment.project
 
+
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
@@ -48,7 +49,7 @@ class TeacherSpec extends Specification implements DomainUnitTest<Teacher> {
         u.passwordHashed = "aaawwsdSHhdhS"
         u.save()
 
-          then: 'Since the fields are correct and do not break any constraints then new teacher should be added successfully'
+          then: 'Since the properties are correct and do not break any constraints then new teacher should be added successfully'
           Teacher.count() == 1
 
         when: 'adding new teacher with already taken username'
@@ -170,5 +171,12 @@ class TeacherSpec extends Specification implements DomainUnitTest<Teacher> {
 
 
     }
+
+      void 'Testing password hashing works'() {
+
+        //still need to figure out how to import PasswordCodec to access hashing method
+
+
+      }
 
 }
