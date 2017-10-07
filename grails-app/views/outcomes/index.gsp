@@ -17,10 +17,13 @@
             			<div class="listings">
                 			<h1>${o.outcomeCategory}</h1>
                 			<div class="outcomeDesc">Desc: ${o.outcomeCategoryDescription}</div>
+                      <p> Id ${o.id} </p>
                 			<div class="indicatorList">
                         <g:if test="${o.outcomeIndicators != NULL}">
-                          <g:each in="${o.outcomeIndicators.toList()}" var="i">
-                            ${o.outcomeIndicators[0]}
+                          <g:each in="${o.outcomeIndicators.toList()}">
+                            ${Indicators.get(it-1).indicatorName}
+                          </br>
+                            ${Indicators.get(it-1).indicatorDescription}
                           </g:each>
                         </g:if>
 

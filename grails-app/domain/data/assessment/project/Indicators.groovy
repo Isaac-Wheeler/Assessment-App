@@ -7,7 +7,7 @@ class Indicators {
       String indicatorDescription;
       int outcomeId;
       int classesId;
-      int[] indicatorMeasures
+      List<Integer> indicatorMeasures
 
 
 

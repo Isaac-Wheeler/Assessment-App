@@ -13,16 +13,12 @@
                 </p>
             </div>
             <div class="mainArea">
-            		<g:each in="${Indicator}" var="i">
+            		<g:each in="${Indicators}" var="i">
             			<div class="listings">
-                			<h1>$i.title</h1>
-                			<p>Desc: ${i.desc}</p>
-                			<g:link controller="assessments" action="editIndicator" params="[indicator:i.id]">
-							<button class="add">Edit</button>
-						</g:link>
-						<g:link controller="assessments" action="deleteIndicator" params="[indicator:i.id]">
-							<button class="add">Delete</button>
-						</g:link>
+                			<h1>${i.indicatorName}</h1>
+                			<p>Desc: ${i.indicatorDescription}</p>
+                      <p>Outcome Id: ${i.outcomeId}</p>
+                      <p>Id ${i.id}</p>
         				</div>
         				<br/>
         			</g:each>

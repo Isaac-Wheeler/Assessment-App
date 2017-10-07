@@ -2,7 +2,10 @@ package data.assessment.project
 
 class IndicatorsController {
 
-    def index() { }
+    def index() {
+      def indicators = Indicators.list()
+      [Indicators:indicators]
+    }
 
     def create() {
       if (request.method == 'POST') {
@@ -12,17 +15,24 @@ class IndicatorsController {
           i.indicatorDescription = params.indicatorDescription
           i.outcomeId = params.outcomeId
           i.classesId = 1 //TODO
-            if(!i.save()){
+            if(!i.save(flush:true)){
               return [indicator:o]
               redirect(view:"/indicators/create")
             }
           def o = Outcomes.get(params.outcomeId)
+          System.out.println(o.outcomeIndicators)
           if(o.outcomeIndicators == null){
-            o.outcomeIndicators = [i.id]
+            o.outcomeIndicators = new ArrayList<Integer>()
+            o.outcomeIndicators.add(i.id)
+            System.out.println(o.outcomeIndicators)
+            System.out.println("new")
           }else{
-          o.outcomeIndicators[] + [i.id]
+            o.outcomeIndicators << i.id
+            System.out.println(o.outcomeIndicators)
           }
-          o.save(flush:true)
+          if(!o.save(flush:true)){
+            System.out.println("Error")
+          }
         }
         redirect(view:"/outcomes/index")
       }
