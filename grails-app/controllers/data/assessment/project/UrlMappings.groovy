@@ -22,5 +22,6 @@ class UrlMappings {
         "/admin/outcomes"(view:'/admin/outcomes')
         "/admin/indicators"(view:'/admin/indicators')
         "/outcomes/create"(view:'/outcomes/create')
+        "/editAssessment"(view:'/editAssessment')
     }
 }

@@ -1,7 +1,9 @@
 /* main body of the website*/
 body{
-    width:100%;
-    height:100%;
+    min-width:100%;
+    max-width: 100%;
+    min-height:100%;
+    max-height: 100%;
     padding:0;
     margin:0;
 }
@@ -89,53 +91,59 @@ input:checked + .slider:after
     background-color: #464646;
     color: white;
     float: right;
-    position: absolute;
-    height:100%;
-    right: 0;
-    left:200px;
+    min-height: 100%;
     margin-top:10px;
-    z-index: 0;
-    
+    width: 70%;
+    margin-right:0%;
 }
 .sidebar{
     text-align:center;
     background-color: #389244;
     margin-top:10px;
+    margin-bottom: 0px;
     width: 30%;
     float: left;
     position: absolute;
-    height: 100%;
-    overflow-y: hidden;
-    resize: horizontal;
-    z-index: 1;
+    min-height: 100%;
     border-right: solid;
-}
-.arrow {
-    font-style: bold;
 }
 
 .fileFolders{
     text-align:left;
     margin-left: 10%;
 }
-#btnControl {
+/*&#10095*/
+
+input[type=checkbox] {
     display: none;
 }
 
-#btnControl:checked + label {
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+input[type=checkbox]:checked~.remove-check {
+    display: none;
+}
+input[type=checkbox]:checked~#indicator {
+    display: block;
+}
+
+#indicator {
+    display: none;
+}
+input[type=checkbox]:checked~#classes {
+    display: block;
+}
+
+#classes {
+    display: none;
 }
 .info{
     float: right;
     margin-right: 10%;
-    
+
 }
 .oneChar{
     width: 20px;
 }
-.plus{
+.minus{
     margin-left: 100px;
 }
 .targetGoal{
@@ -145,5 +153,3 @@ input:checked + .slider:after
 .labelEx{
     margin-left: 40px;
 }
-
-

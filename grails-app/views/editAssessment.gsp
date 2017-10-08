@@ -9,84 +9,106 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="tabIcon" href="palm.ico" />
             <title>Data Assesment</title>
-            <meta name="layout" content="dataInputLayout"/>
+            <link rel="stylesheet" href="${resource(dir: 'stylesheets', file: 'fileDisplay.css')}" type="text/css">
     </head>
     <body>
-        <div class="sidebar">
-            <!-- the slider switch bar at the top's left label-->
-            <!-- the slider switch bar at the top-->
-            <label class="switch">
-                <input type="checkbox"><span class="slider round"></span>
-            </label>            <!-- the slider switch bar at the top's right label-->
-            <div class="fileFolders">
-                <label class="folder">
-                    <div class="Outcomes">
-                        <input type="checkbox" id="btnControl"/><i class="fa fa-chevron-right" style="font-size:24px"></i>
-                        <label class="btn" for="btnControl"></label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outcome: A
-                    </div>
-                    <div class="Classes">
-                    </div>
-                </label>
-            </div>
-        </div>
         <!-- right half of the page -->
         <div class="main">
             <div class="info">
                 <h1>Edit Assessment</h1>
-                <label for="Title">Title:</label>
+                <label for="Title">Measure Title:</label>
                 <br>
                 <input type="text" id="outcomeTitle" name="outcomeTitle" width="100px" placeholder="Title" class="shortText">
-                <br>
-                <label for="Desc">Description:</label>
-                <br>
-                <g:textArea id="Desc" name="Desc" rows="10" cols="100" resize="none"></textarea>
-                <br>
-                <label for="targetGoal">Target Goal:</label>
-                <label for="belowExpectation" class="labelEx">Below Expectation:</label>
-                <label for="meetsExpectation" class="labelEx">Meets Expectation:</label>
-                <label for="exceedsExpectation" class="labelEx">Exceeds Expectation:</label>
-                <br>
-                <form>
-                <input type="text" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal">
-                <input type=button value="+" class="plus">
-                <input type="text" id="belowExpectation" name="belowExpectation" value="0" class="oneChar">
-                <input type=button value="-" >
-                </form>
-                <form>
-                <input type=button value="+" class="plus">
-                <input type="text" id="meetsExpectation" name="meetsExpectation" value="0" class="oneChar">
-                <input type=button value="-">
-                </form>
-                <form>
-                <input type=button value="+" class="plus">
-                <input type="text" id="exceedsExpectation" name="exceedsExpectation" value="0" class="oneChar">
-                <input type=button value="-">
-                </form>
-                <br>
-                <label for="comment">Comment:</label>
-                <br>
-                <textArea id="comment" name="comment" rows="10" cols="100" resize="none"></textarea>
-                <br>
-                <label for="observations">Observations:</label>
-                <br>
-                <textArea id="observation" name="observation" rows="10" cols="100" resize="none"></textarea>
-                <br>
-            </div>
+                    <br>
+                    <label for="Desc">Description:</label>
+                    <br>
+                    <textArea id="Desc" name="Desc" rows="10" cols="100" resize="none"></textarea>
+                    <br>
+                    <label for="Desc">Work Used:</label>
+                    <br>
+                    <input type="file" name="workUsed" id="workUsed">
+                    <br>
+                    <label for="targetGoal">Target Goal:</label>
+                    <label for="belowExpectation" class="labelEx">Below Expectation:</label>
+                    <label for="meetsExpectation" class="labelEx">Meets Expectation:</label>
+                    <label for="exceedsExpectation" class="labelEx">Exceeds Expectation:</label>
+                    <br>
+                    <input type="text" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal">
+                    <input type="button" value="-" onclick="minusBelowExpectation()" class="minus"/>
+                    <input type="text" id="belowExpectation" name="belowExpectation" value=0 class="oneChar">
+                    <input type="button" onclick="addBelowExpectation()" value="+" />
+                    <input type="button" value="-" onclick="minusMeetsExpectation()" class="minus">
+                    <input type="text" id="meetsExpectation" name="meetsExpectation" value=0 class="oneChar">
+                    <input type="button"  onclick="addMeetsExpectation()" value="+">
+                    <input type=button value="-" onclick="minusExceedsExpectation()" class="minus">
+                    <input type="text" id="exceedsExpectation" name="exceedsExpectation" value=0 class="oneChar">
+                    <input type="button" onclick="addExceedsExpectation()" value="+">
+                    <br>
+                    <script>
+                        function addBelowExpectation() {
+                            var value = parseInt(document.getElementById('belowExpectation').value, 10);
+                            value++;
+                            document.getElementById("belowExpectation").value = value;
+                        }
+                        function minusBelowExpectation() {
+                            var value = parseInt(document.getElementById('belowExpectation').value, 10);
+                            value--;
+                            document.getElementById("belowExpectation").value = value;
+                        }
+                        function addMeetsExpectation() {
+                            var value = parseInt(document.getElementById('meetsExpectation').value, 10);
+                            value++;
+                            document.getElementById("meetsExpectation").value = value;
+                        }
+                        function minusMeetsExpectation() {
+                            var value = parseInt(document.getElementById('meetsExpectation').value, 10);
+                            value--;
+                            document.getElementById("meetsExpectation").value = value;
+                        }
+                            function addExceedsExpectation() {
+                            var value = parseInt(document.getElementById('exceedsExpectation').value, 10);
+                            value++;
+                            document.getElementById("exceedsExpectation").value = value;
+                        }
+                            function minusExceedsExpectation() {
+                            var value = parseInt(document.getElementById('exceedsExpectation').value, 10);
+                            value--;
+                            document.getElementById("exceedsExpectation").value = value;
+                        }
+                    </script>
+                    <label for="comment">Comment:</label>
+                    <br>
+                    <textArea id="comment" name="comment" rows="10" cols="100" resize="none"></textarea>
+                    <br>
+                    <label for="observations">Observations:</label>
+                    <br>
+                    <textArea id="observation" name="observation" rows="10" cols="100" resize="none"></textarea>
+                    <br>
+                </div>
             <!--<g:submitButton class="button" name="submitButton" value="Create Outcome" />
-            <g:submitButton class="button" name="cancelButton" value="Cancel" />-->
+             <g:submitButton class="button" name="cancelButton" value="Cancel" />-->
+        </div>
+        <div class="sidebar">
+            <!-- the slider switch bar at the top's left label-->
+            <!-- the slider switch bar at the top-->
+            <label class="switch">
+                <input type="checkbox"><span class="slider round"></span></input>
+            </label>            <!-- the slider switch bar at the top's right label-->
+            <div class="fileFolders">
+                <div class="Outcomes">
+                    <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outcome A:</label>
+                    <input type="checkbox" id="reveal-indicators" role="button">
+                    <div id="indicator">
+                        <div id="indicators" class="nice" action="" method="post">
+                            <label for="reveal-classes" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators: .1</label>
+                                <input type="checkbox" id="reveal-classes" role="button">
+                                <div id="classes" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class: CS370</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="Classes">
+                </div>
+            </div>
         </div>
     </body>
-    <script>
-    		var btn = document.querySelector('input');
-    		var text = document.querySelector('input');
-
-		btn.addEventListener('click', updateBtn);
-
-		function updateBtn() {
-			if(btn.value ="+")
-				{btn.value = btn.value+1;}
-			if(btn.value ="-")
-				{btn.value = btn.value-1;}
-  		}
-    </script>
 </html>
