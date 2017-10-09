@@ -20,7 +20,7 @@
                       <p> Id ${o.id} </p>
                 			<div class="indicatorList">
                         <g:if test="${o.outcomeIndicators != NULL}">
-                          <g:each in="${o.outcomeIndicators.toList()}">
+                          <g:each in="${o.outcomeIndicators}">
                             ${Indicators.get(it-1).indicatorName}
                           </br>
                             ${Indicators.get(it-1).indicatorDescription}
