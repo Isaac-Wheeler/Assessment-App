@@ -29,7 +29,7 @@
             		<button class="button button2">Outcomes</button>
             </g:link>
             <br>
-            <g:link controller="admin" action="currentAssessments">
+            <g:link controller="assessments">
             		<button class="button button2">Assessments</button>
             </g:link>
             <br>
