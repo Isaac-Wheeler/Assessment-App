@@ -6,6 +6,7 @@ import spock.lang.Specification
 class OutcomesSpec extends Specification implements DomainUnitTest<Outcomes> {
 
     def setup() {
+      mockDomain(Indicators)
     }
 
     def cleanup() {
@@ -71,21 +72,58 @@ class OutcomesSpec extends Specification implements DomainUnitTest<Outcomes> {
 
     }
 
-      void "testing relationship among outcomes and indicators"() {
+        void "testing list of indicators in outcomes"() {
 
-        when: 'Adding many new Outcomes '
-        def u = new Outcomes(outcomeCategory: 'a', outcomeCategoryDescription: "Students will learn how to blah", outcomeIndicators: null)
-        def v = new Outcomes(outcomeCategory: 'b', outcomeCategoryDescription: "Students will learn how to blah blah", outcomeIndicators: null)
-        def w = new Outcomes(outcomeCategory: 'c', outcomeCategoryDescription: "Students will learn how to blah blah blah", outcomeIndicators: null)
-        u.save()
-        v.save()
-        w.save()
+          when: "adding a new outcome 'a' that has 3 indicators associated with it"
+          def a = new Outcomes(outcomeCategory: 'a', outcomeCategoryDescription: "Students will learn how to", outcomeIndicators: [1, 2, 3])
+          a.save()
 
-          then: 'Outcome should be saved successfully'
-          Outcomes.count() == 3
+            then: "outcome should be created successfully and the size of 'a' outcomeIndicators should be 3"
+            Outcomes.count() == 1
+            a.outcomeIndicators.size() == 3
+
+          when: "trying to add another integer to 'a's arraylist"
+          a.outcomeIndicators.add(4)
+
+            then: "The size of 'a's outcomeIndicators should be 4"
+            a.outcomeIndicators.size() == 4
+
+          when: "trying to remove an integer from 'a's arraylist"
+          a.outcomeIndicators.remove(a.outcomeIndicators.indexOf(4))
+
+            then: "The size of 'a's outcomeIndicators should be 3"
+            a.outcomeIndicators.size() == 3
+
+          when: "Creating some valid indicators"
+          def b = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to", outcomeId: 1, classesId: 1, indicatorMeasures:null)
+          def c = new Indicators(indicatorName: "a.2", indicatorDescription: "Students will be able to", outcomeId: 1, classesId: 2, indicatorMeasures:null)
+          def d = new Indicators(indicatorName: "a.3", indicatorDescription: "Students will be able to", outcomeId: 1, classesId: 3, indicatorMeasures:null)
+          def e = new Indicators(indicatorName: "b.1", indicatorDescription: "Students will be able to", outcomeId: 2, classesId: 1, indicatorMeasures:null)
+          b.save()
+          c.save()
+          d.save()
+          e.save()
+
+            then: "Indicators count should be 4"
+            Indicators.count() == 4
+
+          when: "Referencing outcome a's indicators via its arraylist by retrieving the indicatorName of the first indicator via its id which should be 1 and outcomeIndicators[0] element should be 1"
+          String indic1 = Indicators.get(a.outcomeIndicators[0]).indicatorName
+
+            then: "indic1 should be equal to the value of 'b's indicatorName because it should have the first id"
+            indic1 == "a.1"
+
+          when: "Same test as above, but for the other indicators"
+          String indic2 = Indicators.get(a.outcomeIndicators[1]).indicatorName
+          String indic3 = Indicators.get(a.outcomeIndicators[2]).indicatorName
+
+            then: "indic2 should be 'a.2' and indic3 should be 'a.3' based upon their appropriate id's"
+            indic2 == "a.2"
+            indic3 == "a.3"
 
 
 
-      }
+
+        }
 
 }
