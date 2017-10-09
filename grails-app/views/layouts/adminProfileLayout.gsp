@@ -37,6 +37,10 @@
             		<button class="button button2">Completed Assessments</button>
             </g:link>
             <br>
+            <g:link controller="Class" action="index">
+            		<button class="button button2">Classes</button>
+            </g:link>
+            <br>
             <g:link controller="teachers">
             		<button class="button button2">Teachers</button>
             </g:link>
