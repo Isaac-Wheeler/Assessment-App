@@ -92,7 +92,7 @@
             <!-- the slider switch bar at the top's left label-->
             <!-- the slider switch bar at the top-->
             <label class="switch">
-                <input type="checkbox" id="reveal-Classes"><span class="slider round"></span></input>
+                <input type="checkbox" id="reveal-Classes"><span class="slider round" onclick="hideShowOutcomesClasses()"></span></input>
             </label>            <!-- the slider switch bar at the top's right label-->
             <div class="fileFolders">
               <div class="Outcomes">
@@ -114,11 +114,13 @@
               </div>
               <div id="Classes">
                 <g:each in="${Classes}" var="c">
-                  <g:if test="${c.Measures != NULL}">
-                    <g:each in="${c.Measures}">
-                      <div id="Measures">
-                        <div id="measures" class="nice" action="" method="post">
-                          <label for="reveal-measures" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Measure: ${Indicators.get(it-1).indicatorName}</label>
+                  <g:if test="${c.classesIndicators != NULL}">
+                    <g:each in="${c.classesIndicators.toList()}">
+                      <div id="indicator">
+                        <div id="indicators" class="nice" action="" method="post">
+                          <label for="reveal-indicators" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators ${Indicators.get(it-1).indicatorName}:</label>
+                          <input type="checkbox" id="reveal-measures" role="button">
+                          <label id="measures" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Measure: </label>
                         </div>
                       </div>
                     </g:each>
@@ -126,6 +128,23 @@
                 </g:each>
               </div>
             </div>
+            <script>
+              function hideShowOutcomesClasses() {
+                var x = document.getElementById("Outcomes");
+                if (x.style.display === "none") {
+                  x.style.display = "block";
+                } else {
+                  x.style.display = "none";
+                }
+                var y = document.getElementById("Classes");
+                if (y.style.display === "none") {
+                  y.style.display = "none";
+
+                } else {
+                  y.style.display = "block";
+                }
+              }
+          </script>
           </div>
     </body>
 </html>
