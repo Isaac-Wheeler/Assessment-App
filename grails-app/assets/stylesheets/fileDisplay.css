@@ -6,6 +6,7 @@ body{
     max-height: 100%;
     padding:0;
     margin:0;
+    background-color: #389244;
 }
 /*lables for the switch bar*/
 .switchLabel{
@@ -101,20 +102,17 @@ input:checked + .slider:after
     color: white;
     float: right;
     min-height: 100%;
-    margin-top:10px;
     width: 70%;
     margin-right:0%;
 }
 .sidebar{
     text-align:center;
     background-color: #389244;
-    margin-top:10px;
     margin-bottom: 0px;
     width: 30%;
     float: left;
     position: absolute;
     min-height: 100%;
-    border-right: solid;
 }
 
 .fileFolders{
@@ -130,7 +128,7 @@ input[type=checkbox] {
 input[type=checkbox]:checked~.remove-check {
     display: none;
 }
-input[type=checkbox]:checked~#indicator {
+input[type=checkbox]:checked~#indicators {
     display: block;
 }
 
@@ -143,6 +141,9 @@ input[type=checkbox]:checked~#classes {
 
 #classes {
     display: none;
+}
+#reveal-indicators{
+  cursor: pointer;
 }
 .info{
     float: right;
