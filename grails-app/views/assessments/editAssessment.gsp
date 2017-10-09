@@ -16,9 +16,9 @@
         <div class="main">
             <div class="info">
                 <h1>Edit Assessment</h1>
-                <label for="Title">Measure Title:</label>
+                <label for="measureTitle">Measure Title:</label>
                 <br>
-                <g:field type="text" id="outcomeTitle" name="outcomeTitle" width="100px" placeholder="Title" class="shortText"/>
+                <g:field type="text" id="measureTitle" name="measureTitle" width="100px" placeholder="Title" class="shortText"/>
                     <br>
                     <label for="Desc">Description:</label>
                     <br>
@@ -101,6 +101,7 @@
                       <input type="checkbox" id="reveal-indicators" role="button">
                       <!--<g:if test="${o.outcomeIndicators != NULL}">-->
                         <!--<g:each in="${o.outcomeIndicators.toList()}">-->
+
                           <div id="indicator">
                             <div id="indicators" class="nice" action="" method="post">
                               <label for="reveal-classes" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators .1<!--${Indicators.get(it-1).indicatorName}-->:</label>
