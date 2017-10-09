@@ -34,7 +34,7 @@
                   <option value=".3">.3</option>
                   <option value=".4">.4</option>
               </select>
-              <label for="selectClass">Select Indicator:</label>
+              <label for="selectClass">Select Class:</label>
               <select id="selectClass" >
                   <option value="CS 370">CS 370</option>
                   <option value="CS 420">CS 420</option>
