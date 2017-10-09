@@ -51,6 +51,7 @@ h1{
 .button:active{
     box-shadow: 2px 2px 4px #000000;
 }
+
 input[type=text],input[type=file],input[type=password],textarea {
     width: 100%;
     padding: 12px 20px;
@@ -70,5 +71,18 @@ passwordField {
 
 input[type=text]:focus,input[type=file]:focus,input[type=password]:focus,textarea:focus {
     background-color: lightgray;
-    
+
+}
+input.oneChar{
+	width: 1%;
+}
+input.targetGoal{
+	width: 1%;
+	margin-left: 4%;
+}
+.minus{
+	margin-left: 9%;
+}
+.labelEx{
+	margin-left: 3%;
 }

@@ -24,5 +24,6 @@ class UrlMappings {
         "/outcomes/create"(view:'/outcomes/create')
         //"/assessments/editAssessment"(view:'/assessments/editAssessment')
         "/classes"(view:'/classes/index')
+        "/assessments/create"(view:'/assessments/create')
     }
 }
