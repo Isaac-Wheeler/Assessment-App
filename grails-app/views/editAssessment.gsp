@@ -18,7 +18,7 @@
                 <h1>Edit Assessment</h1>
                 <label for="Title">Measure Title:</label>
                 <br>
-                <input type="text" id="outcomeTitle" name="outcomeTitle" width="100px" placeholder="Title" class="shortText">
+                <g:field type="text" id="outcomeTitle" name="outcomeTitle" width="100px" placeholder="Title" class="shortText"/>
                     <br>
                     <label for="Desc">Description:</label>
                     <br>
@@ -33,15 +33,15 @@
                     <label for="meetsExpectation" class="labelEx">Meets Expectation:</label>
                     <label for="exceedsExpectation" class="labelEx">Exceeds Expectation:</label>
                     <br>
-                    <input type="text" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal">
+                    <g:field type="text" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal"/>
                     <input type="button" value="-" onclick="minusBelowExpectation()" class="minus"/>
-                    <input type="text" id="belowExpectation" name="belowExpectation" value=0 class="oneChar">
+                    <g:field type="text" id="belowExpectation" name="belowExpectation" value="0" class="oneChar"/>
                     <input type="button" onclick="addBelowExpectation()" value="+" />
                     <input type="button" value="-" onclick="minusMeetsExpectation()" class="minus">
-                    <input type="text" id="meetsExpectation" name="meetsExpectation" value=0 class="oneChar">
+                    <g:field type="text" id="meetsExpectation" name="meetsExpectation" value="0" class="oneChar"/>
                     <input type="button"  onclick="addMeetsExpectation()" value="+">
                     <input type=button value="-" onclick="minusExceedsExpectation()" class="minus">
-                    <input type="text" id="exceedsExpectation" name="exceedsExpectation" value=0 class="oneChar">
+                    <g:field type="text" id="exceedsExpectation" name="exceedsExpectation" value="0" class="oneChar"/>
                     <input type="button" onclick="addExceedsExpectation()" value="+">
                     <br>
                     <script>
@@ -95,17 +95,23 @@
                 <input type="checkbox"><span class="slider round"></span></input>
             </label>            <!-- the slider switch bar at the top's right label-->
             <div class="fileFolders">
-                <div class="Outcomes">
-                    <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outcome A:</label>
-                    <input type="checkbox" id="reveal-indicators" role="button">
-                    <div id="indicator">
-                        <div id="indicators" class="nice" action="" method="post">
-                            <label for="reveal-classes" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators: .1</label>
-                                <input type="checkbox" id="reveal-classes" role="button">
-                                <div id="classes" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class: CS370</label>
-                        </div>
+              <g:each in="${Outcomes}" var="o">
+                  <div class="Outcomes">
+                      <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outcome ${o.outcomeCategory}:</label>
+                      <input type="checkbox" id="reveal-indicators" role="button">
+                      <g:if test="${o.outcomeIndicators != NULL}">
+                        <g:each in="${o.outcomeIndicators.toList()}">
+                          <div id="indicator">
+                            <div id="indicators" class="nice" action="" method="post">
+                              <label for="reveal-classes" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators ${Indicators.get(it-1).indicatorName}:</label>
+                              <input type="checkbox" id="reveal-classes" role="button">
+                              <div id="classes" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class: CS370</div>
+                            </div>
+                          </div>
+                          </g:each>
+                      </g:if>
                     </div>
-                </div>
+                </g:each>
                 <div class="Classes">
                 </div>
             </div>
