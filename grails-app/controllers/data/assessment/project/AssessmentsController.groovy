@@ -5,7 +5,9 @@ class AssessmentsController {
   def editAssessment() {
     def outcomes = Outcomes.list()
     def indicators = Indicators.list()
-    [Outcomes:outcomes, Indicators:indicators]
+    System.out.println(outcomes)
+     return [Outcomes:outcomes, Indicators:indicators]
+    System.out.println("called")
   }
 
 }
