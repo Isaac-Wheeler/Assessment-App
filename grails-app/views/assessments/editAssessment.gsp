@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="tabIcon" href="palm.ico" />
             <title>Data Assesment</title>
-            <link rel="stylesheet" href="${resource(dir: 'stylesheets', file: 'fileDisplay.css')}" type="text/css">
+            <asset:stylesheet src="fileDisplay.css"/>
     </head>
     <body>
         <!-- right half of the page -->
@@ -105,7 +105,7 @@
                             <div id="indicators" class="nice" action="" method="post">
                               <label for="reveal-classes" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators .1<!--${Indicators.get(it-1).indicatorName}-->:</label>
                               <input type="checkbox" id="reveal-classes" role="button">
-                              <div id="classes" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class: CS370</div>
+                              <label id="classes" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class: CS370</label>
                             </div>
                           </div>
                           <!--</g:each>-->
