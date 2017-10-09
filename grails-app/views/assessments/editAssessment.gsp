@@ -95,28 +95,37 @@
                 <input type="checkbox" id="reveal-Classes"><span class="slider round"></span></input>
             </label>            <!-- the slider switch bar at the top's right label-->
             <div class="fileFolders">
-              <g:each in="${Outcomes}" var="o">
-                  <div class="Outcomes">
-                      <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outcome ${o.outcomeCategory}:</label>
-                      <input type="checkbox" id="reveal-indicators" role="button">
-                      <!--<g:if test="${o.outcomeIndicators != NULL}">-->
-                        <!--<g:each in="${o.outcomeIndicators.toList()}">-->
-
-                          <div id="indicator">
-                            <div id="indicators" class="nice" action="" method="post">
-                              <label for="reveal-classes" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators .1<!--${Indicators.get(it-1).indicatorName}-->:</label>
-                              <input type="checkbox" id="reveal-classes" role="button">
-                              <label id="classes" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class: CS370</label>
-                            </div>
-                          </div>
-                          <!--</g:each>-->
-                      <!--</g:if>-->
-                    </div>
+              <div class="Outcomes">
+                <g:each in="${Outcomes}" var="o">
+                  <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outcome ${o.outcomeCategory}:</label>
+                  <input type="checkbox" id="reveal-indicators" role="button">
+                  <g:if test="${o.outcomeIndicators != NULL}">
+                    <g:each in="${o.outcomeIndicators.toList()}">
+                      <div id="indicator">
+                        <div id="indicators" class="nice" action="" method="post">
+                          <label for="reveal-classes" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators ${Indicators.get(it-1).indicatorName}:</label>
+                          <input type="checkbox" id="reveal-classes" role="button">
+                          <label id="classes" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class: CS370</label>
+                        </div>
+                      </div>
+                    </g:each>
+                  </g:if>
                 </g:each>
-                <div id="Classes">
-                  Hello World
-                </div>
+              </div>
+              <div id="Classes">
+                <g:each in="${Classes}" var="c">
+                  <g:if test="${c.Measures != NULL}">
+                    <g:each in="${c.Measures}">
+                      <div id="Measures">
+                        <div id="measures" class="nice" action="" method="post">
+                          <label for="reveal-measures" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Measure: ${Indicators.get(it-1).indicatorName}</label>
+                        </div>
+                      </div>
+                    </g:each>
+                  </g:if>
+                </g:each>
+              </div>
             </div>
-        </div>
+          </div>
     </body>
 </html>
