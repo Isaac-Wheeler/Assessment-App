@@ -92,27 +92,28 @@
             <!-- the slider switch bar at the top's left label-->
             <!-- the slider switch bar at the top-->
             <label class="switch">
-                <input type="checkbox"><span class="slider round"></span></input>
+                <input type="checkbox" id="reveal-Classes"><span class="slider round"></span></input>
             </label>            <!-- the slider switch bar at the top's right label-->
             <div class="fileFolders">
               <g:each in="${Outcomes}" var="o">
                   <div class="Outcomes">
                       <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outcome ${o.outcomeCategory}:</label>
                       <input type="checkbox" id="reveal-indicators" role="button">
-                      <g:if test="${o.outcomeIndicators != NULL}">
-                        <g:each in="${o.outcomeIndicators.toList()}">
+                      <!--<g:if test="${o.outcomeIndicators != NULL}">-->
+                        <!--<g:each in="${o.outcomeIndicators.toList()}">-->
                           <div id="indicator">
                             <div id="indicators" class="nice" action="" method="post">
-                              <label for="reveal-classes" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators ${Indicators.get(it-1).indicatorName}:</label>
+                              <label for="reveal-classes" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators .1<!--${Indicators.get(it-1).indicatorName}-->:</label>
                               <input type="checkbox" id="reveal-classes" role="button">
                               <div id="classes" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class: CS370</div>
                             </div>
                           </div>
-                          </g:each>
-                      </g:if>
+                          <!--</g:each>-->
+                      <!--</g:if>-->
                     </div>
                 </g:each>
-                <div class="Classes">
+                <div id="Classes">
+                  Hello World
                 </div>
             </div>
         </div>

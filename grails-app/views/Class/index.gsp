@@ -13,13 +13,10 @@
                 <g:textField type="text" id="Title" name="Title"  value="${Classes?.Title}" placeholder="Name" class="${hasErrors(bean:outcome,field:'outcomeTitle','errors')}"/>
                 <button class="add">New<div class="plus"> &oplus;</div></button>
             </g:link>
-            		<g:each in="${Classes}" var="o">
+            		<g:each in="${Classes}" var="c">
             			<div class="listings">
-                			<h1>${o.outcomeCategory}</h1>
-                      <g:link controller="Outcomes" action="editOutcome" params="[outcome:o.id]">
-							               <button class="add">Edit</button>
-						          </g:link>
-						          <g:link controller="Outcomes" action="deleteOutcome" params="[outcome:o.id]">
+                			<h1>${c.title}</h1>
+						          <g:link controller="CLasses" action="deleteClass" params="[classes:c.id]">
 							               <button class="add">Delete</button>
 						          </g:link>
         				  </div>

@@ -81,6 +81,15 @@ input:checked + .slider:before {
     font-size: 9px;
     font-family: Verdana, sans-serif;
 }
+input:checked~#Classes{
+    display:block;
+}
+#Outcomes{
+  display: none;
+}
+#Classes{
+  display: none;
+}
 
 input:checked + .slider:after
 {
