@@ -22,7 +22,7 @@ class IndicatorsController {
           def o = Outcomes.get(params.outcomeId)
           System.out.println(o.outcomeIndicators)
           if(o.outcomeIndicators == null){
-            o.outcomeIndicators = new ArrayList<Integer>()
+            //o.outcomeIndicators = new ArrayList<Integer>()
             o.outcomeIndicators.add(i.id)
             System.out.println(o.outcomeIndicators)
             System.out.println("new")
