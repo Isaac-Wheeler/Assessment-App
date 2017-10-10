@@ -16,6 +16,8 @@ class Assessment_Documentation {
     String academicSemester;
     boolean complete;
 
+    static belongsTo = [ measure : Measures ]
+
 
 
 

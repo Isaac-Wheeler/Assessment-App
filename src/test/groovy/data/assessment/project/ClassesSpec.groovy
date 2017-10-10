@@ -14,7 +14,7 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
     void "Testing adding and deleting a new class"() {
 
       when: 'Adding a new class with valid permissions'
-      def u = new Classes(title: "CS101", classIndicators: null)
+      def u = new Classes(title: "CS101")
       u.save()
 
         then: 'New class should be saved successfully'
@@ -32,21 +32,21 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
     void "Testing Clesses constraints"() {
 
       when: 'Adding a new class with blank title'
-      def u = new Classes(title: " ", classIndicators: null)
+      def u = new Classes(title: " ")
       u.save()
 
         then: 'New class should not be saved successfully'
         Classes.count() == 0
 
       when: 'Adding a new class with less than 5 characters in the title'
-      def v = new Classes(title: "CS10", classIndicators: null)
+      def v = new Classes(title: "CS10")
       v.save()
 
         then: 'New class should not be saved successfully'
         Classes.count() == 0
 
       when: 'Adding a new class with more than 6 characters in the title'
-      def w = new Classes(title: "ECE1010", classIndicators: null)
+      def w = new Classes(title: "ECE1010")
       w.save()
 
         then: 'New class should not be saved successfully'
@@ -54,14 +54,14 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
 
         //start of test for uniqueness in title
       when: 'Adding a new class with valid properties'
-      def x = new Classes(title: "CS101", classIndicators: null)
+      def x = new Classes(title: "CS101")
       x.save()
 
         then: 'New class should be saved successfully'
         Classes.count() == 1
 
       when: 'Adding a new class with a title that matches an already saved class'
-      def y = new Classes(title: "CS101", classIndicators: null)
+      def y = new Classes(title: "CS101")
       y.save()
 
         then: 'New class should not be saved successfully'
