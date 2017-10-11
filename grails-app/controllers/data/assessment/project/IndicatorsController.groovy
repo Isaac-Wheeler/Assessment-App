@@ -28,6 +28,7 @@ class IndicatorsController {
 
 
         }
+        System.out.println("called")
         redirect(view:"/outcomes/index")
       }
       return [outcomeId:params.givenOutcomeId]
