@@ -19,11 +19,12 @@
                 			<div class="outcomeDesc">Desc: ${o.outcomeCategoryDescription}</div>
                       <p> Id ${o.id} </p>
                 			<div class="indicatorList">
-                        <g:if test="${o.outcomeIndicators != NULL}">
-                          <g:each in="${o.outcomeIndicators}">
-                            ${Indicators.get(it-1).indicatorName}
+                        <g:if test="${o.indicators != NULL}">
+                          <g:each in="${o.indicators}">
+                            ${it.indicatorName}
                           </br>
-                            ${Indicators.get(it-1).indicatorDescription}
+                            ${it.indicatorDescription}
+                          </br>
                           </g:each>
                         </g:if>
 

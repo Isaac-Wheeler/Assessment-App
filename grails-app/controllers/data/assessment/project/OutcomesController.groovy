@@ -11,7 +11,7 @@ class OutcomesController {
   def createOutcome() {
     if (request.method == 'POST') {
       if(!params.submitButton.contains("Cancel")){
-        def o = new Outcomes(outcomeCategory: params.outcomeCategory, outcomeCategoryDescription: params.outcomeCategoryDescription, outcomeIndicators: [])
+        def o = new Outcomes(outcomeCategory: params.outcomeCategory, outcomeCategoryDescription: params.outcomeCategoryDescription)
           if(!o.save()){
             return [outcome:o]
             redirect(view:"/outcome/create")

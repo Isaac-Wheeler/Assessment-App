@@ -9,9 +9,9 @@
       	<p>Complete the form below to create an Indicator</p>
     </div>
     <g:form class="simpleform" url="create">
-   			 <g:hasErrors bean="${teacher}">
+   			 <g:hasErrors bean="${indicator}">
       			<div class="errors">
-        				<g:renderErrors bean="${teacher}"/>
+        				<g:renderErrors bean="${indicator}"/>
       			</div>
     			</g:hasErrors>
     		<div class="backgrounds">

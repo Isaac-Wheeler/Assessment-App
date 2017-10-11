@@ -11,28 +11,22 @@ class IndicatorsController {
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
           def i = new Indicators()
+          def o = Outcomes.get(params.outcomeId)
           i.indicatorName = params.indicatorName
           i.indicatorDescription = params.indicatorDescription
-          i.outcomeId = params.outcomeId
-          i.classesId = 1 //TODO
+          o.addToIndicators(i)
             if(!i.save(flush:true)){
-              return [indicator:o]
+              return [indicator:i]
               redirect(view:"/indicators/create")
             }
-          def o = Outcomes.get(params.outcomeId)
-          System.out.println(o.outcomeIndicators)
-          if(o.outcomeIndicators == null){
-            //o.outcomeIndicators = new ArrayList<Integer>()
-            o.outcomeIndicators.add(i.id)
-            System.out.println(o.outcomeIndicators)
-            System.out.println("new")
-          }else{
-            o.outcomeIndicators << i.id
-            System.out.println(o.outcomeIndicators)
-          }
           if(!o.save(flush:true)){
-            System.out.println("Error")
+            return [indicator:i]
+            redirect(view:"/indicators/create")
           }
+
+          //TODO Classes
+
+
         }
         redirect(view:"/outcomes/index")
       }
