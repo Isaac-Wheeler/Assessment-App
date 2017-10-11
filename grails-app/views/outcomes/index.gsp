@@ -16,19 +16,17 @@
             		<g:each in="${Outcomes}" var="o">
             			<div class="listings">
                 			<h1>${o.outcomeCategory}</h1>
-                			<div class="outcomeDesc">Desc: ${o.outcomeCategoryDescription}</div>
-                      <p> Id ${o.id} </p>
+                			<div class="outcomeDesc">Description: ${o.outcomeCategoryDescription}</div>
+                      </br>
                 			<div class="indicatorList">
                         <g:if test="${o.indicators != NULL}">
                           <g:each in="${o.indicators}">
-                            ${it.indicatorName}
-                          </br>
-                            ${it.indicatorDescription}
+                            Indicator: ${it.indicatorName} - ${it.indicatorDescription}
                           </br>
                           </g:each>
                         </g:if>
-
                 			</div>
+                      </br>
                 			<g:link controller="Outcomes" action="editOutcome" params="[outcome:o.id]">
 							<button class="add">Edit</button>
 						</g:link>

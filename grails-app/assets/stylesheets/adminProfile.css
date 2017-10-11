@@ -12,7 +12,7 @@ body{
     padding-top: 1%;
     position:fixed;
     min-height: 100%
-	
+
 }
 .profileInfo{
     font-size:30px;
@@ -32,7 +32,7 @@ body{
 }
 .button2{
     border-top-style:none;
-    
+
 }
 .button:hover {
     background-color: #bababa;
@@ -101,4 +101,8 @@ body{
 	margin-left: 20%;
 	border-radius:8px;
 	background-color: white;
+}
+.indicatorList{
+	text-align: left;
+	margin-left: 3%;
 }

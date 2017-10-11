@@ -31,7 +31,7 @@
                     <g:hiddenField name="outcomeId" value="${outcomeId}"/>
                 </g:else>
 
-                <g:submitButton class="button" name="submitButton" value="Create Outcome" />
+                <g:submitButton class="button" name="submitButton" value="Create" />
                 <g:submitButton class="button" name="submitButton" value="Cancel" />
             </div>
         </div>
