@@ -16,7 +16,7 @@
             		<g:each in="${Classes}" var="c">
             			<div class="listings">
                 			<h1>${c.title}</h1>
-						          <g:link controller="CLasses" action="deleteClass" params="[classes:c.id]">
+						          <g:link controller="Classes" action="deleteClass" params="[classes:c.id]">
 							               <button class="add">Delete</button>
 						          </g:link>
         				  </div>
