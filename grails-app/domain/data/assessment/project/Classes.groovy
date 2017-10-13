@@ -10,7 +10,7 @@ class Classes {
 
     static constraints = {
 
-      title  blank:false, size: 5..6, unique:true
+      title  blank:false, size: 0..6, unique:true
 
     }
 }
