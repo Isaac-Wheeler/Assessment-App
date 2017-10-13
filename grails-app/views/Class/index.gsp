@@ -21,6 +21,14 @@
             		<g:each in="${Classes}" var="i">
             			<div class="listings">
                 			<h1>${i.title}</h1>
+                      <div class="indicatorList">
+                        <g:if test="${i.indicators != NULL}">
+                          <g:each in="${i.indicators}">
+                            Indicator: ${it.indicatorName} - ${it.indicatorDescription}
+                          </br>
+                          </g:each>
+                        </g:if>
+                			</div>
 						          <g:link controller="class" action="delete" params="[classes:i.id]">
 							               <button class="add">Delete</button>
 						          </g:link>

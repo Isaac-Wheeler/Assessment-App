@@ -12,7 +12,8 @@ def index() {
       }
   }
     def classes = Classes.list()
-    [Classes:classes]
+    def indicators = Indicators.list()
+    [Classes:classes, Indicators:indicators]
  }
 
 

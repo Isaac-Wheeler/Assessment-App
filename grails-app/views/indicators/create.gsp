@@ -25,11 +25,13 @@
                 <g:textArea id="indicatorDescription" name="indicatorDescription" value="${indicator?.indicatorDescription}" rows="10" cols="50"/>
 
                 <g:if test="${indicator?.outcomeId != null}">
-                  <g:hiddenField name="outcomeId" value="${indicator?.outcomeId}"/>
+                  <g:hiddenField name="outcomeId" value="${indicator?.outcome.id}"/>
                 </g:if>
                 <g:else>
                     <g:hiddenField name="outcomeId" value="${outcomeId}"/>
                 </g:else>
+
+                <g:select name="classId" from="${Classes}" value="" optionKey="id" optionValue="title" />
 
                 <g:submitButton class="button" name="submitButton" value="Create" />
                 <g:submitButton class="button" name="submitButton" value="Cancel" />
