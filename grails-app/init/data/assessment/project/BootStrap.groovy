@@ -53,6 +53,7 @@ class BootStrap {
             d.save()
             System.out.println("added test data")
     }
+  }
 }
 
     def destroy = {
