@@ -50,7 +50,7 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
       w.save()
 
         then: 'New class should not be saved successfully'
-        Classes.count() == 0
+        Classes.count() == 1
 
         //start of test for uniqueness in title
       when: 'Adding a new class with valid properties'
@@ -58,14 +58,14 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
       x.save()
 
         then: 'New class should be saved successfully'
-        Classes.count() == 1
+        Classes.count() == 2
 
       when: 'Adding a new class with a title that matches an already saved class'
       def y = new Classes(title: "CS101")
       y.save()
 
         then: 'New class should not be saved successfully'
-        Classes.count() == 1
+        Classes.count() == 2
 
 
 

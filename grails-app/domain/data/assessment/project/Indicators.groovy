@@ -14,7 +14,7 @@ class Indicators {
 
     static constraints = {
 
-      indicatorName blank:false, size: 3..4, unique: true
+      indicatorName blank:false, unique: true
       indicatorDescription blank:false
 
     }
