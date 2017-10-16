@@ -40,34 +40,30 @@ class BootStrap {
            u.save(flush: true)
            System.out.println("added default admin")
           }
-          if (Outcomes.count() == 0 && Classes.count() == 0 && Indicators.count() == 0 && Measures.count() == 0) {
+          if (Outcomes.count() == 0) {
             def a = new Outcomes(outcomeCategory: 'A', outcomeCategoryDescription: "Students will learn how to...")
-            def b = new Classes(title: "CS481")
             def c = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to")
             def d = new Measures(measureTitle: "Exam1_Q1", measureDescription: "Student will be able to")
             a.addToIndicators(c)
             c.addToMeasures(d)
-<<<<<<< HEAD
             a.save(flush: true)
-            b.save(flush: true)
-            def e = new Classes(title: "CS340")
             def f = new Indicators(indicatorName: "a.2", indicatorDescription: "Students will be able to")
             def g = new Measures(measureTitle: "Exam1_Q2", measureDescription: "Student will be able to")
             a.addToIndicators(f)
             f.addToMeasures(g)
+          }
+          if (Classes.count() == 0) {
+            def b = new Classes(title: "CS481")
+            def e = new Classes(title: "CS340")
+            b.save(flush: true)
             e.save(flush: true)
+          }
+
         }
         }
-=======
-            a.save()
-            b.save()
-            c.save()
-            d.save()
-            System.out.println("added test data")
->>>>>>> 0d8d3480d8639265d68ef5b935ef271f71e5580d
     }
-  }
-}
+
+
 
     def destroy = {
     }

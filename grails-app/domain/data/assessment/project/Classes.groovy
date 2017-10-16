@@ -8,6 +8,10 @@ class Classes {
 
       static hasMany = [ indicators : Indicators ]
 
+      static mapping = {
+          indicators cascade: 'save-update'
+      }
+
     static constraints = {
 
       title  blank:false, minSize: 5, unique:true
