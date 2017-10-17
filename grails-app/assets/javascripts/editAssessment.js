@@ -1,12 +1,12 @@
-function hideShowOutcomesClasses(); {
+function hideShowOutcomesClasses() {
   var x = document.getElementById("Outcomes");
-  if (x.style.display === "none") {
+  if (x.style.display == "none") {
     x.style.display = "block";
   } else {
     x.style.display = "none";
   }
   var y = document.getElementById("Classes");
-  if (y.style.display === "none") {
+  if (y.style.display == "none") {
     y.style.display = "none";
 
   } else {

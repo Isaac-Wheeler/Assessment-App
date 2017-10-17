@@ -45,6 +45,10 @@
             		<button class="button button2">Teachers</button>
             </g:link>
             <br>
+            <g:link controller="teachers">
+            		<button class="button button2">Measures</button>
+            </g:link>
+            <br>
             <g:link controller="user" action="logout">
                 <button class="button button2">Log Out</button>
             </g:link>
