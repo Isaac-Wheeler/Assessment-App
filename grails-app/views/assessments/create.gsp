@@ -5,8 +5,8 @@
 </head>
 <body>
 	<div class="pageTitle">
-    		<h1>Create Assessment</h1>
-      	<p>Complete the form below to create an Assessment</p>
+    		<h1>Create Measure</h1>
+      	<p>Complete the form below to create an Measure</p>
     </div>
     <g:form class="simpleform" url="create">
    			 <g:hasErrors bean="${teacher}">
@@ -21,26 +21,11 @@
               <g:field type="text" id="outcomeTitle" name="outcomeTitle" width="100px" placeholder="Title" class="shortText"/>
               <br>
               <label for="selectOutcomes">Select Outcome:</label>
-              <select id="selectOutcomes">
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                  <option value="D">D</option>
-              </select>
+              <g:select name="outcomeId" from="${Outcomes}" id="selectOutcomes" value="" style="width:13%;" optionKey="id" optionValue="title" />
               <label for="selectIndicator">Select Indicator:</label>
-              <select id="selectIndicator" >
-                  <option value=".1">.1</option>
-                  <option value=".2">.4</option>
-                  <option value=".3">.3</option>
-                  <option value=".4">.4</option>
-              </select>
+              <g:select name="indicatorId" from="${Indicators}" id="selectIndicator" value="" style="width:13%;" optionKey="id" optionValue="title" />
               <label for="selectClass">Select Class:</label>
-              <select id="selectClass" >
-                  <option value="CS 370">CS 370</option>
-                  <option value="CS 420">CS 420</option>
-                  <option value="CS 230">CS 230</option>
-                  <option value="ECE 260">ECE 260</option>
-              </select>
+              <g:select name="classId" from="${Classes}" id="selectClass" value="" style="width:13%;" optionKey="id" optionValue="title" />
               <br>
               <label for="Desc">Description:</label>
               <br>

@@ -106,3 +106,15 @@ body{
 	text-align: left;
 	margin-left: 3%;
 }
+#classTitle{
+	width: 25%;
+	height: 5%;
+}
+#classButton{
+	width: 18%;
+	height: 3%;
+	margin-top: 1%;
+	font-size: 16px;
+
+
+}

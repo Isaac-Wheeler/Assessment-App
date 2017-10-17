@@ -30,9 +30,10 @@
                 <g:else>
                     <g:hiddenField name="outcomeId" value="${outcomeId}"/>
                 </g:else>
-
-                <g:select name="classId" from="${Classes}" value="" optionKey="id" optionValue="title" />
-
+                <label for="classes">Choose The Class:</label>
+                <br>
+                <g:select name="classId" from="${Classes}" id="classes" value="" style="width:20%;" optionKey="id" optionValue="title" />
+                <br>
                 <g:submitButton class="button" name="submitButton" value="Create" />
                 <g:submitButton class="button" name="submitButton" value="Cancel" />
             </div>

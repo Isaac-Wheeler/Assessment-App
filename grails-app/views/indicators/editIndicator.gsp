@@ -23,6 +23,10 @@
                 <label for="indicatorDesc">Indicator Description:</label>
                 <br>
                 <g:textArea id="indicatorDesc" name="indicatorDesc" value="${indicator?.desc}" rows="10" cols="50"/>
+                <label for="classes">Choose The Class:</label>
+                <br>
+                <g:select name="classId" from="${Classes}" id="classes" value="" style="width:20%;" optionKey="id" optionValue="title" />
+                <br>
                 <g:submitButton class="button" name="submitButton" value="Create Outcome" />
                 <g:submitButton class="button" name="cancelButton" value="Cancel" />
             </div>
