@@ -13,8 +13,19 @@ class AssessmentsController {
   def create(){
     if (request.method == 'POST') {
       if(!params.submitButton.contains("Cancel")){
-
+        def m = new Measures()
+        m.measureTitle = params.measureTitle
+        m.measureDescription = params.measureDescription
+        def i = Indicators.get(params.indicatorId)
+        i.addToMeasures(m)
+        if(!i.save(flush:true)){
+          return [Measures:m, Iid:params.indicatorId]
+        }
+        if(!m.save(flush:true)){
+          return [Measures:m, Iid:params.indicatorId]
+        }
       }
+      redirect(controller:"Admin")
     }
 
     def outcomes = Outcomes.list()

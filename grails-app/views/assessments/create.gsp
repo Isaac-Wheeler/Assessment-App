@@ -18,16 +18,16 @@
             <div class="labels">
               <label for="Title">Measure Title:</label>
               <br>
-              <g:field type="text" id="outcomeTitle" name="outcomeTitle" width="100px" placeholder="Title" class="shortText"/>
+              <g:field type="text" id="measureTitle" name="measureTitle" width="100px" placeholder="Title" class="shortText"/>
               <br>
               <label for="selectIndicator">Select Indicator:</label>
-              <g:select name="indicatorId" from="${Indicators}" id="selectIndicator" value="" style="width:13%;" optionKey="id" optionValue="indicatorName" />
+              <g:select name="indicatorId" from="${Indicators}" id="selectIndicator" value="${Iid}" style="width:13%;" optionKey="id" optionValue="indicatorName" />
               <label for="selectClass">Select Class:</label>
               <g:select name="classId" from="${Classes}" id="selectClass" value="" style="width:13%;" optionKey="id" optionValue="title" />
               <br>
               <label for="Desc">Description:</label>
               <br>
-              <textArea id="Desc" name="Desc" rows="10" cols="100" resize="none"></textarea>
+              <textArea id="measureDescription" name="measureDescription" rows="10" cols="100" resize="none"></textarea>
               <g:submitButton class="button" name="submitButton" value="Create" />
               <g:submitButton class="button" name="submitButton" value="Cancel" />
             </div>
