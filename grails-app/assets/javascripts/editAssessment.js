@@ -6,11 +6,11 @@ function hideShowOutcomesClasses() {
     x.style.display = "none";
   }
   var y = document.getElementById("Classes");
-  if (y.style.display == "none") {
-    y.style.display = "none";
+  if (x.style.display == "none") {
+    y.style.display = "block";
 
   } else {
-    y.style.display = "block";
+    y.style.display = "none";
   }
 }
 function addBelowExpectation() {

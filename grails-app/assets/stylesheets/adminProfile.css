@@ -115,6 +115,15 @@ body{
 	height: 3%;
 	margin-top: 1%;
 	font-size: 16px;
-
-
+}
+.deleteButton{
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	background-color: red;
+	color: white;
+	font-style: bold;
+	border: solid;
+	border-width: 1px;
+	border-color: black;
 }

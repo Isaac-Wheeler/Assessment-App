@@ -21,7 +21,10 @@
                 			<div class="indicatorList">
                         <g:if test="${o.indicators != NULL}">
                           <g:each in="${o.indicators}">
-                            Indicator: ${it.indicatorName} - ${it.indicatorDescription}
+                            <g:link controller="Indicators" action="delete" params="[indicator:it.id]">
+                              <button class="deleteButton">-</button>
+                            </g:link>
+                            &nbsp;Indicator: ${it.indicatorName} - ${it.indicatorDescription}
                           </br>
                           </g:each>
                         </g:if>

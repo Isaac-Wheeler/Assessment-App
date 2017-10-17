@@ -19,7 +19,7 @@
                 <h1>Assessment Documentation</h1>
                 <label for="measureTitle">Assessment Documentation Title:</label>
                 <br>
-                <g:field type="text" id="measureTitle" name="measureTitle" style="width:35%;"" placeholder="Title" class="shortText"/>
+                <g:field type="text" id="measureTitle" name="measureTitle" style="width:35%;" placeholder="Title" class="shortText"/>
                     <br>
                     <label for="Desc">Description:</label>
                     <br>
@@ -61,10 +61,10 @@
             <!-- the slider switch bar at the top's left label-->
             <!-- the slider switch bar at the top-->
             <label class="switch">
-                <input type="checkbox" id="reveal-Classes"><span class="slider round" onclick="hideShowOutcomesClasses();"></span></input>
+                <input type="checkbox" onclick="hideShowOutcomesClasses();" id="reveal-Classes"><span class="slider round" ></span></input>
             </label>            <!-- the slider switch bar at the top's right label-->
             <div class="fileFolders">
-              <div class="Outcomes">
+              <div class="Outcomes" id="Outcomes">
                 <g:each in="${Outcomes}" var="o">
                   <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outcome ${o.outcomeCategory}:</label>
                   <input type="checkbox" id="reveal-indicators" role="button">
@@ -83,7 +83,8 @@
               </div>
               <div id="Classes">
                 <g:each in="${Classes}" var="c">
-                  <!--<g:if test="${c.classesIndicators != NULL}">
+                  <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${c.title}:</label>
+                  <g:if test="${c.classesIndicators != NULL}">
                     <g:each in="${c.classesIndicators.toList();}">
                       <div id="indicator">
                         <div id="indicators" class="nice" action="" method="post">
