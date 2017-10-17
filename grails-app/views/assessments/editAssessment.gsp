@@ -16,10 +16,10 @@
         <!-- right half of the page -->
         <div class="main">
             <div class="info">
-                <h1>Edit Measure</h1>
-                <label for="measureTitle">Measure Title:</label>
+                <h1>Assessment Documentation</h1>
+                <label for="measureTitle">Assessment Documentation Title:</label>
                 <br>
-                <g:field type="text" id="measureTitle" name="measureTitle" width="100px" placeholder="Title" class="shortText"/>
+                <g:field type="text" id="measureTitle" name="measureTitle" style="width:35%;"" placeholder="Title" class="shortText"/>
                     <br>
                     <label for="Desc">Description:</label>
                     <br>
