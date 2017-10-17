@@ -23,8 +23,7 @@
 						          </g:if>
 						          <p>Registered: ${u.dateCreated}</p>
 						          <g:link controller="user" action="edit" params="[teacher:u.id]">
-							             <button class="add">Edit</button>
-						          </g:link>
+							             <button class="add">Edit</button></g:link>
 						          <g:link controller="user" action="delete" params="[teacher:u.id]">
 							             <button class="add">Delete</button>
 						          </g:link>

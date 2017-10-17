@@ -22,20 +22,17 @@
                         <g:if test="${o.indicators != NULL}">
                           <g:each in="${o.indicators}">
                             <g:link controller="Indicators" action="delete" params="[indicator:it.id]">
-                              <button class="deleteButton">-</button>
-                            </g:link>
+                              <button class="deleteButton">-</button></g:link>
                             &nbsp;Indicator: ${it.indicatorName} - ${it.indicatorDescription}
                           </br>
                           </g:each>
                         </g:if>
                 			</div>
                       </br>
-                			<g:link controller="Outcomes" action="editOutcome" params="[outcome:o.id]">
-							<button class="add">Edit</button>
-						</g:link>
+            <g:link controller="Outcomes" action="editOutcome" params="[outcome:o.id]">
+							<button class="add">Edit</button></g:link>
 						<g:link controller="Outcomes" action="deleteOutcome" params="[outcome:o.id]">
-							<button class="add">Delete</button>
-						</g:link>
+							<button class="add">Delete</button></g:link>
 						<g:link controller="Indicators" action="create" params="[givenOutcomeId:o.id]">
 							<button class="add">Add Indicator</button>
 						</g:link>
