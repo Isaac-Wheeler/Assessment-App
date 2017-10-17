@@ -10,19 +10,20 @@
             <link rel="tabIcon" href="palm.ico" />
             <title>Data Assesment</title>
             <asset:stylesheet src="fileDisplay.css"/>
+            <asset:javascript src="editAssessment.js"/>
     </head>
     <body>
         <!-- right half of the page -->
         <div class="main">
             <div class="info">
-                <h1>Edit Assessment</h1>
+                <h1>Edit Measure</h1>
                 <label for="measureTitle">Measure Title:</label>
                 <br>
                 <g:field type="text" id="measureTitle" name="measureTitle" width="100px" placeholder="Title" class="shortText"/>
                     <br>
                     <label for="Desc">Description:</label>
                     <br>
-                    <textArea id="Desc" name="Desc" rows="10" cols="100" resize="none"></textarea>
+                    <g:textArea id="Desc" name="Desc" rows="10" cols="100" resize="none"/>
                     <br>
                     <label for="Desc">Work Used:</label>
                     <br>
@@ -34,55 +35,23 @@
                     <label for="exceedsExpectation" class="labelEx">Exceeds Expectation:</label>
                     <br>
                     <g:field type="text" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal"/>
-                    <input type="button" value="-" onclick="minusBelowExpectation()" class="minus"/>
+                    <input type="button" value="-" onclick="minusBelowExpectation();" class="minus"/>
                     <g:field type="text" id="belowExpectation" name="belowExpectation" value="0" class="oneChar"/>
-                    <input type="button" onclick="addBelowExpectation()" value="+" />
-                    <input type="button" value="-" onclick="minusMeetsExpectation()" class="minus">
+                    <input type="button" onclick="addBelowExpectation();" value="+" />
+                    <input type="button" value="-" onclick="minusMeetsExpectation();" class="minus">
                     <g:field type="text" id="meetsExpectation" name="meetsExpectation" value="0" class="oneChar"/>
-                    <input type="button"  onclick="addMeetsExpectation()" value="+">
-                    <input type=button value="-" onclick="minusExceedsExpectation()" class="minus">
+                    <input type="button"  onclick="addMeetsExpectation();" value="+">
+                    <input type=button value="-" onclick="minusExceedsExpectation();" class="minus">
                     <g:field type="text" id="exceedsExpectation" name="exceedsExpectation" value="0" class="oneChar"/>
-                    <input type="button" onclick="addExceedsExpectation()" value="+">
+                    <input type="button" onclick="addExceedsExpectation();" value="+">
                     <br>
-                    <script>
-                        function addBelowExpectation() {
-                            var value = parseInt(document.getElementById('belowExpectation').value, 10);
-                            value++;
-                            document.getElementById("belowExpectation").value = value;
-                        }
-                        function minusBelowExpectation() {
-                            var value = parseInt(document.getElementById('belowExpectation').value, 10);
-                            value--;
-                            document.getElementById("belowExpectation").value = value;
-                        }
-                        function addMeetsExpectation() {
-                            var value = parseInt(document.getElementById('meetsExpectation').value, 10);
-                            value++;
-                            document.getElementById("meetsExpectation").value = value;
-                        }
-                        function minusMeetsExpectation() {
-                            var value = parseInt(document.getElementById('meetsExpectation').value, 10);
-                            value--;
-                            document.getElementById("meetsExpectation").value = value;
-                        }
-                            function addExceedsExpectation() {
-                            var value = parseInt(document.getElementById('exceedsExpectation').value, 10);
-                            value++;
-                            document.getElementById("exceedsExpectation").value = value;
-                        }
-                            function minusExceedsExpectation() {
-                            var value = parseInt(document.getElementById('exceedsExpectation').value, 10);
-                            value--;
-                            document.getElementById("exceedsExpectation").value = value;
-                        }
-                    </script>
                     <label for="comment">Comment:</label>
                     <br>
-                    <textArea id="comment" name="comment" rows="10" cols="100" resize="none"></textarea>
+                    <g:textArea id="comment" name="comment" rows="10" cols="100" resize="none"/>
                     <br>
                     <label for="observations">Observations:</label>
                     <br>
-                    <textArea id="observation" name="observation" rows="10" cols="100" resize="none"></textarea>
+                    <g:textArea id="observation" name="observation" rows="10" cols="100" resize="none"/>
                     <br>
                 </div>
             <!--<g:submitButton class="button" name="submitButton" value="Create Outcome" />
@@ -92,30 +61,30 @@
             <!-- the slider switch bar at the top's left label-->
             <!-- the slider switch bar at the top-->
             <label class="switch">
-                <input type="checkbox" id="reveal-Classes"><span class="slider round" onclick="hideShowOutcomesClasses()"></span></input>
+                <input type="checkbox" id="reveal-Classes"><span class="slider round" onclick="hideShowOutcomesClasses();"></span></input>
             </label>            <!-- the slider switch bar at the top's right label-->
             <div class="fileFolders">
               <div class="Outcomes">
                 <g:each in="${Outcomes}" var="o">
                   <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outcome ${o.outcomeCategory}:</label>
                   <input type="checkbox" id="reveal-indicators" role="button">
-                  <g:if test="${o.outcomeIndicators != NULL}">
-                    <g:each in="${o.outcomeIndicators.toList()}">
-                      <div id="indicator">
-                        <div id="indicators" class="nice" action="" method="post">
-                          <label for="reveal-classes" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators ${Indicators.get(it-1).indicatorName}:</label>
-                          <input type="checkbox" id="reveal-classes" role="button">
-                          <label id="classes" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class: CS370</label>
-                        </div>
+                  <g:if test="${o.indicators != NULL}">
+                    <g:each in="${o.indicators}">
+                    <div id="indicator">
+                      <div id="indicators" class="nice" action="" method="post">
+                        <label for="reveal-classes" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators ${it.indicatorName}:</label>
+                        <input type="checkbox" id="reveal-classes" role="button">
+                        <label id="classes" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class: CS370</label>
                       </div>
+                    </div>
                     </g:each>
                   </g:if>
-                </g:each>
+                  </g:each>
               </div>
               <div id="Classes">
                 <g:each in="${Classes}" var="c">
-                  <g:if test="${c.classesIndicators != NULL}">
-                    <g:each in="${c.classesIndicators.toList()}">
+                  <!--<g:if test="${c.classesIndicators != NULL}">
+                    <g:each in="${c.classesIndicators.toList();}">
                       <div id="indicator">
                         <div id="indicators" class="nice" action="" method="post">
                           <label for="reveal-indicators" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators ${Indicators.get(it-1).indicatorName}:</label>
@@ -124,27 +93,11 @@
                         </div>
                       </div>
                     </g:each>
-                  </g:if>
+                  </g:if>-->
                 </g:each>
               </div>
             </div>
-            <script>
-              function hideShowOutcomesClasses() {
-                var x = document.getElementById("Outcomes");
-                if (x.style.display === "none") {
-                  x.style.display = "block";
-                } else {
-                  x.style.display = "none";
-                }
-                var y = document.getElementById("Classes");
-                if (y.style.display === "none") {
-                  y.style.display = "none";
 
-                } else {
-                  y.style.display = "block";
-                }
-              }
-          </script>
           </div>
     </body>
 </html>
