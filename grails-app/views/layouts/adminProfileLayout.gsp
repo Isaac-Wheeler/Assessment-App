@@ -45,7 +45,7 @@
             		<button class="button button2">Teachers</button>
             </g:link>
             <br>
-            <g:link controller="teachers">
+            <g:link controller="assessments" action="viewMeasures">
             		<button class="button button2">Measures</button>
             </g:link>
             <br>
