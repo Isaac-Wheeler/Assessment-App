@@ -20,78 +20,14 @@
               <br>
               <g:field type="text" id="outcomeTitle" name="outcomeTitle" width="100px" placeholder="Title" class="shortText"/>
               <br>
-              <label for="selectOutcomes">Select Outcome:</label>
-              <g:select name="outcomeId" from="${Outcomes}" id="selectOutcomes" value="" style="width:13%;" optionKey="id" optionValue="title" />
               <label for="selectIndicator">Select Indicator:</label>
-              <g:select name="indicatorId" from="${Indicators}" id="selectIndicator" value="" style="width:13%;" optionKey="id" optionValue="title" />
+              <g:select name="indicatorId" from="${Indicators}" id="selectIndicator" value="" style="width:13%;" optionKey="id" optionValue="indicatorName" />
               <label for="selectClass">Select Class:</label>
               <g:select name="classId" from="${Classes}" id="selectClass" value="" style="width:13%;" optionKey="id" optionValue="title" />
               <br>
               <label for="Desc">Description:</label>
               <br>
               <textArea id="Desc" name="Desc" rows="10" cols="100" resize="none"></textarea>
-              <br>
-              <label for="Desc">Work Used:</label>
-              <br>
-              <input type="file" name="workUsed" id="workUsed">
-              <br>
-              <label for="targetGoal">Target Goal:</label>
-              <label for="belowExpectation" class="labelEx">Below Expectation:</label>
-              <label for="meetsExpectation" class="labelEx">Meets Expectation:</label>
-              <label for="exceedsExpectation" class="labelEx">Exceeds Expectation:</label>
-              <br>
-              <g:field type="text" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal"/>
-              <input type="button" value="-" onclick="minusBelowExpectation()" class="minus"/>
-              <g:field type="text" id="belowExpectation" name="belowExpectation" value="0" class="oneChar"/>
-              <input type="button" onclick="addBelowExpectation()" value="+" />
-              <input type="button" value="-" onclick="minusMeetsExpectation()" class="minus">
-              <g:field type="text" id="meetsExpectation" name="meetsExpectation" value="0" class="oneChar"/>
-              <input type="button"  onclick="addMeetsExpectation()" value="+">
-              <input type=button value="-" onclick="minusExceedsExpectation()" class="minus">
-              <g:field type="text" id="exceedsExpectation" name="exceedsExpectation" value="0" class="oneChar"/>
-              <input type="button" onclick="addExceedsExpectation()" value="+">
-              <br>
-              <script>
-                      function addBelowExpectation() {
-                          var value = parseInt(document.getElementById('belowExpectation').value, 10);
-                          value++;
-                          document.getElementById("belowExpectation").value = value;
-                      }
-                      function minusBelowExpectation() {
-                          var value = parseInt(document.getElementById('belowExpectation').value, 10);
-                          value--;
-                          document.getElementById("belowExpectation").value = value;
-                      }
-                      function addMeetsExpectation() {
-                          var value = parseInt(document.getElementById('meetsExpectation').value, 10);
-                          value++;
-                          document.getElementById("meetsExpectation").value = value;
-                      }
-                      function minusMeetsExpectation() {
-                          var value = parseInt(document.getElementById('meetsExpectation').value, 10);
-                          value--;
-                          document.getElementById("meetsExpectation").value = value;
-                      }
-                          function addExceedsExpectation() {
-                          var value = parseInt(document.getElementById('exceedsExpectation').value, 10);
-                          value++;
-                          document.getElementById("exceedsExpectation").value = value;
-                      }
-                          function minusExceedsExpectation() {
-                          var value = parseInt(document.getElementById('exceedsExpectation').value, 10);
-                          value--;
-                          document.getElementById("exceedsExpectation").value = value;
-                      }
-              </script>
-              <label for="comment">Comment:</label>
-              <br>
-              <textArea id="comment" name="comment" rows="10" cols="100" resize="none"></textarea>
-              <br>
-              <label for="observations">Observations:</label>
-              <br>
-              <textArea id="observation" name="observation" rows="10" cols="100" resize="none"></textarea>
-              <br>
-
               <g:submitButton class="button" name="submitButton" value="Create" />
               <g:submitButton class="button" name="submitButton" value="Cancel" />
             </div>

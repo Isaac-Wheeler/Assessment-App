@@ -23,7 +23,7 @@ class UrlMappings {
         "/admin/indicators"(view:'/admin/indicators')
         "/outcomes/create"(view:'/outcomes/create')
         "/classes"(view:'/classes/index')
-        "/assessments/create"(view:'/assessments/create')
+        //"/assessments/create"(view:'/assessments/create')
         "/indicators/index"(controller:"outcomes")
         "/assessments/editAssessments"(view:'/assessments/editAssessments')
     }
