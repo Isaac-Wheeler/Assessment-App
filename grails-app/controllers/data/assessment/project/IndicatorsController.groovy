@@ -38,4 +38,10 @@ class IndicatorsController {
       }
       return [outcomeId:params.givenOutcomeId, Classes:classes]
     }
+
+    def delete() {
+      def i = Indicators.get(params.indicator)
+      i.delete(flush:true)
+      redirect(controller:'Indicators')
+    }
 }
