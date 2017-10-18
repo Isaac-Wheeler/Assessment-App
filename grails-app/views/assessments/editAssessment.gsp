@@ -17,15 +17,15 @@
         <div class="main">
             <div class="info">
                 <h1>Assessment Documentation</h1>
-                <label for="measureTitle">Assessment Documentation Title:</label>
+                <label for="assessmentDocTitle">Assessment Documentation Title:</label>
                 <br>
-                <g:field type="text" id="measureTitle" name="measureTitle" style="width:35%;" placeholder="Title" class="shortText"/>
+                <g:field type="text" id="assessmentDocTitle" name="assessmentDocTitle" style="width:35%;" placeholder="Title" class="shortText"/>
                     <br>
                     <label for="Desc">Description:</label>
                     <br>
                     <g:textArea id="Desc" name="Desc" rows="10" cols="100" resize="none"/>
                     <br>
-                    <label for="Desc">Work Used:</label>
+                    <label for="workUsed">Work Used:</label>
                     <br>
                     <input type="file" name="workUsed" id="workUsed">
                     <br>

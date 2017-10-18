@@ -12,7 +12,7 @@ class AssessmentsController {
     System.out.println("called")
   }
 
-  def viewMeasures() {
+  def viewMeasuresAdmin() {
     def measures = Measures.list()
     def classes = Classes.list()
     return [Measures:measures, Classes:classes]

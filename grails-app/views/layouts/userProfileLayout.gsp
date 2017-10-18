@@ -22,7 +22,7 @@
             		<button class="button">Home</button>
             </g:link>
             <br>
-            <g:link controller="assessments" action="viewMeasures">
+            <g:link controller="assessments" action="viewMeasuresUser">
             		<button class="button button2">Measures</button>
             </g:link>
             <br>
