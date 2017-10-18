@@ -6,7 +6,9 @@ class AssessmentsController {
     def outcomes = Outcomes.list()
     def indicators = Indicators.list()
     System.out.println(outcomes)
-     return [Outcomes:outcomes, Indicators:indicators]
+    def outcomes = Classes.list()
+    System.out.println(classes)
+     return [Outcomes:outcomes, Indicators:indicators, Classes:classes]
     System.out.println("called")
   }
 
