@@ -22,12 +22,12 @@
             		<button class="button">Home</button>
             </g:link>
             <br>
-            <g:link controller="user" action="currentAssessments">
-            		<button class="button button2">Assessments</button>
+            <g:link controller="assessments" action="viewMeasuresUser">
+            		<button class="button button2">Measures</button>
             </g:link>
             <br>
-            <g:link controller="user" action="completedAssessments">
-            		<button class="button button2">Completed Assessments</button>
+            <g:link controller="assessments" action="editAssessments">
+            		<button class="button button2">Assessments</button>
             </g:link>
             <br>
             <g:link controller="user" action="logout">

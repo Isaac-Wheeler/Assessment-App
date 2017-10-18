@@ -17,15 +17,15 @@
         <div class="main">
             <div class="info">
                 <h1>Assessment Documentation</h1>
-                <label for="measureTitle">Assessment Documentation Title:</label>
+                <label for="assessmentDocTitle">Assessment Documentation Title:</label>
                 <br>
-                <g:field type="text" id="measureTitle" name="measureTitle" style="width:35%;" placeholder="Title" class="shortText"/>
+                <g:field type="text" id="assessmentDocTitle" name="assessmentDocTitle" style="width:35%;" placeholder="Title" class="shortText"/>
                     <br>
                     <label for="Desc">Description:</label>
                     <br>
                     <g:textArea id="Desc" name="Desc" rows="10" cols="100" resize="none"/>
                     <br>
-                    <label for="Desc">Work Used:</label>
+                    <label for="workUsed">Work Used:</label>
                     <br>
                     <input type="file" name="workUsed" id="workUsed">
                     <br>
@@ -81,11 +81,11 @@
                   </g:if>
                   </g:each>
               </div>
-              <div id="Classes">
+              <div class="Outcomes" id="Classes">
                 <g:each in="${Classes}" var="c">
                   <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${c.title}:</label>
-                  <g:if test="${c.classesIndicators != NULL}">
-                    <g:each in="${c.classesIndicators.toList();}">
+                  <!--<g:if test="${c.classesIndicators != NULL}">
+                    <g:each in="${c.classesIndicators.toList()}">
                       <div id="indicator">
                         <div id="indicators" class="nice" action="" method="post">
                           <label for="reveal-indicators" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators ${Indicators.get(it-1).indicatorName}:</label>
