@@ -21,6 +21,15 @@
             		<g:each in="${Classes}" var="i">
             			<div class="listings">
                 			<h1>${i.title}</h1>
+                      <g:if test="${i.teachers != NULL}">
+                          <g:each in="${i.teachers}" var="i">
+                              <p>${it.teacherLastName}</p>
+                          </g:each>
+                      </g:if>
+                      <g:select name="teacherId" from="${Teachers}" id="teacherList" value="${Tid}" style="width:13%;" optionKey="id" optionValue="teacherLastName" />
+                      <g:link controller="class" action="assign" params="[classses:i.id]">
+							               <button class="add">Assign</button>
+						          </g:link>
 						          <g:link controller="class" action="delete" params="[classes:i.id]">
 							               <button class="add">Delete</button>
 						          </g:link>

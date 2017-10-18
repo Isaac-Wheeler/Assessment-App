@@ -29,14 +29,6 @@
             		<button class="button button2">Outcomes</button>
             </g:link>
             <br>
-            <g:link controller="assessments">
-            		<button class="button button2">Assessments</button>
-            </g:link>
-            <br>
-            <g:link controller="assessments" action="editAssessment">
-            		<button class="button button2">Completed Assessments</button>
-            </g:link>
-            <br>
             <g:link controller="Class" action="index">
             		<button class="button button2">Classes</button>
             </g:link>
@@ -47,6 +39,10 @@
             <br>
             <g:link controller="assessments" action="viewMeasures">
             		<button class="button button2">Measures</button>
+            </g:link>
+            <br>
+            <g:link controller="assessments" action="editAssessment">
+            		<button class="button button2">Assessments</button>
             </g:link>
             <br>
             <g:link controller="user" action="logout">
