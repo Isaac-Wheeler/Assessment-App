@@ -35,3 +35,4 @@ grails-app/views/layouts/adminProfileLayout.gsp
 grails-app/views/Teachers/index.gsp
 grails-app/views/Teachers/index.gsp
 grails-app/views/assessments/editAssessment.gsp
+grails-app/views/assessments/editAssessment.gsp

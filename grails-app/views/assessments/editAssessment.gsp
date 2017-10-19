@@ -84,6 +84,7 @@
               <div class="Outcomes" id="Classes">
                 <g:each in="${Classes}" var="c">
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <p for="" class="" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${c.title}:</p>
                   <!--<g:if test="${c.classesIndicators != NULL}">
                     <g:each in="${c.classesIndicators.toList()}">
@@ -96,6 +97,9 @@
                       </div>
                     </g:each>
                   </g:if>-->
+=======
+                  <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${c.title}:</label>
+>>>>>>> 415fc5760b7dac63304eea842c19c8435095ef5f
 =======
                   <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${c.title}:</label>
 >>>>>>> 415fc5760b7dac63304eea842c19c8435095ef5f
