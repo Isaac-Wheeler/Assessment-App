@@ -72,7 +72,7 @@
                     <g:each in="${o.indicators}">
                     <div id="indicator">
                       <div id="indicators" class="nice" action="" method="post">
-                        <label for="reveal-classes" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators ${it.indicatorName}:</label>
+                        <p for="" class="" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators ${it.indicatorName}:</p>
                         <input type="checkbox" id="reveal-classes" role="button">
                         <label id="classes" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class: CS370</label>
                       </div>
@@ -83,7 +83,8 @@
               </div>
               <div class="Outcomes" id="Classes">
                 <g:each in="${Classes}" var="c">
-                  <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${c.title}:</label>
+<<<<<<< HEAD
+                  <p for="" class="" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${c.title}:</p>
                   <!--<g:if test="${c.classesIndicators != NULL}">
                     <g:each in="${c.classesIndicators.toList()}">
                       <div id="indicator">
@@ -95,6 +96,9 @@
                       </div>
                     </g:each>
                   </g:if>-->
+=======
+                  <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${c.title}:</label>
+>>>>>>> 415fc5760b7dac63304eea842c19c8435095ef5f
                 </g:each>
               </div>
             </div>
