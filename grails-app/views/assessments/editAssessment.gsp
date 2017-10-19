@@ -83,26 +83,6 @@
               </div>
               <div class="Outcomes" id="Classes">
                 <g:each in="${Classes}" var="c">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  <p for="" class="" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${c.title}:</p>
-                  <!--<g:if test="${c.classesIndicators != NULL}">
-                    <g:each in="${c.classesIndicators.toList()}">
-                      <div id="indicator">
-                        <div id="indicators" class="nice" action="" method="post">
-                          <label for="reveal-indicators" class="btn" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators ${Indicators.get(it-1).indicatorName}:</label>
-                          <input type="checkbox" id="reveal-measures" role="button">
-                          <label id="measures" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Measure: </label>
-                        </div>
-                      </div>
-                    </g:each>
-                  </g:if>-->
-=======
-                  <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${c.title}:</label>
->>>>>>> 415fc5760b7dac63304eea842c19c8435095ef5f
-=======
-                  <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${c.title}:</label>
->>>>>>> 415fc5760b7dac63304eea842c19c8435095ef5f
                 </g:each>
               </div>
             </div>
