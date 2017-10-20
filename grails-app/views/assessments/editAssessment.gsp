@@ -90,7 +90,7 @@
                     <summary>${c.title}:</summary>
                     <g:if test="${c.indicators != NULL}">
                       <g:each in="${c.indicators}">
-                        <summary class="cat1">&#9;Indicator: ${it.indicatorName}</summary>
+                        <summary class="cat1">Indicator: ${it.indicatorName}</summary>
                       </g:each>
                     </g:if>
                   </details>
