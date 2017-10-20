@@ -53,6 +53,12 @@
                     <br>
                     <g:textArea id="observation" name="observation" rows="10" cols="100" resize="none"/>
                     <br>
+                    <label for="semseter">Semester:</label>
+                    <label for="completed" style="margin-left:40%;">Completed:</label>
+                    <br>
+                    <g:field type="text" name="semester" style="width:40%;" placeholder="Semseter Ex: Fall2017"/>
+                    <g:checkBox style="display: inline-block;margin-left:15%;"id="completed" name="completed"/>
+                    <br>
                 </div>
             <!--<g:submitButton class="button" name="submitButton" value="Create Outcome" />
              <g:submitButton class="button" name="cancelButton" value="Cancel" />-->

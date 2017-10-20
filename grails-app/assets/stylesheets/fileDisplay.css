@@ -148,6 +148,7 @@ input[type=checkbox]:checked~#classes {
 .info{
     float: right;
     margin-right: 10%;
+    margin-bottom: 1%;
 
 }
 .oneChar{
