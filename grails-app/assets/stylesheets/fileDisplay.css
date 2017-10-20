@@ -116,6 +116,9 @@ input:checked + .slider:after
     text-align:left;
     margin-left: 10%;
 }
+.cat1{
+  margin-left: 10%;
+}
 /*&#10095*/
 
 input[type=checkbox] {

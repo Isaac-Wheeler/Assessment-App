@@ -66,27 +66,31 @@
             <div class="fileFolders">
               <div class="Outcomes" id="Outcomes">
                 <g:each in="${Outcomes}" var="o">
-                  <label for="reveal-indicators" class="btn" style="width: 300px">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Outcome ${o.outcomeCategory}:</label>
-                  <input type="checkbox" id="reveal-indicators" role="button">
-                  <g:if test="${o.indicators != NULL}">
-                    <g:each in="${o.indicators}">
-                    <div id="indicator">
-                      <div id="indicators" class="nice" action="" method="post">
-                        <p for="" class="" style="width: 300px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicators ${it.indicatorName}:</p>
-                        <input type="checkbox" id="reveal-classes" role="button">
-                        <label id="classes" class="nice" action="" method="post">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class: CS370</label>
-                      </div>
-                    </div>
-                    </g:each>
-                  </g:if>
+                <details>
+                  <summary>Outcome ${o.outcomeCategory}:</summary>
+                    <g:if test="${o.indicators != NULL}">
+                      <g:each in="${o.indicators}">
+                        <details>
+                          <summary class="cat1">Indicator: ${it.indicatorName}</summary>
+                        </details>
+                      </g:each>
+                      </g:if>
+                    </details>
                   </g:each>
-              </div>
+                </div>
               <div class="Outcomes" id="Classes">
                 <g:each in="${Classes}" var="c">
+                  <details>
+                    <summary>${c.title}:</summary>
+                    <g:if test="${c.indicators != NULL}">
+                      <g:each in="${c.indicators}">
+                        <summary class="cat1">&#9;Indicator: ${it.indicatorName}</summary>
+                      </g:each>
+                    </g:if>
+                  </details>
                 </g:each>
               </div>
             </div>
-
-          </div>
+        </div>
     </body>
 </html>
