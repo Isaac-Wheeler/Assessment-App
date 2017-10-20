@@ -22,7 +22,26 @@ body{
     height: 34px;
     margin-top: 10px;
 }
-
+.actionsText{
+  display: none;
+}
+.actionButton{
+  background-color: #389244;
+  border: none;
+  color: white;
+  padding: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 20%;
+  margin-left: 40%;
+  margin-top: 5%;
+}
 .switch input {display:none;}
 
 .slider {

@@ -33,13 +33,17 @@ function minusMeetsExpectation() {
     value--;
     document.getElementById("meetsExpectation").value = value;
 }
-    function addExceedsExpectation() {
+function addExceedsExpectation() {
     var value = parseInt(document.getElementById('exceedsExpectation').value, 10);
     value++;
     document.getElementById("exceedsExpectation").value = value;
 }
-    function minusExceedsExpectation() {
+function minusExceedsExpectation() {
     var value = parseInt(document.getElementById('exceedsExpectation').value, 10);
     value--;
     document.getElementById("exceedsExpectation").value = value;
+}
+function revealAction() {
+  document.getElementById("requiredAction").style.display = "block";
+  document.getElementById("action").style.display = "none";
 }
