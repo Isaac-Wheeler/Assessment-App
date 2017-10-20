@@ -59,6 +59,8 @@
                     <g:field type="text" name="semester" style="width:40%;" placeholder="Semseter Ex: Fall2017"/>
                     <g:checkBox style="display: inline-block;margin-left:15%;"id="completed" name="completed"/>
                     <br>
+                    <g:submitButton class="button" name="submitButton" value="Create" />
+                    <g:submitButton class="button" name="submitButton" value="Cancel" />
                 </div>
             <!--<g:submitButton class="button" name="submitButton" value="Create Outcome" />
              <g:submitButton class="button" name="cancelButton" value="Cancel" />-->
@@ -78,8 +80,18 @@
                       <g:each in="${o.indicators}">
                         <details>
                           <summary class="cat1">Indicator: ${it.indicatorName}</summary>
-                        </details>
-                      </g:each>
+                            <details>
+                              <g:if test="${o.indicators.measures != NULL}">
+                              <g:each in="${o.indicators.measures}">
+                              <summary class="cat2">Measure: ${it.measureTitle}</summary>
+                                <g:if test="${o.indicators.measures.assessmentDocumentation != NULL}">
+                                <g:each in="${o.indicators.measures.assessmentDocumentation}">
+                                  <button class="assess">Assessment: ${it.assessDocTitle}</button>
+                                  <br>
+                                  <button class="newAssess">New<div class="plus"> &oplus;</div></button>
+                            </details>
+                          </details>
+                        </g:each>
                       </g:if>
                     </details>
                   </g:each>
@@ -90,7 +102,15 @@
                     <summary>${c.title}:</summary>
                     <g:if test="${c.indicators != NULL}">
                       <g:each in="${c.indicators}">
-                        <summary class="cat1">Indicator: ${it.indicatorName}</summary>
+                        <details>
+                          <summary class="cat1">Indicator: ${it.indicatorName}</summary>
+                          <details>
+                            <summary class="cat2">Measure: Exam1</summary>
+                            <button class="assess">Assessment: Q1</button>
+                            <br>
+                            <button class="newAssess">New<div class="plus"> &oplus;</div></button>
+                          </details>
+                        </details>
                       </g:each>
                     </g:if>
                   </details>

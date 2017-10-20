@@ -119,6 +119,29 @@ input:checked + .slider:after
 .cat1{
   margin-left: 10%;
 }
+.cat2{
+  margin-left: 20%;
+}
+.assess{
+  background-color: #389244;
+  border: none;
+  font-size: 14px;
+  margin-left: 30%;
+}
+.newAssess{
+  /*background-color: #389244;
+  border: none;*/
+  font-size: 14px;
+  margin-left: 30%;
+  width: 35%;
+}
+.plus{
+    display: inline-block;
+    color: white;
+    padding-left: 15%;
+    font-size: 120%;
+    color: #87bd4b;
+}
 /*&#10095*/
 
 input[type=checkbox] {

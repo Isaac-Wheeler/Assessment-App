@@ -13,6 +13,7 @@
     </head>
     <body>
       <g:if test="${session?.teacher?.admin == false}">
+        <p>hello</p>
         ${response.sendRedirect("/")}
       </g:if>
         <div class=leftPanel>

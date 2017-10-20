@@ -22,7 +22,7 @@
             			<div class="listings">
                 			<h1>${i.title}</h1>
                       <g:if test="${i.teachers != NULL}">
-                          <g:each in="${i.teachers}" var="i">
+                          <g:each in="${i.teachers}" var="t">
                               <p>${it.teacherLastName}</p>
                           </g:each>
                       </g:if>
