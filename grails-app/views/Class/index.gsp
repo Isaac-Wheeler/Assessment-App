@@ -22,13 +22,8 @@
             			<div class="listings">
                 			<h1>${i.title}</h1>
                       <g:if test="${i.teachers != NULL}">
-<<<<<<< HEAD
-                          <g:each in="${i.teachers}" var="t">
-                              <p>${it.teacherLastName}</p>
-=======
                           <g:each in="${i.teachers}" var="o">
                               <p>${o.lastName}</p>
->>>>>>> b1eaa511fbd995dc35d8016860a4bd1bd43e596b
                           </g:each>
                       </g:if>
                       <g:select name="teacherId" from="${Teachers}" id="teacherList" value="${Tid}" style="width:13%;" optionKey="id" optionValue="teacherLastName" />
