@@ -6,10 +6,11 @@ class Classes {
       //NOTE: DB creates ID for table
       String title;
 
-      static hasMany = [ indicators : Indicators ]
+      static hasMany = [ indicators : Indicators , teachers : Teacher ]
 
       static mapping = {
           indicators cascade: 'save-update'
+          teacher cascade: 'save-update'
       }
 
     static constraints = {

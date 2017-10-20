@@ -34,10 +34,15 @@ class BootStrap {
         }
         }
         test {
-          if(Teacher.count() == 0){
+          if(Teacher.count() == 0 && Classes.count() == 0){
            def u = new Teacher(firstName:"admin", lastName:"DeleteMe", username:"admin", password:"password", confirm:"password", admin:true)
            u.passwordHashed = u.password.encodeAsPassword()
            u.save(flush: true)
+           def b = new Classes(title: "CS481")
+           b.addToTeachers(u)
+           def e = new Classes(title: "CS340")
+           b.save(flush: true)
+           e.save(flush: true)
            System.out.println("added default admin")
           }
           if (Outcomes.count() == 0) {
@@ -51,12 +56,6 @@ class BootStrap {
             def g = new Measures(measureTitle: "Exam1_Q2", measureDescription: "Student will be able to")
             a.addToIndicators(f)
             f.addToMeasures(g)
-          }
-          if (Classes.count() == 0) {
-            def b = new Classes(title: "CS481")
-            def e = new Classes(title: "CS340")
-            b.save(flush: true)
-            e.save(flush: true)
           }
 
         }

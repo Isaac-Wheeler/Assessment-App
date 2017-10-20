@@ -16,6 +16,8 @@ class Teacher {
   String passwordHashed;
   boolean admin;
 
+
+
   // transients
   static transients = ['password', 'confirm']
 
