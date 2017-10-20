@@ -27,7 +27,7 @@
             <br>
             <label for="workUsed">Work Used:</label>
             <br>
-            <input type="file" name="workUsed" id="workUsed">
+              <!--<input type="file" name="workUsed" id="workUsed"> --> (not implmented)
             <br>
             <label for="targetGoal">Target Goal:</label>
             <label for="belowExpectation" class="labelEx">Below Expectation:</label>
@@ -88,7 +88,7 @@
                               <button class="assess">Assessment: ${it.assessDocTitle}</button></g:link>
                               <br>
                             </g:each>
-                            <g:link controller="measures" action="create" params="[measures:it.id]">
+                            <g:link controller="assessments" action="create" params="[measures:it.id]">
                             <button class="newAssess">New<div class="plus"> &oplus;</div></button></g:link>
                           </g:if>
                           </details>
