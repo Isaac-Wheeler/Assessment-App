@@ -13,7 +13,8 @@ def index() {
   }
     def classes = Classes.list()
     def indicators = Indicators.list()
-    [Classes:classes, Indicators:indicators]
+    def teachers = Teacher.list()
+    [Classes:classes, Indicators:indicators, Teacher:teachers]
  }
 
 
