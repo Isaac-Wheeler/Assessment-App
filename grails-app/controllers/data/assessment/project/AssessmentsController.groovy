@@ -5,9 +5,25 @@ class AssessmentsController {
   def editAssessment() {
     def outcomes = Outcomes.list()
     def indicators = Indicators.list()
-    System.out.println(outcomes)
     def classes = Classes.list()
-    System.out.println(classes)
+
+    if (request.method == 'POST') {
+      if(!params.submitButton.contains("Cancel")){
+        def AD = new Assessment_Documentation()
+        AD.targetGoal = params.targetGoal
+        //workUsed;     **leaving as a comment for now until ready to implement file uploads.
+        AD.numberOfStudents = params.numberOfStudents
+        AD.needsImprovement = params.needsImprovement
+        AD.meetsExpectations = params.meetsExpectations
+        AD.exceedsExpectations = params.exceedsExpectations
+        AD.summary = params.summary
+        AD.requiredAction = params.requiredAction
+        AD.resultComment = params.resultComment
+        AD.academicSemester = params.academicSemester
+        AD.complete = params.complete
+      }
+    }
+
      return [Outcomes:outcomes, Indicators:indicators, Classes:classes]
     System.out.println("called")
   }
