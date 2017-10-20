@@ -11,6 +11,7 @@ class Assessment_Documentation {
     int meetsExpectations;
     int exceedsExpectations;
     String assessmentDocTitle;
+    String comments;
     String summary;
     String requiredAction;
     String resultComment;
@@ -26,6 +27,7 @@ class Assessment_Documentation {
 
       measureID blank:false
       assessmentDocTitle blank:false
+      comments blank:false
       targetGoal blank:false
       needsImprovement blank:false
       meetsExpectations blank:false
