@@ -142,6 +142,26 @@ input:checked + .slider:after
     font-size: 120%;
     color: #87bd4b;
 }
+.button {
+    background-color: #389244;
+    border: none;
+    color: white;
+    padding: 5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 30%;
+    margin-left: 15%;
+    margin-top: 5%;
+}
+.button:active{
+    box-shadow: 2px 2px 4px #000000;
+}
 /*&#10095*/
 
 input[type=checkbox] {

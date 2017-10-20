@@ -26,10 +26,9 @@
                               <p>${o.lastName}</p>
                           </g:each>
                       </g:if>
-                      <g:select name="teacherId" from="${Teachers}" id="teacherList" value="${Tid}" style="width:13%;" optionKey="id" optionValue="teacherLastName" />
+                      <g:select name="teacherId" from="${Teacher}" id="teacherList" value="${Tid}" style="width:13%;" optionKey="id" optionValue="lastName" />
                       <g:link controller="class" action="assign" params="[classses:i.id]">
-							               <button class="add">Assign</button>
-						          </g:link>
+							               <button class="add">Assign</button></g:link>
 						          <g:link controller="class" action="delete" params="[classes:i.id]">
 							               <button class="add">Delete</button>
 						          </g:link>
