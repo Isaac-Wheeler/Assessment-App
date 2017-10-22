@@ -33,7 +33,7 @@ class Assessment_Documentation {
       meetsExpectations blank:false
       exceedsExpectations blank:false
       summary blank:false
-      requiredAction blank:false
+    //  requiredAction blank:false
       resultComment blank:false
       academicSemester blank:false
       complete blank:false
