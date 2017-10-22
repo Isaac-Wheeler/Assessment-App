@@ -16,6 +16,7 @@
               </g:hasErrors>
             <g:form class="simpleform" url="index">
                 <g:textField type="text" id="classTitle"  name="title"  value="${c?.title}" placeholder="Name" class="${hasErrors(bean:outcome,field:'outcomeTitle','errors')}"/>
+                <g:hiddenField name="type" value="new" />
                 <button id="classButton" class="add">Add<div class="plus"> &oplus;</div></button>
             </g:form>
             		<g:each in="${Classes}" var="i">
@@ -26,9 +27,12 @@
                               <p>${o.lastName}</p>
                           </g:each>
                       </g:if>
-                      <g:select name="teacherId" from="${Teacher}" id="teacherList" value="${Tid}" style="width:13%;" optionKey="id" optionValue="lastName" />
-                      <g:link controller="class" action="assign" params="[classses:i.id]">
-							               <button class="add">Assign</button></g:link>
+                      <g:form class"simpleform" url="index">
+                        <g:select name="teacherId" from="${Teacher}" id="teacherList" value="${Tid}" style="width:13%;" optionKey="id" optionValue="lastName" />
+                        <g:hiddenField name="type" value="assign" />
+                        <g:hiddenField name="class" value="${i.id}" />
+							          <button id="assign" class="add">Assign</button>
+                      </g:form>
 						          <g:link controller="class" action="delete" params="[classes:i.id]">
 							               <button class="add">Delete</button>
 						          </g:link>
