@@ -23,5 +23,5 @@ def index() {
    c.delete(flush:true)
    redirect(controller:'class')
  }
-
+ 
 }
