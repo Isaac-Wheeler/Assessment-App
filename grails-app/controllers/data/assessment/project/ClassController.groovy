@@ -6,7 +6,7 @@ def index() {
   def classes = Classes.list()
   def indicators = Indicators.list()
   def teachers = Teacher.list()
-  
+
   if (request.method == 'POST') {
     if(params.type == "new"){
     def c = new Classes()
@@ -16,7 +16,6 @@ def index() {
         redirect(controller:'class')
       }
     }else{
-      [teacherId:1, type:assign, class:1, controller:class, format:null, action:index]
       def c = Classes.get(params.class)
       def teacher = Teaacher.get(params.teacherId)
       c.addToteachers(teacher)
