@@ -6,7 +6,7 @@ def index() {
   def classes = Classes.list()
   def indicators = Indicators.list()
   def teachers = Teacher.list()
-  
+
   if (request.method == 'POST') {
     if(params.type == "new"){
     def c = new Classes()
