@@ -9,7 +9,7 @@ class UserController {
             // create domain object and assign parameters using data binding
             def u = new Teacher(params)
             u.passwordHashed = u.password.encodeAsPassword()
-            if (! u.save()) {
+            if (! u.save(flush:true)) {
                 // validation failed, render registration page again
                 return [teacher:u]
             } else {
