@@ -6,7 +6,6 @@ import spock.lang.Specification
 class OutcomesSpec extends Specification implements DomainUnitTest<Outcomes> {
 
     def setup() {
-      mockDomain(Indicators)
     }
 
     def cleanup() {
@@ -14,45 +13,49 @@ class OutcomesSpec extends Specification implements DomainUnitTest<Outcomes> {
 
     void "testing adding and deleting an Outcome"() {
 
-      when: 'Adding a new Outcome "a" with correct properties '
-      def u = new Outcomes(outcomeCategory: 'a', outcomeCategoryDescription: "Students will learn how to")
-      u.save(flush: true)
+      given: "A brand new outcome"
+      def newOutcome = new Outcomes(outcomeCategory: 'A', outcomeCategoryDescription: "Students will learn how to")
 
-        then: 'Outcome should be saved successfully'
-        Outcomes.count() == 1
+      when: "The outcome is saved"
+      newOutcome.save(flush:true)
 
-      when: 'Removing an Outcome'
-      def toBeDeleted = Outcomes.get(1)
-      toBeDeleted.delete(flush: true)
+      then: "Is saved successfully and can be found in the DB"
+      newOutcome.errors.errorCount == 0
+      newOutcome.id != null
+      Outcomes.get(newOutcome.id).outcomeCategory == "A"
 
-        then: 'Outcome should be deleted successfully'
-        Outcomes.count() == 0
+      when: "A property is changed changed"
+      def foundOutcome = Outcomes.get(newOutcome.id)
+      foundOutcome.outcomeCategory = "B"
+      foundOutcome.save(flush:true)
+
+      then: "the change should be reflected in the DB"
+      Outcomes.get(newOutcome.id).outcomeCategory == "B"
+
+      when: "outcome is deleted"
+      foundOutcome.delete(flush:true)
+
+      then: "the outcome is removed from the DB"
+      !Outcomes.exists(foundOutcome.id)
+      !Outcomes.exists(newOutcome.id)
 
 
     }
 
     void "testing Outcome constraints"() {
 
-      when: 'Outcome category is left blank'
-      def u = new Outcomes(outcomeCategory: ' ', outcomeCategoryDescription: "Students will learn how to")
-      u.save(flush: true)
+      given: "an outcome has fields that fail constraints"
+      def newOutcome = new Outcomes(outcomeCategory: ' ', outcomeCategoryDescription: " ")
 
-        then: 'Outcome should not be saved'
-        Outcomes.count() == 0
+      when: "outcome is validated"
+      newOutcome.validate()
 
-      when: 'Outcome category description is left blank'
-      def v = new Outcomes(outcomeCategory: 'a', outcomeCategoryDescription: " ")
-      v.save(flush: true)
+      then:
+      !newOutcome.validate(['outcomeCategory'])
+      newOutcome.errors['outcomeCategory'].code == 'typeMismatch'   // convertEmptyStringsToNull grails property
+      !newOutcome.validate(['outcomeCategoryDescription'])
+      newOutcome.errors['outcomeCategoryDescription'].code == 'nullable'
 
-        then: 'Outcome should not be saved'
-        Outcomes.count() == 0
-
-      when: 'Outcome category is more than 1 character'
-      def w = new Outcomes(outcomeCategory: 'ab', outcomeCategoryDescription: "Students will learn how to")
-      w.save(flush: true)
-
-        then: 'Outcome should not be saved'
-        Outcomes.count() == 0
 
         //test for uniqueness
       when: 'Outcome category is added with correct fields and constraints'
@@ -69,6 +72,7 @@ class OutcomesSpec extends Specification implements DomainUnitTest<Outcomes> {
 
         then: 'Outcome should not be saved because it violates the unique constraint on outcomeCategory'
         Outcomes.count() == 1
+        !y.save(flush:true)
         //end of test for uniqueness
 
     }
@@ -86,8 +90,8 @@ class OutcomesSpec extends Specification implements DomainUnitTest<Outcomes> {
       e.addToIndicators(b)
       f.addToIndicators(c)
       f.addToIndicators(d)
-      e.save()
-      f.save()
+      e.save(flush:true)
+      f.save(flush:true)
 
         then: "the 4 indicators and the 2 outcomes should have been saved correctly"
         Outcomes.count() == 2
@@ -101,12 +105,6 @@ class OutcomesSpec extends Specification implements DomainUnitTest<Outcomes> {
         aa.indicators.size() == 2
         bb.indicators.size() == 2
 
-      when : "Deleting an outcome"
-      f.delete()
-
-        then: "All indicators associated with deleted outcome should also be deleted"
-        Outcomes.count() == 1
-        Indicators.count() == 4
 
 
     }

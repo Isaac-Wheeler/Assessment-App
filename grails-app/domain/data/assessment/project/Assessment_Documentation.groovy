@@ -3,7 +3,6 @@ package data.assessment.project
 class Assessment_Documentation {
 
     //NOTE: DB creates ID for table.
-    int measureID;
     int targetGoal;
     //workUsed;     **leaving as a comment for now until ready to implement file uploads.
     int numberOfStudents;
@@ -25,7 +24,6 @@ class Assessment_Documentation {
 
     static constraints = {
 
-      measureID blank:false
       assessmentDocTitle blank:false
       comments blank:false
       targetGoal blank:false
@@ -33,7 +31,7 @@ class Assessment_Documentation {
       meetsExpectations blank:false
       exceedsExpectations blank:false
       summary blank:false
-      requiredAction blank:false
+      requiredAction nullable: true
       resultComment blank:false
       academicSemester blank:false
       complete blank:false

@@ -12,174 +12,132 @@ class TeacherSpec extends Specification implements DomainUnitTest<Teacher> {
     def cleanup() {
     }
 
-    void 'Test adding Teacher and deleting Teacher'() {
-        when: 'adding new teacher'
-        def u = new Teacher(firstName:"John", lastName:"Singer", username:"JSinger", password:"password", confirm:"password", admin:true)
-        u.passwordHashed = "aaawwsdSHhdhS"
-        u.save(flush: true)
+    void 'Test adding, changing, and deleting a teacher'() {
 
-          then: 'u.save() should work (since the fields meet the constraints) and Teacher.count() should be equal to 1'
-          Teacher.count() == 1
+        given: "A brand new teacher"
+        def newTeacher = new Teacher(firstName: "Joe", lastName: "Singer", username: "JSinger", password: "password",
+                        confirm: "password", passwordHashed: "AASSHHDDSS", admin: true)
 
-        when: 'adding a 2nd teacher'
-        def v = new Teacher(firstName:"Bob", lastName:"Smith", username:"BSmith", password:"password", confirm:"password", admin:false)
-        v.passwordHashed = "aaawwsdSHJJUhS"
-        v.save(flush: true)
+        when: "The teacher is saved"
+        newTeacher.save(flush:true)
 
-          then: 'u.save() should work (since the fields meet the constraints) and Teacher.count() should be equal to 2'
-          Teacher.count() == 2
+        then: "Is saved successfully and can be found in the DB"
+        newTeacher.errors.errorCount == 0
+        newTeacher.id != null
+        Teacher.get(newTeacher.id).username == "JSinger"
 
-        when: 'deleting new teacher'
-        def toBeDeleted = Teacher.get(1)
-        toBeDeleted.delete(flush: true)
+        when: "A property is changed changed"
+        def foundTeacher = Teacher.get(newTeacher.id)
+        foundTeacher.lastName = "Smith"
+        foundTeacher.save(flush:true)
 
-          then: 'if we delete a teacher than Teacher.count() should decrease by 1, thus leaving us with 1 left'
-          Teacher.count() == 1
-          Teacher.first().firstName == "Bob"
+        then: "the change should be reflected in the DB"
+        Teacher.get(newTeacher.id).lastName == "Smith"
 
+        when: "Teacher is deleted"
+        foundTeacher.delete(flush:true)
 
-        when: 'deleting new teacher'
-        v.delete(flush: true)
-
-          then: 'deleting the last teacher should leave us without any teachers.'
-          Teacher.count() == 0
-
+        then: "the teacher is removed from the DB"
+        !Teacher.exists(foundTeacher.id)
+        !Teacher.exists(newTeacher.id)
     }
 
-    void 'Test trying to add 2 teachers with same username'() {
-        when: 'adding new teacher'
-        def u = new Teacher(firstName:"John", lastName:"Singer", username:"JSinger", password:"password", confirm:"password", admin:true)
-        u.passwordHashed = "aaawwsdSHhdhS"
-        u.save(flush: true)
+    void "Test the firstName, lastName, and username constraint (blank/null)"() {
 
-          then: 'Since the properties are correct and do not break any constraints then new teacher should be added successfully'
-          Teacher.count() == 1
+        given: "A teacher which fails all blank constraints"
+        def newTeacher = new Teacher(firstName: " ", lastName: " ", username: " ", password: "password",
+                        confirm: "password", passwordHashed: "AASSHHDDSS", admin: true)
 
-        when: 'adding new teacher with already taken username'
-        def v = new Teacher(firstName:"Johnny", lastName:"Singer", username:"JSinger", password:"password", confirm:"password", admin:true)
-        v.passwordHashed = "aaawwsdSHhdJJ"
-        v.save(flush: true)
+        when: "the teacher is validated"
+        newTeacher.validate()
 
-          then: 'The username constraint prevents any 2 teachers from having the same username, thus v.save() should have failed and left us with only 1 teacher instead of 2'
-          Teacher.count() == 1
-
-    }
-
-    void 'Testing password must match contraint'() {
-
-      when: 'attempting to add a user without matching password'
-      def u = new Teacher(firstName:"John", lastName:"Singer", username:"JSinger", password:"password", confirm:"passwordd", admin:true)
-      u.passwordHashed = "aaawwsdSHhdhS"
-      u.save(flush: true)
-
-        then: 'u.save() should not work because passwords mis-matched and thus count == 0'
-        Teacher.count() == 0
-
-
-
-    }
-    void 'Testing blank and size constraints'() {
-
-      when: 'leaving firstName field blank'
-      def u = new Teacher(firstName:" ", lastName:"Singer", username:"JSinger", password:"password", confirm:"password", admin:true)
-      u.passwordHashed = "aaawDHDdSHhdhS"
-      u.save(flush: true)
-
-        then: 'u.save() should not work because the constraint should prevent the firstName field from being blank'
-        Teacher.count() == 0
-
-      when: 'leaving lastName field blank'
-      def v = new Teacher(firstName:"John", lastName:" ", username:"JSinger", password:"password", confirm:"password", admin:true)
-      v.passwordHashed = "aaawDHDdSDDHhdhS"
-      v.save(flush: true)
-
-        then: 'v.save() should not work because the constraint should prevent the lastName field from being blank'
-        Teacher.count() == 0
-
-      when: 'leaving username field blank'
-      def w = new Teacher(firstName:"John", lastName:"Singer", username:" ", password:"password", confirm:"password", admin:true)
-      w.passwordHashed = "aaaXYySwDHDdSHhdhS"
-      w.save(flush: true)
-
-        then: 'w.save() should not work because the constraint should prevent the username field from being blank'
-        Teacher.count() == 0
-
-      when: 'leaving password field blank'
-      def x = new Teacher(firstName:"John", lastName:"Singer", username:"JSinger", password:" ", confirm:"password", admin:true)
-      x.passwordHashed = "aaaXSwKKDHDdSHhdhS"
-      x.save(flush: true)
-
-        then: 'x.save() should not work because the constraint should prevent the password field from being blank'
-        Teacher.count() == 0
-
-      when: 'leaving confirm field blank'
-      def y = new Teacher(firstName:"John", lastName:"Singer", username:"JSinger", password:"password", confirm:" ", admin:true)
-      y.passwordHashed = "aaaXSwDHDdSSSHhdhS"
-      y.save(flush: true)
-
-        then: 'y.save() should not work because the constraint should prevent the confirm field from being blank'
-        Teacher.count() == 0
-
-      when: 'leaving admin field blank'
-      def z = new Teacher(firstName:"John", lastName:"Singer", username:"JSinger", password:"password", confirm:"password", admin: null)
-      z.passwordHashed = "aaaXSwDHDdSShhSHhdhS"
-      z.save(flush: true)
-
-        then: 'z.save() should not work because the constraint should prevent the admin field from being blank'
-        Teacher.count() == 0
-
-      when: 'Username field is less than 5 characters long'
-      def aa = new Teacher(firstName:"John", lastName:"Singer", username:"JSin", password:"password", confirm:"password", admin: true)
-      aa.passwordHashed = "aaaXSwDHDdSSKJhhSHhdhS"
-      aa.save(flush: true)
-
-        then: 'aa.save() should not work because the constraint should prevent the username field from being less than 5 characters long blank'
-        Teacher.count() == 0
-
-      when: 'Username field is more than 15 characters long'
-      def bb = new Teacher(firstName:"John", lastName:"Singer", username:"JohnSinger151515", password:"password", confirm:"password", admin: true)
-      bb.passwordHashed = "aaaXSwDHDdSSKQQJhhSHhdhS"
-      bb.save(flush: true)
-
-        then: 'bb.save() should not work because the constraint should prevent the username field from being more than 15 characters long blank'
-        Teacher.count() == 0
-
-      when: 'Password field is less than 5 characters long'
-      def cc = new Teacher(firstName:"John", lastName:"Singer", username:"JSinger", password:"paxd", confirm:"paxd", admin: true)
-      cc.passwordHashed = "aaaXSwDHDdSSKJWWhhSHhdhS"
-      cc.save(flush: true)
-
-        then: 'cc.save() should not work because the constraint should prevent the password field from being less than 5 characters long blank'
-        Teacher.count() == 0
-
-      when: 'Password field is more than 15 characters long'
-      def dd = new Teacher(firstName:"John", lastName:"Singer", username:"JSinger", password:"passwordIsTooLong", confirm:"passwordIsTooLong", admin: true)
-      dd.passwordHashed = "aaaXSwDHDdSSKJWWhhSHhdhS"
-      dd.save(flush: true)
-
-        then: 'dd.save() should not work because the constraint should prevent the password field from being more than 15 characters long blank'
-        Teacher.count() == 0
-
-    }
-
-    void 'Testing that a teacher can be a non-admin'() {
-
-      when: 'admin field is false'
-      def u = new Teacher(firstName:"John", lastName:"Singer", username:"JSinger", password:"password", confirm:"password", admin: false)
-      u.passwordHashed = "aaaXSwDHDdSSKJWWhhSHhdBBhS"
-      u.save(flush: true)
-
-        then: 'u.save() should work because user can be a non-admin'
-        Teacher.count() == 1
+        then:
+        !newTeacher.validate(['firstName'])
+        newTeacher.errors['firstName'].code == 'nullable'   // convertEmptyStringsToNull grails property
+        !newTeacher.validate(['lastName'])
+        newTeacher.errors['lastName'].code == 'nullable'
+        !newTeacher.validate(['username'])
+        newTeacher.errors['username'].code == 'nullable'
 
 
     }
 
-      void 'Testing password hashing works'() {
+    void "Test the admin blank/null constraint"() {
 
-        //still need to figure out how to import PasswordCodec to access hashing method
+      given: "A teacher which fails to give admin either true or false"
+      def nullAdminTeacher = new Teacher(firstName: "John", lastName: "Singer", username: "JSinger", password: "password",
+                                        confirm: "password", passwordHashed: "AASSHHDDSS", admin: null)
+
+      when: "the teacher is validated"
+      nullAdminTeacher.validate()
+
+      then:
+      !nullAdminTeacher.validate(['admin'])
+      nullAdminTeacher.errors['admin'].code == 'typeMismatch'   //admin needs to be either true or false, otherwise it fails
+
+    }
+
+    void "Test the password/confirm constraint"() {
+
+      given: "A teacher which fails password matching"
+      def newTeacher = new Teacher(firstName: "John", lastName: "Singer", username: "JSinger", password: "password",
+                                        confirm: "passworddd", passwordHashed: "AASSHHDDSS", admin: true)
+
+      when: "the teacher is validated"
+      newTeacher.validate()
+
+      then:
+      !newTeacher.validate(['password'])
+      newTeacher.errors['password'].code == 'teacher.password.dontmatch'    // the code shows that password failed the validator
+
+    }
+
+    void "Testing size constraints"() {
+
+      given: "newTeacher and newTeacher2 that fails size constraints"
+      def newTeacher = new Teacher(firstName: "John", lastName: "Singer", username: "JSin", password: "pass",
+                                        confirm: "pass", passwordHashed: "AASSHHDDSS", admin: true)
+
+      def newTeacher2 = new Teacher(firstName: "John", lastName: "Singer", username: "JohnSinger151515", password: "passwordIsMuchTooLong",
+                                  confirm: "passwordIsMuchTooLong", passwordHashed: "AASSHHDDSS", admin: true)
 
 
-      }
+
+      when: "newTeacher and newTeacher2 is validated"
+      newTeacher.validate()
+      newTeacher2.validate()
+
+
+      then:
+      !newTeacher.validate(['username'])
+      newTeacher.errors['username'].code == 'size.toosmall'
+      !newTeacher.validate(['password'])
+      newTeacher.errors['password'].code == 'size.toosmall'
+      !newTeacher2.validate(['username'])
+      newTeacher2.errors['username'].code == 'size.toobig'
+      !newTeacher2.validate(['password'])
+      newTeacher2.errors['password'].code == 'size.toobig'
+
+
+    }
+
+    void "Testing username unique constraints"() {
+
+      given: "newTeacher2 that fails usrename unique constraint"
+      def newTeacher = new Teacher(firstName: "John", lastName: "Singer", username: "JSinger", password: "password",
+                                        confirm: "password", passwordHashed: "AASSHHDDSS", admin: true)
+
+      def newTeacher2 = new Teacher(firstName: "Jane", lastName: "Singer", username: "JSinger", password: "password",
+                                    confirm: "password", passwordHashed: "AASSHHDDSSSS", admin: true)
+
+       when: "newTeacher and newTeacher2 are saved"
+       newTeacher.save(flush:true)
+       newTeacher2.save(flush:true)
+
+       then:
+       Teacher.count() == 1
+       !newTeacher2.save()
+
+    }
 
 }
