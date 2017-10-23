@@ -27,12 +27,13 @@
                               <p>${o.lastName}</p>
                           </g:each>
                       </g:if>
-                      <g:form class"simpleform" url="index">
+                      <g:form class="simpleform" url="index">
                         <g:select name="teacherId" from="${Teacher}" id="teacherList" value="${Tid}" style="width:13%;" optionKey="id" optionValue="lastName" />
                         <g:hiddenField name="type" value="assign" />
                         <g:hiddenField name="class" value="${i.id}" />
 							          <button id="assign" class="add">Assign</button>
                       </g:form>
+                      <br>
 						          <g:link controller="class" action="delete" params="[classes:i.id]">
 							               <button class="add">Delete</button>
 						          </g:link>
