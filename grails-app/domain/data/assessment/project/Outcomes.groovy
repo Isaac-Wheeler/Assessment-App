@@ -13,7 +13,7 @@ class Outcomes {
 
 
     static constraints = {
-      outcomeCategory blank:false, size: 1..1, unique:true
+      outcomeCategory blank:false, unique:true
       outcomeCategoryDescription blank:false
 
     }
