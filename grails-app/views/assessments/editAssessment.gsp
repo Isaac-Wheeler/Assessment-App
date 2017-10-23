@@ -13,10 +13,11 @@
             <asset:javascript src="editAssessment.js"/>
     </head>
     <body>
+      <g:form class="simpleform" url="editAssessment">
         <!-- right half of the page -->
         <div class="main">
           <div class="info">
-            <g:form class="simpleform" url="/editAssessment">
+
             <h1>Assessment Documentation</h1>
             <label for="assessmentDocTitle">Assessment Documentation Title:</label>
             <br>
@@ -66,7 +67,7 @@
             <br>
             <g:submitButton class="button" name="submitButton" value="Create" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
-          </g:form>
+
           </div>
         </div>
         <div class="sidebar">
@@ -90,12 +91,10 @@
                           <summary class="cat2">Measure: ${it.measureTitle}</summary>
                           <g:if test="${it.assessment_documents != NULL}">
                             <g:each in="${it.assessment_documents}">
-                              <g:link controller="assessment_documents" action="reload" params="[assessment_document:it.id]">
-                              <button class="assess">Assessment: ${it.assessDocTitle}</button></g:link>
+                              <button class="assess" name="submitButton" value="edit_${it.id}">Assessment: ${it.assessDocTitle}</button>
                               <br>
                             </g:each>
-                            <g:link controller="assessments" action="create" params="[measures:it.id]">
-                            <button class="newAssess">New<div class="plus"> &oplus;</div></button></g:link>
+                            <button class="newAssess" name="submitButton" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
                           </g:if>
                           </details>
                         </g:each>
@@ -120,12 +119,10 @@
                             <summary class="cat2">Measure: ${it.measureTitle}</summary>
                             <g:if test="${it.assessment_documents != NULL}">
                               <g:each in="${it.assessment_documents}">
-                                <g:link controller="assessment_documents" action="reload" params="[assessment_document:it.id]">
-                                <button class="assess">Assessment: ${it.assessDocTitle}</button></g:link>
+                                <button class="assess" name="submitButton" value="edit_${it.id}">Assessment: ${it.assessDocTitle}</button>
                                 <br>
                               </g:each>
-                              <g:link controller="measures" action="create" params="[measures:it.id]">
-                              <button class="newAssess">New<div class="plus"> &oplus;</div></button></g:link>
+                              <button class="newAssess" name="submitButton" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
                             </g:if>
                             </details>
                           </g:each>
@@ -138,5 +135,6 @@
               </div>
             </div>
         </div>
+        </g:form>
     </body>
 </html>

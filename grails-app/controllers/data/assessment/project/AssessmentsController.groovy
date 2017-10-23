@@ -7,15 +7,29 @@ class AssessmentsController {
     def indicators = Indicators.list()
     def classes = Classes.list()
 
+
     if (request.method == 'POST') {
       if(!params.submitButton.contains("Cancel")){
+        def mId = null
+        def measure = null
+        if(params.submitButton.startsWith('edit_')){
+          mId = params.submitButton-"edit_"
+          measure = Measures.get(mId)
+        }
+        if(params.submitButton.startsWith('add_')){
+          mId = params.submitButton-"add_"
+          measure = Measures.get(mId)
+        }
         def AD = new Assessment_Documentation()
-        AD.targetGoal = params.targetGoal
+        AD.targetGoal = Integer.parseInt(params.targetGoal)
         //workUsed;     **leaving as a comment for now until ready to implement file uploads.
-        AD.numberOfStudents = params.meetsExpectations + params.needsImprovement + params.exceedsExpectations
-        AD.needsImprovement = params.needsImprovement
-        AD.meetsExpectations = params.meetsExpectations
-        AD.exceedsExpectations = params.exceedsExpectations
+        def holder = Integer.parseInt(params.meetsExpectations) +
+        Integer.parseInt(params.needsImprovement) +
+        Integer.parseInt(params.exceedsExpectations)
+        AD.numberOfStudents = holder
+        AD.needsImprovement = Integer.parseInt(params.needsImprovement)
+        AD.meetsExpectations = Integer.parseInt(params.meetsExpectations)
+        AD.exceedsExpectations = Integer.parseInt(params.exceedsExpectations)
         AD.summary = params.summary
         if(params.requiredAction != null){
           AD.requiredAction = params.requiredAction
@@ -24,16 +38,25 @@ class AssessmentsController {
           AD.resultComment = params.resultComment
         }
         AD.academicSemester = params.academicSemester
-        AD.complete = params.complete
-
-        if(!AD.save()){
+        if(params.complete == null){
+          AD.complete = false
+        }else{
+          AD.complete = params.complete
+        }
+        if(measure != null){
+          measure.addToAssessment_documents(AD)
+          if(!measure.save(flush:true)){
+            return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes]
+          }
+        }
+        if(!AD.save(flush:true)){
           return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes]
         }
 
       }
     }
 
-     return [Outcomes:outcomes, Indicators:indicators, Classes:classes]
+    return [Outcomes:outcomes, Indicators:indicators, Classes:classes]
     System.out.println("called")
   }
 
