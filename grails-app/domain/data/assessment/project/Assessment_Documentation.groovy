@@ -31,7 +31,11 @@ class Assessment_Documentation {
       meetsExpectations blank:false
       exceedsExpectations blank:false
       summary blank:false
+<<<<<<< HEAD
       requiredAction nullable: true
+=======
+    //  requiredAction blank:false
+>>>>>>> 86b5e2e16a5d0b0df171f75eb46b002126ccf7f1
       resultComment blank:false
       academicSemester blank:false
       complete blank:false

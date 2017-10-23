@@ -16,6 +16,7 @@
         <!-- right half of the page -->
         <div class="main">
           <div class="info">
+            <g:form class="simpleform" url="/editAssessment">
             <h1>Assessment Documentation</h1>
             <label for="assessmentDocTitle">Assessment Documentation Title:</label>
             <br>
@@ -65,6 +66,7 @@
             <br>
             <g:submitButton class="button" name="submitButton" value="Create" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
+          </g:form>
           </div>
         </div>
         <div class="sidebar">

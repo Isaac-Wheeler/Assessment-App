@@ -12,15 +12,24 @@ class AssessmentsController {
         def AD = new Assessment_Documentation()
         AD.targetGoal = params.targetGoal
         //workUsed;     **leaving as a comment for now until ready to implement file uploads.
-        AD.numberOfStudents = params.numberOfStudents
+        AD.numberOfStudents = params.meetsExpectations + params.needsImprovement + params.exceedsExpectations
         AD.needsImprovement = params.needsImprovement
         AD.meetsExpectations = params.meetsExpectations
         AD.exceedsExpectations = params.exceedsExpectations
         AD.summary = params.summary
-        AD.requiredAction = params.requiredAction
-        AD.resultComment = params.resultComment
+        if(params.requiredAction != null){
+          AD.requiredAction = params.requiredAction
+        }
+        if(params.resultComment != null){
+          AD.resultComment = params.resultComment
+        }
         AD.academicSemester = params.academicSemester
         AD.complete = params.complete
+
+        if(!AD.save()){
+          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes]
+        }
+
       }
     }
 
