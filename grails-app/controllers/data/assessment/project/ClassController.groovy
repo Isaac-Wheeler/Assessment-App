@@ -17,8 +17,8 @@ def index() {
       }
     }else{
       def c = Classes.get(params.class)
-      def teacher = Teaacher.get(params.teacherId)
-      c.addToteachers(teacher)
+      def teacher = Teacher.get(params.teacherId)
+      c.addToTeachers(teacher)
       if(!c.save(flush:true)){
         return [c:c, Classes:classes, Indicators:indicators, Teacher:teachers]
         redirect(controller:'class')
