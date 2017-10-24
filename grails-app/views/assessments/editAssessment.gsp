@@ -91,7 +91,7 @@
                           <summary class="cat2">Measure: ${it.measureTitle}</summary>
                           <g:if test="${it.assessment_documents != NULL}">
                             <g:each in="${it.assessment_documents}">
-                              <button class="assess" name="submitButton" value="edit_${it.id}">Assessment: ${it.assessDocTitle}</button>
+                              <button class="assess" name="submitButton" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                               <br>
                             </g:each>
                             <button class="newAssess" name="submitButton" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
@@ -119,7 +119,7 @@
                             <summary class="cat2">Measure: ${it.measureTitle}</summary>
                             <g:if test="${it.assessment_documents != NULL}">
                               <g:each in="${it.assessment_documents}">
-                                <button class="assess" name="submitButton" value="edit_${it.id}">Assessment: ${it.assessDocTitle}</button>
+                                <button class="assess" name="submitButton" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                                 <br>
                               </g:each>
                               <button class="newAssess" name="submitButton" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
