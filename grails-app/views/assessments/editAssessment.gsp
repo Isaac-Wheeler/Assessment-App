@@ -69,9 +69,11 @@
             <br>
             <g:textArea id="requiredAction" value="${assessment_documents?.requiredAction}" name="requiredAction" rows="10" cols="100" class="actionsText" placeholder="Required Actions"/>
             <br>
-            <!--<g:submitButton class="button" name="submitButton" value="Create" /> Not useable -->
+            <g:if test="${measureID != NULL}">
+              <g:hiddenField name="measureID" value="${measureID}"/>
+              <g:submitButton class="button" name="submitButton" value="Edit" />
+            </g:if>
             <g:submitButton class="button" name="submitButton" value="Cancel" />
-
           </div>
         </div>
         <div class="sidebar">
@@ -90,15 +92,15 @@
                       <details>
                       <summary class="cat1">Indicator: ${it.indicatorName}</summary>
                       <g:if test="${it.measures != NULL}">
-                        <g:each in="${it.measures}">
+                        <g:each in="${it.measures}" var="m">
                           <details>
-                          <summary class="cat2">Measure: ${it.measureTitle}</summary>
-                          <g:if test="${it.assessment_documents != NULL}">
-                            <g:each in="${it.assessment_documents}">
+                          <summary class="cat2">Measure: ${m.measureTitle}</summary>
+                          <g:if test="${m.assessment_documents != NULL}">
+                            <g:each in="${m.assessment_documents}">
                               <button class="assess" name="submitButton" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                               <br>
                             </g:each>
-                            <button class="newAssess" name="submitButton" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
+                            <button class="newAssess" name="submitButton" value="add_${m.id}">New<div class="plus"> &oplus;</div></button>
                           </g:if>
                           </details>
                         </g:each>
@@ -118,15 +120,15 @@
                         <details>
                         <summary class="cat1">Indicator: ${it.indicatorName}</summary>
                         <g:if test="${it.measures != NULL}">
-                          <g:each in="${it.measures}">
+                          <g:each in="${it.measures}" var="m">
                             <details>
-                            <summary class="cat2">Measure: ${it.measureTitle}</summary>
-                            <g:if test="${it.assessment_documents != NULL}">
-                              <g:each in="${it.assessment_documents}">
+                            <summary class="cat2">Measure: ${m.measureTitle}</summary>
+                            <g:if test="${m.assessment_documents != NULL}">
+                              <g:each in="${m.assessment_documents}">
                                 <button class="assess" name="submitButton" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                                 <br>
                               </g:each>
-                              <button class="newAssess" name="submitButton" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
+                              <button class="newAssess" name="submitButton" value="add_${m.id}">New<div class="plus"> &oplus;</div></button>
                             </g:if>
                             </details>
                           </g:each>

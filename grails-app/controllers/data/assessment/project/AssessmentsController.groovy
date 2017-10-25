@@ -10,12 +10,9 @@ class AssessmentsController {
 
     if (request.method == 'POST') {
       if(!params.submitButton.contains("Cancel")){
+        if(!params.submitButton.startsWith('edit_')){
         def mId = null
         def measure = null
-        if(params.submitButton.startsWith('edit_')){
-          mId = params.submitButton-"edit_"
-          measure = Measures.get(mId)
-        }
         if(params.submitButton.startsWith('add_')){
           mId = params.submitButton-"add_"
           measure = Measures.get(mId)
@@ -45,10 +42,20 @@ class AssessmentsController {
         }else{
           AD.complete = params.complete
         }
+        if(params.measureID != null){
+          measure = Measures.get(params.measureID)
+        }
         AD.setMeasure(measure)
         if(!AD.save(flush:true)){
           return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes]
         }
+      }else{
+        System.out.println(params)
+        def ADId = params.submitButton-"edit_"
+        def AD = Assessment_Documentation.get(ADId)
+
+        return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measureID:AD.measure.id]
+      }
       }
     }
 
