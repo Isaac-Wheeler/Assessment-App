@@ -31,6 +31,8 @@ class AssessmentsController {
         AD.meetsExpectations = Integer.parseInt(params.meetsExpectations)
         AD.exceedsExpectations = Integer.parseInt(params.exceedsExpectations)
         AD.summary = params.summary
+        AD.assessmentDocTitle = params.assessmentDocTitle
+        AD.comments = params.comments
         if(params.requiredAction != null){
           AD.requiredAction = params.requiredAction
         }
@@ -43,16 +45,10 @@ class AssessmentsController {
         }else{
           AD.complete = params.complete
         }
-        if(measure != null){
-          measure.addToAssessment_documents(AD)
-          if(!measure.save(flush:true)){
-            return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes]
-          }
-        }
+        AD.setMeasure(measure)
         if(!AD.save(flush:true)){
           return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes]
         }
-
       }
     }
 

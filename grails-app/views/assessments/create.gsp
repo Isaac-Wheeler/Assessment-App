@@ -9,9 +9,9 @@
       	<p>Complete the form below to create an Measure</p>
     </div>
     <g:form class="simpleform" url="create">
-   			 <g:hasErrors bean="${teacher}">
+   			 <g:hasErrors bean="${Measures}">
       			<div class="errors">
-        				<g:renderErrors bean="${teacher}"/>
+        				<g:renderErrors bean="${Measures}"/>
       			</div>
     			</g:hasErrors>
     		<div class="backgrounds">

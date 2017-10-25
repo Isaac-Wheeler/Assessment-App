@@ -17,7 +17,11 @@
         <!-- right half of the page -->
         <div class="main">
           <div class="info">
-
+            <g:hasErrors bean="${assessment_documents}">
+         			<div class="errors">
+           				<g:renderErrors bean="${assessment_documents}"/>
+         			</div>
+       			</g:hasErrors>
             <h1>Assessment Documentation</h1>
             <label for="assessmentDocTitle">Assessment Documentation Title:</label>
             <br>
@@ -65,7 +69,7 @@
             <br>
             <g:textArea id="requiredAction" value="${assessment_documents?.requiredAction}" name="requiredAction" rows="10" cols="100" class="actionsText" placeholder="Required Actions"/>
             <br>
-            <g:submitButton class="button" name="submitButton" value="Create" />
+            <!--<g:submitButton class="button" name="submitButton" value="Create" /> Not useable -->
             <g:submitButton class="button" name="submitButton" value="Cancel" />
 
           </div>
