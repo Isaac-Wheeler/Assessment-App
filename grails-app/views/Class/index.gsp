@@ -20,12 +20,18 @@
                 <button id="classButton" class="add">Add<div class="plus"> &oplus;</div></button>
             </g:form>
             		<g:each in="${Classes}" var="i">
-            			<div class="listings">
+            			<div class="listings" >
                 			<h1>${i.title}</h1>
                       <g:if test="${i.teachers != NULL}">
+                          <div class="teach" style="margin-left: 40%;width: 20%; text-align: left;">
                           <g:each in="${i.teachers}" var="o">
-                              <p>${o.lastName}</p>
+
+                                <button class="deleteButton" style="text-align: left;">-</button>
+                              ${o.lastName}
+                              <br>
                           </g:each>
+                          </div>
+                          <br>
                       </g:if>
                       <g:form class="simpleform" url="index">
                         <g:select name="teacherId" from="${Teacher}" id="teacherList" value="${Tid}" style="width:13%;" optionKey="id" optionValue="lastName" />
