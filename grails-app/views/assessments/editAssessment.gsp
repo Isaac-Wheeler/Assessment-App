@@ -16,7 +16,7 @@
       <g:form class="simpleform" url="editAssessment">
         <!-- right half of the page -->
         <div class="main">
-          <div class="info">
+          <div class="info" id="info">
 
             <h1>Assessment Documentation</h1>
             <label for="assessmentDocTitle">Assessment Documentation Title:</label>
@@ -91,10 +91,10 @@
                           <summary class="cat2">Measure: ${it.measureTitle}</summary>
                           <g:if test="${it.assessment_documents != NULL}">
                             <g:each in="${it.assessment_documents}">
-                              <button class="assess" name="submitButton" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
+                              <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                               <br>
                             </g:each>
-                            <button class="newAssess" name="submitButton" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
+                            <button class="newAssess" name="submitButton" onclick="revealInfo();" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
                           </g:if>
                           </details>
                         </g:each>
@@ -119,10 +119,10 @@
                             <summary class="cat2">Measure: ${it.measureTitle}</summary>
                             <g:if test="${it.assessment_documents != NULL}">
                               <g:each in="${it.assessment_documents}">
-                                <button class="assess" name="submitButton" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
+                                <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                                 <br>
                               </g:each>
-                              <button class="newAssess" name="submitButton" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
+                              <button class="newAssess" name="submitButton" onclick="revealInfo();" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
                             </g:if>
                             </details>
                           </g:each>

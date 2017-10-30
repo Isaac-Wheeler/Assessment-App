@@ -47,3 +47,6 @@ function revealAction() {
   document.getElementById("requiredAction").style.display = "block";
   document.getElementById("action").style.display = "none";
 }
+function revealInfo(){
+  document.getElementById("info").style.visibility = "visibile";
+}

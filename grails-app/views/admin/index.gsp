@@ -6,21 +6,25 @@
     </head>
     <body>
         <div class="newTab">
-                <p>Current Assessments
-                  <g:link controller="Assessments" action="create">
-                    <button class="add">New<div class="plus"> &oplus;</div></button>
-                </g:link>
-                </p>
-            </div>
-            <div class="mainArea">
-            		<g:each in="${currentAssessment}" var="currentAssessment" status="i">
-            			<div class="listings">
-                			<h1>${currentAssessment.title}</h1>
-                 		<p>Completed: ${currentAssessment.completed}</p>
-             		</div>
+          <p>Assigned Classes
+            <g:link controller="Assessments" action="create">
+              <button class="add">New<div class="plus"> &oplus;</div></button>
+            </g:link>
+          </p>
+        </div>
+        <div class="mainArea">
+          <g:each in="${Classes}" var="class" status="c">
+            <g:if test="${i.teachers != NULL}">
+              <g:each in="${i.teachers}" var="o">
+                <div class="listings">
+                  <g:if test="${o.lastName = session?.teacher?.lastName}">
+                    <h1>${c.title}</h1>
+                  </g:if>
+                </div>
+              </g:each>
              	<br/>
-        			</g:each>
-            </div>
+            </g:if>
+        	</g:each>
         </div>
     </body>
 </html>
