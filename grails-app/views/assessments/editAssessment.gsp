@@ -11,22 +11,19 @@
             <title>Data Assesment</title>
             <asset:stylesheet src="fileDisplay.css"/>
             <asset:javascript src="editAssessment.js"/>
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
       <g:form class="simpleform" url="editAssessment">
         <!-- right half of the page -->
         <div class="main">
-<<<<<<< HEAD
           <div class="info" id="info">
-
-=======
-          <div class="info">
             <g:hasErrors bean="${assessment_documents}">
          			<div class="errors">
            				<g:renderErrors bean="${assessment_documents}"/>
          			</div>
        			</g:hasErrors>
->>>>>>> b7288b179bcc49d74df47c559c502d889e099deb
             <h1>Assessment Documentation</h1>
             <label for="assessmentDocTitle">Assessment Documentation Title:</label>
             <br>
@@ -84,6 +81,7 @@
         <div class="sidebar">
             <!-- the slider switch bar at the top's left label-->
             <!-- the slider switch bar at the top-->
+            <i class="w3-xlarge"> <a href="http://localhost:8080/admin" class="fa fa-home"  style="float: left; margin-top: 4%; margin-left: 3%"></a></i>
             <label class="switch">
                 <input type="checkbox" onclick="hideShowOutcomesClasses();" id="reveal-Classes"><span class="slider round" ></span></input>
             </label>            <!-- the slider switch bar at the top's right label-->
@@ -99,23 +97,13 @@
                       <g:if test="${it.measures != NULL}">
                         <g:each in="${it.measures}" var="m">
                           <details>
-<<<<<<< HEAD
-                          <summary class="cat2">Measure: ${it.measureTitle}</summary>
-                          <g:if test="${it.assessment_documents != NULL}">
-                            <g:each in="${it.assessment_documents}">
-                              <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
-                              <br>
-                            </g:each>
-                            <button class="newAssess" name="submitButton" onclick="revealInfo();" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
-=======
                           <summary class="cat2">Measure: ${m.measureTitle}</summary>
                           <g:if test="${m.assessment_documents != NULL}">
                             <g:each in="${m.assessment_documents}">
-                              <button class="assess" name="submitButton" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
+                              <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                               <br>
                             </g:each>
-                            <button class="newAssess" name="submitButton" value="add_${m.id}">New<div class="plus"> &oplus;</div></button>
->>>>>>> b7288b179bcc49d74df47c559c502d889e099deb
+                            <button class="newAssess" name="submitButton" onclick="revealInfo();" value="add_${m.id}">New<div class="plus"> &oplus;</div></button>
                           </g:if>
                           </details>
                         </g:each>
@@ -137,7 +125,6 @@
                         <g:if test="${it.measures != NULL}">
                           <g:each in="${it.measures}" var="m">
                             <details>
-<<<<<<< HEAD
                             <summary class="cat2">Measure: ${it.measureTitle}</summary>
                             <g:if test="${it.assessment_documents != NULL}">
                               <g:each in="${it.assessment_documents}">
@@ -145,15 +132,6 @@
                                 <br>
                               </g:each>
                               <button class="newAssess" name="submitButton" onclick="revealInfo();" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
-=======
-                            <summary class="cat2">Measure: ${m.measureTitle}</summary>
-                            <g:if test="${m.assessment_documents != NULL}">
-                              <g:each in="${m.assessment_documents}">
-                                <button class="assess" name="submitButton" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
-                                <br>
-                              </g:each>
-                              <button class="newAssess" name="submitButton" value="add_${m.id}">New<div class="plus"> &oplus;</div></button>
->>>>>>> b7288b179bcc49d74df47c559c502d889e099deb
                             </g:if>
                             </details>
                           </g:each>
