@@ -94,8 +94,7 @@ class Assessment_DocumentationSpec extends Specification implements DomainUnitTe
       a.size() == 2
       def b = Assessment_Documentation.findAllByComplete(true)
       b.size() == 2
-    /*  def c = Outcomes.createCriteria().list() {
-        and {
+      def c = Outcomes.createCriteria().list() {
             indicators {
                 eq('indicatorName', "a.1")
                   measures {
@@ -109,8 +108,8 @@ class Assessment_DocumentationSpec extends Specification implements DomainUnitTe
 
         }
 
-      }
-      c.size() == 1 */
+      c.size() == 1
+      c[0].outcomeCategory == 'A'
 
 
 

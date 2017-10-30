@@ -13,59 +13,130 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
 
     void "Testing adding and deleting a new class"() {
 
-      when: 'Adding a new class with valid permissions'
-      def u = new Classes(title: "CS101")
-      u.save()
+      given: "A brand new class"
+      def newClass = new Classes(title: "CS320")
 
-        then: 'New class should be saved successfully'
-        Classes.count() == 1
+      when: "The class is saved"
+      newClass.save(flush:true)
 
-      when: 'deleting a class'
-      u.delete()
+      then: "Is saved successfully and can be found in the DB"
+      newClass.errors.errorCount == 0
+      newClass.id != null
+      Classes.get(newClass.id).title == "CS320"
 
-        then: 'Class should be deleted successfully'
-        Classes.count() == 0
+      when: "A property is changed changed"
+      def foundClass = Classes.get(newClass.id)
+      foundClass.title = "CS420"
+      foundClass.save(flush:true)
 
+      then: "the change should be reflected in the DB"
+      Classes.get(newClass.id).title == "CS420"
+
+      when: "Class is deleted"
+      foundClass.delete(flush:true)
+
+      then: "the Class is removed from the DB"
+      !Classes.exists(foundClass.id)
+      !Classes.exists(newClass.id)
 
     }
 
     void "Testing Clesses constraints"() {
 
-      when: 'Adding a new class with blank title'
-      def u = new Classes(title: " ")
-      u.save()
+      given: "a class has fields that fail constraints"
+      def newClass = new Classes(title: " ")
 
-        then: 'New class should not be saved successfully'
-        Classes.count() == 0
+      when: "class is validated"
+      newClass.validate()
 
-      when: 'Adding a new class with less than 5 characters in the title'
-      def v = new Classes(title: "CS10")
-      v.save()
+      then:
+      !newClass.validate(['title'])
+      newClass.errors['title'].code == 'nullable'   // convertEmptyStringsToNull grails property
 
-        then: 'New class should not be saved successfully'
-        Classes.count() == 0
+      when: "testing validation on a new class that fails the minSize constraint on Title"
+      def newClass2 = new Classes(title: "CS42")
+      newClass2.validate()
 
-      when: 'Adding a new class with more than 6 characters in the title'
-      def w = new Classes(title: "ECE1010")
-      w.save()
+      then:
+      !newClass2.validate(['title'])
+      newClass2.errors['title'].code == 'minSize.notmet'
 
-        then: 'New class should not be saved successfully'
-        Classes.count() == 1
+      //test for uniqueness
+    when: 'Class is added with correct fields and constraints'
+    def newClass3 = new Classes(title: "CS430")
+    newClass3.save(flush: true)
 
-        //start of test for uniqueness in title
-      when: 'Adding a new class with valid properties'
-      def x = new Classes(title: "CS101")
-      x.save()
+      then: 'Outcome should be saved'
+      Classes.count() == 1
 
-        then: 'New class should be saved successfully'
-        Classes.count() == 2
 
-      when: 'Adding a new class with a title that matches an already saved class'
-      def y = new Classes(title: "CS101")
-      y.save()
+    when: 'Class is attempted to be created with already taken title'
+    def newClass4 = new Classes(title: "CS430")
+    newClass4.save(flush: true)
 
-        then: 'New class should not be saved successfully'
-        Classes.count() == 2
+      then: 'Class should not be saved successfully because it violates the unique constraint on title'
+      Classes.count() == 1
+      !newClass4.save(flush:true)
+      //end of test for uniqueness
+
+
+    }
+
+    void "testing list of indicators in outcomes"() {
+
+      when: "Creating a couple of classes, indicators, and teachers and linking them relationally"
+      def newIndicator = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to")
+      def newIndicator2 = new Indicators(indicatorName: "a.2", indicatorDescription: "Students will be able to")
+      def newIndicator3 = new Indicators(indicatorName: "b.1", indicatorDescription: "Students will be able to")
+
+      def newTeacher = new Teacher(firstName: "Joe", lastName: "Singer", username: "JSinger", password: "password",
+                      confirm: "password", passwordHashed: "AASSHHDDSX", admin: true)
+      def newTeacher2 = new Teacher(firstName: "John", lastName: "Smith", username: "JSmith", password: "password",
+                      confirm: "password", passwordHashed: "AASSHHDDSS", admin: true)
+      def newTeacher3 = new Teacher(firstName: "Jane", lastName: "Harley", username: "JHarley", password: "password",
+                      confirm: "password", passwordHashed: "AASSHHDDST", admin: true)
+
+      def newClass = new Classes(title: "CS320")
+      def newClass2 = new Classes(title: "CS350")
+      def newClass3 = new Classes(title: "CS420")
+
+      newClass.addToIndicators(newIndicator)
+      newClass2.addToIndicators(newIndicator2)
+      newClass3.addToIndicators(newIndicator3)
+
+      newClass.addToTeachers(newTeacher)
+      newClass2.addToTeachers(newTeacher2)
+      newClass3.addToTeachers(newTeacher3)
+
+      newClass.save(flush:true)
+      newClass2.save(flush:true)
+      newClass3.save(flush:true)
+
+        then: "the 3 classes and the 4 indicators and the 3 teachers should have been saved correctly"
+        Classes.count() == 3
+        Indicators.count() == 3
+        Teacher.count() == 3
+
+      when: "finding all indicators associated with their classes"
+      def aa = Classes.findAllByTitle("CS320")
+      def bb = Classes.findAllByTitle("CS350")
+      def cc = Classes.findAllByTitle("CS420")
+
+        then: "There should be 2 indicators associated with CS320, and 1 indicator associated with the other two classes"
+        aa.indicators.size() == 1
+        aa.indicators[0].indicatorName == ["a.1"]
+        bb.indicators.size() == 1
+        bb.indicators[0].indicatorName == ["a.2"]
+        cc.indicators.size() == 1
+        cc.indicators[0].indicatorName == ["b.1"]
+        aa.teachers.size() == 1
+        aa.teachers[0].firstName == ["Joe"]
+        bb.teachers.size() == 1
+        bb.teachers[0].firstName == ["John"]
+        cc.teachers.size() == 1
+        cc.teachers[0].firstName == ["Jane"]
+
+
 
 
 
