@@ -211,7 +211,8 @@ input[type=checkbox]:checked~#classes {
     float: right;
     margin-right: 10%;
     margin-bottom: 1%;
-    visibility: hidden;
+    //visibility: hidden;
+    font-size: .75em;
 }
 .oneChar{
     width: 20px;

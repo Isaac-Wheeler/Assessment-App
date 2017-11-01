@@ -6,7 +6,7 @@
     </head>
     <body>
     		<div class="newTab">
-                <p>Classes</p>
+                <p>Courses</p>
             </div>
             <div class="mainArea">
               <g:hasErrors bean="${c}">

@@ -31,11 +31,11 @@
             </g:link>
             <br>
             <g:link controller="Class" action="index">
-            		<button class="button button2">Classes</button>
+            		<button class="button button2">Courses</button>
             </g:link>
             <br>
             <g:link controller="teachers">
-            		<button class="button button2">Teachers</button>
+            		<button class="button button2">Faculty</button>
             </g:link>
             <br>
             <g:link controller="assessments" action="viewMeasuresAdmin">
