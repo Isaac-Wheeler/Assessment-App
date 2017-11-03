@@ -4,7 +4,6 @@ class Assessment_Documentation {
 
     //NOTE: DB creates ID for table.
     int targetGoal;
-    //workUsed;     **leaving as a comment for now until ready to implement file uploads.
     int numberOfStudents;
     int needsImprovement;
     int meetsExpectations;
@@ -19,6 +18,7 @@ class Assessment_Documentation {
 
     static belongsTo = [ measure : Measures ]
 
+    static hasMany = [ documents : Document ]
 
 
 
@@ -35,6 +35,5 @@ class Assessment_Documentation {
       resultComment blank:false
       academicSemester blank:false
       complete blank:false
-
     }
 }

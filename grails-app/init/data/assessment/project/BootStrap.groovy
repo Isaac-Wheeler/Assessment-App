@@ -46,6 +46,7 @@ class BootStrap {
            System.out.println("added default admin")
           }
           if (Outcomes.count() == 0) {
+
             def a = new Outcomes(outcomeCategory: 'A', outcomeCategoryDescription: "Students will learn how to...")
             def c = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to")
             def d = new Measures(measureTitle: "Exam1_Q1", measureDescription: "Student will be able to")
@@ -56,6 +57,9 @@ class BootStrap {
             def g = new Measures(measureTitle: "Exam1_Q2", measureDescription: "Student will be able to")
             a.addToIndicators(f)
             f.addToMeasures(g)
+            a.save(flush: true)
+            System.out.println("added default outcomes/indicators/measures for test env")
+
           }
 
         }
