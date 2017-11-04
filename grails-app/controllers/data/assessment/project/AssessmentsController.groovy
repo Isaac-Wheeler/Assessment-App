@@ -1,5 +1,4 @@
 package data.assessment.project
-
 class AssessmentsController {
 
   def editAssessment() {
@@ -7,7 +6,18 @@ class AssessmentsController {
     def indicators = Indicators.list()
     def classes = Classes.list()
 
-
+    if(request instanceof MultipartHttpServletRequest)
+    {
+      MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request;
+      CommonsMultipartFile f = (CommonsMultipartFile) mpr.getFile("myFile");
+      if(!f.empty)
+        flash.message = 'success'
+      else
+       flash.message = 'file cannot be empty'
+    }
+    else
+      flash.message = 'request is not of type MultipartHttpServletRequest'
+      
     if (request.method == 'POST') {
       if(!params.submitButton.contains("Cancel")){
         if(!params.submitButton.startsWith('edit_')){
