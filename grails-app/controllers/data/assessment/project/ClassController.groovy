@@ -1,6 +1,6 @@
 package data.assessment.project
 
-class ClassController {
+class classController {
 
 def index() {
   def classes = Classes.list()

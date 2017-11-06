@@ -25,6 +25,7 @@ class BootStrap {
             def c = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to")
             def d = new Measures(measureTitle: "Exam1_Q1", measureDescription: "Student will be able to")
             a.addToIndicators(c)
+            b.addToIndicators(c)
             c.addToMeasures(d)
             a.save()
             b.save()

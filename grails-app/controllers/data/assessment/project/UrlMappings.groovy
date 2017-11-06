@@ -21,6 +21,5 @@ class UrlMappings {
         "/outcomes/create"(view:'/outcomes/create')
         "/indicators/index"(controller:"outcomes")
         "/assessments/editAssessments"(view:'/assessments/editAssessments')
-        "/class/index"(view:'/class/index')
     }
 }
