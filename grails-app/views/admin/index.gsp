@@ -10,8 +10,8 @@
           </p>
         </div>
         <div class="mainArea">
-          <g:each in="${Classses}" var="c">
-          <g:if test="${c.teachers} == ${session.teacher}">
+          <g:each in="${Classes}" var="c">
+          <g:if test="${c.teachers.id == [session.teacher.id]}">
           <h1>${c.title}</h1>
           </br>
             <div class="listings">

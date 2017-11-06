@@ -72,8 +72,16 @@ class AssessmentsController {
   def viewMeasuresAdmin() {
     def measures = Measures.list()
     def classes = Classes.list()
-    return [Measures:measures, Classes:classes]
+    def indicators = Indicators.list()
+    return [Measures:measures, Classes:classes, Indicators:indicators]
   }
+
+  def deleteMeasure(){
+    def m = Measures.get(params.measure)
+    m.delete(flush:true)
+    redirect(controler:"admin")
+  }
+
   def viewMeasuresUser() {
     def measures = Measures.list()
     def classes = Classes.list()
