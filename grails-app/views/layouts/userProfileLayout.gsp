@@ -12,6 +12,9 @@
             <g:layoutHead/>
     </head>
     <body>
+      <g:if test="${session.teacher == null}">
+        ${response.sendRedirect("/")}
+      </g:if>
         <div class=leftPanel>
             <div class="profileInfo">
                 <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
