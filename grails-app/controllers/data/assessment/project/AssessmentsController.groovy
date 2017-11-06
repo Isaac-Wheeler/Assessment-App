@@ -15,7 +15,6 @@ class AssessmentsController {
 
 
     if (request.method == 'POST') {
-    def upload() {
       if(!params.submitButton.contains("Cancel")){
         if(!params.submitButton.startsWith('edit_')){
         def mId = null
