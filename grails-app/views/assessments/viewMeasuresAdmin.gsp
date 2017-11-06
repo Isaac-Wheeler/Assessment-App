@@ -16,7 +16,7 @@
             		<g:each in="${Measures}" var="m" status="i">
             			<div class="listings">
                 			<h1>${m.measureTitle}</h1>
-                 		   <p>Class: CS320</p>
+                 		   <p>Courses: ${m.indicator.class.title}</p>
                        <g:link controller="Measures" action="delete" params="[measure:m.id]">
            							<button class="add">Delete</button></g:link>
              		   </div>

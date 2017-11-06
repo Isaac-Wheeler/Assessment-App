@@ -6,7 +6,7 @@
     </head>
     <body>
     		<div class="newTab">
-                <p>Teachers
+                <p>Faculty
                   <g:link controller="user" action="register">
                     <button class="add">Register<div class="plus"> &oplus;</div></button>
                 </g:link>

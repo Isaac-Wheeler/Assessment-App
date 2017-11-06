@@ -74,6 +74,11 @@ class AssessmentsController {
     def classes = Classes.list()
     return [Measures:measures, Classes:classes]
   }
+  def viewMeasuresUser() {
+    def measures = Measures.list()
+    def classes = Classes.list()
+    return [Measures:measures, Classes:classes]
+  }
 
   def create(){
     if (request.method == 'POST') {
