@@ -1,14 +1,20 @@
 package data.assessment.project
 <<<<<<< HEAD
+<<<<<<< HEAD
 import grails.validation.Validateable
 import org.springframework.web.multipart.MultipartFile
 =======
+=======
+>>>>>>> 489ad93755f942a282dee3d2c4f22d64d8194d60
 
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.oreilly.servlet.MultipartRequest;
+<<<<<<< HEAD
+>>>>>>> 489ad93755f942a282dee3d2c4f22d64d8194d60
+=======
 >>>>>>> 489ad93755f942a282dee3d2c4f22d64d8194d60
 
 class AssessmentsController {
@@ -32,6 +38,9 @@ class AssessmentsController {
     }
     else
       flash.message = 'request is not of type MultipartHttpServletRequest'
+<<<<<<< HEAD
+>>>>>>> 489ad93755f942a282dee3d2c4f22d64d8194d60
+=======
 >>>>>>> 489ad93755f942a282dee3d2c4f22d64d8194d60
 
     if (request.method == 'POST') {
