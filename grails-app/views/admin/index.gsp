@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class="newTab">
-          <p>Assigned Classes
+          <p>Assigned Courses
           </p>
         </div>
         <div class="mainArea">

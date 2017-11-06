@@ -18,15 +18,14 @@
                 <br>
                 <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
             </div>
-            <g:link controller="user" action="home">
+            <g:link controller="admin">
             		<button class="button">Home</button>
             </g:link>
             <br>
             <g:link controller="assessments" action="viewMeasuresUser" >
-            		<button class="button button2">Measures</button>
-            </g:link>
+            		<button class="button button2">Measures</button></g:link>
             <br>
-            <g:link controller="assessments" action="editAssessment">>
+            <g:link controller="assessments" action="editAssessment">
             		<button class="button button2">Assessments</button>
             </g:link>
             <br>
