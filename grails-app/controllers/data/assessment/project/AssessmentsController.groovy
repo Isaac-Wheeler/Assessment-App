@@ -1,4 +1,16 @@
 package data.assessment.project
+<<<<<<< HEAD
+import grails.validation.Validateable
+import org.springframework.web.multipart.MultipartFile
+=======
+
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import com.oreilly.servlet.MultipartRequest;
+>>>>>>> 489ad93755f942a282dee3d2c4f22d64d8194d60
+
 class AssessmentsController {
 
   def editAssessment() {
@@ -6,6 +18,9 @@ class AssessmentsController {
     def indicators = Indicators.list()
     def classes = Classes.list()
 
+<<<<<<< HEAD
+
+=======
     if(request instanceof MultipartHttpServletRequest)
     {
       MultipartHttpServletRequest mpr = (MultipartHttpServletRequest)request;
@@ -17,8 +32,10 @@ class AssessmentsController {
     }
     else
       flash.message = 'request is not of type MultipartHttpServletRequest'
-      
+>>>>>>> 489ad93755f942a282dee3d2c4f22d64d8194d60
+
     if (request.method == 'POST') {
+    def upload() {
       if(!params.submitButton.contains("Cancel")){
         if(!params.submitButton.startsWith('edit_')){
         def mId = null

@@ -15,7 +15,7 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-      <g:form class="simpleform" url="editAssessment">
+      <g:uploadForm class="simpleform" url="editAssessment" >
         <!-- right half of the page -->
         <div class="main">
           <div class="info" id="info">
@@ -35,7 +35,7 @@
             <br>
             <label for="workUsed">Work Used:</label>
             <br>
-              <input type="file" id="myFile" name="myFile" />
+              <input type="file" name="myFile" />
             <br>
             <label for="targetGoal">Target Goal:</label>
             <label for="belowExpectation" class="labelEx" >Below Expectation:</label>
@@ -144,6 +144,6 @@
               </div>
             </div>
         </div>
-        </g:form>
+      </g:uploadForm>
     </body>
 </html>
