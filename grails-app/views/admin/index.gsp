@@ -11,23 +11,24 @@
         </div>
         <div class="mainArea">
           <g:each in="${Classses}" var="c">
+          <g:if test="${c.teachers} = ${session.teacher}"
+          <h1>${c.title}</h1>
+          </br>
             <div class="listings">
-                <h1>${c.title}</h1>
-                <div class="outcomeDesc">Description: ${o.outcomeCategoryDescription}</div>
-                </br>
                 <div class="indicatorList">
                   <g:if test="${c.indicators != NULL}">
                     <g:each in="${c.indicators}">
                       <g:each in="${it.measures}">
-                      <g:link controller="Indicators" action="editAssessment" params="[measures:it.id]">
-                        <button class="">${it.measureTitle}</button></g:link>
+                      <g:link controller="Measures" action="editAssessment" params="[measures:it.id]">
+                        <button> ${it.measureTitle}</button></g:link>
                         </br>
                       </g:each>
                     </g:each>
                   </g:if>
                 </div>
                 </br>
-          </div>
+              </div>
+          </g:if>
         </g:each>
         </div>
     </body>

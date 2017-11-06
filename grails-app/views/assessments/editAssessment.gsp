@@ -102,7 +102,7 @@
                               <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                               <br>
                             </g:each>
-                            <input type="button" class="newAssess"  onclick="revealInfo();" value="New  &oplus;"/>
+                            <input type="button" class="newAssess"  onclick="revealInfo();" value="New  &oplus;" value="edit_${m.id}"/>
                           </g:if>
                         </details>
                         </g:each>
