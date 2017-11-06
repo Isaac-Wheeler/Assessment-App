@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div class="pageTitle">
-    		<h1>User Registration</h1>
+    		<h1>Faculty Registration</h1>
       	<p>Complete the form below to create an account!</p>
     </div>
     <g:form class="simpleform" url="/register">
