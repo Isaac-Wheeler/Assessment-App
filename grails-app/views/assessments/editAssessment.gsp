@@ -67,21 +67,20 @@
             <g:field type="text" value="${assessment_documents?.academicSemester}" name="academicSemester" style="width:40%;" placeholder="Semseter Ex: Fall2017"/>
             <g:checkBox style="display: inline-block;margin-left:15%;"id="completed" name="complete"/>
             <br>
-            <button class="actionButton" name="action" id="action" onclick="revealAction();">Actions</button>
+            <input type="button" class="actionButton" name="action" id="action" value="Actions "onclick="revealAction();"/>
             <br>
-            <g:textArea id="requiredAction" value="${assessment_documents?.requiredAction}" name="requiredAction" rows="10" cols="100" class="actionsText" placeholder="Required Actions"/>
+            <label for="requiredAction" id="actionLabel" class="actionsText">Required Actions:</label>
+            <g:textArea id="requiredAction" value="${assessment_documents?.requiredAction}" name="requiredAction" rows="10" cols="100" class="actionsText" />
             <br>
-            <g:if test="${measureID != NULL}">
-              <g:hiddenField name="measureID" value="${measureID}"/>
-              <g:submitButton class="button" name="submitButton" value="Edit" />
-            </g:if>
+            <g:hiddenField name="measureID" value="${measureID}"/>
+            <g:submitButton class="button" name="submitButton" value="Submit" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
           </div>
         </div>
         <div class="sidebar">
             <!-- the slider switch bar at the top's left label-->
             <!-- the slider switch bar at the top-->
-            <i class="w3-xlarge"> <a href="http://localhost:8080/admin" class="fa fa-home"  style="float: left; margin-top: 4%; margin-left: 3%"></a></i>
+            <i class="w3-xlarge"> <g:link controller="admin" class="fa fa-home"  style="float: left; margin-top: 4%; margin-left: 3%"></g:link></i>
             <label class="switch">
                 <input type="checkbox" onclick="hideShowOutcomesClasses();" id="reveal-Classes"><span class="slider round" ></span></input>
             </label>            <!-- the slider switch bar at the top's right label-->
@@ -103,9 +102,9 @@
                               <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                               <br>
                             </g:each>
-                            <button class="newAssess" name="submitButton" onclick="revealInfo();" value="add_${m.id}">New<div class="plus"> &oplus;</div></button>
+                            <input type="button" class="newAssess"  onclick="revealInfo();" value="New  &oplus;"/>
                           </g:if>
-                          </details>
+                        </details>
                         </g:each>
                       </g:if>
                       </details>
