@@ -12,6 +12,9 @@
             <asset:stylesheet src="style.css"/>
     </head>
 <body>
+  <g:if test="${session.teacher == null}">
+    ${response.sendRedirect("/")}
+  </g:if>
 	<!-- username | logout link -->
     <g:if test="${session?.teacher}">
 		<div id="login">
