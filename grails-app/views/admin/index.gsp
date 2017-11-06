@@ -11,7 +11,7 @@
         </div>
         <div class="mainArea">
           <g:each in="${Classses}" var="c">
-          <g:if test="${c.teachers} = ${session.teacher}"
+          <g:if test="${c.teachers} == ${session.teacher}">
           <h1>${c.title}</h1>
           </br>
             <div class="listings">
