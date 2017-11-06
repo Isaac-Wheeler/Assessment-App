@@ -1,4 +1,11 @@
 package data.assessment.project
+
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import com.oreilly.servlet.MultipartRequest;
+
 class AssessmentsController {
 
   def editAssessment() {
@@ -17,7 +24,7 @@ class AssessmentsController {
     }
     else
       flash.message = 'request is not of type MultipartHttpServletRequest'
-      
+
     if (request.method == 'POST') {
       if(!params.submitButton.contains("Cancel")){
         if(!params.submitButton.startsWith('edit_')){
