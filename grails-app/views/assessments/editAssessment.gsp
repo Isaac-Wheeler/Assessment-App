@@ -102,7 +102,10 @@
                               <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                               <br>
                             </g:each>
-                            <input type="button" class="newAssess"  onclick="revealInfo();" value="New  &oplus;" value="edit_${m.id}"/>
+                            <input type="button" class="newAssess"  onclick="revealInfo();" value="New  &oplus;"/>
+                            <g:if test="${measureID} != NULL">
+                              <g:hiddenField name="measure" value="${m.id}"/>
+                            </g:if>
                           </g:if>
                         </details>
                         </g:each>
@@ -130,7 +133,7 @@
                                 <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                                 <br>
                               </g:each>
-                              <button class="newAssess" name="submitButton" onclick="revealInfo();" value="add_${it.id}">New<div class="plus"> &oplus;</div></button>
+                              <submitButton class="newAssess" name="submitButton" onclick="revealInfo();" value="add_${it.id}">New<div class="plus"> &oplus;</div></submitButton>
                             </g:if>
                             </details>
                           </g:each>
