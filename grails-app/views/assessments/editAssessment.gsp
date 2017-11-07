@@ -130,13 +130,16 @@
                         <g:if test="${it.measures != NULL}">
                           <g:each in="${it.measures}" var="m">
                             <details>
-                            <summary class="cat2">Measure: ${it.measureTitle}</summary>
-                            <g:if test="${it.assessment_documents != NULL}">
-                              <g:each in="${it.assessment_documents}">
+                            <summary class="cat2">Measure: ${m.measureTitle}</summary>
+                            <g:if test="${m.assessment_documents != NULL}">
+                              <g:each in="${m.assessment_documents}">
                                 <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                                 <br>
                               </g:each>
-                              <submitButton class="newAssess" name="submitButton" onclick="revealInfo();" value="add_${it.id}">New<div class="plus"> &oplus;</div></submitButton>
+                              <input type="button" class="newAssess"  onclick="revealInfo();" value="New  &oplus;"/>
+                              <g:if test="${measureID} != NULL">
+                                <g:hiddenField name="measure" value="${m.id}"/>
+                              </g:if>
                             </g:if>
                             </details>
                           </g:each>
