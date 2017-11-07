@@ -1,6 +1,6 @@
 package data.assessment.project
 
-class UserController {
+class userController {
 
 
     def register = {
