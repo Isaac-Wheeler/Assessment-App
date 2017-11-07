@@ -3,7 +3,7 @@ package data.assessment.project
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class UserControllerSpec extends Specification implements ControllerUnitTest<UserController> {
+class UserControllerSpec extends Specification implements ControllerUnitTest<userController> {
 
     def setup() {
     }
