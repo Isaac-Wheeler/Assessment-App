@@ -4,6 +4,9 @@
   <meta name="layout" content="dataInputLayout"/>
 </head>
 <body>
+  <g:if test="${session.teacher == null}">
+    ${response.sendRedirect("/")}
+  </g:if>
 	<div class="pageTitle">
     		<h1>Create Measure</h1>
       	<p>Complete the form below to create an Measure</p>

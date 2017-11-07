@@ -4,6 +4,12 @@
   <meta name="layout" content="dataInputLayout"/>
 </head>
 <body>
+  <g:if test="${session?.teacher?.admin == false}">
+    ${response.sendRedirect("/")}
+  </g:if>
+  <g:if test="${session.teacher == null}">
+    ${response.sendRedirect("/")}
+  </g:if>
 	<div class="pageTitle">
     		<h1>Edit Outcome</h1>
       	<p>Complete the form below to edit an Outcome</p>

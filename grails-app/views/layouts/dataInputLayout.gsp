@@ -8,12 +8,6 @@
             <g:layoutHead/>
 </head>
 <body>
-  <g:if test="${session?.teacher?.admin == false}">
-    ${response.sendRedirect("/")}
-  </g:if>
-  <g:if test="${session.teacher == null}">
-    ${response.sendRedirect("/")}
-  </g:if>
     <g:layoutBody/>
 </body>
 </html>
