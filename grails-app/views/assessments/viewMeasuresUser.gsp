@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="adminProfileLayout"/>
+        <meta name="layout" content="userProfileLayout"/>
         <asset:stylesheet src="adminProfile.css"/>
     </head>
     <body>
