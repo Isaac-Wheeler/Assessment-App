@@ -27,18 +27,21 @@ class BootStrap {
            t.save(flush: true)
            System.out.println("added default teacher")
           }
-          if (Outcomes.count() == 0 && Classes.count() == 0 && Indicators.count() == 0 && Measures.count() == 0) {
+          if (Outcomes.count() == 0 && Classes.count() == 0 && Indicators.count() == 0 && Measures.count() == 0&& Assessment_Documentation.count() == 0) {
             def a = new Outcomes(outcomeCategory: 'A', outcomeCategoryDescription: "Students will learn how to...")
             def b = new Classes(title: "CS481")
             def c = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to")
-            def d = new Measures(measureTitle: "Exam1_Q1", measureDescription: "Student will be able to")
+            def d = new Measures(measureTitle: "Exam1", measureDescription: "Student will be able to")
+            def e = new Assessment_Documentation(targetGoal: 20, numberOfStudents: 40, needsImprovement: 15, meetsExpectations: 15, exceedsExpectations: 10, assessmentDocTitle: "Question1", comments:"Hello World!", summary: "Student will be able to", requiredAction: "Hello World!", resultComment: "Hello World!", academicSemester: "Fall2017", complete: true)
             a.addToIndicators(c)
             b.addToIndicators(c)
             c.addToMeasures(d)
+            d.addToAssessment_documents(e)
             a.save()
             b.save()
             c.save()
             d.save()
+            e.save()
             System.out.println("added test data")
         }
         }
