@@ -12,6 +12,7 @@ class AssessmentsController {
     def outcomes = Outcomes.list()
     def indicators = Indicators.list()
     def classes = Classes.list()
+    def measures = Measures.list()
 
 
     if (request.method == 'POST') {
