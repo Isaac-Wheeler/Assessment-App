@@ -20,9 +20,9 @@
                     <g:each in="${c.indicators}" var="i">
                       <g:if test="${i.measures != NULL}">
                         <g:each in="${i.measures}" var="m">
-                          <g:if test="${m.assessment_documentation != NULL}">
-                            <g:each in="${it.assessment_documentation}">
-                              <g:link controller="Measures" action="editAssessment" params="[assessment_documentation:it.id]">
+                          <g:if test="${m.assessment_documents != NULL}">
+                            <g:each in="${it.assessment_documents}">
+                              <g:link controller="Measures" action="editAssessment" params="[assessment_documents:it.id]">
                               <button> ${m.measureTitle} - ${it.assessmentDocTitle}</button></g:link>
                               </br>
                             </g:each>
