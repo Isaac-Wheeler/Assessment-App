@@ -48,7 +48,7 @@
       			<br>
           		<g:hiddenField name="id" value="${id}" />
       			<g:submitButton class="button" name="submitButton" value="Edit Account" />
-      			<g:submitButton class="button" name="cancelButton" value="Cancel" />
+      			<g:submitButton class="button" name="submitButton" value="Cancel" />
       		</div>
       	</div>
       </g:form>
