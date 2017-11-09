@@ -20,18 +20,7 @@
       </g:if>
         <!-- right half of the page -->
         <div id="HTMLtoPDF">
-          (${indicator.indicatorName}) - ${indicator.indicatorDescription}
-          ${measure.measureTitle} - ${assessmentDocTitle}
-          Course: ${classes.title}
-          Work used: ${}
-          Description: ${Assessment_Documentation.summary}
-          Target goal: ${targetGoal}
-          Needs improvement: ${Assessment_Documentation.needsImprovement}/${Assessment_Documentation.numberOfStudents} (%) :1
-          Meets expectations: ${Assessment_Documentation.meetsExpectations}/${Assessment_Documentation.numberOfStudents} (%) :1
-          Exceeds expectations: ${Assessment_Documentation.exceedsExpectations}/${Assessment_Documentation.numberOfStudents} (%) :1
-          Results: ${Assessment_Documentation.resultComment}
-          Summary/Observations: ${Assessment_Documentation.comments}
-          Actions: ${Assessment_Documentation.requiredAction}
+          
         </div>
         <a href="#" onclick="HTMLtoPDF()">Download PDF</a>
     </body>
