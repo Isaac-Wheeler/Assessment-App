@@ -6,6 +6,7 @@ class userController {
     def register = {
         // new user posts his registration details
         if (request.method == 'POST') {
+          if(!params.submitButton.contains("Cancel")){
             // create domain object and assign parameters using data binding
             def u = new Teacher(params)
             u.passwordHashed = u.password.encodeAsPassword()
@@ -17,6 +18,7 @@ class userController {
             }
 
         }
+      }
     }
 
     def login = {
@@ -50,6 +52,7 @@ class userController {
 
     def edit ={
       if (request.method == 'POST') {
+        if(!params.submitButton.contains("Cancel")){
           // create domain object and assign parameters using data binding
           def u = Teacher.get(params.id)
           u.username = params.username
@@ -67,7 +70,7 @@ class userController {
           } else {
               redirect(controller:'Teachers')
           }
-
+        }
       }else{
         def u = Teacher.get(params.teacher)
         return [teacher:u, id:u.id]

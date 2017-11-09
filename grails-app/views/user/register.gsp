@@ -47,7 +47,7 @@
       			<g:checkBox name="admin" value="${teacher?.admin}" />
       			<br>
       			<g:submitButton class="button" name="submitButton" value="Create Account" />
-      			<g:submitButton class="button" name="cancelButton" value="Cancel" />
+      			<g:submitButton class="button" name="submitButton" value="Cancel" />
       		</div>
       	</div>
 	</g:form>
