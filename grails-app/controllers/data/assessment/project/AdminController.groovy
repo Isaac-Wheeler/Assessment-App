@@ -6,7 +6,8 @@ class AdminController {
       def classes = Classes.list()
       def measures = Measures.list()
       def indicators = Indicators.list()
-      [Classes:classes, Measures:measures, Indicators:indicators]
+      def assessment_documents = Assessment_Documentation.list()
+      [Classes:classes, Measures:measures, Indicators:indicators, Assessment_Documentation:assessment_documents]
     }
 
 
