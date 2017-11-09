@@ -21,9 +21,9 @@
                       <g:if test="${i.measures != NULL}">
                         <g:each in="${i.measures}" var="m">
                           <g:if test="${m.assessment_documents != NULL}">
-                            <g:each in="${it.assessment_documents}">
+                            <g:each in="${m.assessment_documents}">
                               <g:link controller="Measures" action="editAssessment" params="[assessment_documents:it.id]">
-                              <button> ${m.measureTitle} - ${it.assessmentDocTitle}</button></g:link>
+                              <button class="docButton"> ${m.measureTitle} - ${it.assessmentDocTitle}</button></g:link>
                               </br>
                             </g:each>
                           </g:if>

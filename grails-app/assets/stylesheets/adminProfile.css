@@ -17,6 +17,15 @@ body{
 .profileInfo{
     font-size:30px;
 }
+.docButton{
+	text-align: center;
+	border-style: none;
+	color: white;
+	background-color: #85bd42;
+	width: 40%;
+	padding: 15px 32px;
+	margin-left: 30%;
+}
 .button {
     background-color: #D3D3D3;
     border-style: solid;
