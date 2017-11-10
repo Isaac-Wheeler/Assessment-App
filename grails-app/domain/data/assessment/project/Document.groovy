@@ -4,15 +4,16 @@ class Document {
 
   String filename;
   byte[] filedata;
-  Date uploadDate;
+  Date dateCreated;
 
 
-  static belongsTo = [ assessment_document : Assessment_Documentation ]
+
+  //static belongsTo = [ assessment_document : Assessment_Documentation ] 
 
 
   static constraints = {
       filename blank:false , nullable:false
-      filedata blank: true, nullable:true, maxSize:1073741824
+      filedata blank: true, nullable:true
   }
 
 }

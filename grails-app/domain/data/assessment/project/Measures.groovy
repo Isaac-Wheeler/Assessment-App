@@ -8,14 +8,14 @@ class Measures {
 
       static belongsTo = [ indicator : Indicators ]
 
-      static hasMany = [ assessment_documents : Assessment_Documentation ]
+      static hasOne = [ assessment_documents : Assessment_Documentation ]
 
 
 
     static constraints = {
       measureTitle blank: false, unique:true
       measureDescription blank: false
-
+      assessment_documents nullable:true
 
 }
 }

@@ -26,7 +26,27 @@ class AssessmentsController {
         }
         def AD = new Assessment_Documentation()
         AD.targetGoal = Integer.parseInt(params.targetGoal)
-        //workUsed;     **leaving as a comment for now until ready to implement file uploads.
+
+
+        def file = request.getFile('myFile')
+        if (file != null) {
+          System.out.println("File retrieved successfully!")
+          def documentInstance = new Document();
+          documentInstance.filename = file.originalFilename
+          documentInstance.filedata = file.getBytes()
+          if (documentInstance.validate()) {
+            documentInstance.save(flush:true)
+
+            }
+          else {
+                documentInstance.errors.allErrors.each {
+                    println it
+                }
+          }
+        }
+
+
+
         def holder = Integer.parseInt(params.meetsExpectations) +
         Integer.parseInt(params.needsImprovement) +
         Integer.parseInt(params.exceedsExpectations)

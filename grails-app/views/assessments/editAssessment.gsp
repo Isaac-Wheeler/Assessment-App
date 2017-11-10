@@ -105,11 +105,11 @@
                               <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                               <br>
                             </g:each>
+                            </g:if>
                             <input type="button" class="newAssess"  onclick="revealInfo();" value="New  &oplus;"/>
                             <g:if test="${measureID} != NULL">
                               <g:hiddenField name="measure" value="${m.id}"/>
                             </g:if>
-                          </g:if>
                         </details>
                         </g:each>
                       </g:if>
