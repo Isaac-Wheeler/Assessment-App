@@ -10,19 +10,13 @@ class Outcomes {
     static hasMany = [ indicators : Indicators ]
 
 
+    static mapping = {
+        indicators sort: 'indicatorName', order: 'asc'
+    }
 
 
     static constraints = {
-      /*indicators validator: { indicators, obj ->
-          Set names = new HashSet()
-          for (Indicators indicator in indicators) {
-              if (!names.add(indicator.indicatorName)) {
-                returnf false
-              }
 
-          }
-          return true
-      } */
 
       outcomeCategory blank:false, unique:true
       outcomeCategoryDescription blank:false

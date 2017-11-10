@@ -17,6 +17,10 @@ class Teacher {
   boolean admin;
 
 
+  static mapping = {
+      sort lastName: "asc"
+  }
+
 
   // transients
   static transients = ['password', 'confirm']

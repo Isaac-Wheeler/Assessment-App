@@ -10,6 +10,10 @@ class Indicators {
 
       static hasMany = [ measures : Measures ]
 
+      static mapping = {
+          measures sort: 'measureTitle', order: 'asc'
+      }
+
 
 
     static constraints = {

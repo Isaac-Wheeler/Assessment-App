@@ -64,13 +64,7 @@ class MeasuresSpec extends Specification implements DomainUnitTest<Measures> {
      !newMeasure.validate(['measureDescription'])
      newMeasure.errors['measureDescription'].code == 'nullable'
 
-     //Start of unique test for adding measures
 
-
-      //currently finding an issue to fix the unique constraints and then will add tests here to prove it works
-
-
-     //end of unique test for adding measures
 
 
   }

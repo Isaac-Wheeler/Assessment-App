@@ -9,8 +9,10 @@ class Classes {
       static hasMany = [ indicators : Indicators , teachers : Teacher ]
 
       static mapping = {
+          sort title: "asc"
           indicators cascade: 'save-update'
           teacher cascade: 'save-update'
+
       }
 
     static constraints = {

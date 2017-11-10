@@ -10,6 +10,11 @@ class Measures {
 
       static hasOne = [ assessment_documents : Assessment_Documentation ]
 
+  
+
+      def addToAssessment_documents(Assessment_Documentation ad) {
+            assessment_documents = ad
+      }
 
 
     static constraints = {

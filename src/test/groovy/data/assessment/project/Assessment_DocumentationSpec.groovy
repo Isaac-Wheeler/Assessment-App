@@ -99,9 +99,7 @@ class Assessment_DocumentationSpec extends Specification implements DomainUnitTe
                 eq('indicatorName', "a.1")
                   measures {
                     eq('measureTitle', "Exam1_Q1")
-                      assessment_documents {
-                        eq('academicSemester', "Fall2017")
-                      }
+
                   }
             }
 
@@ -110,6 +108,7 @@ class Assessment_DocumentationSpec extends Specification implements DomainUnitTe
 
       c.size() == 1
       c[0].outcomeCategory == 'A'
+      c[0].indicators[0].measures[0].assessment_documents.academicSemester == "Fall2017"
 
 
 

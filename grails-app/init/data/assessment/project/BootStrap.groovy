@@ -64,7 +64,6 @@ class BootStrap {
             def d = new Measures(measureTitle: "Exam1_Q1", measureDescription: "Student will be able to")
             a.addToIndicators(c)
             c.addToMeasures(d)
-            a.save(flush: true)
             if (a.validate()) {
               a.save(flush:true)
               }
@@ -77,7 +76,14 @@ class BootStrap {
             def g = new Measures(measureTitle: "Exam1_Q2", measureDescription: "Student will be able to")
             a.addToIndicators(f)
             f.addToMeasures(g)
-            a.save(flush: true)
+            if (a.validate()) {
+              a.save(flush:true)
+              }
+            else {
+                  a.errors.allErrors.each {
+                      println it
+                  }
+            }
             System.out.println("added default outcomes/indicators/measures for test env")
 
           }
