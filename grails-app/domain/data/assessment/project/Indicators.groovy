@@ -6,9 +6,10 @@ class Indicators {
       String indicatorName;
       String indicatorDescription;
 
+      static hasMany = [ measures : Measures , classes : Classes ]
+
       static belongsTo = [ outcome : Outcomes, class : Classes ]
 
-      static hasMany = [ measures : Measures ]
 
       static mapping = {
           measures sort: 'measureTitle', order: 'asc'
