@@ -14,18 +14,29 @@ class AssessmentsController {
     def classes = Classes.list()
     def measures = Measures.list()
 
+    System.out.println(params)
+    if (request.method == 'POST' || params.courseLink) {
+      System.out.println("called")
 
-    if (request.method == 'POST') {
       if(!params.submitButton.contains("Cancel")){
-        if(!params.submitButton.startsWith('edit_')){
+        if(params.submitButton.startsWith('edit_')){
         def mId = null
         def measure = null
-        if(params.submitButton.startsWith('add_')){
-          mId = params.submitButton-"add_"
-          measure = Measures.get(mId)
+        def ADId = params.submitButton-"edit_"
+        def AD = Assessment_Documentation.get(ADId)
+
+        return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measureID:AD.measure.id, show:true]
+
+
+        }else if(params.submitButton.startsWith('new_')){
+          def mId = params.submitButton-"new_"
+
+          return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measureID:mId, show:true]
         }
+
+      else{
         def AD = new Assessment_Documentation()
-        AD.targetGoal = Integer.parseInt(params.targetGoal)
+        AD.targetGoal = Integer.parseInt(params.targetGoal) //TODO:handle incorrect input
 
 
         def file = request.getFile('myFile')
@@ -44,8 +55,6 @@ class AssessmentsController {
                 }
           }
         }
-
-
 
         def holder = Integer.parseInt(params.meetsExpectations) +
         Integer.parseInt(params.needsImprovement) +
@@ -70,24 +79,19 @@ class AssessmentsController {
           AD.complete = params.complete
         }
         if(params.measureID != null){
-          measure = Measures.get(params.measureID)
+          def measure = Measures.get(params.measureID)
+          AD.setMeasure(measure)
         }
-        AD.setMeasure(measure)
         if(!AD.save(flush:true)){
-          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes]
+          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, show:true]
         }
-      }else{
-        System.out.println(params)
-        def ADId = params.submitButton-"edit_"
-        def AD = Assessment_Documentation.get(ADId)
-
-        return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measureID:AD.measure.id]
       }
+      }else{
+        redirect("contoller:admin")
       }
     }
 
     return [Outcomes:outcomes, Indicators:indicators, Classes:classes]
-    System.out.println("called")
   }
 
   def viewMeasuresAdmin() {

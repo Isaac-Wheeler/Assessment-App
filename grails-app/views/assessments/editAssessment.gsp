@@ -13,6 +13,7 @@
             <asset:javascript src="editAssessment.js"/>
             <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     </head>
     <body>
       <g:if test="${session.teacher == null}">
@@ -21,6 +22,7 @@
       <g:uploadForm class="simpleform" url="editAssessment" >
         <!-- right half of the page -->
         <div class="main">
+
           <div class="info" id="info">
             <g:hasErrors bean="${assessment_documents}">
          			<div class="errors">
@@ -79,6 +81,15 @@
             <g:submitButton class="button" name="submitButton" value="Submit" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
           </div>
+          <g:if test="${show}">
+          <script type="text/javascript" >
+           console.log("ran");
+            if(${show}){
+              document.getElementById("info").style.visibility = "visible";
+              console.log("worked");
+            }
+          </script>
+        </g:if>
         </div>
         <div class="sidebar">
             <!-- the slider switch bar at the top's left label-->
@@ -106,10 +117,9 @@
                               <br>
                             </g:each>
                             </g:if>
-                            <input type="button" class="newAssess"  onclick="revealInfo();" value="New  &oplus;"/>
-                            <g:if test="${measureID} != NULL">
-                              <g:hiddenField name="measure" value="${m.id}"/>
-                            </g:if>
+                            <g:else>
+                              <button class="newAssess"  name="submitButton" value="new_${m.id}">New  &oplus;</button>
+                              </g:else>
                         </details>
                         </g:each>
                       </g:if>
