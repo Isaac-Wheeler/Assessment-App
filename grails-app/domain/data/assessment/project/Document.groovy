@@ -8,11 +8,11 @@ class Document {
 
 
 
-  //static belongsTo = [ assessment_document : Assessment_Documentation ] 
+  //static belongsTo = [ assessment_document : Assessment_Documentation ]
 
 
   static constraints = {
-      filename blank:false , nullable:false
+      filename blank:false , nullable:false, unique:true
       filedata blank: true, nullable:true
   }
 

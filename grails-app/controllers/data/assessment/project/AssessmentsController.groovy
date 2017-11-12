@@ -14,9 +14,7 @@ class AssessmentsController {
     def classes = Classes.list()
     def measures = Measures.list()
 
-    System.out.println(params)
     if (request.method == 'POST' || params.courseLink) {
-      System.out.println("called")
 
       if(!params.submitButton.contains("Cancel")){
         if(params.submitButton.startsWith('edit_')){
@@ -41,13 +39,12 @@ class AssessmentsController {
 
         def file = request.getFile('myFile')
         if (file != null) {
-          System.out.println("File retrieved successfully!")
           def documentInstance = new Document();
           documentInstance.filename = file.originalFilename
           documentInstance.filedata = file.getBytes()
           if (documentInstance.validate()) {
             documentInstance.save(flush:true)
-
+            AD.addToDocuments(documentInstance)
             }
           else {
                 documentInstance.errors.allErrors.each {
