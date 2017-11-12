@@ -40,8 +40,8 @@
             <br>
             <label for="workUsed">Work Used:</label>
             <br>
+              ${assessment_documents?.documents}
               <input type="file" name="myFile" />
-              
             <br>
             <label for="targetGoal">Target Goal:</label>
             <label for="belowExpectation" class="labelEx" >Below Expectation:</label>
