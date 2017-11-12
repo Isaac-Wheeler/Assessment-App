@@ -19,32 +19,36 @@
         ${response.sendRedirect("/")}
       </g:if>
         <!-- right half of the page -->
-        <div id="HTMLtoPDF">
+          <div id="HTMLtoPDF">
           <g:each in="${Outcomes}" var="o">
-            <p>Outcome ${o.outcomeCategory}</p>
+            <p style="font-weight:bold; font-size:1.5em;">Outcome ${o.outcomeCategory}</p>
             <g:if test="${o.indicators != NULL}">
               <g:each in="${o.indicators}" var="i">
                 <g:each var="c" in="${i.classes}">
-                  <p>${o.outcomeCategory}.${i.indicatorName}-${c.title}</p>
+                  <p>(${i.indicatorName}) - ${c.title}</p>
                   <g:each in="${i.measures}" var="m">
                     <g:set var="ad" value="${m.assessment_documents}"/>
-                    <g:set var="totalprcentMet" value="${ad.meetsExpectations} / ${ad.numberOfStudents} * 100"/>
-                    <g:set var="totalprcentMetConf" value="${ad.exceedsExpectations} / ${ad.numberOfStudents} * 100"/>
-                    <g:set var="targetGoal" value="${ad.targetGoal}"/>
-                    <p>${o.outcomeCategory}${i.indicatorName}-${c.title}-${m.measureTitle}</p>
+                    <g:set var="totalprcentMet" value="${ad.meetsExpectations+ad.exceedsExpectations}"/>
+                    <g:set var="totalprcentMetConf" value="${ad.exceedsExpectations/ad.numberOfStudents} "/>
+                    <g:set var="targetGoal" value="${ad.targetGoal/ad.numberOfStudents}"/>
+                    ${i.indicatorName}-${c.title}-${m.measureTitle}:
                     <g:if test="${totalprcentMet > targetGoal}">
-                      <p>Met</p>
+                      <span style="background-color: #00FF00">Met Comfortably</span>
                     </g:if>
-                    <g:elseif test="${totalPrcentMet < totalprcentMetConf}">
-                      <p>Met comfortably</p>
+                    <g:elseif test="${totalPrcentMet == targetGoal}">
+                      <span style="background-color: #FFFF00">Met</span>
                     </g:elseif>
-                    <p>${totalprcentMet}/${targetGoal}%</p>
+                    <g:elseif test="${totalPrcentMet < targetGoal}">
+                      <span style="background-color: #FF0000">Not Met</span>
+                    </g:elseif>
+                    (${totalprcentMet/ad.numberOfStudents * 100}%/${targetGoal * 100}%)
+                    <br>${ad.requiredAction}<br>
                   </g:each>
                 </g:each>
               </g:each>
             </g:if>
           </g:each>
-        </div>
+          </div>
         <a href="#" onclick="HTMLtoPDF()">Download PDF</a>
     </body>
 </html>

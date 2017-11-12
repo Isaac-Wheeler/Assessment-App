@@ -135,26 +135,25 @@
                     <summary>${c.title}:</summary>
                     <g:if test="${c.indicators != NULL}">
                       <g:each in="${c.indicators}">
-                        <details>
-                        <summary class="cat1">Indicator: ${it.indicatorName}</summary>
-                        <g:if test="${it.measures != NULL}">
-                          <g:each in="${it.measures}" var="m">
-                            <details>
-                            <summary class="cat2">Measure: ${m.measureTitle}</summary>
-                            <g:if test="${m.assessment_documents != NULL}">
-                              <g:each in="${m.assessment_documents}">
-                                <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
-                                <br>
-                              </g:each>
-                              <input type="button" class="newAssess"  onclick="revealInfo();" value="New  &oplus;"/>
-                              <g:if test="${measureID} != NULL">
-                                <g:hiddenField name="measure" value="${m.id}"/>
-                              </g:if>
-                            </g:if>
-                            </details>
-                          </g:each>
-                        </g:if>
-                        </details>
+                      <details>
+                      <summary class="cat1">Indicator: ${it.indicatorName}</summary>
+                      <g:if test="${it.measures != NULL}">
+                        <g:each in="${it.measures}" var="m">
+                          <details>
+                          <summary class="cat2">Measure: ${m.measureTitle}</summary>
+                          <g:if test="${m.assessment_documents != NULL}">
+                            <g:each in="${m.assessment_documents}">
+                              <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
+                              <br>
+                            </g:each>
+                          </g:if>
+                          <g:else>
+                            <button class="newAssess"  name="submitButton" value="new_${m.id}">New  &oplus;</button>
+                          </g:else>
+                          </details>
+                        </g:each>
+                      </g:if>
+                      </details>
                       </g:each>
                     </g:if>
                   </details>
