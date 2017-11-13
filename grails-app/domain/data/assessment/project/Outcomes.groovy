@@ -11,6 +11,7 @@ class Outcomes {
 
 
     static mapping = {
+        sort outcomeCategory: "asc"
         indicators sort: 'indicatorName', order: 'asc'
     }
 

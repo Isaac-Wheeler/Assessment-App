@@ -21,7 +21,7 @@ class Indicators {
 
       indicatorName blank:false, unique: true
       indicatorDescription blank:false
-
+      classes nullable:true
 
     }
 }
