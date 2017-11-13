@@ -1,6 +1,6 @@
 package data.assessment.project
 
-class classController {
+class coursesController {
 
 def index() {
   def classes = Classes.list()
@@ -13,7 +13,7 @@ def index() {
     c.title = params.title
       if(!c.save(flush:true)){
         return [c:c, Classes:classes, Indicators:indicators, Teacher:teachers]
-        redirect(controller:'class')
+        redirect(controller:"courses")
       }
     }else{
       def c = Classes.get(params.class)
@@ -21,7 +21,7 @@ def index() {
       c.addToTeachers(teacher)
       if(!c.save(flush:true)){
         return [c:c, Classes:classes, Indicators:indicators, Teacher:teachers]
-        redirect(controller:'class')
+        redirect(controller:"courses")
       }
     }
   }
@@ -29,10 +29,19 @@ def index() {
  }
 
 
+ def deleteAssignedTeacher(){
+   def c = Classes.get(params.classes)
+   def t = Teacher.get(params.teacher)
+   c.removeFromTeachers(t)
+   c.save(flush:true)
+   redirect(controller:"courses")
+ }
+
+
  def delete() {
    def c = Classes.get(params.classes)
    c.delete(flush:true)
-   redirect(controller:'class')
+   redirect(controller:"courses")
  }
 
 
