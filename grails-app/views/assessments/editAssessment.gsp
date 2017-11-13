@@ -40,7 +40,10 @@
             <br>
             <label for="workUsed">Work Used:</label>
             <br>
-              ${assessment_documents?.documents}
+              <g:each in="${assessment_documents?.documents}" var="o">
+                ${o.filename}
+              </g:each>
+              <br>
               <input type="file" name="myFile" />
             <br>
             <label for="targetGoal">Target Goal:</label>
