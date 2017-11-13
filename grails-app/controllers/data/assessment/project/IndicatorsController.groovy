@@ -34,7 +34,7 @@ class IndicatorsController {
           }
 
         }
-        redirect(view:"/outcomes/index")
+        redirect(controller:"Outcomes")
       }
       return [outcomeId:params.givenOutcomeId, Classes:classes]
     }
