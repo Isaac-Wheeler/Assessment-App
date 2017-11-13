@@ -82,9 +82,10 @@ class AssessmentsController {
         if(!AD.save(flush:true)){
           return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, show:true]
         }
+        redirect(controler:"Assessments", action:"editAssessment")
       }
       }else{
-        redirect("contoller:admin")
+        redirect(controler:"Assessments", action:"editAssessment")
       }
     }
 
