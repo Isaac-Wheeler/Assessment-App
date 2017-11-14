@@ -57,6 +57,9 @@ class Assessment_DocumentationSpec extends Specification implements DomainUnitTe
       then: "the outcome is removed from the DB"
       !Assessment_Documentation.exists(newAD.id)
       !Assessment_Documentation.exists(foundAD.id)
+      newMeasure.delete(flush:true)
+      newIndicator.delete(flush:true)
+      newOutcome.delete(flush:true)
 
     }
 
@@ -109,7 +112,14 @@ class Assessment_DocumentationSpec extends Specification implements DomainUnitTe
       c.size() == 1
       c[0].outcomeCategory == 'A'
       c[0].indicators[0].measures[0].assessment_documents.academicSemester == "Fall2017"
-
+      newMeasure.delete(flush:true)
+      newIndicator.delete(flush:true)
+      newOutcome.delete(flush:true)
+      newAD.delete(flush:true)
+      newMeasure2.delete(flush:true)
+      newIndicator2.delete(flush:true)
+      newOutcome2.delete(flush:true)
+      newAD2.delete(flush:true)
 
 
 

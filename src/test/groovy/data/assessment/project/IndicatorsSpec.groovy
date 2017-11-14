@@ -40,6 +40,8 @@ class IndicatorsSpec extends Specification implements DomainUnitTest<Indicators>
       then: "the Indicator is removed from the DB"
       !Indicators.exists(foundIndicator.id)
       !Indicators.exists(newIndicator.id)
+      newIndicator.delete(flush:true)
+      newOutcome.delete(flush:true)
 
 
     }
@@ -58,25 +60,8 @@ class IndicatorsSpec extends Specification implements DomainUnitTest<Indicators>
       newIndicator.errors['indicatorName'].code == 'nullable'   // convertEmptyStringsToNull grails property
       !newIndicator.validate(['indicatorDescription'])
       newIndicator.errors['indicatorDescription'].code == 'nullable'
+      newIndicator.delete(flush:true)
 
-
-        //test for uniqueness
-    /*  when: 'Indicator is added with correct fields and constraints'
-
-      def newOutcome = new Outcomes(OutcomeCategory: 'A', OutcomeCategoryDescription: "Students will learn how to")
-      newOutcome.save(flush:true)
-      def newIndicator2 = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to")
-      def newIndicator3 = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to blah")
-      newOutcome.addToIndicators(newIndicator2)
-      newOutcome.save(flush:true)
-      newOutcome.addToIndicators(newIndicator3)
-      newOutcome.save(flush: true)
-
-        then: 'Indicator should be saved'
-        Indicators.count() == 1 */
-
-
-        //end of test for uniqueness
 
 
     }
@@ -123,6 +108,12 @@ class IndicatorsSpec extends Specification implements DomainUnitTest<Indicators>
         cc[0].outcomeCategory == 'B'
         dd.size() == 1
         dd[0].outcomeCategory == "A"
+        newIndicator.delete(flush:true)
+        newIndicator2.delete(flush:true)
+        newIndicator3.delete(flush:true)
+        newIndicator4.delete(flush:true)
+        newOutcome.delete(flush:true)
+        newOutcome2.delete(flush:true)
 
 
 

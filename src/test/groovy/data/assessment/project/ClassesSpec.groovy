@@ -38,6 +38,8 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
       then: "the Class is removed from the DB"
       !Classes.exists(foundClass.id)
       !Classes.exists(newClass.id)
+      newClass.delete(flush:true)
+
 
     }
 
@@ -79,6 +81,10 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
       !newClass4.save(flush:true)
       //end of test for uniqueness
 
+      newClass.delete(flush:true)
+      newClass2.delete(flush:true)
+      newClass3.delete(flush:true)
+      newClass4.delete(flush:true)
 
     }
 
@@ -135,6 +141,18 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
         bb.teachers[0].firstName == ["John"]
         cc.teachers.size() == 1
         cc.teachers[0].firstName == ["Jane"]
+        newClass.delete(flush:true)
+        newClass2.delete(flush:true)
+        newClass3.delete(flush:true)
+        newTeacher.delete(flush:true)
+        newTeacher2.delete(flush:true)
+        newTeacher3.delete(flush:true)
+        newIndicator.delete(flush:true)
+        newIndicator2.delete(flush:true)
+        newIndicator3.delete(flush:true)
+
+
+
 
 
 
