@@ -5,12 +5,16 @@
         <asset:stylesheet src="adminProfile.css"/>
     </head>
     <body>
+      <g:if test="${session.teacher == null}">
+        ${response.sendRedirect("/")}
+      </g:if>
         <div class="newTab">
           <p>Assigned Courses
           </p>
         </div>
         <div class="mainArea">
-          <g:each in="${Classes}" var="c">
+        <g:each in="${Classes}" var="c">
+        <g:if test="${session.teacher != null}">
           <g:if test="${c.teachers.id == [session.teacher.id]}">
             <div class="listings">
               <h1>${c.title}</h1>
@@ -18,15 +22,25 @@
                 <div class="indicatorList">
                   <g:if test="${c.indicators != NULL}">
                     <g:each in="${c.indicators}" var="i">
+                      <h2>${i.indicatorName} - ${i.indicatorDescription}</h2>
+                      </div>
                       <g:if test="${i.measures != NULL}">
                         <g:each in="${i.measures}" var="m">
+                        <h3>${m.measureTitle} - ${m.measureDescription}</h3>
                           <g:if test="${m.assessment_documents != NULL}">
                             <g:each in="${m.assessment_documents}">
-                              <g:link controller="assessments" action="editAssessment">
-                              <button class="docButton"> ${m.measureTitle} - ${it.assessmentDocTitle}</button></g:link>
-                              </br>
+                                <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
+                                <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
+                                <button class="docButton"> ${m.measureTitle} - ${it.assessmentDocTitle}</button></g:link>
+                                </br>
                             </g:each>
                           </g:if>
+                          <g:else>
+                            <g:set var="submitButtonValue" value="${'new_' + m.id}" />
+                            <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
+                            <button class="docButton">Create Assessment Documentation</button></g:link>
+                            </br>
+                          </g:else>
                         </g:each>
                       </g:if>
                     </g:each>
@@ -35,6 +49,7 @@
                 </br>
               </div>
           </g:if>
+        </g:if>
         </g:each>
         </div>
     </body>
