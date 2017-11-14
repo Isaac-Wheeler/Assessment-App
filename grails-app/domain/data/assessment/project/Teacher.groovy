@@ -36,4 +36,8 @@ class Teacher {
               return 'teacher.password.dontmatch'
       }
     }
+
+    String toString(){
+      return firstName + " " + lastName
+    }
 }
