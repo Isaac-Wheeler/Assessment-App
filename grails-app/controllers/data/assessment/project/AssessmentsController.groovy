@@ -136,4 +136,10 @@ class AssessmentsController {
     System.out.println("called")
   }
 
+  def delete(){
+    def ad = Assessment_Documentation.get(params.ad)
+    ad.delete(flush:true)
+    redirect(controler:"editAssessment")
+  }
+
 }
