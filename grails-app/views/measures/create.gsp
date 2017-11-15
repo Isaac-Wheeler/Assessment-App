@@ -31,6 +31,7 @@
               <label for="Desc">Description:</label>
               <br>
               <textArea id="measureDescription" name="measureDescription" rows="10" cols="100" resize="none"></textarea>
+              <g:hiddenField name="isadmin" value="${isadmin}" />
               <g:submitButton class="button" name="submitButton" value="Create" />
               <g:submitButton class="button" name="submitButton" value="Cancel" />
             </div>
