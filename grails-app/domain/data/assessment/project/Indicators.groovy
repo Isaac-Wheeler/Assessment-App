@@ -5,6 +5,7 @@ class Indicators {
       //NOTE: DB creates ID for table
       String indicatorName;
       String indicatorDescription;
+      String academicSemester;
 
       static hasMany = [ measures : Measures , classes : Classes ]
 
@@ -21,6 +22,7 @@ class Indicators {
 
       indicatorName blank:false, unique: true
       indicatorDescription blank:false
+      academicSemester nullable:true
 
 
     }

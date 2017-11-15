@@ -38,7 +38,7 @@ class AssessmentsController {
 
 
         def file = request.getFile('myFile')
-        if (file != null) {
+        if (file.isEmpty() == false) {
           def documentInstance = new Document();
           documentInstance.filename = file.originalFilename
           documentInstance.filedata = file.getBytes()
