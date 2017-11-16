@@ -2,12 +2,16 @@ package data.assessment.project
 
 class OutcomesController {
 
-  def index () {
+  def viewOutcomesAdmin() {
     def outcomes = Outcomes.list()
     def indicators = Indicators.list()
     [Outcomes:outcomes, Indicators:indicators]
   }
-
+  def viewOutcomesUser() {
+    def outcomes = Outcomes.list()
+    def indicators = Indicators.list()
+    [Outcomes:outcomes, Indicators:indicators]
+  }
   def createOutcome() {
     if (request.method == 'POST') {
       if(!params.submitButton.contains("Cancel")){
