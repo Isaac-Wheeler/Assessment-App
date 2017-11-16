@@ -13,30 +13,34 @@ class AssessmentsController {
     def indicators = Indicators.list()
     def classes = Classes.list()
     def measures = Measures.list()
+    def mId = null
+    def measure = null
+    def AD = null
 
     if (request.method == 'POST' || params.courseLink) {
 
       if(!params.submitButton.contains("Cancel")){
         if(params.submitButton.startsWith('edit_')){
-        def mId = null
-        def measure = null
-        def ADId = params.submitButton-"edit_"
-        def AD = Assessment_Documentation.get(ADId)
-
-        return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measureID:AD.measure.id, show:true]
-
-
+          def ADId = params.submitButton-"edit_"
+          AD = Assessment_Documentation.get(ADId)
+          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measureID:AD.measure.id, show:true]
         }else if(params.submitButton.startsWith('new_')){
-          def mId = params.submitButton-"new_"
-
+          mId = params.submitButton-"new_"
           return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measureID:mId, show:true]
         }
 
       else{
-        def AD = new Assessment_Documentation()
-        AD.targetGoal = Integer.parseInt(params.targetGoal) //TODO:handle incorrect input
+        if(params.assessment_documents != null){
+          AD = params.assessment_documents
+        }else{
+          AD = new Assessment_Documentation()
+        }
 
+        if(params.targetGoal != null){
+          AD.targetGoal = Integer.parseInt(params.targetGoal) //TODO:handle incorrect input
+        }
 
+        //code for hadling file upload
         def file = request.getFile('myFile')
         if (file.isEmpty() == false) {
           def documentInstance = new Document();
@@ -53,23 +57,30 @@ class AssessmentsController {
           }
         }
 
-        def holder = Integer.parseInt(params.meetsExpectations) +
-        Integer.parseInt(params.needsImprovement) +
-        Integer.parseInt(params.exceedsExpectations)
-        AD.numberOfStudents = holder
+        //handles student section and meets exceeds and needs section
         AD.needsImprovement = Integer.parseInt(params.needsImprovement)
         AD.meetsExpectations = Integer.parseInt(params.meetsExpectations)
         AD.exceedsExpectations = Integer.parseInt(params.exceedsExpectations)
-        AD.summary = params.summary
-        AD.assessmentDocTitle = params.assessmentDocTitle
-        AD.comments = params.comments
+        AD.numberOfStudents = AD.needsImprovement + AD.meetsExpectations + AD.exceedsExpectations
+
+        if(params.summary != null){
+          AD.summary = params.summary
+        }
+        if(params.assessmentDocTitle != null){
+          AD.assessmentDocTitle = params.assessmentDocTitle
+        }
+        if(params.comments != null){
+          AD.comments = params.comments
+        }
         if(params.requiredAction != null){
           AD.requiredAction = params.requiredAction
         }
         if(params.resultComment != null){
           AD.resultComment = params.resultComment
         }
-        AD.academicSemester = params.academicSemester
+        if(params.academicSemester != null){
+          AD.academicSemester = params.academicSemester
+        }
         if(params.complete == null){
           AD.complete = false
         }else{
@@ -90,50 +101,6 @@ class AssessmentsController {
     }
 
     return [Outcomes:outcomes, Indicators:indicators, Classes:classes]
-  }
-
-  def viewMeasuresAdmin() {
-    def measures = Measures.list()
-    def classes = Classes.list()
-    def indicators = Indicators.list()
-    return [Measures:measures, Classes:classes, Indicators:indicators]
-  }
-
-  def deleteMeasure(){
-    def m = Measures.get(params.measure)
-    m.delete(flush:true)
-    redirect(controler:"admin")
-  }
-
-  def viewMeasuresUser() {
-    def measures = Measures.list()
-    def classes = Classes.list()
-    return [Measures:measures, Classes:classes]
-  }
-
-  def create(){
-    if (request.method == 'POST') {
-      if(!params.submitButton.contains("Cancel")){
-        def m = new Measures()
-        m.measureTitle = params.measureTitle
-        m.measureDescription = params.measureDescription
-        def i = Indicators.get(params.indicatorId)
-        i.addToMeasures(m)
-        if(!i.save(flush:true)){
-          return [Measures:m, Iid:params.indicatorId]
-        }
-        if(!m.save(flush:true)){
-          return [Measures:m, Iid:params.indicatorId]
-        }
-      }
-      redirect(controller:"Admin")
-    }
-
-    def outcomes = Outcomes.list()
-    def indicators = Indicators.list()
-    def classes = Classes.list()
-    return [Outcomes:outcomes, Indicators:indicators, Classes:classes]
-    System.out.println("called")
   }
 
   def delete(){

@@ -22,13 +22,12 @@
       <g:uploadForm class="simpleform" url="editAssessment" >
         <!-- right half of the page -->
         <div class="main">
-
+          <g:hasErrors bean="${assessment_documents}">
+            <div class="errors">
+                <g:renderErrors bean="${assessment_documents}"/>
+            </div>
+          </g:hasErrors>
           <div class="info" id="info">
-            <g:hasErrors bean="${assessment_documents}">
-         			<div class="errors">
-           				<g:renderErrors bean="${assessment_documents}"/>
-         			</div>
-       			</g:hasErrors>
             <h1>Assessment Documentation</h1>
             <label for="assessmentDocTitle">Assessment Documentation Title:</label>
             <br>
@@ -51,16 +50,35 @@
             <label for="meetsExpectation" class="labelEx">Meets Expectation:</label>
             <label for="exceedsExpectation" class="labelEx">Exceeds Expectation:</label>
             <br>
-            <g:field type="text" value="${assessment_documents?.targetGoal}" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal"/>
+            <g:field type="number" value="${assessment_documents?.targetGoal}" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal"/>
+
             <input type="button" value="-" onclick="minusBelowExpectation();" class="minus"/>
-            <g:field type="text" id="belowExpectation" name="needsImprovement" value="${assessment_documents?.needsImprovement}" value="0" class="oneChar"/>
+            <g:if test="${assessment_documents?.needsImprovement != null}">
+              <g:field type="number" id="belowExpectation" name="needsImprovement" value="${assessment_documents?.needsImprovement}" class="oneChar"/>
+            </g:if>
+            <g:else>
+              <g:field type="number" id="belowExpectation" name="needsImprovement" value="0" class="oneChar"/>
+            </g:else>
             <input type="button" onclick="addBelowExpectation();" value="+" />
+
             <input type="button" value="-" onclick="minusMeetsExpectation();" class="minus">
-            <g:field type="text" id="meetsExpectation" name="meetsExpectations" value="${assessment_documents?.meetsExpectations}" value="0" class="oneChar"/>
+            <g:if test="${assessment_documents?.meetsExpectations != null}">
+              <g:field type="number" id="meetsExpectation" name="meetsExpectations" value="${assessment_documents?.meetsExpectations}" class="oneChar"/>
+            </g:if>
+            <g:else>
+              <g:field type="number" id="meetsExpectation" name="meetsExpectations" value="0" class="oneChar"/>
+            </g:else>
             <input type="button"  onclick="addMeetsExpectation();" value="+">
+
             <input type=button value="-" onclick="minusExceedsExpectation();" class="minus">
-            <g:field type="text" id="exceedsExpectation" name="exceedsExpectations" value="${assessment_documents?.exceedsExpectations}" value="0" class="oneChar"/>
+            <g:if test="${assessment_documents?.exceedsExpectations != null}">
+              <g:field type="number" id="exceedsExpectation" name="exceedsExpectations" value="${assessment_documents?.exceedsExpectations}" class="oneChar"/>
+            </g:if>
+            <g:else>
+              <g:field type="number" id="exceedsExpectation" name="exceedsExpectations" value="0" class="oneChar"/>
+            </g:else>
             <input type="button" onclick="addExceedsExpectation();" value="+">
+
             <br>
             <label for="comment">Comment:</label>
             <br>
@@ -82,6 +100,12 @@
             <g:textArea id="requiredAction" value="${assessment_documents?.requiredAction}" name="requiredAction" rows="10" cols="100" class="actionsText" />
             <br>
             <g:hiddenField name="measureID" value="${measureID}"/>
+            <g:if test="${assessment_documents != null}">
+              <g:hiddenField name="assessment_documents" value="${assessment_documents}"/>
+            </g:if>
+            <g:else>
+              <g:hiddenField name="assessment_documents" value="${null}" />
+            </g:else>
             <g:submitButton class="button" name="submitButton" value="Submit" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
           </div>
@@ -98,7 +122,7 @@
         <div class="sidebar">
             <!-- the slider switch bar at the top's left label-->
             <!-- the slider switch bar at the top-->
-            <i class="w3-xlarge"> <g:link controller="admin" class="fa fa-home"  style="float: left; margin-top: 4%; margin-left: 3%"></g:link></i>
+            <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-top: 4%; margin-left: 3%"></g:link></i>
             <label class="switch">
                 <input type="checkbox" onclick="hideShowOutcomesClasses();" id="reveal-Classes"><span class="slider round" ></span></input>
             </label>            <!-- the slider switch bar at the top's right label-->
