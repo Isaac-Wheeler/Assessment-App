@@ -13,13 +13,17 @@
             <asset:javascript src="jspdf.js"/>
             <asset:javascript src="jquery-2.1.3.js"/>
             <asset:javascript src="pdfFromHTML.js"/>
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
       <g:if test="${session.teacher == null}">
         ${response.sendRedirect("/")}
       </g:if>
+      <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-left: 1%; margin-top: 1%;"></g:link></i>
+      <br>
         <!-- right half of the page -->
-          <div id="HTMLtoPDF">
+          <div id="HTMLtoPDF" style="margin-left: 2%;">
           <g:each in="${Outcomes}" var="o">
             <p style="font-weight:bold; font-size:1.5em;">Outcome ${o.outcomeCategory}</p>
             <g:if test="${o.indicators != NULL}">
@@ -30,15 +34,18 @@
                     <g:set var="ad" value="${m.assessment_documents}"/>
                     <g:set var="totalprcentMet" value="${ad.meetsExpectations+ad.exceedsExpectations}"/>
                     <g:set var="totalprcentMetConf" value="${ad.exceedsExpectations/ad.numberOfStudents} "/>
-                    <g:set var="targetGoal" value="${ad.targetGoal/ad.numberOfStudents}"/>
+                    <g:set var="targetGoal" value="${ad.targetGoal}"/>
                     ${i.indicatorName}-${c.title}-${m.measureTitle}:
-                    <g:if test="${totalprcentMet > targetGoal}">
+                    <g:if test="${totalprcentMet > targetGoal + 5}">
                       <span style="background-color: #00FF00">Met Comfortably</span>
                     </g:if>
-                    <g:elseif test="${totalPrcentMet == targetGoal}">
+                    <g:elseif test="${totalPrcentMet >= targetGoal}">
                       <span style="background-color: #FFFF00">Met</span>
                     </g:elseif>
-                    <g:elseif test="${totalPrcentMet < targetGoal}">
+                    <g:elseif test="${totalPrcentMet >= targetGoal - 5}">
+                      <span style="background-color: #FFFF00">Almost Met</span>
+                    </g:elseif>
+                    <g:elseif test="${totalPrcentMet < targetGoal - 5}">
                       <span style="background-color: #FF0000">Not Met</span>
                     </g:elseif>
                     (${totalprcentMet/ad.numberOfStudents * 100}%/${targetGoal * 100}%)
@@ -49,6 +56,6 @@
             </g:if>
           </g:each>
           </div>
-        <a href="#" onclick="HTMLtoPDF()">Download PDF</a>
+        <a href="#" onclick="HTMLtoPDF()" style="margin-left: 2%;">Download PDF</a>
     </body>
 </html>

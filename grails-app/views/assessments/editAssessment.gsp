@@ -45,12 +45,12 @@
               <br>
               <input type="file" name="myFile" multiple />
             <br>
-            <label for="targetGoal">Target Goal:</label>
+            <label for="targetGoal">Target Goal(in percent):</label>
             <label for="belowExpectation" class="labelEx" >Below Expectation:</label>
-            <label for="meetsExpectation" class="labelEx">Meets Expectation:</label>
-            <label for="exceedsExpectation" class="labelEx">Exceeds Expectation:</label>
+            <label for="meetsExpectation" class="labelEx" style="margin-left:9%;">Meets Expectation:</label>
+            <label for="exceedsExpectation" class="labelEx" style="margin-left:8%;">Exceeds Expectation:</label>
             <br>
-            <g:field type="text" value="${assessment_documents?.targetGoal}" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal"/>
+            <g:field type="number" value="${assessment_documents?.targetGoal}" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal"/>
 
             <input type="button" value="-" onclick="minusBelowExpectation();" class="minus"/>
             <g:if test="${assessment_documents?.needsImprovement != null}">
@@ -149,7 +149,7 @@
                             </g:each>
                             </g:if>
                             <g:else>
-                              <button class="newAssess"  name="submitButton" value="new_${m.id}">New  &oplus;</button>
+                              <button class="newAssess"  name="submitButton" value="new_${m.id}">New  <div class="plus"> &oplus;</div></button>
                               </g:else>
                         </details>
                         </g:each>
