@@ -43,7 +43,7 @@
                 <g:link action="downloadFile" id="${o.id}">${o.filename}</g:link>
               </g:each>
               <br>
-              <input type="file" name="myFile" />
+              <input type="file" name="myFile" multiple />
             <br>
             <label for="targetGoal">Target Goal:</label>
             <label for="belowExpectation" class="labelEx" >Below Expectation:</label>
