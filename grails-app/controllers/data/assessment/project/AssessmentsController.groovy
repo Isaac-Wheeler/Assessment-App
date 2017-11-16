@@ -53,21 +53,22 @@ class AssessmentsController {
         AD.targetGoal = Integer.parseInt(params.targetGoal) //TODO:handle incorrect input
 
 
-        def file = request.getFile('myFile')
-        if (file.isEmpty() == false) {
-          def documentInstance = new Document();
-          documentInstance.filename = file.originalFilename
-          documentInstance.filedata = file.getBytes()
-          if (documentInstance.validate()) {
-            documentInstance.save(flush:true)
-            AD.addToDocuments(documentInstance)
+        if (request.getFiles("myFile").get(0).isEmpty() == false) {   //Code to handle all files uploaded and saving them/linking them to the current AD
+          request.getFiles("myFile").each {
+            def documentInstance = new Document();
+            documentInstance.filename = it.originalFilename
+            documentInstance.filedata = it.getBytes()
+            if (documentInstance.validate()) {
+              documentInstance.save(flush:true)
+              AD.addToDocuments(documentInstance)
+              }
+            else {
+                  documentInstance.errors.allErrors.each {
+                      println it
+                  }
             }
-          else {
-                documentInstance.errors.allErrors.each {
-                    println it
-                }
           }
-        }
+      }
 
         def holder = Integer.parseInt(params.meetsExpectations) +
         Integer.parseInt(params.needsImprovement) +
