@@ -50,32 +50,32 @@
             <label for="meetsExpectation" class="labelEx">Meets Expectation:</label>
             <label for="exceedsExpectation" class="labelEx">Exceeds Expectation:</label>
             <br>
-            <g:field type="number" value="${assessment_documents?.targetGoal}" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal"/>
+            <g:field type="text" value="${assessment_documents?.targetGoal}" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal"/>
 
             <input type="button" value="-" onclick="minusBelowExpectation();" class="minus"/>
             <g:if test="${assessment_documents?.needsImprovement != null}">
-              <g:field type="number" id="belowExpectation" name="needsImprovement" value="${assessment_documents?.needsImprovement}" class="oneChar"/>
+              <g:field type="text" id="belowExpectation" name="needsImprovement" value="${assessment_documents?.needsImprovement}" class="oneChar"/>
             </g:if>
             <g:else>
-              <g:field type="number" id="belowExpectation" name="needsImprovement" value="0" class="oneChar"/>
+              <g:field type="text" id="belowExpectation" name="needsImprovement" value="0" class="oneChar"/>
             </g:else>
             <input type="button" onclick="addBelowExpectation();" value="+" />
 
             <input type="button" value="-" onclick="minusMeetsExpectation();" class="minus">
             <g:if test="${assessment_documents?.meetsExpectations != null}">
-              <g:field type="number" id="meetsExpectation" name="meetsExpectations" value="${assessment_documents?.meetsExpectations}" class="oneChar"/>
+              <g:field type="text" id="meetsExpectation" name="meetsExpectations" value="${assessment_documents?.meetsExpectations}" class="oneChar"/>
             </g:if>
             <g:else>
-              <g:field type="number" id="meetsExpectation" name="meetsExpectations" value="0" class="oneChar"/>
+              <g:field type="text" id="meetsExpectation" name="meetsExpectations" value="0" class="oneChar"/>
             </g:else>
             <input type="button"  onclick="addMeetsExpectation();" value="+">
 
             <input type=button value="-" onclick="minusExceedsExpectation();" class="minus">
             <g:if test="${assessment_documents?.exceedsExpectations != null}">
-              <g:field type="number" id="exceedsExpectation" name="exceedsExpectations" value="${assessment_documents?.exceedsExpectations}" class="oneChar"/>
+              <g:field type="text" id="exceedsExpectation" name="exceedsExpectations" value="${assessment_documents?.exceedsExpectations}" class="oneChar"/>
             </g:if>
             <g:else>
-              <g:field type="number" id="exceedsExpectation" name="exceedsExpectations" value="0" class="oneChar"/>
+              <g:field type="text" id="exceedsExpectation" name="exceedsExpectations" value="0" class="oneChar"/>
             </g:else>
             <input type="button" onclick="addExceedsExpectation();" value="+">
 

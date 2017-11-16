@@ -52,9 +52,8 @@ class AssessmentsController {
           AD = new Assessment_Documentation()
         }
 
-        if(params.targetGoal != null){
-          AD.targetGoal = Integer.parseInt(params.targetGoal) //TODO:handle incorrect input
-        }
+          AD.targetGoal = Integer.parseInt(params.targetGoal)
+
 
         //code for hadling file upload
         def file = request.getFile('myFile')
@@ -74,9 +73,9 @@ class AssessmentsController {
         }
 
         //handles student section and meets exceeds and needs section
-        AD.needsImprovement = Integer.parseInt(params.needsImprovement)
-        AD.meetsExpectations = Integer.parseInt(params.meetsExpectations)
-        AD.exceedsExpectations = Integer.parseInt(params.exceedsExpectations)
+        AD.needsImprovement = params.needsImprovement
+        AD.meetsExpectations = params.meetsExpectations
+        AD.exceedsExpectations = params.exceedsExpectations
         AD.numberOfStudents = AD.needsImprovement + AD.meetsExpectations + AD.exceedsExpectations
 
         if(params.summary != null){
