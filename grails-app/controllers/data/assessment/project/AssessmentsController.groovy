@@ -8,6 +8,22 @@ import com.oreilly.servlet.MultipartRequest;
 
 class AssessmentsController {
 
+  def downloadFile(long id) {
+    Document documentInstance = Document.get(id)
+    if ( documentInstance == null) {
+        System.out.println("Sorry! that document wasn't retreived correctly!")
+    } else {
+        response.setContentType("APPLICATION/OCTET-STREAM")
+        response.setHeader("Content-Disposition", "Attachment;Filename=\"${documentInstance.filename}\"")
+        def outputStream = response.getOutputStream()
+        outputStream << documentInstance.filedata
+        outputStream.flush()
+        outputStream.close()
+        }
+      }
+
+
+
   def editAssessment() {
     def outcomes = Outcomes.list()
     def indicators = Indicators.list()
