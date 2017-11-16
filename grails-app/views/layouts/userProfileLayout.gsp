@@ -25,11 +25,19 @@
             		<button class="button">Home</button>
             </g:link>
             <br>
+            <g:link controller="outcomes" action="viewOutcomesUser">
+            		<button class="button button2">Outcomes</button>
+            </g:link>
+            <br>
             <g:link controller="measures" action="viewMeasuresUser" >
             		<button class="button button2">Measures</button></g:link>
             <br>
             <g:link controller="assessments" action="editAssessment">
             		<button class="button button2">Assessments</button>
+            </g:link>
+            <br>
+            <g:link controller="generate">
+              <button class="button button2">Generate PDF</button>
             </g:link>
             <br>
             <g:link controller="user" action="logout">

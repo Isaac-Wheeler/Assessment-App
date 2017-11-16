@@ -5,9 +5,6 @@
         <asset:stylesheet src="adminProfile.css"/>
     </head>
     <body>
-      <g:if test="${session.teacher == null}">
-        ${response.sendRedirect("/")}
-      </g:if>
         <div class="newTab">
           <p>Assigned Courses
           </p>
