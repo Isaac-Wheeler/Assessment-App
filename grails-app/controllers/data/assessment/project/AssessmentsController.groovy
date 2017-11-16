@@ -103,7 +103,7 @@ class AssessmentsController {
           AD.complete = params.complete
         }
         if(params.measureID != null){
-          def measure = Measures.get(params.measureID)
+          measure = Measures.get(params.measureID)
           AD.setMeasure(measure)
         }
         if(!AD.save(flush:true)){
