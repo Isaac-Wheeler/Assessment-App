@@ -32,24 +32,33 @@
                   <p>(${i.indicatorName}) - ${c.title}</p>
                   <g:each in="${i.measures}" var="m">
                     <g:set var="ad" value="${m.assessment_documents}"/>
-                    <g:set var="totalprcentMet" value="${ad.meetsExpectations+ad.exceedsExpectations}"/>
-                    <g:set var="totalprcentMetConf" value="${ad.exceedsExpectations/ad.numberOfStudents} "/>
-                    <g:set var="targetGoal" value="${ad.targetGoal}"/>
                     ${i.indicatorName}-${c.title}-${m.measureTitle}:
-                    <g:if test="${totalprcentMet > targetGoal + 5}">
-                      <span style="background-color: #00FF00">Met Comfortably</span>
+                    <g:if test="${it == null || ad.meetsExpectations == null || !ad.exceedsExpectations || !ad.targetGoal || !ad.needsImprovement}">
+                      <br>
+                      <span style="background-color: #000000; color:white;">Not Assessed</span>
+                      <br>
                     </g:if>
-                    <g:elseif test="${totalPrcentMet >= targetGoal}">
-                      <span style="background-color: #FFFF00">Met</span>
-                    </g:elseif>
-                    <g:elseif test="${totalPrcentMet >= targetGoal - 5}">
-                      <span style="background-color: #FFFF00">Almost Met</span>
-                    </g:elseif>
-                    <g:elseif test="${totalPrcentMet < targetGoal - 5}">
-                      <span style="background-color: #FF0000">Not Met</span>
-                    </g:elseif>
-                    (${totalprcentMet/ad.numberOfStudents * 100}%/${targetGoal * 100}%)
-                    <br>${ad.requiredAction}<br>
+                    <g:else>
+                      <g:set var="totalMet" value="${ad.meetsExpectations+ad.exceedsExpectations}"/>
+                      <g:set var="totalprcentMet" value="${totalMet/ad.numberOfStudents} "/>
+                      <g:set var="targetGoal" value="${ad.targetGoal}"/>
+                      <g:if test="${totalprcentMet > targetGoal + 5}">
+                        <span style="background-color: #00FF00">Met Comfortably</span>
+                      </g:if>
+                      <g:elseif test="${totalPrcentMet >= targetGoal}">
+                        <span style="background-color: #FFFF00">Met</span>
+                      </g:elseif>
+                      <g:elseif test="${totalPrcentMet >= targetGoal - 5}">
+                        <span style="background-color: #FFA500">Almost Met</span>
+                      </g:elseif>
+                      <g:elseif test="${totalPrcentMet < targetGoal - 5}">
+                        <span style="background-color: #FF0000">Not Met</span>
+                      </g:elseif>
+                      (${totalprcentMet/ad.numberOfStudents * 100}%/${targetGoal}%)
+                      <br>
+                      ${ad.requiredAction}
+                      <br>
+                    </g:else>
                   </g:each>
                 </g:each>
               </g:each>
