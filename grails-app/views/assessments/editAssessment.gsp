@@ -88,10 +88,10 @@
             <br>
             <g:textArea id="observation" value="${assessment_documents?.resultComment}" name="resultComment" rows="10" cols="100" resize="none"/>
             <br>
-            <label for="semseter">Semester:</label>
+            <label for="semseter">Academic Year:</label>
             <label for="completed" style="margin-left:40%;">Completed:</label>
             <br>
-            <g:field type="text" value="${assessment_documents?.academicSemester}" name="academicSemester" style="width:40%;" placeholder="Semseter Ex: Fall2017"/>
+            <g:field type="text" value="${assessment_documents?.academicSemester}" name="academicSemester" style="width:40%;" placeholder="Academic Year Ex: 2017-2018"/>
             <g:checkBox style="display: inline-block;margin-left:15%;"id="completed" name="complete"/>
             <br>
             <input type="button" class="actionButton" name="action" id="action" value="Actions "onclick="revealAction();"/>

@@ -22,18 +22,18 @@
     			</g:hasErrors>
     		<div class="backgrounds">
             <div class="labels">
-                <label for="indicatorTitle">Indicator Title:</label>
+                <label for="indicatorName">Indicator Title:</label>
                 <br>
-                <g:textField type="text" id="indicatorTitle" name="indicatorTitle" value="${indicator?.title}" placeholder="Title" class="${hasErrors(bean:indicator,field:'indicatorTitle','errors')}"/>
+                <g:textField type="text" id="indicatorName" name="indicatorName" value="${indicator?.indicatorName}" placeholder="Title" class="${hasErrors(bean:indicator,field:'indicatorTitle','errors')}"/>
                 <br>
                 <label for="indicatorDesc">Indicator Description:</label>
                 <br>
-                <g:textArea id="indicatorDesc" name="indicatorDesc" value="${indicator?.desc}" rows="10" cols="50"/>
+                <g:textArea id="indicatorDesc" name="indicatorDesc" value="${indicator?.indicatorDescription}" rows="10" cols="50"/>
                 <label for="classes">Choose The Class:</label>
                 <br>
                 <g:select name="classId" from="${Classes}" id="classes" value="" style="width:20%;" optionKey="id" optionValue="title" />
                 <br>
-                <g:submitButton class="button" name="submitButton" value="Create Outcome" />
+                <g:submitButton class="button" name="submitButton" value="Create Indicator" />
                 <g:submitButton class="button" name="cancelButton" value="Cancel" />
             </div>
         </div>

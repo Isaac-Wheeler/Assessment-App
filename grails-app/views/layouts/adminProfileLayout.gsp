@@ -52,6 +52,10 @@
               <button class="button button2">Generate PDF</button>
             </g:link>
             <br>
+            <g:link controller="settings">
+              <button class="button button2">Settings</button>
+            </g:link>
+            <br>
             <g:link controller="user" action="logout">
                 <button class="button button2">Log Out</button>
             </g:link>

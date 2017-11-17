@@ -2,13 +2,13 @@ package data.assessment.project
 
 class Settings {
 
-    String academicSemester;
+    String academicYear;
 
 
 
 
     static constraints = {
-      academicSemester blank: false, nullable: false, unique: true
+      academicYear blank: false, nullable: false, unique: true
     }
 
 
