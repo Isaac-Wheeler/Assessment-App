@@ -22,6 +22,8 @@
       </g:if>
       <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-left: 1%; margin-top: 1%;"></g:link></i>
       <br>
+      <g:select name="academicYear" from="${Settings}" value="" style="width:20%;" optionKey="id" optionValue="academicYear" />
+      <br>
         <!-- right half of the page -->
           <div id="HTMLtoPDF" style="margin-left: 2%;">
           <g:each in="${Outcomes}" var="o">
