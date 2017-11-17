@@ -142,8 +142,7 @@
                           <g:if test="${m.assessment_documents != NULL}">
                             <g:each in="${m.assessment_documents}">
                               <g:link controller="assessments" action="delete" params="[ad:it.id]">
-                                <button class="deleteButton" style="text-align: left;">-</button>
-                              </g:link>
+                              <button class="deleteButton" style="text-align: left;">-</button></g:link>
                               <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
                               <br>
                             </g:each>

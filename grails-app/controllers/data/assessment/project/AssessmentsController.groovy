@@ -51,8 +51,7 @@ class AssessmentsController {
         }else{
           AD = new Assessment_Documentation()
         }
-
-          AD.targetGoal = Integer.parseInt(params.targetGoal)
+          AD.targetGoal = params.targetGoal
 
 
         if (request.getFiles("myFile").get(0).isEmpty() == false) {   //Code to handle all files uploaded and saving them/linking them to the current AD

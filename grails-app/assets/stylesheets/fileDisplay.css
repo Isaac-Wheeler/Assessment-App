@@ -25,6 +25,18 @@ body{
 .actionsText{
   display: none;
 }
+.deleteButton{
+	height: 20px;
+	width: 10px;
+	border-radius: 50%;
+	background-color: red;
+	color: white;
+	font-style: bold;
+	border: solid;
+	border-width: 1px;
+	border-color: black;
+  margin-left: 30%;
+}
 .actionButton{
   background-color: #389244;
   border: none;
@@ -153,7 +165,7 @@ input:checked + .slider:after
   background-color: #389244;
   border: none;
   font-size: 14px;
-  margin-left: 30%;
+  margin-left: 0%;
 }
 .newAssess{
   /*background-color: #389244;
