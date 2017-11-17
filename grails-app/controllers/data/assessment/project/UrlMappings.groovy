@@ -20,6 +20,7 @@ class UrlMappings {
         "/accessDenied"(view:'/accessDenied')
         "/outcomes/create"(view:'/outcomes/create')
         "/indicators/index"(controller:"outcomes")
-        "/assessments/editAssessments"(view:'/assessments/editAssessments')
+        "/assessments/editAssessment"(controller:"assessments", action:"editAssessment")
+        "/assessments/index"(controller:"assessments", action:"index")
     }
 }

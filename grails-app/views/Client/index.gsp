@@ -39,7 +39,7 @@
                           </g:if>
                           <g:else>
                             <g:set var="submitButtonValue" value="${'new_' + m.id}" />
-                            <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
+                            <g:link controller="assessments" params="[courseLink:true, submitButton:submitButtonValue]">
                             <button class="docButton">Create Assessment Documentation</button></g:link>
                             </br>
                           </g:else>

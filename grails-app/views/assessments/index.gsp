@@ -19,7 +19,7 @@
       <g:if test="${session.teacher == null}">
         ${response.sendRedirect("/")}
       </g:if>
-      <g:uploadForm class="simpleform" url="editAssessment" >
+      <g:uploadForm class="simpleform" url="index" >
         <!-- right half of the page -->
         <div class="main">
           <g:hasErrors bean="${assessment_documents}">
@@ -100,7 +100,6 @@
             <g:textArea id="requiredAction" value="${assessment_documents?.requiredAction}" name="requiredAction" rows="10" cols="100" class="actionsText" />
             <br>
             <g:hiddenField name="measureID" value="${measureID}"/>
-            <g:hiddenField name="ADID" value="${assessment_documents.id}"/>
             <g:submitButton class="button" name="submitButton" value="Submit" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
           </div>
@@ -138,7 +137,9 @@
                             <g:each in="${m.assessment_documents}">
                               <g:link controller="assessments" action="delete" params="[ad:it.id]">
                               <input type="button" class="deleteButton" style="text-align: left;">-</input></g:link>
-                              <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
+                              <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
+                              <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
+                              <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.assessmentDocTitle}</input></g:link>
                               <br>
                             </g:each>
                             </g:if>
@@ -171,7 +172,9 @@
                               <g:link controller="assessments" action="delete" params="[ad:it.id]">
                                 <button class="deleteButton" style="text-align: left;">-</button>
                               </g:link>
-                              <button class="assess" name="submitButton" onclick="revealInfo();" value="edit_${it.id}">Assessment: ${it.assessmentDocTitle}</button>
+                              <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
+                              <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
+                              <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.assessmentDocTitle}</input></g:link>
                               <br>
                             </g:each>
                           </g:if>

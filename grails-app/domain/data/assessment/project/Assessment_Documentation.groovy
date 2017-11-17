@@ -3,7 +3,6 @@ package data.assessment.project
 class Assessment_Documentation {
 
     //NOTE: DB creates ID for table.
-    Measures measure;
     int targetGoal;
     int numberOfStudents;
     int needsImprovement;
