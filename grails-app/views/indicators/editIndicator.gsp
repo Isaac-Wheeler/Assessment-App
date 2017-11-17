@@ -29,6 +29,7 @@
                 <label for="indicatorDesc">Indicator Description:</label>
                 <br>
                 <g:textArea id="indicatorDesc" name="indicatorDesc" value="${indicator?.indicatorDescription}" rows="10" cols="50"/>
+                <g:hiddenField name="id" value="${id}" />
                 <label for="classes">Choose The Class:</label>
                 <br>
                 <g:select name="classId" from="${Classes}" id="classes" value="" style="width:20%;" optionKey="id" optionValue="title" />
