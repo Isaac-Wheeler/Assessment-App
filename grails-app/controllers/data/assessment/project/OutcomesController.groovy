@@ -3,13 +3,13 @@ package data.assessment.project
 class OutcomesController {
 
   def viewOutcomesAdmin() {
-    def outcomes = Outcomes.list()
-    def indicators = Indicators.list()
+    def outcomes = Outcomes.findAllByAcademicYear(Settings.get(1).academicYear)
+    def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
     [Outcomes:outcomes, Indicators:indicators]
   }
   def viewOutcomesUser() {
-    def outcomes = Outcomes.list()
-    def indicators = Indicators.list()
+    def outcomes = Outcomes.findAllByAcademicYear(Settings.get(1).academicYear)
+    def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
     [Outcomes:outcomes, Indicators:indicators]
   }
   def createOutcome() {

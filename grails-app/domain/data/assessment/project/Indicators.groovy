@@ -5,7 +5,7 @@ class Indicators {
       //NOTE: DB creates ID for table
       String indicatorName;
       String indicatorDescription;
-      String academicSemester;
+      String academicYear;
 
       static hasMany = [ measures : Measures , classes : Classes ]
 
@@ -16,13 +16,11 @@ class Indicators {
           measures sort: 'measureTitle', order: 'asc'
       }
 
-
-
     static constraints = {
 
       indicatorName blank:false, unique: true
       indicatorDescription blank:false
-      academicSemester nullable:true
+      academicYear nullable:true
 
 
     }

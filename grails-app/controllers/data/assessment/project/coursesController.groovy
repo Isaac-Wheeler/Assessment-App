@@ -4,7 +4,7 @@ class coursesController {
 
 def index() {
   def classes = Classes.list()
-  def indicators = Indicators.list()
+  def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
   def teachers = Teacher.list()
 
   if (request.method == 'POST') {

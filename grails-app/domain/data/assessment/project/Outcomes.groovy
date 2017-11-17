@@ -6,7 +6,7 @@ class Outcomes {
     //NOTE: DB creates ID for table
     char outcomeCategory;
     String outcomeCategoryDescription;
-    String academicSemester;
+    String academicYear;
 
     static hasMany = [ indicators : Indicators ]
 
@@ -15,12 +15,11 @@ class Outcomes {
         indicators sort: 'indicatorName', order: 'asc'
     }
 
-
     static constraints = {
 
       outcomeCategory blank:false, unique:true
       outcomeCategoryDescription blank:false
-      academicSemester nullable:true
+      academicYear nullable:true
       }
 
 }

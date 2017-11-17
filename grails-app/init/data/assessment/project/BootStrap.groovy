@@ -10,9 +10,13 @@ class BootStrap {
            u.passwordHashed = u.password.encodeAsPassword()
            u.save()
            System.out.println("added default admin")
+           def settings = new Settings(academicYear:"2017-2018")
+           settings.save(flush:true)
           }
         }
         development {
+          def settings = new Settings(academicYear:"2017-2018")
+          settings.save(flush:true)
           def u = null
           if(Teacher.count() == 0){
            u = new Teacher(firstName:"admin", lastName:"DeleteMe", username:"admin", password:"password", confirm:"password", admin:true)
@@ -25,9 +29,9 @@ class BootStrap {
            System.out.println("added default teacher")
           }
           if (Outcomes.count() == 0 && Classes.count() == 0 && Indicators.count() == 0 && Measures.count() == 0&& Assessment_Documentation.count() == 0) {
-            def a = new Outcomes(outcomeCategory: 'A', outcomeCategoryDescription: "Students will learn how to...")
+            def a = new Outcomes(outcomeCategory: 'A', outcomeCategoryDescription: "Students will learn how to...", academicYear:"2017-2018")
             def b = new Classes(title: "CS481")
-            def c = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to")
+            def c = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to", academicYear:"2017-2018")
             def d = new Measures(measureTitle: "Exam1", measureDescription: "Student will be able to")
             def e = new Assessment_Documentation(targetGoal: 20, numberOfStudents: 40, needsImprovement: 15, meetsExpectations: 15, exceedsExpectations: 10, assessmentDocTitle: "Question1", comments:"Hello World!", summary: "Student will be able to", requiredAction: "Hello World!", resultComment: "Hello World!", academicSemester: "Fall2017", complete: false)
             a.addToIndicators(c)
@@ -47,6 +51,8 @@ class BootStrap {
         }
         }
         test {
+          def settings = new Settings(academicYear:"2017-2018")
+          settings.save(flush:true)
           if(Teacher.count() == 0 && Classes.count() == 0){
            def u = new Teacher(firstName:"admin", lastName:"DeleteMe", username:"admin", password:"password", confirm:"password", admin:true)
            u.passwordHashed = u.password.encodeAsPassword()

@@ -10,8 +10,8 @@ class AssessmentsController {
 
 
   def index(){
-    def outcomes = Outcomes.list()
-    def indicators = Indicators.list()
+    def outcomes = Outcomes.findAllByAcademicYear(Settings.get(1).academicYear)
+    def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
     def classes = Classes.list()
     def measures = Measures.list()
 
@@ -114,8 +114,8 @@ class AssessmentsController {
 
 
   def editAssessment() {
-    def outcomes = Outcomes.list()
-    def indicators = Indicators.list()
+    def outcomes = Outcomes.findAllByAcademicYear(Settings.get(1).academicYear)
+    def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
     def classes = Classes.list()
     def measures = Measures.list()
     def mId = null

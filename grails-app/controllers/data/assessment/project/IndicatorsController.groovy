@@ -3,7 +3,7 @@ package data.assessment.project
 class IndicatorsController {
 
     def index() {
-      def indicators = Indicators.list()
+      def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
       [Indicators:indicators]
     }
 
