@@ -92,7 +92,7 @@
             <label for="completed" style="margin-left:40%;">Completed:</label>
             <br>
             <g:field type="text" value="${assessment_documents?.academicSemester}" name="academicSemester" style="width:40%;" placeholder="Academic Year Ex: 2017-2018"/>
-            <g:checkBox style="display: inline-block;margin-left:15%;"id="completed" name="complete"/>
+            <g:checkBox style="display: inline-block;margin-left:15%;"id="completed" name="complete" value="${assessment_documents?.complete}"/>
             <br>
             <input type="button" class="actionButton" name="action" id="action" value="Actions "onclick="revealAction();"/>
             <br>
@@ -100,7 +100,10 @@
             <g:textArea id="requiredAction" value="${assessment_documents?.requiredAction}" name="requiredAction" rows="10" cols="100" class="actionsText" />
             <br>
             <g:hiddenField name="measureID" value="${measureID}"/>
-            <g:hiddenField name="ADID" value="${assessment_documents.id}"/>
+            <g:if test="${assessment_documents != null}">
+                <g:hiddenField name="ADID" value="${assessment_documents.id}" />
+            </g:if>
+
             <g:submitButton class="button" name="submitButton" value="Submit" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
           </div>
