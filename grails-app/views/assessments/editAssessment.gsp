@@ -54,28 +54,28 @@
 
             <input type="button" value="-" onclick="minusBelowExpectation();" class="minus"/>
             <g:if test="${assessment_documents?.needsImprovement != null}">
-              <g:field type="text" id="belowExpectation" name="needsImprovement" value="${assessment_documents?.needsImprovement}" class="oneChar"/>
+              <g:field type="number" id="belowExpectation" name="needsImprovement" value="${assessment_documents?.needsImprovement}" class="oneChar"/>
             </g:if>
             <g:else>
-              <g:field type="text" id="belowExpectation" name="needsImprovement" value="0" class="oneChar"/>
+              <g:field type="number" id="belowExpectation" name="needsImprovement" value="0" class="oneChar"/>
             </g:else>
             <input type="button" onclick="addBelowExpectation();" value="+" />
 
             <input type="button" value="-" onclick="minusMeetsExpectation();" class="minus">
             <g:if test="${assessment_documents?.meetsExpectations != null}">
-              <g:field type="text" id="meetsExpectation" name="meetsExpectations" value="${assessment_documents?.meetsExpectations}" class="oneChar"/>
+              <g:field type="number" id="meetsExpectation" name="meetsExpectations" value="${assessment_documents?.meetsExpectations}" class="oneChar"/>
             </g:if>
             <g:else>
-              <g:field type="text" id="meetsExpectation" name="meetsExpectations" value="0" class="oneChar"/>
+              <g:field type="number" id="meetsExpectation" name="meetsExpectations" value="0" class="oneChar"/>
             </g:else>
             <input type="button"  onclick="addMeetsExpectation();" value="+">
 
             <input type=button value="-" onclick="minusExceedsExpectation();" class="minus">
             <g:if test="${assessment_documents?.exceedsExpectations != null}">
-              <g:field type="text" id="exceedsExpectation" name="exceedsExpectations" value="${assessment_documents?.exceedsExpectations}" class="oneChar"/>
+              <g:field type="number" id="exceedsExpectation" name="exceedsExpectations" value="${assessment_documents?.exceedsExpectations}" class="oneChar"/>
             </g:if>
             <g:else>
-              <g:field type="text" id="exceedsExpectation" name="exceedsExpectations" value="0" class="oneChar"/>
+              <g:field type="number" id="exceedsExpectation" name="exceedsExpectations" value="0" class="oneChar"/>
             </g:else>
             <input type="button" onclick="addExceedsExpectation();" value="+">
 
@@ -88,10 +88,10 @@
             <br>
             <g:textArea id="observation" value="${assessment_documents?.resultComment}" name="resultComment" rows="10" cols="100" resize="none"/>
             <br>
-            <label for="semseter">Semester:</label>
+            <label for="semseter">Academic Year:</label>
             <label for="completed" style="margin-left:40%;">Completed:</label>
             <br>
-            <g:field type="text" value="${assessment_documents?.academicSemester}" name="academicSemester" style="width:40%;" placeholder="Semseter Ex: Fall2017"/>
+            <g:field type="text" value="${assessment_documents?.academicSemester}" name="academicSemester" style="width:40%;" placeholder="Academic Year Ex: 2017-2018"/>
             <g:checkBox style="display: inline-block;margin-left:15%;"id="completed" name="complete"/>
             <br>
             <input type="button" class="actionButton" name="action" id="action" value="Actions "onclick="revealAction();"/>

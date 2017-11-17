@@ -12,7 +12,7 @@ class IndicatorsController {
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
           def i = new Indicators()
-          def o = Outcomes.get(params.outcomeId)
+          def o = indicators.get(params.indicatorsId)
           def c = Classes.get(params.classId)
           i.indicatorName = params.indicatorName
           i.indicatorDescription = params.indicatorDescription
@@ -34,9 +34,9 @@ class IndicatorsController {
           }
 
         }
-        redirect(controller:"Outcomes")
+        redirect(controller:"indicators")
       }
-      return [outcomeId:params.givenOutcomeId, Classes:classes]
+      return [indicatorsId:params.givenindicatorsId, Classes:classes]
     }
 
     def delete() {
@@ -44,4 +44,24 @@ class IndicatorsController {
       i.delete(flush:true)
       redirect(controller:'Indicators')
     }
+    def edit() {
+      if (request.method == 'POST') {
+        if(!params.submitButton.contains("Cancel")){
+          def o = indicators.get(params.id)
+          o.indicatorName = params.indicatorName
+          o.indicatorDescription = params.indicatorDescription
+            if(!o.save(flush:true)){
+              return [indicators:i, id:i.id]
+              redirect(view:"/indicators/editIndicator")
+              System.out.println("Error")
+            }
+        }
+        redirect(view:"/indicator/index")
+      }else{
+        def o = indicators.get(params.indicators)
+        return [indicators:o, id:o.id]
+        redirect(view:"/indicators/editIndicator")
+      }
+    }
+
 }
