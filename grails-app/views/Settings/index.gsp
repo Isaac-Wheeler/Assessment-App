@@ -19,6 +19,13 @@
             <button id="classButton" class="add">Set</button>
           </g:form>
             Current Academic Year: ${year}
+          </br>
+            Past Years
+          </br>
+              <g:each in="${Years}">
+                ${it}
+              </br>
+              </g:each>
         </div>
     </body>
 </html>

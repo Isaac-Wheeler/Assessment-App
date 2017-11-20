@@ -4,7 +4,9 @@ class Settings {
 
     String academicYear;
 
-
+    String toString(){
+        return academicYear
+    }
 
 
     static constraints = {

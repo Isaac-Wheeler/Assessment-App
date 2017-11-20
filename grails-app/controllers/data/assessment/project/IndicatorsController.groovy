@@ -12,7 +12,7 @@ class IndicatorsController {
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
           def i = new Indicators()
-          def o = indicators.get(params.indicatorsId)
+          def o = Indicators.get(params.indicatorsId)
           def c = Classes.get(params.classId)
           i.indicatorName = params.indicatorName
           i.indicatorDescription = params.indicatorDescription
