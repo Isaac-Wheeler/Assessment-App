@@ -27,8 +27,7 @@
                           <g:each in="${i.teachers}" var="t">
 
                                 <g:link controller="courses" action="deleteAssignedTeacher" params="[classes:i.id, teacher:t.id]">
-                                  <button class="deleteButton" style="text-align: left;">-</button>
-                                </g:link>
+                                  <button class="deleteButton" style="text-align: left;">-</button></g:link>
                               ${t.toString()}
                               <br>
                           </g:each>
