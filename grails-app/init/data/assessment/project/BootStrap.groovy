@@ -5,6 +5,7 @@ class BootStrap {
     def init = { servletContext ->
       environments {
         production {
+
           if(Teacher.count() == 0){
            def u = new Teacher(firstName:"admin", lastName:"DeleteMe", username:"admin", password:"password", confirm:"password", admin:true)
            u.passwordHashed = u.password.encodeAsPassword()
@@ -12,6 +13,7 @@ class BootStrap {
            System.out.println("added default admin")
            def settings = new Settings(academicYear:"2017-2018")
            settings.save(flush:true)
+           System.out.println("added default year")
           }
         }
         development {

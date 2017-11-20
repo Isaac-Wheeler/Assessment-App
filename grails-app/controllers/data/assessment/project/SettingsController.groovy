@@ -6,8 +6,10 @@ class SettingsController {
 
         if (request.method == 'POST') {
             def settings = Settings.get(1)
+            def newSettins = new Settings(academicYear:settings.academicYear)
             settings.academicYear = params.academicYear
             settings.save(flush:true)
+            newSettins.save(flush:true)
 
         }
 
