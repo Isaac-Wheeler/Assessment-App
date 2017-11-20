@@ -44,13 +44,14 @@ class IndicatorsController {
       i.delete(flush:true)
       redirect(controller:'Indicators')
     }
+
     def edit() {
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
-          def o = indicators.get(params.id)
-          o.indicatorName = params.indicatorName
-          o.indicatorDescription = params.indicatorDescription
-            if(!o.save(flush:true)){
+          def i = indicators.get(params.id)
+          i.indicatorName = params.indicatorName
+          i.indicatorDescription = params.indicatorDescription
+            if(!i.save(flush:true)){
               return [indicators:i, id:i.id]
               redirect(view:"/indicators/editIndicator")
               System.out.println("Error")
@@ -58,8 +59,8 @@ class IndicatorsController {
         }
         redirect(view:"/indicator/index")
       }else{
-        def o = indicators.get(params.indicators)
-        return [indicators:o, id:o.id]
+        def i = indicators.get(params.indicators)
+        return [indicators:i, id:i.id]
         redirect(view:"/indicators/editIndicator")
       }
     }

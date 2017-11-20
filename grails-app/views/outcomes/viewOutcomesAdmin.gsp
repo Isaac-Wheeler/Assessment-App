@@ -29,13 +29,13 @@
                         </g:if>
                 			</div>
                       </br>
-            <g:link controller="Outcomes" action="editOutcome" params="[outcome:o.id]">
-							<button class="add">Edit</button></g:link>
-						<g:link controller="Outcomes" action="deleteOutcome" params="[outcome:o.id]">
-							<button class="add">Delete</button></g:link>
-						<g:link controller="Indicators" action="create" params="[givenOutcomeId:o.id]">
-							<button class="add">Add Indicator</button>
-						</g:link>
+                      <g:link controller="Outcomes" action="editOutcome" params="[outcome:o.id]">
+							               <button class="add">Edit</button></g:link>
+						          <g:link controller="Outcomes" action="deleteOutcome" params="[outcome:o.id]">
+							               <button class="add">Delete</button></g:link>
+						          <g:link controller="Indicators" action="create" params="[givenOutcomeId:o.id]">
+							               <button class="add">Add Indicator</button>
+						          </g:link>
         				</div>
         				<br/>
         			</g:each>

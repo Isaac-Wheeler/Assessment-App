@@ -165,6 +165,7 @@
                     <summary>${c.title}:</summary>
                     <g:if test="${c.indicators != NULL}">
                       <g:each in="${c.indicators}">
+                      <g:if test="${it.academicYear == year}">
                       <details>
                       <summary class="cat1">Indicator: ${it.indicatorName}</summary>
                       <g:if test="${it.measures != NULL}">
@@ -187,6 +188,7 @@
                         </g:each>
                       </g:if>
                       </details>
+                    </g:if>
                       </g:each>
                     </g:if>
                   </details>
