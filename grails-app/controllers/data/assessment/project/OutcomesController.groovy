@@ -3,8 +3,8 @@ package data.assessment.project
 class OutcomesController {
 
   def viewOutcomesAdmin() {
-    def outcomes = Outcomes.findAllByAcademicYear(Settings.get(1).academicYear)
-    def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
+    def outcomes = Outcomes.findAllByAcademicYear(Settings.get(14).academicYear)
+    def indicators = Indicators.findAllByAcademicYear(Settings.get(14).academicYear)
     [Outcomes:outcomes, Indicators:indicators]
   }
   def viewOutcomesUser() {
