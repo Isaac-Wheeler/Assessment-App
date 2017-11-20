@@ -10,8 +10,10 @@ class AssessmentsController {
 
 
   def index(){
-    def outcomes = Outcomes.findAllByAcademicYear(Settings.get(1).academicYear)
-    def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
+    //def outcomes = Outcomes.findAllByAcademicYear(Settings.get(1).academicYear)
+    //def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
+    def outcomes = Outcomes.list()
+    def indicators = Indicators.list()
     def classes = Classes.list()
     def measures = Measures.list()
 
@@ -38,15 +40,15 @@ class AssessmentsController {
             def documentInstance = new Document();
             documentInstance.filename = it.originalFilename
             documentInstance.filedata = it.getBytes()
-            if (documentInstance.validate()) {
-              documentInstance.save(flush:true)
-              AD.addToDocuments(documentInstance)
-              }
-            else {
-                  documentInstance.errors.allErrors.each {
-                      println it
-                  }
-            }
+            AD.addToDocuments(documentInstance)
+            //if (documentInstance.validate()) {
+              //documentInstance.save(flush:true)
+              //}
+            //else {
+                //  documentInstance.errors.allErrors.each {
+                  //    println it
+                  //}
+            //}
           }
       }
 
@@ -97,6 +99,17 @@ class AssessmentsController {
     return [Outcomes:outcomes, Indicators:indicators, Classes:classes]
   }
 
+  def deleteFile(long id) {
+      System.out.println("MADE IT TO THE DELETEFILE METHOD IN CONTROLLER")
+      Document documentInstance = Document.get(id)
+      if ( documentInstance == null) {
+          System.out.println("Sorry! that document wasn't retreived correctly!")
+      } else {
+          documentInstance.delete(flush:true)
+      }
+
+  }
+
   def downloadFile(long id) {
     Document documentInstance = Document.get(id)
     if ( documentInstance == null) {
@@ -114,8 +127,10 @@ class AssessmentsController {
 
 
   def editAssessment() {
-    def outcomes = Outcomes.findAllByAcademicYear(Settings.get(1).academicYear)
-    def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
+    //def outcomes = Outcomes.findAllByAcademicYear(Settings.get(1).academicYear)
+    //def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
+    def outcomes = Outcomes.list()
+    def indicators = Indicators.list()
     def classes = Classes.list()
     def measures = Measures.list()
     def mId = null
@@ -142,15 +157,15 @@ class AssessmentsController {
             def documentInstance = new Document();
             documentInstance.filename = it.originalFilename
             documentInstance.filedata = it.getBytes()
-            if (documentInstance.validate()) {
-              documentInstance.save(flush:true)
-              AD.addToDocuments(documentInstance)
-              }
-            else {
-                  documentInstance.errors.allErrors.each {
-                      println it
-                  }
-            }
+            AD.addToDocuments(documentInstance)
+          //  if (documentInstance.validate()) {
+              //documentInstance.save(flush:true)
+            //  }
+          //  else {
+              //    documentInstance.errors.allErrors.each {
+                  //    println it
+                //  }
+          //  }
           }
       }
 

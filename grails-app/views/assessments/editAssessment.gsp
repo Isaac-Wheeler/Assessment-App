@@ -41,6 +41,8 @@
             <br>
               <g:each in="${assessment_documents?.documents}" var="o">
                 <g:link action="downloadFile" id="${o.id}">${o.filename}</g:link>
+                <g:link action="deleteFile" id="${o.id}">Delete</g:link>
+                <br>
               </g:each>
               <br>
               <input type="file" name="myFile" multiple />
