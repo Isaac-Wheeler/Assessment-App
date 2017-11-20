@@ -19,6 +19,7 @@
                 <div class="indicatorList">
                   <g:if test="${c.indicators != NULL}">
                     <g:each in="${c.indicators}" var="i">
+                      <g:if test="${i.academicYear == year}">
                       <h2>${i.indicatorName} - ${i.indicatorDescription}</h2>
                       </div>
                       <g:if test="${i.measures != NULL}">
@@ -44,6 +45,7 @@
                             </br>
                           </g:else>
                         </g:each>
+                      </g:if>
                       </g:if>
                     </g:each>
                   </g:if>
