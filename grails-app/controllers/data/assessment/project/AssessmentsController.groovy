@@ -88,10 +88,10 @@ class AssessmentsController {
         if(!AD.save(flush:true)){
           return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, show:true]
         }
-        redirect(controler:"Assessments")
+        redirect(controller:"Assessments")
       }
       }else{
-        redirect(controler:"Assessments")
+        redirect(controller:"Assessments")
       }
     }
 
@@ -100,12 +100,12 @@ class AssessmentsController {
   }
 
   def deleteFile(long id) {
-      System.out.println("MADE IT TO THE DELETEFILE METHOD IN CONTROLLER")
       Document documentInstance = Document.get(id)
       if ( documentInstance == null) {
           System.out.println("Sorry! that document wasn't retreived correctly!")
       } else {
           documentInstance.delete(flush:true)
+          redirect(controller:"Assessments")
       }
 
   }
@@ -205,10 +205,10 @@ class AssessmentsController {
         if(!AD.save(flush:true)){
           return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, show:true]
         }
-        redirect(controler:"Assessments")
+        redirect(controller:"Assessments")
       }
       }else{
-        redirect(controler:"Assessments")
+        redirect(controller:"Assessments")
       }
     }
 
