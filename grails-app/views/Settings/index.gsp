@@ -15,16 +15,19 @@
             </div>
           </g:hasErrors>
           <g:form class="simpleform" url="index">
-            <g:textField type="text" id="academicYear"  name="academicYear"  value="${c?.academicYear}" placeholder="Academic Year" class="${hasErrors(bean:outcome,field:'outcomeTitle','errors')}"/>
+            <g:select id="academicYear"  name="academicYear" from="${yearList}"  value="${year}"/>
             <button id="classButton" class="add">Set</button>
           </g:form>
             Current Academic Year: ${year}
           </br>
-            Past Years
+          </br>
+            Past Years:
           </br>
               <g:each in="${Years}">
+              <g:if test="${year != it}">
                 ${it}
               </br>
+              </g:if>
               </g:each>
         </div>
     </body>
