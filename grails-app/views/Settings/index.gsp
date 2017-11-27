@@ -24,7 +24,7 @@
             Past Years:
           </br>
               <g:each in="${Years}">
-              <g:if test="${year != it}">
+              <g:if test="${year != it.academicYear}">
                 ${it}
               </br>
               </g:if>
