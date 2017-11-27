@@ -4,7 +4,7 @@ class AdminController {
 
     def index() {
       def classes = Classes.list()
-      def year = Settings.get(1).academicYear
+      def year = Settings.first().academicYear
       [Classes:classes, year:year]
     }
 

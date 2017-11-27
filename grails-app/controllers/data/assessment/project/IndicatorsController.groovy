@@ -3,7 +3,7 @@ package data.assessment.project
 class IndicatorsController {
 
     def index() {
-      def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
+      def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
       [Indicators:indicators]
     }
 
@@ -17,7 +17,7 @@ class IndicatorsController {
           def c = Classes.get(params.classId)
           i.indicatorName = params.indicatorName
           i.indicatorDescription = params.indicatorDescription
-          i.academicYear = Settings.get(1).academicYear
+          i.academicYear = Settings.first().academicYear
           o.addToIndicators(i)
           if(c != null){
           c.addToIndicators(i)

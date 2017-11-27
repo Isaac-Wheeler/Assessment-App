@@ -20,7 +20,7 @@ class SettingsController {
       def years = Settings.list()
 
         if (request.method == 'POST') {
-            def settings = Settings.first().academicYear
+            def settings = Settings.first()
             def oldSettings = new Settings(academicYear:settings.academicYear)
             settings.academicYear = params.academicYear
             settings.save(flush:true)

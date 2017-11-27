@@ -3,20 +3,20 @@ package data.assessment.project
 class OutcomesController {
 
   def index() {
-    def outcomes = Outcomes.findAllByAcademicYear(Settings.get(1).academicYear)
-    def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
+    def outcomes = Outcomes.findAllByAcademicYear(Settings.first().academicYear)
+    def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
     [Outcomes:outcomes, Indicators:indicators]
   }
   def viewOutcomesUser() {
-    def outcomes = Outcomes.findAllByAcademicYear(Settings.get(1).academicYear)
-    def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
+    def outcomes = Outcomes.findAllByAcademicYear(Settings.first().academicYear)
+    def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
     [Outcomes:outcomes, Indicators:indicators]
   }
   def createOutcome() {
     System.out.println("hit")
     if (request.method == 'POST') {
       if(!params.submitButton.contains("Cancel")){
-        def o = new Outcomes(outcomeCategory: params.outcomeCategory, outcomeCategoryDescription: params.outcomeCategoryDescription, academicYear:Settings.get(1).academicYear)
+        def o = new Outcomes(outcomeCategory: params.outcomeCategory, outcomeCategoryDescription: params.outcomeCategoryDescription, academicYear:Settings.first().academicYear)
           if(!o.save(flush: true)){
             o.errors.allErrors.each { println it }
             return [outcome:o]
