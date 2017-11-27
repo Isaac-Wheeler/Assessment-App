@@ -12,10 +12,12 @@ class IndicatorsController {
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
           def i = new Indicators()
-          def o = Indicators.get(params.indicatorsId)
+          def o = Outcomes.get(params.outcomeId)
+          System.out.println(o)
           def c = Classes.get(params.classId)
           i.indicatorName = params.indicatorName
           i.indicatorDescription = params.indicatorDescription
+          i.academicYear = Settings.get(1).academicYear
           o.addToIndicators(i)
           if(c != null){
           c.addToIndicators(i)
@@ -32,11 +34,10 @@ class IndicatorsController {
             return [indicator:i, Classes:classes]
             redirect(view:"/indicators/create")
           }
-
         }
-        redirect(controller:"indicators")
+        redirect(controller:"outcomes")
       }
-      return [indicatorsId:params.givenindicatorsId, Classes:classes]
+      return [outcomeId:params.outcomeId, Classes:classes]
     }
 
     def delete() {
@@ -57,7 +58,7 @@ class IndicatorsController {
               System.out.println("Error")
             }
         }
-        redirect(view:"/indicator/index")
+        redirect(controller:"outcomes")
       }else{
         def i = indicators.get(params.indicators)
         return [indicators:i, id:i.id]

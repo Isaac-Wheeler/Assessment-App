@@ -15,9 +15,9 @@
       	<p>Complete the form below to create an Outcome</p>
     </div>
     <g:form class="simpleform" url="createOutcome">
-   			 <g:hasErrors bean="${teacher}">
+   			 <g:hasErrors bean="${outcome}">
       			<div class="errors">
-        				<g:renderErrors bean="${teacher}"/>
+        				<g:renderErrors bean="${outcome}"/>
       			</div>
     			</g:hasErrors>
     		<div class="backgrounds">

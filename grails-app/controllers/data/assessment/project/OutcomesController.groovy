@@ -2,7 +2,7 @@ package data.assessment.project
 
 class OutcomesController {
 
-  def viewOutcomesAdmin() {
+  def index() {
     def outcomes = Outcomes.findAllByAcademicYear(Settings.get(1).academicYear)
     def indicators = Indicators.findAllByAcademicYear(Settings.get(1).academicYear)
     [Outcomes:outcomes, Indicators:indicators]
@@ -13,10 +13,12 @@ class OutcomesController {
     [Outcomes:outcomes, Indicators:indicators]
   }
   def createOutcome() {
+    System.out.println("hit")
     if (request.method == 'POST') {
       if(!params.submitButton.contains("Cancel")){
-        def o = new Outcomes(outcomeCategory: params.outcomeCategory, outcomeCategoryDescription: params.outcomeCategoryDescription)
+        def o = new Outcomes(outcomeCategory: params.outcomeCategory, outcomeCategoryDescription: params.outcomeCategoryDescription, academicYear:Settings.get(1).academicYear)
           if(!o.save(flush: true)){
+            o.errors.allErrors.each { println it }
             return [outcome:o]
             redirect(view:"/outcome/create")
           }

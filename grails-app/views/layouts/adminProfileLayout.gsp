@@ -32,7 +32,7 @@
             		<button class="button button2">Faculty</button>
             </g:link>
             <br>
-            <g:link controller="outcomes" action="viewOutcomesAdmin">
+            <g:link controller="outcomes">
             		<button class="button button2">Outcomes</button>
             </g:link>
             <br>

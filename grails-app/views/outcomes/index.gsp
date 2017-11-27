@@ -7,7 +7,7 @@
     <body>
     		<div class="newTab">
                 <p>Outcomes
-                  <g:link url="/outcomes/create">
+                  <g:link url="/outcomes/createOutcome">
                     <button class="add">New<div class="plus"> &oplus;</div></button>
                 </g:link>
                 </p>
@@ -33,7 +33,7 @@
 							               <button class="add">Edit</button></g:link>
 						          <g:link controller="Outcomes" action="deleteOutcome" params="[outcome:o.id]">
 							               <button class="add">Delete</button></g:link>
-						          <g:link controller="Indicators" action="create" params="[givenOutcomeId:o.id]">
+						          <g:link controller="Indicators" action="create" params="[outcomeId:o.id]">
 							               <button class="add">Add Indicator</button>
 						          </g:link>
         				</div>
