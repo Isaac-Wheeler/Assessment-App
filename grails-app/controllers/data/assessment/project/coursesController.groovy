@@ -2,32 +2,40 @@ package data.assessment.project
 
 class coursesController {
 
-def index() {
-  def classes = Classes.list()
-  def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
-  def teachers = Teacher.list()
+  def index() {
+    def classes = Classes.list()
+    def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+    def teachers = Teacher.list()
 
-  if (request.method == 'POST') {
-    if(params.type == "new"){
-    def c = new Classes()
-    c.title = params.title
-      if(!c.save(flush:true)){
-        return [c:c, Classes:classes, Indicators:indicators, Teacher:teachers]
-        redirect(controller:"courses")
-      }
-    }else{
-      def c = Classes.get(params.class)
-      def teacher = Teacher.get(params.teacherId)
-      c.addToTeachers(teacher)
-      if(!c.save(flush:true)){
-        return [c:c, Classes:classes, Indicators:indicators, Teacher:teachers]
-        redirect(controller:"courses")
-      }
-    }
-  }
     [Classes:classes, Indicators:indicators, Teacher:teachers]
  }
 
+ def newCourse(){
+   def classes = Classes.list()
+   def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+   def teachers = Teacher.list()
+
+   def c = new Classes()
+   c.title = params.title
+   if(!c.save(flush:true)){
+     return [c:c, Classes:classes, Indicators:indicators, Teacher:teachers]
+   }
+   redirect(controller:"courses", action:"index")
+ }
+
+ def assignNewTeacher(){
+   def classes = Classes.list()
+   def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+   def teachers = Teacher.list()
+
+   def c = Classes.get(params.class)
+   def teacher = Teacher.get(params.teacherId)
+   c.addToTeachers(teacher)
+   if(!c.save(flush:true)){
+     return [c:c, Classes:classes, Indicators:indicators, Teacher:teachers]
+   }
+   redirect(controller:"courses", action:"index")
+ }
 
  def deleteAssignedTeacher(){
    def c = Classes.get(params.classes)

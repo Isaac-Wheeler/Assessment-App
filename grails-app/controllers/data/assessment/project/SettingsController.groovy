@@ -5,18 +5,7 @@ class SettingsController {
     def index() {
 
       def curYear = Calendar.getInstance().get(Calendar.YEAR)
-      def yearList = []
-
-      curYear--
-      curYear--
-
-      yearList.add(curYear + "-" + ++curYear)
-      yearList.add(curYear + "-" + ++curYear)
-
-      for(int i = 0; i<6; i++){
-        yearList.add(curYear + "-" + ++curYear)
-      }
-
+      def yearList = yearsList()
       def years = Settings.list()
 
         if (request.method == 'POST') {
@@ -62,5 +51,25 @@ class SettingsController {
         }
 
           [year:Settings.first().academicYear, Years:years, yearList:yearList]
+     }
+
+     /**
+     * creates a list of years to use in finding past and future years
+     */
+      def yearsList() {
+       def curYear = Calendar.getInstance().get(Calendar.YEAR)
+       def yearList = []
+
+       curYear--
+       curYear--
+
+       yearList.add(curYear + "-" + ++curYear)
+       yearList.add(curYear + "-" + ++curYear)
+
+       for(int i = 0; i<6; i++){
+         yearList.add(curYear + "-" + ++curYear)
+       }
+
+       return yearList
      }
 }

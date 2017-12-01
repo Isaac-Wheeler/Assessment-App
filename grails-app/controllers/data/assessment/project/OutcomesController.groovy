@@ -36,7 +36,6 @@ class OutcomesController {
           if(!o.save(flush:true)){
             return [outcome:o, id:o.id]
             redirect(view:"/outcome/editOutcome")
-            System.out.println("Error")
           }
       }
       redirect(view:"/outcome/index")
