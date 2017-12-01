@@ -5,7 +5,6 @@ class Classes {
       //properties
       //NOTE: DB creates ID for table
       String title;
-      String academicSemester;
 
       static hasMany = [ indicators : Indicators , teachers : Teacher ]
 
@@ -19,7 +18,6 @@ class Classes {
     static constraints = {
 
       title  blank:false, minSize: 5, unique:true
-      academicSemester nullable:true
 
     }
 }

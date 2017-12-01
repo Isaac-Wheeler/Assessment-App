@@ -151,13 +151,6 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
         newIndicator2.delete(flush:true)
         newIndicator3.delete(flush:true)
 
-
-
-
-
-
-
-
     }
 
 }

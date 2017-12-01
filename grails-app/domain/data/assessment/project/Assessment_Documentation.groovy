@@ -13,7 +13,6 @@ class Assessment_Documentation {
     String summary;
     String requiredAction;
     String resultComment;
-    String academicSemester;
     boolean complete;
 
     static belongsTo = [ measure : Measures ]
@@ -33,7 +32,6 @@ class Assessment_Documentation {
       summary blank:false
       requiredAction nullable: true
       resultComment blank:false
-      academicSemester blank:false
       complete blank:false
       measure blank:true, nullable:true
     }
