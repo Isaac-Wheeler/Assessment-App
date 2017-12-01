@@ -20,6 +20,10 @@ class SettingsController {
       def years = Settings.list()
 
         if (request.method == 'POST') {
+          //prevents someone form setting the current year as a new year
+          if(params.academicYear != Settings.first().academicYear){
+            //does not allow doubles of years
+            if(!Settings.list().contains(params.academicYear)){
             def settings = Settings.first()
             def oldSettings = new Settings(academicYear:settings.academicYear)
             settings.academicYear = params.academicYear
@@ -28,15 +32,32 @@ class SettingsController {
 
             def outcomes = Outcomes.findAllByAcademicYear(oldSettings.academicYear)
             def indicators
+            def oNew
+            def iNew
+            def course
 
-
-            //outcomes.each{o  ->
-            //  System.out.println(o)
-            //  indicators = outcomes.indicators
-            //  indicators.each{ i ->
-            //    System.out.println(i)
-            //  }
-            //}
+            outcomes.each{o  ->
+              oNew = new Outcomes(outcomeCategory: o.outcomeCategory, outcomeCategoryDescription: o.outcomeCategoryDescription, academicYear: settings.academicYear)
+                oNew.save(flush:true)
+              indicators = outcomes.indicators
+              indicators.each{ i ->
+                iNew = new Indicators()
+                  iNew.indicatorName = i.indicatorName
+                  iNew.indicatorDescription = i.indicatorDescription
+                  iNew.academicYear = settings.academicYear
+                  course = Classes.get(i.classes.id)
+                  course.addToIndicators(iNew)
+                  iNew.setOutcome(o)
+                  iNew.save(flush:true)
+              }
+            }
+          }else{
+            //updating main if already exists in list
+            def settings = Settings.first()
+            settings.academicYear = params.academicYear
+            settings.save(flush:true)
+          }
+        }
 
         }
 
