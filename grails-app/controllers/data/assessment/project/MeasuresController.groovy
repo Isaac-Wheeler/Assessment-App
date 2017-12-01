@@ -46,9 +46,7 @@ class MeasuresController {
         }
       }
 
-      def outcomes = Outcomes.findAllByAcademicYear(Settings.first().academicYear)
       def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
-      def classes = Classes.list()
-      return [Outcomes:outcomes, Indicators:indicators, Classes:classes, isadmin:params.isadmin]
+      return [Indicators:indicators, isadmin:params.isadmin]
     }
 }

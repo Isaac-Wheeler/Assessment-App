@@ -24,9 +24,7 @@
               <g:field type="text" id="measureTitle" name="measureTitle" width="100px" placeholder="Title" class="shortText"/>
               <br>
               <label for="selectIndicator">Select Indicator:</label>
-              <g:select name="indicatorId" from="${Indicators}" id="selectIndicator" value="${Iid}" style="width:13%;" optionKey="id" optionValue="indicatorName" />
-              <label for="selectClass">Select Class:</label>
-              <g:select name="classId" from="${Classes}" id="selectClass" value="" style="width:13%;" optionKey="id" optionValue="title" />
+              <g:select name="indicatorId" from="${Indicators}" id="selectIndicator" value="${Iid}" style="width:40%;" optionKey="id" />
               <br>
               <label for="Desc">Description:</label>
               <br>

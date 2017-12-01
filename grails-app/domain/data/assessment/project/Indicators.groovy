@@ -21,7 +21,9 @@ class Indicators {
       indicatorName blank:false, unique: true
       indicatorDescription blank:false
       academicYear nullable:true
+    }
 
-
+    String toString(){
+      return indicatorName + " From Outcome: " + outcome.outcomeCategory + ", And Course: " + classes.title
     }
 }
