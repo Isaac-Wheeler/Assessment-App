@@ -49,4 +49,30 @@ class MeasuresController {
       def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
       return [Indicators:indicators, isadmin:params.isadmin]
     }
+
+    def edit(){
+      if (request.method == 'POST') {
+        if(!params.submitButton.contains("Cancel")){
+          def m = Measures.get(params.id)
+          m.measureTitle = params.measureTitle
+          m.measureDescription = params.measureDescription
+          def i = Indicators.get(params.indicatorId)
+          i.addToMeasures(m)
+          if(!i.save(flush:true)){
+            return [Measures:m, Iid:params.indicatorId]
+          }
+          if(!m.save(flush:true)){
+            return [Measures:m, Iid:params.indicatorId]
+          }
+        }
+        if(params.isadmin){
+          redirect(controller:"measures", action:"viewMeasuresAdmin")
+        }else{
+          redirect(controller:"measures", action:"viewMeasuresUser")
+        }
+      }
+
+      def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+      return [Indicators:indicators, isadmin:params.isadmin]
+    }
 }
