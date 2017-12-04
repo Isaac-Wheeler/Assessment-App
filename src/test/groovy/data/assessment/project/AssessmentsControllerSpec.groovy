@@ -44,7 +44,6 @@ class AssessmentsControllerSpec extends Specification {
             params.comments = "Need to focus more on this material!"
             params.requiredAction = null
             params.resultComment = "target goal not met!"
-            params.academicSemester = "Fall2017"
             params.complete = true
             params.submitButton = "Submit"
             params.measureID = Measures.first().id    // the id from the only measure that was created in setup()

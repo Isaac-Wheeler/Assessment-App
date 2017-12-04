@@ -57,23 +57,6 @@ class OutcomesSpec extends Specification implements DomainUnitTest<Outcomes> {
       newOutcome.errors['outcomeCategoryDescription'].code == 'nullable'
 
 
-        //test for uniqueness
-      when: 'Outcome category is added with correct fields and constraints'
-      def x = new Outcomes(outcomeCategory: 'a', outcomeCategoryDescription: "Students will learn how to")
-      x.save(flush: true)
-
-        then: 'Outcome should be saved'
-        Outcomes.count() == 1
-
-
-      when: 'Outcome category is added with an already taken outcomeCategory'
-      def y = new Outcomes(outcomeCategory: 'a', outcomeCategoryDescription: "Students will learn how to")
-      y.save(flush: true)
-
-        then: 'Outcome should not be saved because it violates the unique constraint on outcomeCategory'
-        Outcomes.count() == 1
-        !y.save(flush:true)
-        //end of test for uniqueness
 
     }
 

@@ -12,8 +12,8 @@ class Document {
 
 
   static constraints = {
-      filename blank:false , nullable:false, unique:true
-      filedata blank: true, nullable:true
+      filename blank: false , nullable:false
+      filedata blank: true , nullable:true
   }
 
 }

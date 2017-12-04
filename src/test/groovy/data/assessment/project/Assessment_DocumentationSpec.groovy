@@ -93,8 +93,6 @@ class Assessment_DocumentationSpec extends Specification implements DomainUnitTe
       newOutcome2.save(flush:true)
 
       then: "Should be able to correctly query for the data"
-      def a = Assessment_Documentation.findAllByAcademicSemester("Fall2017")
-      a.size() == 2
       def b = Assessment_Documentation.findAllByComplete(true)
       b.size() == 2
       def c = Outcomes.createCriteria().list() {

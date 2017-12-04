@@ -63,9 +63,6 @@ class AssessmentsController {
         if(params.resultComment != null){
           AD.resultComment = params.resultComment
         }
-        if(params.academicSemester != null){
-          AD.academicSemester = params.academicSemester
-        }
         if(params.complete == null){
           AD.complete = false
         }else{

@@ -18,7 +18,7 @@ class Measures {
 
 
     static constraints = {
-      measureTitle blank: false, unique:true
+      measureTitle blank: false
       measureDescription blank: false
       assessment_documents nullable:true
 

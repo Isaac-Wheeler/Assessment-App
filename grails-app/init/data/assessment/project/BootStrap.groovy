@@ -35,7 +35,7 @@ class BootStrap {
             def b = new Classes(title: "CS481")
             def c = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to", academicYear:"2017-2018")
             def d = new Measures(measureTitle: "Exam1", measureDescription: "Student will be able to")
-            def e = new Assessment_Documentation(targetGoal: 20, numberOfStudents: 40, needsImprovement: 15, meetsExpectations: 15, exceedsExpectations: 10, assessmentDocTitle: "Question1", comments:"Hello World!", summary: "Student will be able to", requiredAction: "Hello World!", resultComment: "Hello World!", academicSemester: "Fall2017", complete: false)
+            def e = new Assessment_Documentation(targetGoal: 20, numberOfStudents: 40, needsImprovement: 15, meetsExpectations: 15, exceedsExpectations: 10, assessmentDocTitle: "Question1", comments:"Hello World!", summary: "Student will be able to", requiredAction: "Hello World!", resultComment: "Hello World!",  complete: false)
             a.addToIndicators(c)
             b.addToIndicators(c)
             c.addToMeasures(d)
@@ -68,8 +68,8 @@ class BootStrap {
           }
           if (Outcomes.count() == 0) {
 
-            def a = new Outcomes(outcomeCategory: 'A', outcomeCategoryDescription: "Students will learn how to...")
-            def c = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to")
+            def a = new Outcomes(outcomeCategory: 'A', outcomeCategoryDescription: "Students will learn how to...", academicYear:"2017-2018")
+            def c = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to", academicYear:"2017-2018")
             def d = new Measures(measureTitle: "Exam1_Q1", measureDescription: "Student will be able to")
             a.addToIndicators(c)
             c.addToMeasures(d)
@@ -81,8 +81,17 @@ class BootStrap {
                       println it
                   }
             }
-            def f = new Indicators(indicatorName: "a.2", indicatorDescription: "Students will be able to")
+            def f = new Indicators(indicatorName: "a.2", indicatorDescription: "Students will be able to", academicYear:"2017-2018")
             def g = new Measures(measureTitle: "Exam1_Q2", measureDescription: "Student will be able to")
+
+            def h = new Classes(title: "CS450")
+            def i = new Classes(title: "CS452")
+            h.save(flush: true)
+            i.save(flush: true)
+            f.addToClasses(h)
+            f.addToClasses(i)
+
+
             a.addToIndicators(f)
             f.addToMeasures(g)
             if (a.validate()) {

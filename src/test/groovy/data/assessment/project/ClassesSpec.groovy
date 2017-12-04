@@ -63,28 +63,10 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
       !newClass2.validate(['title'])
       newClass2.errors['title'].code == 'minSize.notmet'
 
-      //test for uniqueness
-    when: 'Class is added with correct fields and constraints'
-    def newClass3 = new Classes(title: "CS430")
-    newClass3.save(flush: true)
-
-      then: 'Outcome should be saved'
-      Classes.count() == 1
-
-
-    when: 'Class is attempted to be created with already taken title'
-    def newClass4 = new Classes(title: "CS430")
-    newClass4.save(flush: true)
-
-      then: 'Class should not be saved successfully because it violates the unique constraint on title'
-      Classes.count() == 1
-      !newClass4.save(flush:true)
-      //end of test for uniqueness
 
       newClass.delete(flush:true)
       newClass2.delete(flush:true)
-      newClass3.delete(flush:true)
-      newClass4.delete(flush:true)
+
 
     }
 

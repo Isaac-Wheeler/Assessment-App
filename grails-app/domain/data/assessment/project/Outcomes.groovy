@@ -17,7 +17,7 @@ class Outcomes {
 
     static constraints = {
 
-      outcomeCategory blank:false, unique:true
+      outcomeCategory blank:false
       outcomeCategoryDescription blank:false
       academicYear nullable:true
       }

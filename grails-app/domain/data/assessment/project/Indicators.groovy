@@ -18,12 +18,25 @@ class Indicators {
 
     static constraints = {
 
-      indicatorName blank:false, unique: true
+      indicatorName blank:false
       indicatorDescription blank:false
       academicYear nullable:true
     }
 
     String toString(){
-      return indicatorName + " From Outcome: " + outcome.outcomeCategory + ", And Course: " + classes.title
+      String toStringDescription = indicatorName + " From Outcome: " + outcome.outcomeCategory
+      if (classes != null) {
+        toStringDescription = toStringDescription + ", And Course(s): "
+        if (classes.size() == 1) {
+          toStringDescription = toStringDescription + classes.get(0).title
+        }
+        else {
+          classes.each { course ->
+            toStringDescription = toStringDescription + course.title + ", "
+          }
+          toStringDescription = toStringDescription.substring(0, toStringDescription.length() - 2)
+        }
+      }
+      return toStringDescription;
     }
 }
