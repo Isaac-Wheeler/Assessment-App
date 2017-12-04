@@ -31,8 +31,8 @@ class OutcomesController {
     if (request.method == 'POST') {
       if(!params.submitButton.contains("Cancel")){
         def o = Outcomes.get(params.id)
-        o.outcomeCategory = params.outcome_category
-        o.outcomeCategoryDescription = params.outcome_category_description
+          o.outcomeCategory = params.outcomeCategory
+          o.outcomeCategoryDescription = params.outcomeCategoryDescription
           if(!o.save(flush:true)){
             return [outcome:o, id:o.id]
             redirect(view:"/outcome/editOutcome")

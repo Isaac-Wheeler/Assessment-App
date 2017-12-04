@@ -26,7 +26,7 @@ class Indicators {
     String toString(){
       def toStringDescription = indicatorName + " From Outcome: " + outcome.outcomeCategory
       if (classes != null) {
-        toStringDescription = toStringDescription + ", And Course(s): "
+        toStringDescription = toStringDescription + " Course(s): "
         if (classes.size() == 1) {
           toStringDescription = toStringDescription + classes.first().title
         }
