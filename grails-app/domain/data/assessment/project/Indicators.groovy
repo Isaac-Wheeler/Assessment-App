@@ -24,11 +24,11 @@ class Indicators {
     }
 
     String toString(){
-      String toStringDescription = indicatorName + " From Outcome: " + outcome.outcomeCategory
+      def toStringDescription = indicatorName + " From Outcome: " + outcome.outcomeCategory
       if (classes != null) {
         toStringDescription = toStringDescription + ", And Course(s): "
         if (classes.size() == 1) {
-          toStringDescription = toStringDescription + classes.get(0).title
+          toStringDescription = toStringDescription + classes.first().title
         }
         else {
           classes.each { course ->
@@ -37,6 +37,6 @@ class Indicators {
           toStringDescription = toStringDescription.substring(0, toStringDescription.length() - 2)
         }
       }
-      return toStringDescription;
+      return toStringDescription
     }
 }
