@@ -24,7 +24,7 @@
               <g:field type="text" id="measureTitle" name="measureTitle" width="100px" placeholder="Title" class="shortText"/>
               <br>
               <label for="selectIndicator">Select Indicator:</label>
-              <g:select name="indicatorId" from="${Indicators}" id="selectIndicator" value="${Iid}" style="width:40%;" optionKey="id" />
+              <g:select name="indicatorId" from="${Indicators}" id="selectIndicator" onMouseOver="${indicatorDescription}" value="${Iid}" style="width:40%;" optionKey="id"/>
               <br>
               <label for="Desc">Description:</label>
               <br>
