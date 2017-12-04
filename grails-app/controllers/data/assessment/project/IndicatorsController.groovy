@@ -20,7 +20,7 @@ class IndicatorsController {
           i.academicYear = Settings.first().academicYear
           o.addToIndicators(i)
           if(c != null){
-          c.addToIndicators(i)
+          i.addToClasses(c)
           if(!c.save(flush:true)){
             return [indicator:i, Classes:classes]
             redirect(view:"/indicators/create")
