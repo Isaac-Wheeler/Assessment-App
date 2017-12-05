@@ -42,6 +42,9 @@ class IndicatorsController {
 
     def delete() {
       def i = Indicators.get(params.indicator)
+      if (i.classes != null) {
+        i.classes.clear()
+      }
       i.delete(flush:true)
       redirect(controller:'Indicators')
     }
