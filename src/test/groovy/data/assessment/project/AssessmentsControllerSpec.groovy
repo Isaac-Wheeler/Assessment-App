@@ -49,19 +49,63 @@ class AssessmentsControllerSpec extends Specification {
             params.measureID = Measures.first().id    // the id from the only measure that was created in setup()
 
 
-
-
           when: "The index method is invoked"
             Assessment_Documentation.count() == 0   // at this time there shouldn't be any AD's since none were saved yet
             request.method = 'POST'
             def file = new MockMultipartFile('myFile', 'Hello.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' , "1234567" as byte[])   //create a new file to set as param for "myFile"
             request.addFile(file)   //add created file to the request under "myFile"
             controller.index()
+            controller.response.reset()
 
 
           then: "The AD should have been saved successfully"
             Document.count() == 1   // file should have been saved
             Assessment_Documentation.count() == 1   // new AD should have been saved
+            Assessment_Documentation.first().targetGoal == 75
+            Assessment_Documentation.first().summary == "The target goal was not met"
+
+
+          when: "The file delete method is called on an AD's file, then it should be deleted"
+            def id =  Assessment_Documentation.first().documents.first().id
+            controller.deleteFile(id)
+            controller.response.reset()
+
+          then: "The file should have been deleted successfully"
+              Document.count() == 0
+
+
+          when: "The edit method is called to edit an already existing AD"
+            params.targetGoal = "80"    //passed as string due to needed parseInt method
+            params.needsImprovement = "10"    //passed as string due to needed parseInt method
+            params.meetsExpectations = "12"   //passed as string due to needed parseInt method
+            params.exceedsExpectations = "8"    //passed as string due to needed parseInt method
+            params.summary = "The target goal was met"
+            params.assessmentDocTitle = "AD on measure for indicator a.1 on exam1 question 2"
+            params.comments = "Need to focus more on this material!"
+            params.requiredAction = null
+            params.resultComment = "target goal not met!"
+            params.complete = true
+            params.submitButton = "Submit"
+            params.measureID = Measures.first().id    // the id from the only measure that was created in setup()
+            params.ADID = Assessment_Documentation.first().id
+            request.method = 'POST'
+            controller.editAssessment()
+            controller.response.reset()
+
+
+          then: "The AD should have been saved successfully"
+            Assessment_Documentation.count() == 1   // new AD should have been saved
+            Assessment_Documentation.first().targetGoal == 80
+            Assessment_Documentation.first().summary == "The target goal was met"
+
+
+          when: "The delete method is called upon an AD, the AD should be deleted successfully"
+          params.ad = Assessment_Documentation.first().id
+          controller.delete()
+          controller.response.reset()
+
+          then: "AD should have been deleted successfully"
+          Assessment_Documentation.count() == 0
 
 
     }
