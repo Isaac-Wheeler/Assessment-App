@@ -11,12 +11,15 @@ class SettingsController {
         if (request.method == 'POST') {
           //prevents someone form setting the current year as a new year
           if(params.academicYear != Settings.first().academicYear){
+
+
+
             //does not allow doubles of years
-            if(!Settings.list().contains(params.academicYear)){
-            def settings = Settings.first()
-            def oldSettings = new Settings(academicYear:settings.academicYear)
-            settings.academicYear = params.academicYear
-            settings.save(flush:true)
+            if(Settings.findByAcademicYear(params.academicYear) == null){
+            def newYear = Settings.first()
+            def oldSettings = new Settings(academicYear:newYear.academicYear)
+            newYear.academicYear = params.academicYear
+            newYear.save(flush:true)
             oldSettings.save(flush:true)
 
             def outcomes = Outcomes.findAllByAcademicYear(oldSettings.academicYear)
@@ -26,14 +29,14 @@ class SettingsController {
             def course
 
             outcomes.each{o  ->
-              oNew = new Outcomes(outcomeCategory: o.outcomeCategory, outcomeCategoryDescription: o.outcomeCategoryDescription, academicYear: settings.academicYear)
+              oNew = new Outcomes(outcomeCategory: o.outcomeCategory, outcomeCategoryDescription: o.outcomeCategoryDescription, academicYear: newYear.academicYear)
                 oNew.save(flush:true)
               indicators = outcomes.indicators
               indicators.each{ i ->
                 iNew = new Indicators()
                   iNew.indicatorName = i.indicatorName
                   iNew.indicatorDescription = i.indicatorDescription
-                  iNew.academicYear = settings.academicYear
+                  iNew.academicYear = newYear.academicYear
                   course = Classes.get(i.classes.id)
                   course.addToIndicators(iNew)
                   iNew.setOutcome(o)
@@ -43,8 +46,10 @@ class SettingsController {
           }else{
             //updating main if already exists in list
             def settings = Settings.first()
+            def oldSettings = new Settings(academicYear:settings.academicYear)
             settings.academicYear = params.academicYear
             settings.save(flush:true)
+            oldSettings.save(flush:true)
           }
         }
 
