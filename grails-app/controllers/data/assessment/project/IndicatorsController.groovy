@@ -46,7 +46,7 @@ class IndicatorsController {
         i.classes.clear()
       }
       i.delete(flush:true)
-      redirect(controller:'Indicators')
+      redirect(controller:'outcomes')
     }
 
     def edit() {
@@ -58,7 +58,6 @@ class IndicatorsController {
             if(!i.save(flush:true)){
               return [indicators:i, id:i.id]
               redirect(view:"/indicators/editIndicator")
-              System.out.println("Error")
             }
         }
         redirect(controller:"outcomes")
