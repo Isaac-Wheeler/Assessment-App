@@ -3,9 +3,33 @@ package data.assessment.project
 class MeasuresController {
 
     def viewMeasuresAdmin() {
-      def measures = Measures.list()
-      def classes = Classes.list()
-      return [Measures:measures, Classes:classes]
+      //def measures = Measures.list()
+      //def classes = Classes.list()
+      //return [Measures:measures, Classes:classes]
+      return index()
+    }
+
+    def viewMeasuresUser() {
+      //def measures = Measures.list()
+      //def classes = Classes.list()
+      //return [Measures:measures, Classes:classes]
+      return index()
+    }
+
+    def index(){
+      def measures
+      def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+      indicators.each{ i ->
+        if(i.measures != null){
+          if(measures == null){
+            measures = i.measures
+          }else{
+            measures = measures + i.measures
+          }
+        }
+      }
+
+      return [Measures:measures]
     }
 
     def delete(){
@@ -16,12 +40,6 @@ class MeasuresController {
       }else{
         redirect(controller:"measures", action:"viewMeasuresUser")
       }
-    }
-
-    def viewMeasuresUser() {
-      def measures = Measures.list()
-      def classes = Classes.list()
-      return [Measures:measures, Classes:classes]
     }
 
     def create(){

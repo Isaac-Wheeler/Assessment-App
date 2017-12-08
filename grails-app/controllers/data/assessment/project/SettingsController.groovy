@@ -32,6 +32,7 @@ class SettingsController {
               oNew = new Outcomes(outcomeCategory: o.outcomeCategory, outcomeCategoryDescription: o.outcomeCategoryDescription, academicYear: newYear.academicYear)
                 oNew.save(flush:true)
               indicators = outcomes.indicators
+              if(indicators != null){
               indicators.each{ i ->
                 iNew = new Indicators()
                   iNew.indicatorName = i.indicatorName
@@ -42,6 +43,7 @@ class SettingsController {
                   iNew.setOutcome(o)
                   iNew.save(flush:true)
               }
+            }
             }
           }else{
             //updating main if already exists in list
