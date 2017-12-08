@@ -13,7 +13,6 @@ class IndicatorsController {
         if(!params.submitButton.contains("Cancel")){
           def i = new Indicators()
           def o = Outcomes.get(params.outcomeId)
-          System.out.println(o)
           def c = Classes.get(params.classId)
           i.indicatorName = params.indicatorName
           i.indicatorDescription = params.indicatorDescription
@@ -21,17 +20,13 @@ class IndicatorsController {
           o.addToIndicators(i)
           if(c != null){
           i.addToClasses(c)
-          if(!c.save(flush:true)){
-            return [indicator:i, Classes:classes]
-            redirect(view:"/indicators/create")
-          }
           }
             if(!i.save(flush:true)){
-              return [indicator:i, Classes:classes]
+              return [indicator:i, outcomeId:params.outcomeId, Classes:classes]
               redirect(view:"/indicators/create")
             }
           if(!o.save(flush:true)){
-            return [indicator:i, Classes:classes]
+            return [indicator:i, outcomeId:params.outcomeId, Classes:classes]
             redirect(view:"/indicators/create")
           }
         }
@@ -49,21 +44,22 @@ class IndicatorsController {
       redirect(controller:'outcomes')
     }
 
-    def edit() {
+    def editIndicator() {
+      def classes = Classes.list()
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
           def i = Indicators.get(params.id)
           i.indicatorName = params.indicatorName
           i.indicatorDescription = params.indicatorDescription
             if(!i.save(flush:true)){
-              return [indicators:i, id:i.id]
+              return [indicator:i, Classes:classes]
               redirect(view:"/indicators/editIndicator")
             }
         }
         redirect(controller:"outcomes")
       }else{
-        def i = indicators.get(params.indicators)
-        return [indicators:i, id:i.id]
+        def i = Indicators.get(params.indicator)
+        return [indicator:i, Classes:classes]
         redirect(view:"/indicators/editIndicator")
       }
     }
