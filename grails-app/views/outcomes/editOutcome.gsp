@@ -15,20 +15,25 @@
       	<p>Complete the form below to edit an Outcome</p>
     </div>
     <g:form class="simpleform" url="editOutcome">
-   			 <g:hasErrors bean="${teacher}">
-      			<div class="errors">
-        				<g:renderErrors bean="${teacher}"/>
-      			</div>
-    			</g:hasErrors>
     		<div class="backgrounds">
             <div class="labels">
                 <label for="outcomeTitle">Outcome Title:</label>
                 <br>
                 <g:textField type="text" id="outcomeCategory" name="outcomeCategory" maxlength="1" value="${outcome?.outcomeCategory}" placeholder="Title" class="${hasErrors(bean:outcome,field:'outcomeTitle','errors')}"/>
+                <g:hasErrors bean="${outcome}" field="outcomeCategory">
+                  <div class="errors">
+                      <g:renderErrors bean="${outcome}" field="outcomeCategory"/>
+                  </div>
+                </g:hasErrors>
                 <br>
                 <label for="outcomeDesc">Outcome Description:</label>
                 <br>
                 <g:textArea id="outcomeCategoryDescription" name="outcomeCategoryDescription" value="${outcome?.outcomeCategoryDescription}" rows="10" cols="50"/>
+                <g:hasErrors bean="${outcome}" field="outcomeCategoryDescription">
+                  <div class="errors">
+                      <g:renderErrors bean="${outcome}" field="outcomeCategoryDescription"/>
+                  </div>
+                </g:hasErrors>
                 <g:hiddenField name="id" value="${id}" />
                 <g:submitButton class="button" name="submitButton" value="Edit Outcome" />
                 <g:submitButton class="button" name="submitButton" value="Cancel" />

@@ -3,16 +3,10 @@ package data.assessment.project
 class MeasuresController {
 
     def viewMeasuresAdmin() {
-      //def measures = Measures.list()
-      //def classes = Classes.list()
-      //return [Measures:measures, Classes:classes]
       return index()
     }
 
     def viewMeasuresUser() {
-      //def measures = Measures.list()
-      //def classes = Classes.list()
-      //return [Measures:measures, Classes:classes]
       return index()
     }
 
