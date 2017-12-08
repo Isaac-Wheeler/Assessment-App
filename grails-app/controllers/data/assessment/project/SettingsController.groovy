@@ -21,31 +21,8 @@ class SettingsController {
               newYear.save(flush:true)
               oldSettings.save(flush:true)
 
-              def outcomes = Outcomes.findAllByAcademicYear(oldSettings.academicYear)
-              def indicators
-              def oNew
-              def iNew
-              def course
+              yearChangeLoop(oldSettings,newYear)
 
-              outcomes.each{o  ->
-                oNew = new Outcomes(outcomeCategory: o.outcomeCategory, outcomeCategoryDescription: o.outcomeCategoryDescription, academicYear: newYear.academicYear)
-                  oNew.save(flush:true)
-                  indicators = outcomes.indicators
-                  if(indicators != null){
-                    indicators.each{ i ->
-                      iNew = new Indicators()
-                      iNew.indicatorName = i.indicatorName
-                      iNew.indicatorDescription = i.indicatorDescription
-                      iNew.academicYear = newYear.academicYear
-                      course = Classes.get(i.classes.id)
-                      if(course != null){
-                        course.addToIndicators(iNew)
-                      }
-                      iNew.setOutcome(o)
-                      iNew.save(flush:true)
-                    }
-                  }
-                }
           }else{
 
             //updating main if already exists in list
@@ -68,6 +45,34 @@ class SettingsController {
         }
 
           [year:Settings.first().academicYear, Years:years, yearList:yearList]
+     }
+
+     def yearChangeLoop(def oldSettings, def newYear){
+       def outcomes = Outcomes.findAllByAcademicYear(oldSettings.academicYear)
+       def indicators
+       def oNew
+       def iNew
+       def course
+
+       outcomes.each{o  ->
+         oNew = new Outcomes(outcomeCategory: o.outcomeCategory, outcomeCategoryDescription: o.outcomeCategoryDescription, academicYear: newYear.academicYear)
+           oNew.save(flush:true)
+           indicators = outcomes.indicators
+           if(indicators != null){
+             indicators.each{ i ->
+               iNew = new Indicators()
+               iNew.indicatorName = i.indicatorName
+               iNew.indicatorDescription = i.indicatorDescription
+               iNew.academicYear = newYear.academicYear
+               course = Classes.get(i.classes.id)
+               if(course != null){
+                 course.addToIndicators(iNew)
+               }
+               iNew.setOutcome(o)
+               iNew.save(flush:true)
+             }
+           }
+         }
      }
 
      /**
