@@ -43,7 +43,15 @@ class IndicatorsController {
     def delete() {
       def i = Indicators.get(params.indicator)
       if (i.classes != null) {
-        i.classes.clear()
+          def coursesList = []
+          i.classes.each { course->
+            //i.removeFromClasses(course)                           //save the course IDs in a list for removing association from indicator
+            coursesList.add(course.id)
+        }
+        for (int j = 0; j<coursesList.size(); j++) {                //run through coursesList and get the course object and then remove from the indicator Classes association
+            def courseToBeRemoved = Classes.get(coursesList[j])
+            i.removeFromClasses(courseToBeRemoved)
+        }
       }
       i.delete(flush:true)
       redirect(controller:'outcomes')

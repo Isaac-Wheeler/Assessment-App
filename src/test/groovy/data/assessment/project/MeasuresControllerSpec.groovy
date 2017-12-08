@@ -40,7 +40,6 @@ class MeasuresControllerSpec extends Specification {
 
         then: "model.Measures.size() should be equal to 1 and model.Classes.size() should be equal to 1"
           model.Measures.size() == 1
-          model.Classes.size() == 1
 
       }
 
@@ -59,7 +58,6 @@ class MeasuresControllerSpec extends Specification {
 
           then: "model.Measures.size() should be equal to 1 and model.Classes.size() should be equal to 1"
             model.Measures.size() == 1
-            model.Classes.size() == 1
 
         }
 

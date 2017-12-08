@@ -66,7 +66,6 @@ class SettingsController {
         }
 
         }
-
           [year:Settings.first().academicYear, Years:years, yearList:yearList]
      }
 
