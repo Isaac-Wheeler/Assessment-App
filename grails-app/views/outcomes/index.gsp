@@ -23,7 +23,7 @@
                           <g:each in="${o.indicators}">
                             &nbsp;Indicator: ${it.indicatorName} - ${it.indicatorDescription}
                             <br>
-                            <g:link controller="Indicators" action="edit" params="[indicator:it.id]">
+                            <g:link controller="Indicators" action="editIndicator" params="[indicator:it.id]">
                               <button class="add" style="background-color: lightgray; padding: 1%; width: 17%;">Edit Indicator</button></g:link>
                             <g:link controller="Indicators" action="delete" params="[indicator:it.id]">
                               <button class="add" style="background-color: lightgray; padding: 1%; width: 17%;">Delete Indicator</button></g:link>

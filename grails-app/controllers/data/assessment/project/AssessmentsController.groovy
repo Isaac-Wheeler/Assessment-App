@@ -30,8 +30,9 @@ class AssessmentsController {
       else{
           AD = new Assessment_Documentation()
 
-          AD.targetGoal = Integer.parseInt(params.targetGoal)
-
+          if(params.targetGoal != ""){
+            AD.targetGoal = Integer.parseInt(params.targetGoal)
+          }
 
           if (request.getFiles("myFile").get(0).isEmpty() == false) {   //code to handle all files uploaded and saving them/linking them to the current AD
           request.getFiles("myFile").each {
@@ -43,9 +44,15 @@ class AssessmentsController {
       }
 
         //handles student section and meets exceeds and needs section
+        if(params.needsImprovement != null){
         AD.needsImprovement = Integer.parseInt(params.needsImprovement)
+        }
+        if(params.meetsExpectations != null){
         AD.meetsExpectations = Integer.parseInt(params.meetsExpectations)
+        }
+        if(params.exceedsExpectations != null){
         AD.exceedsExpectations = Integer.parseInt(params.exceedsExpectations)
+        }
         AD.numberOfStudents = AD.needsImprovement + AD.meetsExpectations + AD.exceedsExpectations
 
         if(params.summary != null){

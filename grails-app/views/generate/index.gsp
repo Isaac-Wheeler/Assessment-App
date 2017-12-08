@@ -22,7 +22,11 @@
       </g:if>
       <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-left: 1%; margin-top: 1%;"></g:link></i>
       <br>
-      <g:select name="academicYear" from="${Settings}" value="" style="width:20%;" optionKey="id" optionValue="academicYear" />
+      <br>
+      <g:form class="simpleform" url="index">
+      <g:select name="academicYear" from="${Settings}" value="${year}" style="width:20%;" optionKey="id" optionValue="academicYear" />
+      <button id="Button" class="add">Switch Year</button>
+      </g:form>
       <br>
         <!-- right half of the page -->
           <div id="HTMLtoPDF" style="margin-left: 2%;">
