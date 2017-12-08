@@ -13,6 +13,6 @@ class ClientControllerSpec extends Specification implements ControllerUnitTest<C
 
     void "test something"() {
       //TODO do something
-        true
+        true //currently there are no methods in the ClientController to test
     }
 }

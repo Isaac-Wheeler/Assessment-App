@@ -52,7 +52,7 @@ class IndicatorsController {
     def edit() {
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
-          def i = indicators.get(params.id)
+          def i = Indicators.get(params.id)
           i.indicatorName = params.indicatorName
           i.indicatorDescription = params.indicatorDescription
             if(!i.save(flush:true)){

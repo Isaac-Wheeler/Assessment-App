@@ -13,6 +13,6 @@ class AdminControllerSpec extends Specification implements ControllerUnitTest<Ad
 
     void "test something"() {
       //TODO do something
-        true
+        true    //currently there are no methods in the admin controller that need tested because the index method does not take or manipulate any data
     }
 }
