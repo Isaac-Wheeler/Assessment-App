@@ -12,6 +12,6 @@ class DocumentControllerSpec extends Specification implements ControllerUnitTest
     }
 
     void "test something"() {
-      true
+      true    //currently there are no methods in the DocumentController to test. 
     }
 }

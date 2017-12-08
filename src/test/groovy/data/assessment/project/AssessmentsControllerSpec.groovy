@@ -14,8 +14,8 @@ class AssessmentsControllerSpec extends Specification {
     def setup() {
       def newSetting = new Settings(academicYear: "2017-2018")
       newSetting.save(flush:true)
-      def newOutcome = new Outcomes(outcomeCategory: 'A', outcomeCategoryDescription: "Students will learn how to")
-      def newIndicator = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to")
+      def newOutcome = new Outcomes(outcomeCategory: 'A', outcomeCategoryDescription: "Students will learn how to", academicYear: "2017-2018")
+      def newIndicator = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to", academicYear: "2017-2018")
       def newMeasure = new Measures(measureTitle: "Exam1_Q1", measureDescription: "Student will be able to")
       newOutcome.addToIndicators(newIndicator)
       newIndicator.addToMeasures(newMeasure)
@@ -27,14 +27,15 @@ class AssessmentsControllerSpec extends Specification {
 
     void "testing index method for creating a new Assessment_Documentation"() {
 
-          given: "Valid params for AD creation and verify that setup() ran correctly"
-            //verify setup ran correctly before proceeding
+          expect: "Setup() ran correctly"
             Settings.count() == 1
             Outcomes.count() == 1
             Indicators.count() == 1
             Measures.count() == 1
-            //if above tests passed then test will proceed with controller test
 
+
+
+          when: "The index method is invoked and proper params are set for AD creation"
             params.targetGoal = "75"    //passed as string due to needed parseInt method
             params.needsImprovement = "10"    //passed as string due to needed parseInt method
             params.meetsExpectations = "12"   //passed as string due to needed parseInt method
@@ -48,8 +49,6 @@ class AssessmentsControllerSpec extends Specification {
             params.submitButton = "Submit"
             params.measureID = Measures.first().id    // the id from the only measure that was created in setup()
 
-
-          when: "The index method is invoked"
             Assessment_Documentation.count() == 0   // at this time there shouldn't be any AD's since none were saved yet
             request.method = 'POST'
             def file = new MockMultipartFile('myFile', 'Hello.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' , "1234567" as byte[])   //create a new file to set as param for "myFile"
