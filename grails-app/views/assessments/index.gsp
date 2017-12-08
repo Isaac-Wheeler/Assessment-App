@@ -22,20 +22,25 @@
       <g:uploadForm class="simpleform" url="index" >
         <!-- right half of the page -->
         <div class="main">
-          <g:hasErrors bean="${assessment_documents}">
-            <div class="errors">
-                <g:renderErrors bean="${assessment_documents}"/>
-            </div>
-          </g:hasErrors>
           <div class="info" id="info">
             <h1>Assessment Documentation</h1>
             <label for="assessmentDocTitle">Assessment Documentation Title:</label>
             <br>
             <g:field type="text" value="${assessment_documents?.assessmentDocTitle}" id="assessmentDocTitle" name="assessmentDocTitle" style="width:35%;" placeholder="Title" class="shortText"/>
+            <g:hasErrors bean="${assessment_documents}" field="assessmentDocTitle">
+              <div class="errors">
+                  <g:renderErrors bean="${assessment_documents}" field="assessmentDocTitle"/>
+              </div>
+            </g:hasErrors>
             <br>
             <label for="Desc">Description:</label>
             <br>
             <g:textArea id="Desc" value="${assessment_documents?.summary}" name="summary" rows="10" cols="100" resize="none"/>
+            <g:hasErrors bean="${assessment_documents}" field="summary">
+              <div class="errors">
+                  <g:renderErrors bean="${assessment_documents}" field="summary"/>
+              </div>
+            </g:hasErrors>
             <br>
             <label for="workUsed">Work Used:</label>
             <br>
@@ -83,16 +88,23 @@
             <label for="comment">Comment:</label>
             <br>
             <g:textArea id="comment" value="${assessment_documents?.comments}" name="comments" rows="10" cols="100" resize="none"/>
+            <g:hasErrors bean="${assessment_documents}" field="comments">
+              <div class="errors">
+                  <g:renderErrors bean="${assessment_documents}" field="comments"/>
+              </div>
+            </g:hasErrors>
             <br>
             <label for="observations">Observations:</label>
             <br>
             <g:textArea id="observation" value="${assessment_documents?.resultComment}" name="resultComment" rows="10" cols="100" resize="none"/>
+            <g:hasErrors bean="${assessment_documents}" field="resultComment">
+              <div class="errors">
+                  <g:renderErrors bean="${assessment_documents}" field="resultComment"/>
+              </div>
+            </g:hasErrors>
             <br>
-            <label for="semseter">Semester:</label>
-            <label for="completed" style="margin-left:40%;">Completed:</label>
-            <br>
-            <g:field type="text" value="${assessment_documents?.academicSemester}" name="academicSemester" style="width:40%;" placeholder="Academic Year Ex: 2017-2018"/>
-            <g:checkBox style="display: inline-block;margin-left:15%;"id="completed" name="complete"/>
+            <label for="semseter">Completed:</label>
+            <g:checkBox style="display: inline-block;margin-left:0%;"id="completed" name="complete" value="${assessment_documents?.complete}"/>
             <br>
             <input type="button" class="actionButton" name="action" id="action" value="Actions "onclick="revealAction();"/>
             <br>
