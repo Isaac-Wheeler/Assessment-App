@@ -14,7 +14,7 @@ class Indicators {
 
       static mapping = {
           measures sort: 'measureTitle', order: 'asc'
-          classes cascade: "all-delete-orphan"
+          
       }
 
     static constraints = {

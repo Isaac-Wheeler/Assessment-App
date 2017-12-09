@@ -7,7 +7,7 @@ class TeachersController {
       [Teacher:Teachers]
      }
      def delete() {
-       def i = Teachers.get(params.teacher)
+       def i = Teacher.get(params.teacher)
        i.delete(flush:true)
        redirect(controller:'Teachers')
      }

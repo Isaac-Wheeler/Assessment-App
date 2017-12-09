@@ -5,7 +5,7 @@ class MainController {
     def index() {
       if(session.teacher){
         if(session.teacher.admin == true){
-          redirect(controller:"admin")
+          redirect(controller:"Admin")
         }else if (session.teacher.admin == false){
           redirect(controller:"client")
         }

@@ -43,7 +43,6 @@ class SettingsController {
         }
 
         }
-
           [year:Settings.first().academicYear, Years:years, yearList:yearList]
      }
 
@@ -61,15 +60,15 @@ class SettingsController {
            if(indicators != null){
              indicators.each{ i ->
                iNew = new Indicators()
-               iNew.indicatorName = i.indicatorName
-               iNew.indicatorDescription = i.indicatorDescription
+               iNew.indicatorName = i.indicatorName.pop()
+               iNew.indicatorDescription = i.indicatorDescription.pop()
                iNew.academicYear = newYear.academicYear
                course = Classes.get(i.classes.id)
                if(course != null){
                  course.addToIndicators(iNew)
                }
-               iNew.setOutcome(o)
-               iNew.save(flush:true)
+               oNew.addToIndicators(iNew)
+               oNew.save(flush:true)
              }
            }
          }

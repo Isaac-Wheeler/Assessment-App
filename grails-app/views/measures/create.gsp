@@ -23,14 +23,15 @@
             <div class="labels">
               <label for="Title">Measure Title:</label>
               <br>
-              <g:field type="text" id="measureTitle" name="measureTitle" width="100px" placeholder="Title" class="shortText"/>
+              <g:field type="text" id="measureTitle" value="${Measures?.measureTitle}" name="measureTitle" width="100px" placeholder="Title" class="shortText"/>
               <br>
               <label for="selectIndicator">Select Indicator:</label>
-              <g:select name="indicatorId" from="${Indicators}" id="selectIndicator" value="${Iid}" style="width:40%;" optionKey="id"/>
+              <g:select name="indicatorId" from="${Indicators}" id="selectIndicator" onchange="submit()" value="${Iid}" style="width:40%;" optionKey="id"/>
+              <p> ${indicatorDisc} </p>
               <br>
               <label for="Desc">Description:</label>
               <br>
-              <textArea id="measureDescription" name="measureDescription" rows="10" cols="100" resize="none"></textarea>
+              <g:textArea id="measureDescription" name="measureDescription" value="${Measures?.measureDescription}" rows="10" cols="100" resize="none"/>
               <g:hiddenField name="isadmin" value="${isadmin}" />
               <g:submitButton class="button" name="submitButton" value="Create" />
               <g:submitButton class="button" name="submitButton" value="Cancel" />
