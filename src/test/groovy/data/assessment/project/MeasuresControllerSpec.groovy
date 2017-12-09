@@ -116,7 +116,7 @@ class MeasuresControllerSpec extends Specification {
                 Measures.count() == 1
 
               when: "The edit method is invoked in the MeasuresController"
-                params.id = Measures.first().id
+                params.measure = Measures.first().id
                 params.indicatorId = Indicators.first().id
                 params.measureTitle = "Exam2_Question4"
                 params.measureDescription = "Student was able to located the issue with...."

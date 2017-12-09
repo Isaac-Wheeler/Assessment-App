@@ -117,7 +117,7 @@ class IndicatorsControllerSpec extends Specification  {
         params.indicatorDescription = "Students are able to properly do something important..."
         params.submitButton = "Create Indicator"
         request.method = 'POST'
-        controller.edit()
+        controller.editIndicator()
         controller.response.reset()
 
       then: "the indicator should be properly edited, and the indicatorDescription should change from setup()"
