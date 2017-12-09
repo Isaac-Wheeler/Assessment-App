@@ -40,7 +40,7 @@
                 <br>
                 <g:select name="classId" from="${Classes}" id="classes" value="${indicator?.classes}" style="width:20%;" optionKey="id" optionValue="title" />
                 <br>
-                <g:submitButton class="button" name="submitButton" value="Create Indicator" />
+                <g:submitButton class="button" name="submitButton" value="Edit Indicator" />
                 <g:submitButton class="button" name="submitButton" value="Cancel" />
             </div>
         </div>
