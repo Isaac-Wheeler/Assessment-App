@@ -72,6 +72,7 @@ class userController {
               redirect(controller:'Teachers')
           }
         }
+        redirect(controller:'Teachers')
       }else{
         def u = Teacher.get(params.teacher)
         return [teacher:u, id:u.id]
