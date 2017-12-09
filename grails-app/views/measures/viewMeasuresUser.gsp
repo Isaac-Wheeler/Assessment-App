@@ -16,7 +16,9 @@
             		<g:each in="${Measures}" var="m" status="i">
             			<div class="listings">
                 			<h1>${m.measureTitle}</h1>
-                       <g:link controller="measures" action="delete" params="[measure:m.id, isadmin:false]">
+                      <g:link controller="measures" action="edit" params="[measure:m.id, isadmin:false]">
+                       <button class="add">Edit</button></g:link>
+                      <g:link controller="measures" action="delete" params="[measure:m.id, isadmin:false]">
            							<button class="add">Delete</button></g:link>
              		   </div>
              	<br/>
