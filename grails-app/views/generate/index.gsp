@@ -39,28 +39,28 @@
                   <g:each in="${i.measures}" var="m">
                     <g:set var="ad" value="${m.assessment_documents}"/>
                     ${i.indicatorName}-${c.title}-${m.measureTitle}:
-                    <g:if test="${it == null || ad.meetsExpectations == null || !ad.exceedsExpectations || !ad.targetGoal || !ad.needsImprovement}">
+                    <g:if test="${ad.meetsExpectations == null || ad.exceedsExpectations == null || ad.targetGoal == null || ad.needsImprovement == null}">
                       <br>
                       <span style="background-color: #000000; color:white;">Not Assessed</span>
                       <br>
                     </g:if>
                     <g:else>
                       <g:set var="totalMet" value="${ad.meetsExpectations+ad.exceedsExpectations}"/>
-                      <g:set var="totalprcentMet" value="${totalMet/ad.numberOfStudents} "/>
+                      <g:set var="totalPrcentMet" value="${totalMet/ad.numberOfStudents * 100} "/>
                       <g:set var="targetGoal" value="${ad.targetGoal}"/>
-                      <g:if test="${totalprcentMet > targetGoal + 5}">
-                        <span style="background-color: #00FF00">Met Comfortably</span>
+                      <g:if test="${totalPrcentMet > targetGoal + 5}">
+                        <p style="background-color: #00FF00">Met Comfortably</p>
                       </g:if>
                       <g:elseif test="${totalPrcentMet >= targetGoal}">
-                        <span style="background-color: #FFFF00">Met</span>
+                        <p style="background-color: #FFFF00;"> Met </p>
                       </g:elseif>
                       <g:elseif test="${totalPrcentMet >= targetGoal - 5}">
-                        <span style="background-color: #FFA500">Almost Met</span>
+                        <p style="background-color: #FFA500">Almost Met</p>
                       </g:elseif>
                       <g:elseif test="${totalPrcentMet < targetGoal - 5}">
-                        <span style="background-color: #FF0000">Not Met</span>
+                        <p style="background-color: #FF0000">Not Met</p>
                       </g:elseif>
-                      (${totalprcentMet/ad.numberOfStudents * 100}%/${targetGoal}%)
+                      (${totalPrcentMet}% / ${targetGoal} %)
                       <br>
                       ${ad.requiredAction}
                       <br>
