@@ -18,6 +18,7 @@ class userController {
             }
 
         }
+        redirect(controller:'main')
       }
     }
 
