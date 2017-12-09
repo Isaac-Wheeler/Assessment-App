@@ -8,8 +8,8 @@
     ${response.sendRedirect("/")}
   </g:if>
 	<div class="pageTitle">
-    		<h1>Create Measure</h1>
-      	<p>Complete the form below to create an Measure</p>
+    		<h1>Edit Measure</h1>
+      	<p>Complete the form below to edit an Measure</p>
     </div>
     <g:form class="simpleform" url="edit">
    			 <g:hasErrors bean="${Measures}">
@@ -32,7 +32,7 @@
               <g:textArea id="measureDescription" name="measureDescription" value="${Measures?.measureDescription}" rows="10" cols="100" resize="none"/>
               <g:hiddenField name="isadmin" value="${isadmin}" />
               <g:hiddenField name="measure" value="${measure}" />
-              <g:submitButton class="button" name="submitButton" value="Create" />
+              <g:submitButton class="button" name="submitButton" value="Edit" />
               <g:submitButton class="button" name="submitButton" value="Cancel" />
             </div>
         </div>

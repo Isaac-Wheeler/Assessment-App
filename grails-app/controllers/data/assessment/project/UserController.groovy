@@ -18,6 +18,7 @@ class userController {
             }
 
         }
+        redirect(controller:'main')
       }
     }
 
@@ -58,7 +59,9 @@ class userController {
           u.username = params.username
           u.lastName = params.lastName
           u.firstName = params.firstName
-          u.admin = params.admin
+          if(params.admin){
+            u.admin = params.admin
+          }
           if(params.password == null){
           u.password = params.password
           u.confirm = params.confirm
@@ -67,10 +70,9 @@ class userController {
           if (! u.save(flush:true)) {
               // validation failed, render registration page again
               return [teacher:u, id:u.id]
-          } else {
-              redirect(controller:'Teachers')
           }
         }
+        redirect(controller:'Teachers')
       }else{
         def u = Teacher.get(params.teacher)
         return [teacher:u, id:u.id]
