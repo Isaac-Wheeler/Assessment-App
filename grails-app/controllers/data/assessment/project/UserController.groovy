@@ -13,10 +13,7 @@ class userController {
             if (! u.save(flush:true)) {
                 // validation failed, render registration page again
                 return [teacher:u]
-            } else {
-                redirect(controller:'main')
             }
-
         }
         redirect(controller:'main')
       }
