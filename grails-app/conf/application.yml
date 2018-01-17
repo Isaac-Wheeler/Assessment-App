@@ -119,3 +119,6 @@ environments:
             driverClassName: org.postgresql.Driver
             username: postgres
             password: mage1996
+
+server:
+    'contextPath': '/DAA'

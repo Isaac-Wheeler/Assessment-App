@@ -29,7 +29,7 @@
             <div class="banner">
                 <p>Login</p>
             </div>
-            <g:form class="simpleform" url="/login">
+            <g:form class="simpleform" url="login">
                 <input type="text" name="username" placeholder="Username">
                 <input type="password" name="password" placeholder="Password">
                 <br>
