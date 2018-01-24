@@ -7,7 +7,7 @@
     <body>
     		<div class="newTab">
                 <p>Outcomes
-                  <g:link url="/outcomes/createOutcome">
+                  <g:link controller="Outcomes" action="createOutcome">
                     <button class="add">New<div class="plus"> &oplus;</div></button>
                 </g:link>
                 </p>
