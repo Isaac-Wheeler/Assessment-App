@@ -16,11 +16,13 @@
         ${response.sendRedirect("/")}
       </g:if>
         <div class=leftPanel>
-            <div class="profileInfo">
-                <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
-                <br>
-                <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
-            </div>
+            <g:link controller="user" action="editFaculty" params="[teacher:session?.teacher?.id]">
+              <div class="profileInfo">
+                  <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
+                  <br>
+                  <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
+              </div>
+            </g:link>
             <g:link controller="admin">
             		<button class="button">Home</button>
             </g:link>

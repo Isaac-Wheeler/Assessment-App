@@ -76,4 +76,29 @@ class userController {
         redirect(view:'edit')
       }
     }
+
+    def editFaculty ={
+      if (request.method == 'POST') {
+        if(!params.submitButton.contains("Cancel") && session.teacher.id == params.id){
+          // create domain object and assign parameters using data binding
+          def u = Teacher.get(params.id)
+          u.lastName = params.lastName
+          u.firstName = params.firstName
+          if(params.password == null){
+          u.password = params.password
+          u.confirm = params.confirm
+          u.passwordHashed = u.password.encodeAsPassword()
+          }
+          if (! u.save(flush:true)) {
+              // validation failed, render registration page again
+              return [teacher:u, id:u.id]
+          }
+        }
+        redirect(controller:'main')
+      }else{
+        def u = Teacher.get(params.teacher)
+        return [teacher:u, id:u.id]
+        redirect(view:'edit')
+      }
+    }
 }

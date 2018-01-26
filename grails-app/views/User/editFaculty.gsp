@@ -11,7 +11,7 @@
     		<h1>Edit Faculty</h1>
       	<p>Complete the form below to create an Outcome</p>
     </div>
-    <g:form class="simpleform" url="/edit">
+    <g:form class="simpleform" url="editFaculty">
    			 <g:hasErrors bean="${teacher}">
       			<div class="errors">
         				<g:renderErrors bean="${teacher}"/>
@@ -26,6 +26,14 @@
       			<label for="confirm">Confirm Password:</label>
       			<br>
       			<g:passwordField name="confirm" class="${hasErrors(bean:user,field:'password','errors')}" />
+				    <br>
+            <label for="firstName">First Name:</label>
+      			<br>
+      			<g:textField name="firstName" value="${teacher?.firstName}" class="${hasErrors(bean:user,field:'firstName','errors')}" />
+      			<br>
+      			<label for="lastName">Last Name:</label>
+      			<br>
+      			<g:textField name="lastName" value="${teacher?.lastName}" class="${hasErrors(bean:user,field:'lastName','errors')}" />
 				    <br>
       			<label for="profilePic">Profile Picture:</label>
       			<br>

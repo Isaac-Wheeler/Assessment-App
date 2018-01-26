@@ -42,7 +42,7 @@
       			<label for="lastName">Last Name:</label>
       			<br>
       			<g:textField name="lastName" value="${teacher?.lastName}" class="${hasErrors(bean:user,field:'lastName','errors')}" />
-				<br>
+				    <br>
       			<label for"admin">Admin:</label>
       			<g:checkBox name="admin" value="${teacher?.admin}" />
       			<br>
