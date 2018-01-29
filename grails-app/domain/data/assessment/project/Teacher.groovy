@@ -15,6 +15,7 @@ class Teacher {
   String confirm;         // plain text, not stored
   String passwordHashed;
   boolean admin;
+  Document profilePic;
 
 
   static mapping = {
@@ -30,6 +31,7 @@ class Teacher {
       firstName blank:false
       confirm blank:false
       lastName  blank:false
+      profilePic nullable:true
       username  blank:false, size:5..15, matches:/[\S]+/, unique:true
       password  blank:false, size:5..15, matches:/[\S]+/, validator:{ val, obj ->
           if (obj.password != obj.confirm)

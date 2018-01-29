@@ -1,5 +1,11 @@
 package data.assessment.project
 
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import com.oreilly.servlet.MultipartRequest;
+
 class userController {
 
 
@@ -79,7 +85,7 @@ class userController {
 
     def editFaculty ={
       if (request.method == 'POST') {
-        if(!params.submitButton.contains("Cancel") && session.teacher.id == params.id){
+        if(!params.submitButton.contains("Cancel")){
           // create domain object and assign parameters using data binding
           def u = Teacher.get(params.id)
           u.lastName = params.lastName
@@ -89,6 +95,22 @@ class userController {
           u.confirm = params.confirm
           u.passwordHashed = u.password.encodeAsPassword()
           }
+
+          // fetch the uploaded image for assigning profile picture to teacher account
+
+            def file = request.getFile('profilePic')
+            if (file.empty()) {
+                System.out.println("File is empty!!")
+            }
+            else {
+              def documentInstance = new Document();
+              documentInstance.filename = file.originalFilename
+              documentInstance.filedata = file.getBytes()
+              u.profilePic = documentInstance
+              System.out.println("File image was successfully stored!!!")
+            }
+
+
           if (! u.save(flush:true)) {
               // validation failed, render registration page again
               return [teacher:u, id:u.id]

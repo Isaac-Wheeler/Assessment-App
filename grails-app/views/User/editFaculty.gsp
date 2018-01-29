@@ -9,7 +9,7 @@
   </g:if>
 	<div class="pageTitle">
     		<h1>Edit Faculty</h1>
-      	<p>Complete the form below to create an Outcome</p>
+      	<p>Complete the form below to create edit account settings</p>
     </div>
     <g:form class="simpleform" url="editFaculty">
    			 <g:hasErrors bean="${teacher}">
