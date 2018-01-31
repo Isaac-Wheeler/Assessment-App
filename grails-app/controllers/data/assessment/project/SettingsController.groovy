@@ -60,8 +60,10 @@ class SettingsController {
            if(indicators != null){
              indicators.each{ i ->
                iNew = new Indicators()
-               iNew.indicatorName = i.indicatorName.pop()
-               iNew.indicatorDescription = i.indicatorDescription.pop()
+               if(i.indicatorName.size() > 0 && i.indicatorDescription.size() > 0){
+                 iNew.indicatorName = i.indicatorName.pop()
+                 iNew.indicatorDescription = i.indicatorDescription.pop()
+               }
                iNew.academicYear = newYear.academicYear
                course = Classes.get(i.classes.id)
                if(course != null){
