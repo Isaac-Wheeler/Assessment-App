@@ -11,7 +11,7 @@
     		<h1>Edit Faculty</h1>
       	<p>Complete the form below to create edit account settings</p>
     </div>
-    <g:form class="simpleform" url="editFaculty">
+    <g:uploadForm class="simpleform" url="editFaculty">
    			 <g:hasErrors bean="${teacher}">
       			<div class="errors">
         				<g:renderErrors bean="${teacher}"/>
@@ -44,6 +44,6 @@
       			<g:submitButton class="button" name="submitButton" value="Cancel" />
       		</div>
       	</div>
-      </g:form>
+      </g:uploadForm>
 </body>
 </html>

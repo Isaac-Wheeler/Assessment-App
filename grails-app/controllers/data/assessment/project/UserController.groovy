@@ -99,7 +99,7 @@ class userController {
           // fetch the uploaded image for assigning profile picture to teacher account
 
             def file = request.getFile('profilePic')
-            if (file.empty()) {
+            if (file.isEmpty()) {
                 System.out.println("File is empty!!")
             }
             else {
