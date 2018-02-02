@@ -12,11 +12,11 @@ class MeasuresController {
 
     def index(){
       def measures
-      def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+      def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
       indicators.each{ i ->
         if(i.measures != null){
           if(measures == null){
-            measures = i.measures
+            measures = i.meBootStrap.GetYear(session)
           }else{
             measures = measures + i.measures
           }
@@ -37,7 +37,7 @@ class MeasuresController {
     }
 
     def create(){
-      def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+      def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
       if (request.method == 'POST') {
         if(params.containsKey("submitButton")){
           if(!params.submitButton.contains("Cancel")){
@@ -71,7 +71,7 @@ class MeasuresController {
     }
 
     def edit(){
-      def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+      def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
       if (request.method == 'POST') {
         if(params.containsKey("submitButton")){
           if(!params.submitButton.contains("Cancel")){

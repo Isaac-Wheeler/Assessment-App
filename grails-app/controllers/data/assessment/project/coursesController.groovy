@@ -4,7 +4,7 @@ class coursesController {
 
   def index() {
     def classes = Classes.list()
-    def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+    def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
     def teachers = Teacher.list()
 
     [Classes:classes, Indicators:indicators, Teacher:teachers]
@@ -12,7 +12,7 @@ class coursesController {
 
  def newCourse(){
    def classes = Classes.list()
-   def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+   def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
    def teachers = Teacher.list()
 
    def c = new Classes()
@@ -25,7 +25,7 @@ class coursesController {
 
  def assignNewTeacher(){
    def classes = Classes.list()
-   def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+   def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
    def teachers = Teacher.list()
 
    def c = Classes.get(params.class)

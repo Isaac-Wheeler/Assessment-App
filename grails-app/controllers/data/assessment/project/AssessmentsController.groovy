@@ -10,11 +10,11 @@ class AssessmentsController {
 
 
   def index(){
-    def outcomes = Outcomes.findAllByAcademicYear(Settings.first().academicYear)
-    def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+    def outcomes = Outcomes.findAllByAcademicYear(BootStrap.GetYear(session))
+    def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
     def classes = Classes.list()
     def measures = Measures.list()
-    def year = Settings.first().academicYear
+    def year = BootStrap.GetYear(session)
 
     def mId = null
     def measure = null
@@ -122,11 +122,11 @@ class AssessmentsController {
 
 
   def editAssessment() {
-    def outcomes = Outcomes.findAllByAcademicYear(Settings.first().academicYear)
-    def indicators = Indicators.findAllByAcademicYear(Settings.first().academicYear)
+    def outcomes = Outcomes.findAllByAcademicYear(BootStrap.GetYear(session))
+    def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
     def classes = Classes.list()
     def measures = Measures.list()
-    def year = Settings.first().academicYear
+    def year = BootStrap.GetYear(session)
     def mId = null
     def measure = null
     def AD = null

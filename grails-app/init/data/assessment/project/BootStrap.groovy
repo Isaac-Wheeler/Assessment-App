@@ -114,7 +114,13 @@ class BootStrap {
         }
     }
 
-
+    static String GetYear(def session) {
+      if(session.year != null){
+        return session.year
+      }else{
+        return Settings.first().academicYear
+      }
+    }
 
     def destroy = {
     }
