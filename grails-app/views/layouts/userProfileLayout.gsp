@@ -18,8 +18,12 @@
         <div class=leftPanel>
             <g:link controller="user" action="editFaculty" params="[teacher:session?.teacher?.id]">
               <div class="profileInfo">
-                  <!--<g:img class="img-circle" dir="images" file="blankPerson.jpg"/>-->
-                  <g:img class="img-circle" dir="images" file="${session?.teacher?.profilePic}"/>
+                  <g:if test="${session.teacher.profilePic == null}">
+                    <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
+                  </g:if>
+                  <g:else>
+                    <g:img class="img-circle" file="${session?.teacher?.profilePic.filedata}"/>
+                  </g:else>
                   <br>
                   <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
               </div>
