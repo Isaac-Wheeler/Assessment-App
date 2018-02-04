@@ -13,7 +13,7 @@ class Document {
 
   static constraints = {
       filename blank: false , nullable:false
-      filedata blank: true , nullable:true
+      filedata blank: true , nullable:true, maxSize:1000
       assessment_document nullable:true
   }
 
