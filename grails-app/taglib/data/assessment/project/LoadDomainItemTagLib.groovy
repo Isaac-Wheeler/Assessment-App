@@ -15,11 +15,12 @@ class LoadDomainItemTagLib {
       }
     }
 
-    def getYear = {
-      if(session.year != null){
-        return session.year
-      }else{
-        return Settings.first().academicYear
+
+    def loadCourses = {
+      def c = Classes.list()
+      c.each{
+        out << g.render(template:"/layouts/optionSettings", model:[i:it.title])
       }
     }
+
 }
