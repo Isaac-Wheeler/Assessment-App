@@ -14,10 +14,7 @@ class MainController {
 
      def changeYear() {
        def setYear = params.setYear
-       System.out.println(setYear)
-
        session.year = setYear
-
        //redirect user back to there page
        redirect(uri:params.location.drop(4))
      }

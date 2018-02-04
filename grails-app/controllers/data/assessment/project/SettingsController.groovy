@@ -49,8 +49,10 @@ class SettingsController {
      def yearChangeLoop(def oldSettings, def newYear){
        def outcomes = Outcomes.findAllByAcademicYear(oldSettings.academicYear)
        def indicators
+       def measures
        def oNew
        def iNew
+       def mNew
        def course
 
        outcomes.each{o  ->
@@ -65,6 +67,17 @@ class SettingsController {
                  iNew.indicatorDescription = i.indicatorDescription.pop()
                }
                iNew.academicYear = newYear.academicYear
+               measures = i.measures
+               measures.each { m ->
+                 mNew = new Measures()
+                 if(m.measureTitle.size() > 0 && m.measureDescription.size() > 0){
+                   mNew.measureTitle = m.measureTitle.pop()
+                   mNew.measureDescription = m.measureDescription.pop()
+                }
+                 mNew.academicYear = newYear.academicYear
+                 iNew.addToMeasures(mNew)
+                 iNew.save(flsuh:true)
+               }
                course = Classes.get(i.classes.id)
                if(course != null){
                  course.addToIndicators(iNew)

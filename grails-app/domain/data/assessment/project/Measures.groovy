@@ -5,6 +5,7 @@ class Measures {
       //NOTE: DB creates ID for table
       String measureTitle;
       String measureDescription;
+      String academicYear;
 
 
       static belongsTo = [ indicator : Indicators ]
@@ -21,6 +22,6 @@ class Measures {
       measureTitle blank: false
       measureDescription blank: false
       assessment_documents nullable:true
-
-}
+      academicYear nullable:true
+    }
 }
