@@ -18,7 +18,8 @@
         <div class=leftPanel>
             <g:link controller="user" action="editFaculty" params="[teacher:session?.teacher?.id]">
               <div class="profileInfo">
-                  <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
+                  <!--<g:img class="img-circle" dir="images" file="blankPerson.jpg"/>-->
+                  <g:img class="img-circle" dir="images" file="${session?.teacher?.profilePic}"/>
                   <br>
                   <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
               </div>
