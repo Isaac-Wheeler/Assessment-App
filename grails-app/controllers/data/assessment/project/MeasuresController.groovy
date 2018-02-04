@@ -16,7 +16,7 @@ class MeasuresController {
       indicators.each{ i ->
         if(i.measures != null){
           if(measures == null){
-            measures = i.meBootStrap.GetYear(session)
+            measures = i.measures
           }else{
             measures = measures + i.measures
           }

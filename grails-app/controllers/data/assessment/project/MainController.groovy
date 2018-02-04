@@ -12,13 +12,13 @@ class MainController {
       }
      }
 
-     def home(){
-       if(session.teacher){
-         if(session.teacher.admin == true){
-           redirect(controller:"admin")
-         }else if (session.teacher.admin == false){
-           redirect(controller:"client")
-         }
-       }
+     def changeYear() {
+       def setYear = params.setYear
+       System.out.println(setYear)
+
+       session.year = setYear
+
+       //redirect user back to there page
+       redirect(uri:params.location.drop(4))
      }
 }

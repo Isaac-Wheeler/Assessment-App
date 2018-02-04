@@ -24,6 +24,15 @@
                 <br>
                 <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
             </div>
+            <div class="changeYear">
+              <g:form class="simpleform" controller="Main" action="changeYear">
+                  <g:hiddenField name="location" value="${request.getRequestURI()}" />
+                  <select name="setYear" onchange="submit()" id="setYear">
+                    <g:loadSettings/>
+                  </select>
+              </g:form>
+            </div>
+          <div class="buttons">
             <g:link controller="admin">
             		<button class="button">Home</button>
             </g:link>
@@ -59,6 +68,7 @@
             <g:link controller="user" action="logout">
                 <button class="button button2">Log Out</button>
             </g:link>
+          </div>
         </div>
         <div class="rightPanel">
         		<g:layoutBody/>
