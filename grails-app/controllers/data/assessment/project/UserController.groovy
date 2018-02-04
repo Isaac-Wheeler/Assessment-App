@@ -100,14 +100,12 @@ class userController {
 
             def file = request.getFile('profilePic')
             if (file.isEmpty()) {
-                System.out.println("File is empty!!")
             }
             else {
               def documentInstance = new Document();
               documentInstance.filename = file.originalFilename
               documentInstance.filedata = file.getBytes()
               u.profilePic = documentInstance
-              System.out.println("File image was successfully stored!!!")
             }
 
 
