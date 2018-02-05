@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
     <head>
+      <link rel="shortcut icon" href="${createLinkTo(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
         <title><g:if env="development">Grails Runtime Exception</g:if><g:else>Error</g:else></title>
         <meta name="layout" content="main">
         <g:if env="development"><asset:stylesheet src="errors.css"/></g:if>

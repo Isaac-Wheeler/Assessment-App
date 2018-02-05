@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
     <head>
+      <link rel="shortcut icon" href="${createLinkTo(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
         <title>Page Not Found</title>
         <meta name="layout" content="main">
         <g:if env="development"><asset:stylesheet src="errors.css"/></g:if>

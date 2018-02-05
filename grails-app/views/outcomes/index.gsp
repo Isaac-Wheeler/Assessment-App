@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="shortcut icon" href="${createLinkTo(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
         <meta name="layout" content="adminProfileLayout"/>
         <asset:stylesheet src="adminProfile.css"/>
     </head>
