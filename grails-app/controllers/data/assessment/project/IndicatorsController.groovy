@@ -63,6 +63,21 @@ class IndicatorsController {
           def i = Indicators.get(params.id)
           i.indicatorName = params.indicatorName
           i.indicatorDescription = params.indicatorDescription
+          def c = params.classId
+          if (c != null) {
+            def coursesList = []
+            i.classes.each { course->
+              coursesList.add(course.id)
+           }
+            for (int j = 0; j<coursesList.size(); j++) {                //run through coursesList and get the course object and then remove from the indicator Classes association
+              def courseToBeRemoved = Classes.get(coursesList[j])
+              i.removeFromClasses(courseToBeRemoved)
+           }
+           c.each {
+             def courseToAdd = Classes.get(it)
+             i.addToClasses(courseToAdd)
+           }
+          }
             if(!i.save(flush:true)){
               return [indicator:i, Classes:classes]
               redirect(view:"/indicators/editIndicator")
