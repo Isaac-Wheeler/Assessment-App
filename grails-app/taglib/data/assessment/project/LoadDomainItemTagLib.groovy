@@ -16,11 +16,4 @@ class LoadDomainItemTagLib {
     }
 
 
-    def loadCourses = {
-      def c = Classes.list()
-      c.each{
-        out << g.render(template:"/layouts/optionSettings", model:[i:it.title])
-      }
-    }
-
 }

@@ -13,13 +13,17 @@ class IndicatorsController {
         if(!params.submitButton.contains("Cancel")){
           def i = new Indicators()
           def o = Outcomes.get(params.outcomeId)
-          def c = Classes.get(params.classId)
+          //def c = Classes.get(params.classId)
+          def c = params.classId
           i.indicatorName = params.indicatorName
           i.indicatorDescription = params.indicatorDescription
           i.academicYear = Settings.first().academicYear
           o.addToIndicators(i)
           if(c != null){
-          i.addToClasses(c)
+            c.each {
+              def courseToAdd = Classes.get(it)
+              i.addToClasses(courseToAdd)
+            }
           }
             if(!i.save(flush:true)){
               return [indicator:i, outcomeId:params.outcomeId, Classes:classes]
