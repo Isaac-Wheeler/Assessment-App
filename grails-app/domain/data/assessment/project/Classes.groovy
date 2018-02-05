@@ -5,6 +5,10 @@ class Classes {
       //properties
       //NOTE: DB creates ID for table
       String title;
+      int targetGoal;
+      String requiredAction;
+
+
 
       static hasMany = [ indicators : Indicators , teachers : Teacher ]
 
@@ -18,6 +22,8 @@ class Classes {
     static constraints = {
 
       title  blank:false, minSize: 5
+      targetGoal blank:false
+      requiredAction nullable: true
 
     }
 }
