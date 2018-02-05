@@ -12,6 +12,6 @@ class LoadDomainItemTagLibSpec extends Specification implements TagLibUnitTest<L
     }
 
     void "test something"() {
-        return true
+        true
     }
 }
