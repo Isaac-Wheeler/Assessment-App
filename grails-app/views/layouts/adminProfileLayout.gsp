@@ -15,16 +15,7 @@
       <g:render template="/templates/security"/>
         <div class=leftPanel>
           <g:if test="${session.teacher != null}">
-            <div class="profileInfo">
-              <g:if test="${session.teacher.profilePic == null}">
-                <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
-              </g:if>
-              <g:else>
-
-            </g:else>
-                <br>
-                <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
-            </div>
+          <g:render template="/templates/profileInfo"/>
           </g:if>
             <div class="changeYear">
               <g:form class="simpleform" controller="Main" action="changeYear">

@@ -17,16 +17,7 @@
         <div class=leftPanel>
             <g:link controller="user" action="editFaculty" params="[teacher:session?.teacher?.id]">
             <g:if test="${session.teacher != null}">
-              <div class="profileInfo">
-                  <g:if test="${session.teacher.profilePic == null}">
-                    <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
-                  </g:if>
-                  <g:else>
-
-                </g:else>
-                  <br>
-                  <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
-              </div>
+              <g:render template="/templates/profileInfo"/>
             </g:if>
             </g:link>
             <g:link controller="admin">
