@@ -1,3 +1,30 @@
+function clearForm(){
+  console.log('Clear in');
+  document.getElementById('assessmentDocTitle').value = '';
+  document.getElementById('Desc').value = '';
+  document.getElementById('targetGoal').value = 0;
+  document.getElementById('belowExpectation').value = 0;
+  document.getElementById('meetsExpectation').value = 0;
+  document.getElementById('exceedsExpectation').value = 0;
+  document.getElementById('comment').value = '';
+  document.getElementById('observation').value = '';
+  document.getElementById('completed').value = false;
+  document.getElementById('requiredAction').value = '';
+}
+/*function update(){
+  var valueBelow = parseInt(document.getElementById('belowExpectation').value, 10);
+  var valueMeets = parseInt(document.getElementById('meetsExpectation').value, 10);
+  var valueExceeds = parseInt(document.getElementById('exceedsExpectation').value, 10);
+  var together = valueBelow + valueMeets + valueExceeds;
+
+  document.getElementById("BE").innerHTML = valueBelow/together;
+  document.getElementById("ME").innerHTML = valueMeets/together;
+  document.getElementById("EE").innerHTML = valueExceeds/together;
+}
+$( "belowExpectation" ).focusout(update());
+$( "meetsExpectation" ).focusout(update());
+$( "exceedsExpectation" ).focusout(update());*/
+
 function hideShowOutcomesClasses() {
   var x = document.getElementById("Outcomes");
   if (x.style.display == "none") {

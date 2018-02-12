@@ -52,9 +52,9 @@
               <input type="file" name="myFile" multiple />
             <br>
             <label for="targetGoal">Target Goal(in percent):</label>
-            <label for="belowExpectation" class="labelEx" >Below Expectation:</label>
-            <label for="meetsExpectation" class="labelEx" style="margin-left:9%;">Meets Expectation:</label>
-            <label for="exceedsExpectation" class="labelEx" style="margin-left:8%;">Exceeds Expectation:</label>
+            <label for="belowExpectation" class="labelEx" >Below Expectation:<a id="BE"></a></label>
+            <label for="meetsExpectation" class="labelEx" style="margin-left:9%;">Meets Expectation:<a id="ME"></a></label>
+            <label for="exceedsExpectation" class="labelEx" style="margin-left:8%;">Exceeds Expectation:<a id="EE"></a></label>
             <br>
             <g:field type="number" value="${assessment_documents?.targetGoal}" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal"/>
 
@@ -115,6 +115,8 @@
             <g:hiddenField name="measureID" value="${measureID}"/>
             <g:submitButton class="button" name="submitButton" value="Submit" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
+            <br>
+            <input type="button" class="button" value="Clear" onclick="document.getElementById("assessmentDocTitle").value = """>
           </div>
           <g:if test="${show}">
           <script type="text/javascript" >
