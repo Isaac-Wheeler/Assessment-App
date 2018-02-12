@@ -27,6 +27,7 @@
                             <h3>${m.measureTitle} - ${m.measureDescription}</h3>
                             <g:if test="${m.assessment_documents != NULL}">
                               <g:each in="${m.assessment_documents}">
+                                <p> ${(it.meetsExpectations+it.exceedsExpectations)/it.numberOfStudents}
                                 <g:if test="${!it.complete}">
                                   <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
                                   <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
