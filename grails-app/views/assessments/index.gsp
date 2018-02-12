@@ -116,7 +116,7 @@
             <g:submitButton class="button" name="submitButton" value="Submit" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
             <br>
-            <input type="button" class="button" value="Clear" onclick="document.getElementById("assessmentDocTitle").value = """>
+            <input type="button" class="button" value="Clear" onclick="clearForm();">
           </div>
           <g:if test="${show}">
           <script type="text/javascript" >
