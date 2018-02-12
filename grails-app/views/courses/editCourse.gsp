@@ -38,6 +38,7 @@
                 </g:hasErrors>
                 <label for="courseAction">Course Actions:</label>
                 <br>
+                <g:hiddenField name="course" value="${course?}" />
                 <g:textArea id="courseAction" name="course" value="${course?.courseAction}" rows="10" cols="50"/>
                 <g:hasErrors bean="${course}" field="courseAction">
                   <div class="errors">

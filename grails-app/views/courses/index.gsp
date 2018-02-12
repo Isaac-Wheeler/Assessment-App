@@ -8,7 +8,7 @@
     <body>
     		<div class="newTab">
                 <p>Courses
-                  g:link controller="courses" action="createCourse" params="[isadmin:true]">
+                  <g:link controller="courses" action="createCourse" params="[isadmin:true]">
                     <button class="add">New<div class="plus"> &oplus;</div></button>
                 </g:link></p>
             </div>

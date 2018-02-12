@@ -10,18 +10,39 @@ class coursesController {
     [Classes:classes, Indicators:indicators, Teacher:teachers]
  }
 
- def newCourse(){
+ def createCourse(){
    def classes = Classes.list()
-   def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
-   def teachers = Teacher.list()
+   if (request.method == 'POST') {
+     if(!params.submitButton.contains("Cancel")){
+       def c = new Classes()
+       c.title = params.title
+       c.targetGoal = Integer.parseInt(params.targetGoal) // will throw error if null
+       c.requiredAction = params.requiredAction
+        if(!c.save(flush:true)){
+          c.errors.allErrors.each { println it }
+          return [course:c]
+        }
+       }
+        redirect(controller:"courses", action:"index")
+     }
+}
 
-   def c = new Classes()
-   c.title = params.title
-   if(!c.save(flush:true)){
-     return [c:c, Classes:classes, Indicators:indicators, Teacher:teachers]
-   }
-   redirect(controller:"courses", action:"index")
- }
+ def editCourse(){
+   def classes = Classes.list()
+   if (request.method == 'POST') {
+     if(!params.submitButton.contains("Cancel")){
+       def c = Classes.get(params.course)
+       c.title = params.courseName
+       c.targetGoal = Integer.parseInt(params.courseTargetGoal) //will throw error if null
+       c.requiredAction = params.courseAction
+        if(!c.save(flush:true)){
+          return [course:c]
+        }
+       }
+        redirect(controller:"courses", action:"index")
+     }
+}
+
 
  def assignNewTeacher(){
    def classes = Classes.list()
