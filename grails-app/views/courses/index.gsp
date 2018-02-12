@@ -8,7 +8,7 @@
     <body>
     		<div class="newTab">
                 <p>Courses
-                  g:link controller="courses" action="createCourse" params="[isadmin:true]">
+                  <g:link controller="courses" action="createCourse" params="[isadmin:true]">
                     <button class="add">New<div class="plus"> &oplus;</div></button>
                 </g:link></p>
             </div>
@@ -40,13 +40,18 @@
 							          <button id="assign" class="add">Assign</button>
                       </g:form>
                       <br>
+                      <p>Target Goal:${i.targetGoal}</p>
+                      <p>Required Action:</p>
+                      <br>
+                      ${i.requiredAction}
+                      <br>
+                      <g:link controller="courses" action="edit" params="[course:i.id, isadmin:true]">
+                       <button class="add">Edit</button></g:link>
 						          <g:link controller="courses" action="delete" params="[classes:i.id]">
 							               <button class="add">Delete</button>
 						          </g:link>
         				  </div>
         				<br/>
-                <g:link controller="courses" action="edit" params="[course:i.id, isadmin:true]">
-                 <button class="add">Edit</button></g:link>
         			</g:each>
             </div>
         </div>
