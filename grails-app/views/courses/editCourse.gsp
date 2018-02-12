@@ -21,7 +21,7 @@
             <div class="labels">
                 <label for="courseName">Course Title:</label>
                 <br>
-                <g:textField type="text" id="courseName" name="courseName" value="${course?.courseName}" placeholder="Title"/>
+                <g:textField type="text" id="courseName" name="title" value="${course?.courseName}" placeholder="Title"/>
                 <g:hasErrors bean="${course}" field="courseName">
                   <div class="errors">
                       <g:renderErrors bean="${course}" field="courseName"/>
@@ -30,7 +30,7 @@
                 <br>
                 <label for="courseTargetGoal">Course Target Goal:</label>
                 <br>
-                <g:textField type="text" id="courseTargetGoal" name="courseTargetGoal" value="${course?.courseTargetGoal}" placeholder="Title"/>
+                <g:textField type="text" id="courseTargetGoal" name="targetGoal" value="${course?.courseTargetGoal}" placeholder="Title"/>
                 <g:hasErrors bean="${course}" field="courseTargetGoal">
                   <div class="errors">
                       <g:renderErrors bean="${course}" field="courseTargetGoal"/>
@@ -38,6 +38,7 @@
                 </g:hasErrors>
                 <label for="courseAction">Course Actions:</label>
                 <br>
+                <g:hiddenField name="course" value="${course?}" />
                 <g:textArea id="courseAction" name="course" value="${course?.courseAction}" rows="10" cols="50"/>
                 <g:hasErrors bean="${course}" field="courseAction">
                   <div class="errors">
