@@ -25,7 +25,7 @@
         </g:if>
         <g:else>
             <ul class="errors">
-                <li>An error has occurred</li>
+                <li>An error has occurred please contact the system admin with details of what you were trying to do</li>
             </ul>
         </g:else>
     </body>

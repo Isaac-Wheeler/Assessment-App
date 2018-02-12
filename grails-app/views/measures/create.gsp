@@ -7,9 +7,7 @@
   <asset:javascript src="measureSelect.js"/>
 </head>
 <body>
-  <g:if test="${session.teacher == null}">
-    ${response.sendRedirect("/")}
-  </g:if>
+  <g:render template="/templates/securityNotAdmin"/>
 	<div class="pageTitle">
     		<h1>Create Measure</h1>
       	<p>Complete the form below to create an Measure</p>

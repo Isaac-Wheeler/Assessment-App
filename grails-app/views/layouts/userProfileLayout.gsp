@@ -13,9 +13,7 @@
             <g:layoutHead/>
     </head>
     <body>
-      <g:if test="${session.teacher == null}">
-        ${response.sendRedirect("/")}
-      </g:if>
+      <g:render template="/templates/securityNotAdmin"/>
         <div class=leftPanel>
             <g:link controller="user" action="editFaculty" params="[teacher:session?.teacher?.id]">
               <div class="profileInfo">

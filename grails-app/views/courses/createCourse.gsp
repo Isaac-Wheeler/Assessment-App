@@ -5,12 +5,7 @@
   <meta name="layout" content="dataInputLayout"/>
 </head>
 <body>
-  <g:if test="${session?.teacher?.admin == false}">
-    ${response.sendRedirect("/")}
-  </g:if>
-  <g:if test="${session.teacher == null}">
-    ${response.sendRedirect("/")}
-  </g:if>
+  <g:render template="/templates/security"/>
 	<div class="pageTitle">
     		<h1>Create Course</h1>
       	<p>Complete the form below to create a Course</p>

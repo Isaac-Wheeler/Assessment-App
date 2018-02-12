@@ -18,9 +18,7 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-      <g:if test="${session.teacher == null}">
-        ${response.sendRedirect("/")}
-      </g:if>
+      <g:render template="/templates/securityNotAdmin"/>
       <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-left: 1%; margin-top: 1%;"></g:link></i>
       <br>
       <br>

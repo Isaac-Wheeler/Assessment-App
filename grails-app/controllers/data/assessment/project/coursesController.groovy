@@ -32,9 +32,9 @@ class coursesController {
    if (request.method == 'POST') {
      if(!params.submitButton.contains("Cancel")){
        def c = Classes.get(params.course)
-       c.title = params.courseName
-       c.targetGoal = Integer.parseInt(params.courseTargetGoal) //will throw error if null
-       c.requiredAction = params.courseAction
+       c.title = params.title
+       c.targetGoal = Integer.parseInt(params.targetGoal) // will throw error if null
+       c.requiredAction = params.requiredAction
         if(!c.save(flush:true)){
           return [course:c]
         }

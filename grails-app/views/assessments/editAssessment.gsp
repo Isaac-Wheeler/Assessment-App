@@ -17,9 +17,7 @@
 
     </head>
     <body>
-      <g:if test="${session.teacher == null}">
-        ${response.sendRedirect("/")}
-      </g:if>
+      <g:render template="/templates/securityNotAdmin"/>
       <g:uploadForm class="simpleform" url="editAssessment" >
         <!-- right half of the page -->
         <div class="main">

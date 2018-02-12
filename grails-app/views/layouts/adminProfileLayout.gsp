@@ -12,19 +12,14 @@
             <g:layoutHead/>
     </head>
     <body>
-      <g:if test="${session?.teacher?.admin == false}">
-        ${response.sendRedirect("/")}
-      </g:if>
-      <g:if test="${session.teacher == null}">
-        ${response.sendRedirect("/")}
-      </g:if>
+      <g:render template="/templates/security"/>
         <div class=leftPanel>
             <div class="profileInfo">
               <g:if test="${session.teacher.profilePic == null}">
                 <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
               </g:if>
               <g:else>
-              
+
             </g:else>
                 <br>
                 <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
