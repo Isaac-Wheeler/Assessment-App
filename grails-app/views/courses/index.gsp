@@ -7,7 +7,10 @@
     </head>
     <body>
     		<div class="newTab">
-                <p>Courses</p>
+                <p>Courses
+                  g:link controller="courses" action="createCourse" params="[isadmin:true]">
+                    <button class="add">New<div class="plus"> &oplus;</div></button>
+                </g:link></p>
             </div>
             <div class="mainArea">
               <g:hasErrors bean="${c}">
@@ -15,11 +18,6 @@
              				<g:renderErrors bean="${c}"/>
            			</div>
               </g:hasErrors>
-            <g:form class="simpleform" url="newCourse">
-                <g:textField type="text" id="classTitle"  name="title"  value="${c?.title}" placeholder="Name" class="${hasErrors(bean:outcome,field:'title','errors')}"/>
-                <g:hiddenField name="type" value="new" />
-                <button id="classButton" class="add">Add<div class="plus"> &oplus;</div></button>
-            </g:form>
             		<g:each in="${Classes}" var="i">
             			<div class="listings" >
                 			<h1>${i.title}</h1>
@@ -47,6 +45,8 @@
 						          </g:link>
         				  </div>
         				<br/>
+                <g:link controller="courses" action="edit" params="[course:i.id, isadmin:true]">
+                 <button class="add">Edit</button></g:link>
         			</g:each>
             </div>
         </div>

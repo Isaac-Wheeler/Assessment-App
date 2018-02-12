@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <link rel="shortcut icon" href="${createLinkTo(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
+      <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+      <link rel="shortcut icon" href="assets" type="image/x-icon" />
     	<!--<script type="text/javascript">
             if (screen.width <= 800) {
                 window.location = "/MobileLogin.html";
