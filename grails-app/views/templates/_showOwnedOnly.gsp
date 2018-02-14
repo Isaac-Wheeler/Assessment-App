@@ -1,3 +1,5 @@
-<g:if test="${!it.teachers.contains(session.teacher)}">
-  ${raw(body())}
-</g:if>
+<g:each var="c" in="${it.teachers}">
+  <g:if test="${c.id == session.teacher.id}">
+    ${raw(body())}
+  </g:if>
+</g:each>
