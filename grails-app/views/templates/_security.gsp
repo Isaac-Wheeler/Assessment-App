@@ -2,7 +2,5 @@
   <g:if test="${session?.teacher?.admin == false}">
     ${response.sendRedirect("/DAA")}
   </g:if>
-  <g:if test="${session.teacher == null}">
-    ${response.sendRedirect("/DAA")}
-  </g:if>
+  <g:render template="/templates/securityNotAdmin"/>
 </div>
