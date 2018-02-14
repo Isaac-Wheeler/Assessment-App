@@ -13,7 +13,7 @@
         <div class="mainArea">
         <g:each in="${Classes}" var="c">
         <g:if test="${session.teacher != null}">
-          <g:if test="${c.teachers.id == [session.teacher.id]}">
+          <g:render template="/templates/showOwnedOnly" bean="${c}">
             <div class="listings">
               <h1>${c.title}</h1>
               </br>
@@ -54,7 +54,7 @@
                 </div>
                 </br>
               </div>
-          </g:if>
+          </g:render>
         </g:if>
         </g:each>
         </div>

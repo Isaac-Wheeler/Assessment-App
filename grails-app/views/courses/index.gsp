@@ -34,7 +34,7 @@
                           <br>
                       </g:if>
                       <g:form class="simpleform" url="assignNewTeacher">
-                        <g:select name="teacherId" multiple="true" size="1" from="${Teacher}" id="teacherList" value="${Tid}" style="width:20%;" optionKey="id"/>
+                        <g:select name="teacherId" size="1" from="${Teacher}" id="teacherList" value="${Tid}" style="width:20%;" optionKey="id"/>
                         <g:hiddenField name="type" value="assign" />
                         <g:hiddenField name="class" value="${i.id}" />
 							          <button id="assign" class="add">Assign</button>
