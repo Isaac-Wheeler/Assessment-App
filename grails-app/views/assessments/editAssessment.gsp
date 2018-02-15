@@ -114,9 +114,7 @@
             <g:checkBox style="display: inline-block;margin-left:0%;"id="completed" name="complete" value="${assessment_documents?.complete}"/>
             <br>
             <label for="requiredAction" id="actionLabel" class="actionsText">Required Actions:</label>
-            <div style="width=80%;">
-              ${assessment_documents?.requiredAction}
-            <div>
+            ${assessment_documents?.requiredAction();}
             <br>
             <g:hiddenField name="measureID" value="${measureID}"/>
             <g:if test="${assessment_documents != null}">
