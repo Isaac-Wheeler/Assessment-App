@@ -24,8 +24,7 @@
                             <g:each in="${m.assessment_documents}">
                               <g:link controller="assessments" action="delete" params="[ad:it.id]">
                               <input type="button" class="deleteButton" style="text-align: left;" value="-"></g:link>
-                              <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
-                              <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
+                              <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:'edit_' + it.id]">
                               <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.assessmentDocTitle}</input></g:link>
                               <br>
                             </g:each>
@@ -61,8 +60,7 @@
                               <g:each in="${m.assessment_documents}">
                                 <g:link controller="assessments" action="delete" params="[ad:it.id]">
                                 <input type="button" class="deleteButton" style="text-align: left;" value="-"></g:link>
-                                <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
-                                <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
+                                <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:'edit_' + it.id]">
                                 <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.assessmentDocTitle}</input></g:link>
                                 <br>
                               </g:each>

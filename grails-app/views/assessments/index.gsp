@@ -23,24 +23,16 @@
         <div class="main">
           <div class="info" id="info">
             <h1>Assessment Documentation</h1>
-            <label for="assessmentDocTitle">Assessment Documentation Title:</label>
+            <label for="assessmentDocTitle">Assessment Documentation Title(from Measure):</label>
             <br>
-            <g:field type="text" value="${assessment_documents?.assessmentDocTitle}" id="assessmentDocTitle" name="assessmentDocTitle" style="width:35%;" placeholder="Title" class="shortText"/>
-            <g:hasErrors bean="${assessment_documents}" field="assessmentDocTitle">
-              <div class="errors">
-                  <g:renderErrors bean="${assessment_documents}" field="assessmentDocTitle"/>
-              </div>
-            </g:hasErrors>
-            <br>
-            <label for="Desc">Description:</label>
-            <br>
-            <g:textArea id="Desc" value="${assessment_documents?.summary}" name="summary" rows="10" cols="100" resize="none"/>
-            <g:hasErrors bean="${assessment_documents}" field="summary">
-              <div class="errors">
-                  <g:renderErrors bean="${assessment_documents}" field="summary"/>
-              </div>
-            </g:hasErrors>
-            <br>
+            <g:if test="${measureID == null}">
+              <g:field type="text" readonly="readonly" value="${measures.get(Integer.parseInt(measureID)).measureTitle}" id="assessmentDocTitle" name="assessmentDocTitle" style="width:35%;" placeholder="Title" class="shortText"/>
+              <br>
+              <label for="Desc">Description(from Measure):</label>
+              <br>
+              <g:textArea id="Desc" readonly="readonly" value="${measures.get(Integer.parseInt(measureID)).measureDescription}" name="summary" rows="10" cols="100" resize="none"/>
+              <br>
+            </g:if>
             <label for="workUsed">Work Used:</label>
             <br>
               <g:each in="${assessment_documents?.documents}" var="o">

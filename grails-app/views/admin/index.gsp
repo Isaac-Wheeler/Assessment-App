@@ -13,7 +13,7 @@
         <div class="mainArea">
         <g:each in="${Classes}" var="c">
         <g:if test="${session.teacher != null}">
-          <g:render template="/templates/showOwnedOnly" bean="${c}">
+          <g:render template="/templates/showOwnedOnly" model="['item':c]">
             <div class="listings">
               <h1>${c.title}</h1>
               </br>
@@ -29,8 +29,7 @@
                               <g:each in="${m.assessment_documents}">
                                 <p> Exceeds:${it.exceedsExpectations}/${it.numberOfStudents} Meets: ${it.meetsExpectations}/${it.numberOfStudents} Below:${it.needsImprovement }/${it.numberOfStudents}</p>
                                 <g:if test="${!it.complete}">
-                                  <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
-                                  <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
+                                  <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:'edit_' + it.id]">
                                   <button class="docButton">${it.assessmentDocTitle}</button></g:link>
                                   </br>
                                 </g:if>
@@ -40,8 +39,7 @@
                               </g:each>
                             </g:if>
                             <g:else>
-                              <g:set var="submitButtonValue" value="${'new_' + m.id}" />
-                              <g:link controller="assessments" params="[courseLink:true, submitButton:submitButtonValue]">
+                              <g:link controller="assessments" params="[courseLink:true, submitButton:'new_' + m.id]">
                               <button class="docButton">Create Assessment Documentation</button></g:link>
                               </br>
                             </g:else>
