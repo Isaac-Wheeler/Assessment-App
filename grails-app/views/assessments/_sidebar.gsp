@@ -8,33 +8,36 @@
     <div class="fileFolders">
       <div class="Outcomes" id="Outcomes">
         <g:each in="${Outcomes}" var="o">
-          <details>
-          <summary>Outcome ${o.outcomeCategory}:</summary>
           <g:if test="${o.indicators != NULL}">
             <g:each in="${o.indicators}">
-              <details>
-              <summary class="cat1">Indicator: ${it.indicatorName}</summary>
-              <g:if test="${it.measures != NULL}">
-                <g:each in="${it.measures}" var="m">
-                  <details>
-                  <summary class="cat2">Measure: ${m.measureTitle}</summary>
-                  <g:if test="${m.assessment_documents != NULL}">
-                    <g:each in="${m.assessment_documents}">
-                      <g:link controller="assessments" action="delete" params="[ad:it.id]">
-                      <input type="button" class="deleteButton" style="text-align: left;" value="-"></g:link>
-                      <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
-                      <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
-                      <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.assessmentDocTitle}</input></g:link>
-                      <br>
+              <g:set var="c" value="${it.classes.find()}" />
+              <g:render template="/templates/showOwnedOnly" bean="${c}">
+                <details>
+                  <summary>Outcome ${o.outcomeCategory}:</summary>
+                <details>
+                <summary class="cat1">Indicator: ${it.indicatorName}</summary>
+                  <g:if test="${it.measures != NULL}">
+                    <g:each in="${it.measures}" var="m">
+                      <details>
+                        <summary class="cat2">Measure: ${m.measureTitle}</summary>
+                          <g:if test="${m.assessment_documents != NULL}">
+                            <g:each in="${m.assessment_documents}">
+                              <g:link controller="assessments" action="delete" params="[ad:it.id]">
+                              <input type="button" class="deleteButton" style="text-align: left;" value="-"></g:link>
+                              <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
+                              <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
+                              <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.assessmentDocTitle}</input></g:link>
+                              <br>
+                            </g:each>
+                          </g:if>
+                          <g:else>
+                            <button class="newAssess"  name="submitButton" value="new_${m.id}">New  <div class="plus"> &oplus;</div></button>
+                          </g:else>
+                      </details>
                     </g:each>
-                    </g:if>
-                    <g:else>
-                      <button class="newAssess"  name="submitButton" value="new_${m.id}">New  <div class="plus"> &oplus;</div></button>
-                      </g:else>
+                  </g:if>
                 </details>
-                </g:each>
-              </g:if>
-              </details>
+              </g:render>
             </g:each>
           </g:if>
           </details>
@@ -42,38 +45,40 @@
       </div>
       <div class="Outcomes" id="Classes">
         <g:each in="${Classes}" var="c">
-        <details>
-          <summary>${c.title}:</summary>
-            <g:if test="${c.indicators != NULL}">
-              <g:each in="${c.indicators}">
-                <details>
-                  <g:if test="${it.academicYear == Year}">
-                    <summary class="cat1">Indicator: ${it.indicatorName}</summary>
-                    <g:if test="${it.measures != NULL}">
-                      <g:each in="${it.measures}" var="m">
-                        <details>
+          <g:render template="/templates/showOwnedOnly" bean="${c}">
+            <details>
+              <summary>${c.title}:</summary>
+              <g:if test="${c.indicators != NULL}">
+                <g:each in="${c.indicators}">
+                  <details>
+                    <g:if test="${it.academicYear == Year}">
+                      <summary class="cat1">Indicator: ${it.indicatorName}</summary>
+                      <g:if test="${it.measures != NULL}">
+                        <g:each in="${it.measures}" var="m">
+                          <details>
                           <summary class="cat2">Measure: ${m.measureTitle}</summary>
-                          <g:if test="${m.assessment_documents != NULL}">
-                            <g:each in="${m.assessment_documents}">
-                              <g:link controller="assessments" action="delete" params="[ad:it.id]">
+                            <g:if test="${m.assessment_documents != NULL}">
+                              <g:each in="${m.assessment_documents}">
+                                <g:link controller="assessments" action="delete" params="[ad:it.id]">
                                 <input type="button" class="deleteButton" style="text-align: left;" value="-"></g:link>
                                 <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
-                              <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
+                                <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
                                 <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.assessmentDocTitle}</input></g:link>
-                              <br>
-                            </g:each>
-                          </g:if>
-                          <g:else>
-                            <button class="newAssess"  name="submitButton" value="new_${m.id}">New  <div class="plus"> &oplus;</div></button>
-                          </g:else>
-                        </details>
-                      </g:each>
+                                <br>
+                              </g:each>
+                            </g:if>
+                            <g:else>
+                              <button class="newAssess"  name="submitButton" value="new_${m.id}">New  <div class="plus"> &oplus;</div></button>
+                            </g:else>
+                          </details>
+                        </g:each>
+                      </g:if>
                     </g:if>
-                  </g:if>
-                </details>
-              </g:each>
-            </g:if>
-          </details>
+                  </details>
+                </g:each>
+              </g:if>
+            </details>
+          </g:render>
         </g:each>
       </div>
     </div>
