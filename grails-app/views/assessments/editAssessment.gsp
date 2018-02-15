@@ -58,32 +58,41 @@
 
             <input type="button" value="-" onclick="minusBelowExpectation();" class="minus"/>
             <g:if test="${assessment_documents?.needsImprovement != null}">
-              <g:field type="number" id="belowExpectation" name="needsImprovement" value="${assessment_documents?.needsImprovement}" class="oneChar"/>
+              <g:field type="number" id="belowExpectation" onchange="updateForm();"name="needsImprovement" value="${assessment_documents?.needsImprovement}" class="oneChar"/>
             </g:if>
             <g:else>
-              <g:field type="number" id="belowExpectation" name="needsImprovement" value="0" class="oneChar"/>
+              <g:field type="number" id="belowExpectation" onchange="updateForm();"name="needsImprovement" value="0" class="oneChar"/>
             </g:else>
             <input type="button" onclick="addBelowExpectation();" value="+" />
 
             <input type="button" value="-" onclick="minusMeetsExpectation();" class="minus">
             <g:if test="${assessment_documents?.meetsExpectations != null}">
-              <g:field type="number" id="meetsExpectation" name="meetsExpectations" value="${assessment_documents?.meetsExpectations}" class="oneChar"/>
+              <g:field type="number" id="meetsExpectation" onchange="updateForm();"name="meetsExpectations" value="${assessment_documents?.meetsExpectations}" class="oneChar"/>
             </g:if>
             <g:else>
-              <g:field type="number" id="meetsExpectation" name="meetsExpectations" value="0" class="oneChar"/>
+              <g:field type="number" id="meetsExpectation" onchange="updateForm();" name="meetsExpectations" value="0" class="oneChar"/>
             </g:else>
             <input type="button"  onclick="addMeetsExpectation();" value="+">
 
             <input type=button value="-" onclick="minusExceedsExpectation();" class="minus">
             <g:if test="${assessment_documents?.exceedsExpectations != null}">
-              <g:field type="number" id="exceedsExpectation" name="exceedsExpectations" value="${assessment_documents?.exceedsExpectations}" class="oneChar"/>
+              <g:field type="number" id="exceedsExpectation" onchange="updateForm();" name="exceedsExpectations" value="${assessment_documents?.exceedsExpectations}" class="oneChar"/>
             </g:if>
             <g:else>
-              <g:field type="number" id="exceedsExpectation" name="exceedsExpectations" value="0" class="oneChar"/>
+              <g:field type="number" id="exceedsExpectation" onchange="updateForm();" name="exceedsExpectations" value="0" class="oneChar"/>
             </g:else>
             <input type="button" onclick="addExceedsExpectation();" value="+">
-
             <br>
+            <script>
+            var valueBelow = parseInt(document.getElementById('belowExpectation').value, 10);
+            var valueMeets = parseInt(document.getElementById('meetsExpectation').value, 10);
+            var valueExceeds = parseInt(document.getElementById('exceedsExpectation').value, 10);
+            var together = valueBelow + valueMeets + valueExceeds;
+
+            document.getElementById("BE").innerHTML = Math.round((valueBelow/together)*100) + "%";
+            document.getElementById("ME").innerHTML = Math.round((valueMeets/together)*100) + "%";
+            document.getElementById("EE").innerHTML = Math.round((valueExceeds/together)*100) + "%";
+            </script>
             <label for="comment">Comment:</label>
             <br>
             <g:textArea id="comment" value="${assessment_documents?.comments}" name="comments" rows="10" cols="100" resize="none"/>

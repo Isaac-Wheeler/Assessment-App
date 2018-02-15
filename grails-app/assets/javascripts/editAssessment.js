@@ -11,19 +11,16 @@ function clearForm(){
   document.getElementById('completed').value = false;
   document.getElementById('requiredAction').value = '';
 }
-/*function update(){
+function updateForm(){
   var valueBelow = parseInt(document.getElementById('belowExpectation').value, 10);
   var valueMeets = parseInt(document.getElementById('meetsExpectation').value, 10);
   var valueExceeds = parseInt(document.getElementById('exceedsExpectation').value, 10);
   var together = valueBelow + valueMeets + valueExceeds;
 
-  document.getElementById("BE").innerHTML = valueBelow/together;
-  document.getElementById("ME").innerHTML = valueMeets/together;
-  document.getElementById("EE").innerHTML = valueExceeds/together;
+  document.getElementById("BE").innerHTML = Math.round((valueBelow/together)*100) + "%";
+  document.getElementById("ME").innerHTML = Math.round((valueMeets/together)*100) + "%";
+  document.getElementById("EE").innerHTML = Math.round((valueExceeds/together)*100) + "%";
 }
-$( "belowExpectation" ).focusout(update());
-$( "meetsExpectation" ).focusout(update());
-$( "exceedsExpectation" ).focusout(update());*/
 
 function hideShowOutcomesClasses() {
   var x = document.getElementById("Outcomes");
@@ -44,31 +41,37 @@ function addBelowExpectation() {
     var value = parseInt(document.getElementById('belowExpectation').value, 10);
     value++;
     document.getElementById("belowExpectation").value = value;
+    updateForm();
 }
 function minusBelowExpectation() {
     var value = parseInt(document.getElementById('belowExpectation').value, 10);
     value--;
     document.getElementById("belowExpectation").value = value;
+    updateForm();
 }
 function addMeetsExpectation() {
     var value = parseInt(document.getElementById('meetsExpectation').value, 10);
     value++;
     document.getElementById("meetsExpectation").value = value;
+    updateForm();
 }
 function minusMeetsExpectation() {
     var value = parseInt(document.getElementById('meetsExpectation').value, 10);
     value--;
     document.getElementById("meetsExpectation").value = value;
+    updateForm();
 }
 function addExceedsExpectation() {
     var value = parseInt(document.getElementById('exceedsExpectation').value, 10);
     value++;
     document.getElementById("exceedsExpectation").value = value;
+    updateForm();
 }
 function minusExceedsExpectation() {
     var value = parseInt(document.getElementById('exceedsExpectation').value, 10);
     value--;
     document.getElementById("exceedsExpectation").value = value;
+    updateForm();
 }
 function revealAction() {
   document.getElementById("requiredAction").style.display = "block";
