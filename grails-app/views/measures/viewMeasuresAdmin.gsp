@@ -17,7 +17,8 @@
             		<g:each in="${Measures}" var="m" status="i">
             			<div class="listings">
                 			<h1>${m.measureTitle}</h1>
-                      <p>${m.measureDescription}</p>
+                      <p>Desc: ${m.measureDescription}</p>
+                      <p>Indicaotr: ${m.indicator.find().toString()} </p>
                        <g:link controller="measures" action="edit" params="[measure:m.id, isadmin:true]">
            							<button class="add">Edit</button></g:link>
                         <g:link controller="measures" action="delete" params="[measure:m.id, isadmin:true]" onclick="return confirm('Are you sure you want to delete this measure? measure: $m.measureTitle')">

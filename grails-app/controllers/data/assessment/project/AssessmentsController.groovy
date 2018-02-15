@@ -25,7 +25,7 @@ class AssessmentsController {
       if(!params.submitButton.contains("Cancel")){
         if(params.submitButton.startsWith('new_')){
           mId = params.submitButton-"new_"
-          return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measureID:mId, show:true, Year:year]
+          return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, measureID:mId, show:true, Year:year]
         }
 
       else{
@@ -56,12 +56,11 @@ class AssessmentsController {
         }
         AD.numberOfStudents = AD.needsImprovement + AD.meetsExpectations + AD.exceedsExpectations
 
-        if(params.summary != null){
-          AD.summary = params.summary
-        }
-        if(params.assessmentDocTitle != null){
-          AD.assessmentDocTitle = params.assessmentDocTitle
-        }
+        //left in till removed from Domain no longer needed
+        AD.summary = ""
+        AD.assessmentDocTitle = ""
+
+
         if(params.comments != null){
           AD.comments = params.comments
         }
@@ -81,7 +80,7 @@ class AssessmentsController {
           AD.setMeasure(measure)
         }
         if(!AD.save(flush:true)){
-          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, show:true, Year:year]
+          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, show:true, Year:year]
         }
         redirect(controller:"Assessments")
       }
@@ -91,7 +90,7 @@ class AssessmentsController {
     }
 
 
-    return [Outcomes:outcomes, Indicators:indicators, Classes:classes, Year:year]
+    return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, Year:year]
   }
 
   def deleteFile(long id) {
@@ -137,7 +136,7 @@ class AssessmentsController {
         if(params.submitButton.startsWith('edit_')){
           def ADId = params.submitButton-"edit_"
           AD = Assessment_Documentation.get(ADId)
-          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measureID:AD.measure.id, show:true, Year:year]
+          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, measureID:AD.measure.id, show:true, Year:year]
         }
 
       else{
@@ -161,12 +160,11 @@ class AssessmentsController {
         AD.exceedsExpectations = Integer.parseInt(params.exceedsExpectations)
         AD.numberOfStudents = AD.needsImprovement + AD.meetsExpectations + AD.exceedsExpectations
 
-        if(params.summary != null){
-          AD.summary = params.summary
-        }
-        if(params.assessmentDocTitle != null){
-          AD.assessmentDocTitle = params.assessmentDocTitle
-        }
+        //left in till removed from Domain no longer needed
+        AD.summary = ""
+        AD.assessmentDocTitle = ""
+
+
         if(params.comments != null){
           AD.comments = params.comments
         }
@@ -189,7 +187,7 @@ class AssessmentsController {
           AD.setMeasure(measure)
         }
         if(!AD.save(flush:true)){
-          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, show:true, Year:year]
+          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, show:true, Year:year]
         }
         redirect(controller:"Assessments")
       }
@@ -198,7 +196,7 @@ class AssessmentsController {
       }
     }
 
-    return [Outcomes:outcomes, Indicators:indicators, Classes:classes, Year:year]
+    return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, Year:year]
   }
 
   def delete(){
