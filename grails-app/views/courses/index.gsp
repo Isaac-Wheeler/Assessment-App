@@ -24,7 +24,6 @@
                       <g:if test="${i.teachers != NULL}">
                           <div class="teach" style="margin-left: 40%;width: 20%; text-align: left;">
                           <g:each in="${i.teachers}" var="t">
-
                                 <g:link controller="courses" action="deleteAssignedTeacher" params="[classes:i.id, teacher:t.id]" onclick="return confirm('Are you sure you want to delete this assigned teacher? teacher: $t.firstName $t.lastName from $i.title')">
                                   <button class="deleteButton" style="text-align: left;">-</button></g:link>
                               ${t.toString()}
@@ -34,9 +33,15 @@
                           <br>
                       </g:if>
                       <g:form class="simpleform" url="assignNewTeacher">
-                        <g:select name="teacherId" size="1" from="${Teacher}" id="teacherList" value="${Tid}" style="width:20%;" optionKey="id"/>
-                        <g:hiddenField name="type" value="assign" />
-                        <g:hiddenField name="class" value="${i.id}" />
+                        <g:field list="Teacher" name="teacherID" type="search"/>
+                        <datalist id="Teacher">
+                          <g:each in="${Teacher}" var="t">
+                            <option value="${t.lastName}">${t.lastName}</option>
+                          </g:each>
+                        </datalist>
+                        <%--<g:select name="teacherId" size="1" from="${Teacher}" id="teacherList" value="${Tid}" style="width:20%;" optionKey="id"/> --%>
+                        <%--<g:hiddenField name="type" value="assign" />
+                        <g:hiddenField name="class" value="${i.id}" />--%>
 							          <button id="assign" class="add">Assign</button>
                       </g:form>
                       <br>
