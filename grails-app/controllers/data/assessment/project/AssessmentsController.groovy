@@ -56,12 +56,11 @@ class AssessmentsController {
         }
         AD.numberOfStudents = AD.needsImprovement + AD.meetsExpectations + AD.exceedsExpectations
 
-        if(params.summary != null){
-          AD.summary = params.summary
-        }
-        if(params.assessmentDocTitle != null){
-          AD.assessmentDocTitle = params.assessmentDocTitle
-        }
+        //left in till removed from Domain no longer needed
+        AD.summary = ""
+        AD.assessmentDocTitle = ""
+
+
         if(params.comments != null){
           AD.comments = params.comments
         }
@@ -161,12 +160,11 @@ class AssessmentsController {
         AD.exceedsExpectations = Integer.parseInt(params.exceedsExpectations)
         AD.numberOfStudents = AD.needsImprovement + AD.meetsExpectations + AD.exceedsExpectations
 
-        if(params.summary != null){
-          AD.summary = params.summary
-        }
-        if(params.assessmentDocTitle != null){
-          AD.assessmentDocTitle = params.assessmentDocTitle
-        }
+        //left in till removed from Domain no longer needed
+        AD.summary = ""
+        AD.assessmentDocTitle = ""
+
+
         if(params.comments != null){
           AD.comments = params.comments
         }
