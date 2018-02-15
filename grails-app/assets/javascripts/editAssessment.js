@@ -73,11 +73,6 @@ function minusExceedsExpectation() {
     document.getElementById("exceedsExpectation").value = value;
     updateForm();
 }
-function revealAction() {
-  document.getElementById("requiredAction").style.display = "block";
-  document.getElementById("actionLabel").style.display = "block";
-  document.getElementById("action").style.display = "none";
-}
 function revealInfo(){
   document.getElementById("info").style.visibility = "visible";
 }

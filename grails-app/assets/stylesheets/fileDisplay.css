@@ -22,9 +22,6 @@ body{
     height: 34px;
     margin-top: 10px;
 }
-.actionsText{
-  display: none;
-}
 .deleteButton{
 	height: 20px;
 	width: 10px;
