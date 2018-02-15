@@ -26,7 +26,7 @@
                             <br>
                             <g:link controller="Indicators" action="editIndicator" params="[indicator:it.id]">
                               <button class="add" style="background-color: lightgray; padding: 1%; width: 17%;">Edit Indicator</button></g:link>
-                            <g:link controller="Indicators" action="delete" params="[indicator:it.id]">
+                            <g:link controller="Indicators" action="delete" params="[indicator:it.id]" onclick="return confirm('Are you sure you want to delete this indicator? indicator: $it.indicatorName?')">
                               <button class="add" style="background-color: lightgray; padding: 1%; width: 17%;">Delete Indicator</button></g:link>
                           </br>
                           </g:each>
@@ -35,7 +35,7 @@
                       </br>
                       <g:link controller="Outcomes" action="editOutcome" params="[outcome:o.id]">
 							               <button class="add">Edit Outcome</button></g:link>
-						          <g:link controller="Outcomes" action="deleteOutcome" params="[outcome:o.id]">
+						          <g:link controller="Outcomes" action="deleteOutcome" params="[outcome:o.id]" onclick="return confirm('Are you sure you want to delete this outcome? outcome: $o.outcomeCategory')">
 							               <button class="add">Delete Outcome</button></g:link>
                       <g:link controller="Indicators" action="create" params="[outcomeId:o.id]">
          							        <button class="add">Add Indicator</button></g:link>

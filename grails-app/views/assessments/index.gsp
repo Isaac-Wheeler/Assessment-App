@@ -148,7 +148,7 @@
                           <summary class="cat2">Measure: ${m.measureTitle}</summary>
                           <g:if test="${m.assessment_documents != NULL}">
                             <g:each in="${m.assessment_documents}">
-                              <g:link controller="assessments" action="delete" params="[ad:it.id]">
+                              <g:link controller="assessments" action="delete" params="[ad:it.id]" onclick="return confirm('Are you sure you want to delete this assessment? Assessment for Measure: $m.measureTitle')" >
                               <input type="button" class="deleteButton" style="text-align: left;" value="-"></g:link>
                               <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
                               <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
@@ -183,7 +183,7 @@
                                   <summary class="cat2">Measure: ${m.measureTitle}</summary>
                                   <g:if test="${m.assessment_documents != NULL}">
                                     <g:each in="${m.assessment_documents}">
-                                      <g:link controller="assessments" action="delete" params="[ad:it.id]">
+                                      <g:link controller="assessments" action="delete" params="[ad:it.id]" >
                                         <input type="button" class="deleteButton" style="text-align: left;" value="-"></g:link>
                                         <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
                                       <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">

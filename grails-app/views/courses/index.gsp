@@ -25,7 +25,7 @@
                           <div class="teach" style="margin-left: 40%;width: 20%; text-align: left;">
                           <g:each in="${i.teachers}" var="t">
 
-                                <g:link controller="courses" action="deleteAssignedTeacher" params="[classes:i.id, teacher:t.id]">
+                                <g:link controller="courses" action="deleteAssignedTeacher" params="[classes:i.id, teacher:t.id]" onclick="return confirm('Are you sure you want to delete this assigned teacher? teacher: $t.firstName $t.lastName from $i.title')">
                                   <button class="deleteButton" style="text-align: left;">-</button></g:link>
                               ${t.toString()}
                               <br>
@@ -47,7 +47,7 @@
                       <br>
                       <g:link controller="courses" action="edit" params="[course:i.id, isadmin:true]">
                        <button class="add">Edit</button></g:link>
-						          <g:link controller="courses" action="delete" params="[classes:i.id]">
+						          <g:link controller="courses" action="delete" params="[classes:i.id]" onclick="return confirm('Are you sure you want to delete this course? course: $i.title')">
 							               <button class="add">Delete</button>
 						          </g:link>
         				  </div>

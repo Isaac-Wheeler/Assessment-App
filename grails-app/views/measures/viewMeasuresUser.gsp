@@ -21,7 +21,7 @@
                 			<h1>${m.measureTitle}</h1>
                       <g:link controller="measures" action="edit" params="[measure:m.id, isadmin:false]">
                        <button class="add">Edit</button></g:link>
-                      <g:link controller="measures" action="delete" params="[measure:m.id, isadmin:false]">
+                      <g:link controller="measures" action="delete" params="[measure:m.id, isadmin:false]" onclick="return confirm('Are you sure you want to delete this measure? $m.measureTitle')">
            		        <button class="add">Delete</button></g:link>
                 </div>
             <br/>
