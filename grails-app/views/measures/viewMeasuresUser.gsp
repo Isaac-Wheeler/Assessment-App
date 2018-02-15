@@ -19,6 +19,8 @@
             <g:render template="/templates/showOwnedOnly" bean="${c}">
                 <div class="listings">
                 			<h1>${m.measureTitle}</h1>
+                      <p>${m.measureDescription}</p>
+                      <p> Indicaotr: ${m.indicator.find().toString()} </p>
                       <g:link controller="measures" action="edit" params="[measure:m.id, isadmin:false]">
                        <button class="add">Edit</button></g:link>
                       <g:link controller="measures" action="delete" params="[measure:m.id, isadmin:false]">
