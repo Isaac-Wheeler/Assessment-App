@@ -48,9 +48,9 @@ class coursesController {
    def classes = Classes.list()
    def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
    def teachers = Teacher.list()
-
+   
    def c = Classes.get(params.class)
-   def teacher = Teacher.get(params.teacherId)
+   def teacher = Teacher.findByUsername(params.teacherUserName)
    c.addToTeachers(teacher)
    if(!c.save(flush:true)){
      return [c:c, Classes:classes, Indicators:indicators, Teacher:teachers]

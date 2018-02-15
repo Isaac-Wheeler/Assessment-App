@@ -33,15 +33,15 @@
                           <br>
                       </g:if>
                       <g:form class="simpleform" url="assignNewTeacher">
-                        <g:field list="Teacher" name="teacherID" type="search"/>
+                        <g:field list="Teacher" name="teacherUserName" type="search"/>
                         <datalist id="Teacher">
                           <g:each in="${Teacher}" var="t">
-                            <option value="${t.lastName}">${t.lastName}</option>
+                            <option value="${t.username}">${t.toString()}</option>
                           </g:each>
                         </datalist>
                         <%--<g:select name="teacherId" size="1" from="${Teacher}" id="teacherList" value="${Tid}" style="width:20%;" optionKey="id"/> --%>
-                        <%--<g:hiddenField name="type" value="assign" />
-                        <g:hiddenField name="class" value="${i.id}" />--%>
+                        <g:hiddenField name="type" value="assign" />
+                        <g:hiddenField name="class" value="${i.id}" />
 							          <button id="assign" class="add">Assign</button>
                       </g:form>
                       <br>
