@@ -237,9 +237,7 @@ input[type=checkbox]:checked~#classes {
 .oneChar{
     width: 20px;
 }
-.minus{
-    margin-left: 100px;
-}
+
 .targetGoal{
     width: 20px;
     margin-left: 30px;

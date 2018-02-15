@@ -41,14 +41,14 @@
               <br>
               <input type="file" name="myFile" multiple />
             <br>
+            <label for="targetGoal">Target Goal: ${assessment_documents?.targetGoal}%</label>
+            <br>
             <label for="targetGoal">Target Goal(in percent):</label>
             <label for="belowExpectation" class="labelEx" >Below Expectation:<a id="BE"></a></label>
             <label for="meetsExpectation" class="labelEx" style="margin-left:9%;">Meets Expectation:<a id="ME"></a></label>
             <label for="exceedsExpectation" class="labelEx" style="margin-left:8%;">Exceeds Expectation:<a id="EE"></a></label>
             <br>
-            <g:field type="number" value="${assessment_documents?.targetGoal}" id="targetGoal" name="targetGoal" placeholder="____" class="targetGoal"/>
-
-            <input type="button" value="-" onclick="minusBelowExpectation();" class="minus"/>
+            <input type="button" value="-" onclick="minusBelowExpectation();" style="margin-left:4%;"/>
             <g:if test="${assessment_documents?.needsImprovement != null}">
               <g:field type="text" id="belowExpectation" onchange="updateForm();" name="needsImprovement" value="${assessment_documents?.needsImprovement}" class="oneChar"/>
             </g:if>
@@ -57,7 +57,7 @@
             </g:else>
             <input type="button" onclick="addBelowExpectation();" value="+" />
 
-            <input type="button" value="-" onclick="minusMeetsExpectation();" class="minus">
+            <input type="button" value="-" onclick="minusMeetsExpectation();" style="margin-left:18%;">
             <g:if test="${assessment_documents?.meetsExpectations != null}">
               <g:field type="text" id="meetsExpectation" onchange="updateForm();" name="meetsExpectations" value="${assessment_documents?.meetsExpectations}" class="oneChar"/>
             </g:if>
@@ -66,7 +66,7 @@
             </g:else>
             <input type="button"  onclick="addMeetsExpectation();" value="+">
 
-            <input type=button value="-" onclick="minusExceedsExpectation();" class="minus">
+            <input type=button value="-" onclick="minusExceedsExpectation();" style="margin-left:18%;">
             <g:if test="${assessment_documents?.exceedsExpectations != null}">
               <g:field type="text" id="exceedsExpectation" onchange="updateForm();" name="exceedsExpectations" value="${assessment_documents?.exceedsExpectations}" class="oneChar"/>
             </g:if>
