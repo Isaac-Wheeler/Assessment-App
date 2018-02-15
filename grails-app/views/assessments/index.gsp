@@ -107,7 +107,7 @@
             <g:checkBox style="display: inline-block;margin-left:0%;"id="completed" name="complete" value="${assessment_documents?.complete}"/>
             <br>
             <label for="requiredAction" id="actionLabel" class="actionsText">Required Actions:</label>
-            ${assessment_documents?.requiredAction();}
+            <g:textArea id="requiredAction" readonly="readonly" value="${assessment_documents?.requiredAction}" name="requiredAction" rows="10" cols="100" class="actionsText" />
             <br>
             <g:hiddenField name="measureID" value="${measureID}"/>
             <g:submitButton class="button" name="submitButton" value="Submit" />
