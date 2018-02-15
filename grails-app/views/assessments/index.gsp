@@ -25,7 +25,7 @@
             <h1>Assessment Documentation</h1>
             <label for="assessmentDocTitle">Assessment Documentation Title(from Measure):</label>
             <br>
-            <g:if test="${measureID == null}">
+            <g:if test="${measureID != null}">
               <g:field type="text" readonly="readonly" value="${measures.get(Integer.parseInt(measureID)).measureTitle}" id="assessmentDocTitle" name="assessmentDocTitle" style="width:35%;" placeholder="Title" class="shortText"/>
               <br>
               <label for="Desc">Description(from Measure):</label>
