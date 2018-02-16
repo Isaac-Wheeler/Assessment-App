@@ -25,7 +25,7 @@
                               <g:link controller="assessments" action="delete" params="[ad:it.id]" onclick="return confirm('Are you sure you want to delete this assessment? Assessment for Measure: $m.measureTitle')">
                               <input type="button" class="deleteButton" style="text-align: left;" value="-"></g:link>
                               <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:'edit_' + it.id]">
-                              <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.assessmentDocTitle}</input></g:link>
+                              <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.measure.find().measureTitle}</input></g:link>
                               <br>
                             </g:each>
                           </g:if>
@@ -61,7 +61,7 @@
                                 <g:link controller="assessments" action="delete" params="[ad:it.id]">
                                 <input type="button" class="deleteButton" style="text-align: left;" value="-"></g:link>
                                 <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:'edit_' + it.id]">
-                                <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.assessmentDocTitle}</input></g:link>
+                                <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.measure.find().measureTitle}</input></g:link>
                                 <br>
                               </g:each>
                             </g:if>
