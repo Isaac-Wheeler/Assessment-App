@@ -8,9 +8,7 @@ class Assessment_Documentation {
     int needsImprovement;
     int meetsExpectations;
     int exceedsExpectations;
-    String assessmentDocTitle;
     String comments;
-    String summary;
     String requiredAction;
     String resultComment;
     boolean complete;
@@ -23,13 +21,11 @@ class Assessment_Documentation {
 
     static constraints = {
 
-      assessmentDocTitle blank:false
       comments blank:false
       targetGoal blank:false
       needsImprovement blank:false
       meetsExpectations blank:false
       exceedsExpectations blank:false
-      summary blank:false
       requiredAction nullable: true
       resultComment blank:false
       complete blank:false

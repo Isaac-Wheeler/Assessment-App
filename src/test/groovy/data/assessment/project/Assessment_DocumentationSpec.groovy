@@ -21,7 +21,7 @@ class Assessment_DocumentationSpec extends Specification implements DomainUnitTe
       def newIndicator = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to")
       def newMeasure = new Measures(measureTitle: "Exam1_Q1", measureDescription: "Student will be able to")
       def newAD = new Assessment_Documentation(targetGoal: 75 , numberOfStudents: 20 , needsImprovement: 5, meetsExpectations: 10 , exceedsExpectations: 5,
-                                                assessmentDocTitle: "Assessment of Exam1_Q1", comments: "Average results", summary: "Average results", requiredAction: " " , resultComment: "Do something", complete: true)
+                                                 comments: "Average results", requiredAction: " " , resultComment: "Do something", complete: true)
 
       when: "linking the objects to their relationships and saving the outcome"
       newOutcome.addToIndicators(newIndicator)
@@ -41,15 +41,12 @@ class Assessment_DocumentationSpec extends Specification implements DomainUnitTe
       Measures.get(newMeasure.id).measureTitle == "Exam1_Q1"
       newAD.errors.errorCount == 0
       newAD.id != null
-      Assessment_Documentation.get(newAD.id).assessmentDocTitle == "Assessment of Exam1_Q1"
 
       when: "a property in the AD is changed"
       def foundAD = Assessment_Documentation.get(newAD.id)
-      foundAD.assessmentDocTitle = "Assessment of Exam2_Q1"
       foundAD.save(flush:true)
 
       then: "the change should be reflected in the DB"
-      Assessment_Documentation.get(newAD.id).assessmentDocTitle == "Assessment of Exam2_Q1"
 
       when: "AD is deleted"
       foundAD.delete(flush:true)
@@ -71,14 +68,14 @@ class Assessment_DocumentationSpec extends Specification implements DomainUnitTe
       def newIndicator = new Indicators(indicatorName: "a.1", indicatorDescription: "Students will be able to")
       def newMeasure = new Measures(measureTitle: "Exam1_Q1", measureDescription: "Student will be able to")
       def newAD = new Assessment_Documentation(targetGoal: 75 , numberOfStudents: 20 , needsImprovement: 5, meetsExpectations: 10 , exceedsExpectations: 5,
-                                                assessmentDocTitle: "Assessment of Exam1_Q1", comments: "Average results", summary: "Average results", requiredAction: " " , resultComment: "Do something", complete: true)
+                                               comments: "Average results", requiredAction: " " , resultComment: "Do something", complete: true)
 
 
       def newOutcome2 = new Outcomes(outcomeCategory: 'B', outcomeCategoryDescription: "Students will learn how to")
       def newIndicator2 = new Indicators(indicatorName: "b.1", indicatorDescription: "Students will be able to")
       def newMeasure2 = new Measures(measureTitle: "Exam1_Q3", measureDescription: "Student will be able to")
       def newAD2 = new Assessment_Documentation(targetGoal: 80 , numberOfStudents: 15 , needsImprovement: 5, meetsExpectations: 5 , exceedsExpectations: 5,
-                                                assessmentDocTitle: "Assessment of Exam1_Q3", comments: "Average results", summary: "Average results", requiredAction: " " , resultComment: "Do something", complete: true)
+                                                 comments: "Average results", requiredAction: " " , resultComment: "Do something", complete: true)
 
 
       when: "linking the objects to their relationships and saving the outcome"

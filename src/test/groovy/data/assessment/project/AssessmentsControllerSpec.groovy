@@ -40,8 +40,6 @@ class AssessmentsControllerSpec extends Specification {
             params.needsImprovement = "10"    //passed as string due to needed parseInt method
             params.meetsExpectations = "12"   //passed as string due to needed parseInt method
             params.exceedsExpectations = "8"    //passed as string due to needed parseInt method
-            params.summary = "The target goal was not met"
-            params.assessmentDocTitle = "AD on measure for indicator a.1 on exam1 question 2"
             params.comments = "Need to focus more on this material!"
             params.requiredAction = null
             params.resultComment = "target goal not met!"
@@ -61,7 +59,6 @@ class AssessmentsControllerSpec extends Specification {
             Document.count() == 1   // file should have been saved
             Assessment_Documentation.count() == 1   // new AD should have been saved
             Assessment_Documentation.first().targetGoal == 75
-            Assessment_Documentation.first().summary == "The target goal was not met"
 
 
           when: "The file delete method is called on an AD's file, then it should be deleted"
@@ -78,8 +75,6 @@ class AssessmentsControllerSpec extends Specification {
             params.needsImprovement = "10"    //passed as string due to needed parseInt method
             params.meetsExpectations = "12"   //passed as string due to needed parseInt method
             params.exceedsExpectations = "8"    //passed as string due to needed parseInt method
-            params.summary = "The target goal was met"
-            params.assessmentDocTitle = "AD on measure for indicator a.1 on exam1 question 2"
             params.comments = "Need to focus more on this material!"
             params.requiredAction = null
             params.resultComment = "target goal not met!"
@@ -95,7 +90,6 @@ class AssessmentsControllerSpec extends Specification {
           then: "The AD should have been saved successfully"
             Assessment_Documentation.count() == 1   // new AD should have been saved
             Assessment_Documentation.first().targetGoal == 80
-            Assessment_Documentation.first().summary == "The target goal was met"
 
 
           when: "The delete method is called upon an AD, the AD should be deleted successfully"

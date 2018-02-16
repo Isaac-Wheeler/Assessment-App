@@ -56,9 +56,7 @@ class AssessmentsController {
         }
         AD.numberOfStudents = AD.needsImprovement + AD.meetsExpectations + AD.exceedsExpectations
 
-        //left in till removed from Domain no longer needed
-        AD.summary = ""
-        AD.assessmentDocTitle = ""
+
 
 
         if(params.comments != null){
@@ -160,9 +158,7 @@ class AssessmentsController {
         AD.exceedsExpectations = Integer.parseInt(params.exceedsExpectations)
         AD.numberOfStudents = AD.needsImprovement + AD.meetsExpectations + AD.exceedsExpectations
 
-        //left in till removed from Domain no longer needed
-        AD.summary = ""
-        AD.assessmentDocTitle = ""
+
 
 
         if(params.comments != null){
