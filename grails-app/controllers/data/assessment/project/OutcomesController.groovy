@@ -47,6 +47,27 @@ class OutcomesController {
 
   def deleteOutcome() {
     def o = Outcomes.get(params.outcome)
+    def indicList = []
+    if (o.indicators != null) {
+      o.indicators.each { indic->
+        if (indic.classes != null) {
+            def coursesList = []
+            indic.classes.each { course->
+              coursesList.add(course.id)    //save the course IDs in a list for removing association from indicator
+          }
+          for (int j = 0; j<coursesList.size(); j++) {                //run through coursesList and get the course object and then remove from the indicator Classes association
+              def courseToBeRemoved = Classes.get(coursesList[j])
+              indic.removeFromClasses(courseToBeRemoved)
+          }
+        }
+        indicList.add(indic.id)
+      }
+    }
+    for (int k = 0; k<indicList.size(); k++) {
+      def indicToBeRemoved = Indicators.get(indicList[k])
+      o.removeFromIndicators(indicToBeRemoved)
+      indicToBeRemoved.delete(flush:true)
+    }
     o.delete(flush:true)
     redirect(controller:'outcomes')
   }
