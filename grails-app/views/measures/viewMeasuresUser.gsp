@@ -16,7 +16,7 @@
       <div class="mainArea">
         <g:each in="${Measures}" var="m" status="i">
           <g:each in="${Measures.indicator.find().classes.find()}" var="c">
-            <g:render template="/templates/showOwnedOnly" bean="${c}">
+            <g:render template="/templates/showOwnedOnly" model="['item':c]">
                 <div class="listings">
                 			<h1>${m.measureTitle}</h1>
                       <p>Desc: ${m.measureDescription}</p>

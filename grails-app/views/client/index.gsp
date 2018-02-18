@@ -13,7 +13,7 @@
         <div class="mainArea">
         <g:each in="${Classes}" var="c">
         <g:if test="${session.teacher != null}">
-          <g:render template="/templates/showOwnedOnly" bean="${c}">
+          <g:render template="/templates/showOwnedOnly" model="['item':c]">
             <div class="listings">
               <h1>${c.title}</h1>
               </br>

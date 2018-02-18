@@ -11,7 +11,7 @@
           <g:if test="${o.indicators != NULL}">
             <g:each in="${o.indicators}">
               <g:set var="c" value="${it.classes.find()}" />
-              <g:render template="/templates/showOwnedOnly" bean="${c}">
+              <g:render template="/templates/showOwnedOnly" model="['item':c]">
                 <details>
                   <summary>Outcome ${o.outcomeCategory}:</summary>
                 <details>
@@ -44,7 +44,7 @@
       </div>
       <div class="Outcomes" id="Classes">
         <g:each in="${Classes}" var="c">
-          <g:render template="/templates/showOwnedOnly" bean="${c}">
+          <g:render template="/templates/showOwnedOnly" model="['item':c]">
             <details>
               <summary>${c.title}:</summary>
               <g:if test="${c.indicators != NULL}">
