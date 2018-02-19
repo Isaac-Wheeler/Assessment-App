@@ -30,11 +30,11 @@
                                 <p> Exceeds:${it.exceedsExpectations}/${it.numberOfStudents} Meets: ${it.meetsExpectations}/${it.numberOfStudents} Below:${it.needsImprovement }/${it.numberOfStudents}</p>
                                 <g:if test="${!it.complete}">
                                   <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:'edit_' + it.id]">
-                                  <button class="docButton">${it.assessmentDocTitle}</button></g:link>
+                                  <button class="docButton">Go To</button></g:link>
                                   </br>
                                 </g:if>
                                 <g:else>
-                                  <p> ${it.assessmentDocTitle} status:complete </p>
+                                  <p>status:complete </p>
                                 </g:else>
                               </g:each>
                             </g:if>

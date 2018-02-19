@@ -32,11 +32,11 @@
                               <g:if test="${!it.complete}">
                                 <g:set var="submitButtonValue" value="${'edit_' + it.id}" />
                                 <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:submitButtonValue]">
-                                <button class="docButton">${it.assessmentDocTitle}</button></g:link>
+                                <button class="docButton">Go To</button></g:link>
                                 </br>
                               </g:if>
                               <g:else>
-                                <p> ${it.assessmentDocTitle} status:complete </p>
+                                <p>status:complete </p>
                               </g:else>
                             </g:each>
                           </g:if>
