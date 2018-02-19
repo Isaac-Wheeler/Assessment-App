@@ -66,5 +66,8 @@
         <div class="rightPanel">
         		<g:layoutBody/>
         </div>
+        <div class="feedback">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScsLJsl51BMK2BMBV3wjQgL0MhGHm-QAoWW0-RHVm1YNsM_uQ/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+        </div>
     </body>
 </html>
