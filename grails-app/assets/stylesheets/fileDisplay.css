@@ -136,7 +136,7 @@ input:checked + .slider:after
     float: right;
     min-height: 100%;
     width: 70%;
-    margin-right:0%;
+    margin-right: 0%;
 }
 .sidebar{
     text-align:center;
@@ -226,6 +226,7 @@ input[type=checkbox]:checked~#classes {
 }
 .info{
     float: right;
+    margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 1%;
     visibility: hidden;
