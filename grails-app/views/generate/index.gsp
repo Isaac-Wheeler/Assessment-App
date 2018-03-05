@@ -23,10 +23,10 @@
       <br>
       <br>
       <g:form class="simpleform" url="index">
-      <g:select name="academicYear" from="${Settings}" value="${year}" style="width:20%;" optionKey="id" optionValue="academicYear" noSelection="['':'All Year(s)']"/>
+      <g:select name="academicYear" from="${Settings}" value="${year}" style="width:20%;" optionKey="id" optionValue="academicYear" noSelection="['null':'All Year(s)']"/>
       <button id="Button" class="add">Switch Year</button>
       <br>
-      <g:select name="coursesSelect" from="${Courses}" value="${title}" style="width:20%;" optionKey="title" optionValue="title" noSelection="['':'All Course(s)']"/>
+      <g:select name="coursesSelect" from="${Courses}" value="${title}" style="width:20%;" optionKey="title" optionValue="title" noSelection="['null':'All Course(s)']"/>
       <button id="Button" class="add">Switch Course</button>
       </g:form>
       <br>
