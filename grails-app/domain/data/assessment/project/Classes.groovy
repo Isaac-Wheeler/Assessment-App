@@ -21,7 +21,7 @@ class Classes {
 
     static constraints = {
 
-      title  blank:false, minSize: 5
+      title  blank:false, minSize: 5, unique: true
       targetGoal blank:false, nullable:true
       requiredAction nullable: true
 
