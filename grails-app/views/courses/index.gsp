@@ -47,7 +47,6 @@
                       <br>
                       <p>Target Goal:${i.targetGoal}</p>
                       <p>Required Action:</p>
-                      <br>
                       ${i.requiredAction}
                       <br>
                       <g:link controller="courses" action="editCourse" params="[course:i.id, isadmin:true]">
