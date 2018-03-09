@@ -10,7 +10,7 @@
     		<h1>Edit Course</h1>
       	<p>Complete the form below to edit an Course</p>
     </div>
-    <g:form class="simpleform" url="editcourse">
+    <g:form class="simpleform" url="editCourse">
 
     		<div class="backgrounds">
             <div class="labels">
@@ -33,7 +33,7 @@
                 </g:hasErrors>
                 <label for="courseAction">Course Actions:</label>
                 <br>
-                <g:hiddenField name="course" value="${course}" />
+                <g:hiddenField name="course" value="${course.id}" />
                 <g:textArea id="requiredAction" name="requiredAction" value="${course?.requiredAction}" rows="10" cols="50"/>
                 <g:hasErrors bean="${course}" field="requiredAction">
                   <div class="errors">

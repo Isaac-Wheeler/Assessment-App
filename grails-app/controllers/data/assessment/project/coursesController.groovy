@@ -41,6 +41,8 @@ class coursesController {
        }
         redirect(controller:"courses", action:"index")
      }
+     def c = Classes.get(params.course)
+     [course:c]
 }
 
 
@@ -48,7 +50,7 @@ class coursesController {
    def classes = Classes.list()
    def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
    def teachers = Teacher.list()
-   
+
    def c = Classes.get(params.class)
    def teacher = Teacher.findByUsername(params.teacherUserName)
    c.addToTeachers(teacher)

@@ -50,7 +50,7 @@
                       <br>
                       ${i.requiredAction}
                       <br>
-                      <g:link controller="courses" action="edit" params="[course:i.id, isadmin:true]">
+                      <g:link controller="courses" action="editCourse" params="[course:i.id, isadmin:true]">
                        <button class="add">Edit</button></g:link>
 						          <g:link controller="courses" action="delete" params="[classes:i.id]" onclick="return confirm('Are you sure you want to delete this course? course: $i.title')">
 							               <button class="add">Delete</button>
