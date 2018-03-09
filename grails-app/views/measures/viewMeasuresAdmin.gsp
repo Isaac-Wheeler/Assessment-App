@@ -27,6 +27,5 @@
              	<br/>
         			</g:each>
             </div>
-        </div>
     </body>
 </html>
