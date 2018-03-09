@@ -25,7 +25,7 @@
                 <br>
                 <label for="courseTargetGoal">Course Target Goal:</label>
                 <br>
-                <g:textField type="text" id="targetGoal" name="targetGoal" value="${course?.targetGoal}" placeholder="Title"/>
+                <g:textField type="text" id="targetGoal" name="targetGoal" value="${course?.targetGoal}" placeholder="Target Goal"/>
                 <g:hasErrors bean="${course}" field="targetGoal">
                   <div class="errors">
                       <g:renderErrors bean="${course}" field="targetGoal"/>
