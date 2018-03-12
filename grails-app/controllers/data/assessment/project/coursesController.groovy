@@ -3,15 +3,15 @@ package data.assessment.project
 class coursesController {
 
   def index() {
-    def classes = Courses.list()
+    def courses = Courses.list()
     def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
     def teachers = Teacher.list()
 
-    [Courses:classes, Indicators:indicators, Teacher:teachers]
+    [Courses:courses, Indicators:indicators, Teacher:teachers]
  }
 
  def createCourse(){
-   def classes = Courses.list()
+   def courses = Courses.list()
    if (request.method == 'POST') {
      if(!params.submitButton.contains("Cancel")){
        def c = new Courses()
@@ -28,7 +28,7 @@ class coursesController {
 }
 
  def editCourse(){
-   def classes = Courses.list()
+   def courses = Courses.list()
    if (request.method == 'POST') {
      if(!params.submitButton.contains("Cancel")){
        def c = Courses.get(params.course)
@@ -47,7 +47,7 @@ class coursesController {
 
 
  def assignNewTeacher(){
-   def classes = Courses.list()
+   def courses = Courses.list()
    def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
    def teachers = Teacher.list()
 
@@ -55,13 +55,13 @@ class coursesController {
    def teacher = Teacher.findByUsername(params.teacherUserName)
    c.addToTeachers(teacher)
    if(!c.save(flush:true)){
-     return [c:c, Courses:classes, Indicators:indicators, Teacher:teachers]
+     return [c:c, Courses:courses, Indicators:indicators, Teacher:teachers]
    }
    redirect(controller:"courses", action:"index")
  }
 
  def deleteAssignedTeacher(){
-   def c = Courses.get(params.classes)
+   def c = Courses.get(params.courses)
    def t = Teacher.get(params.teacher)
    c.removeFromTeachers(t)
    c.save(flush:true)
@@ -70,7 +70,7 @@ class coursesController {
 
 
  def delete() {
-   def c = Courses.get(params.classes)
+   def c = Courses.get(params.courses)
    c.delete(flush:true)
    redirect(controller:"courses")
  }

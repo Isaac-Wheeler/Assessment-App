@@ -1,4 +1,4 @@
-<div class="sidebar">
+courses<div class="sidebar">
     <!-- the slider switch bar at the top's left label-->
     <!-- the slider switch bar at the top-->
     <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-top: 4%; margin-left: 3%"></g:link></i>
@@ -10,7 +10,7 @@
         <g:each in="${Outcomes}" var="o">
           <g:if test="${o.indicators != NULL}">
             <g:each in="${o.indicators}">
-              <g:set var="c" value="${it.classes.find()}" />
+              <g:set var="c" value="${it.courses.find()}" />
               <g:render template="/templates/showOwnedOnly" model="['item':c]">
                 <details>
                   <summary>Outcome ${o.outcomeCategory}:</summary>

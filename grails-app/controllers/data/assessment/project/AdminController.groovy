@@ -4,8 +4,8 @@ package data.assessment.project
 class AdminController {
 
     def index() {
-      def classes = Courses.list()
+      def courses = Courses.list()
       def year = BootStrap.GetYear(session)
-      [Courses:classes, year:year]
+      [Courses:courses, year:year]
     }
 }

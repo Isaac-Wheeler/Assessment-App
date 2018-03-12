@@ -50,9 +50,9 @@ class OutcomesController {
     def indicList = []
     if (o.indicators != null) {
       o.indicators.each { indic->
-        if (indic.classes != null) {
+        if (indic.courses != null) {
             def coursesList = []
-            indic.classes.each { course->
+            indic.courses.each { course->
               coursesList.add(course.id)    //save the course IDs in a list for removing association from indicator
           }
           for (int j = 0; j<coursesList.size(); j++) {                //run through coursesList and get the course object and then remove from the indicator Courses association

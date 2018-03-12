@@ -78,7 +78,7 @@ class SettingsController {
                  iNew.addToMeasures(mNew)
                  iNew.save(flsuh:true)
                }
-               course = Courses.get(i.classes.id)
+               course = Courses.get(i.courses.id)
                if(course != null){
                  course.addToIndicators(iNew)
                }

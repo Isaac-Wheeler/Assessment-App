@@ -8,7 +8,7 @@ class IndicatorsController {
     }
 
     def create() {
-      def classes = Courses.list()
+      def courses = Courses.list()
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
           def i = new Indicators()
@@ -22,34 +22,34 @@ class IndicatorsController {
           if(c != null){
             c.each {
               def courseToAdd = Courses.get(it)
-              i.addToClasses(courseToAdd)
+              i.addToCourses(courseToAdd)
             }
           }
             if(!i.save(flush:true)){
-              return [indicator:i, outcomeId:params.outcomeId, Courses:classes]
+              return [indicator:i, outcomeId:params.outcomeId, Courses:courses]
               redirect(view:"/indicators/create")
             }
           if(!o.save(flush:true)){
-            return [indicator:i, outcomeId:params.outcomeId, Courses:classes]
+            return [indicator:i, outcomeId:params.outcomeId, Courses:courses]
             redirect(view:"/indicators/create")
           }
         }
         redirect(controller:"outcomes")
       }
-      return [outcomeId:params.outcomeId, Courses:classes]
+      return [outcomeId:params.outcomeId, Courses:courses]
     }
 
     def delete() {
       def i = Indicators.get(params.indicator)
-      if (i.classes != null) {
+      if (i.courses != null) {
           def coursesList = []
-          i.classes.each { course->
+          i.courses.each { course->
             //i.removeFromCourses(course)                           //save the course IDs in a list for removing association from indicator
             coursesList.add(course.id)
         }
         for (int j = 0; j<coursesList.size(); j++) {                //run through coursesList and get the course object and then remove from the indicator Courses association
             def courseToBeRemoved = Courses.get(coursesList[j])
-            i.removeFromClasses(courseToBeRemoved)
+            i.removeFromCourses(courseToBeRemoved)
         }
       }
       i.delete(flush:true)
@@ -57,7 +57,7 @@ class IndicatorsController {
     }
 
     def editIndicator() {
-      def classes = Courses.list()
+      def courses = Courses.list()
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
           def i = Indicators.get(params.id)
@@ -66,27 +66,27 @@ class IndicatorsController {
           def c = params.classId
           if (c != null) {
             def coursesList = []
-            i.classes.each { course->
+            i.courses.each { course->
               coursesList.add(course.id)
            }
             for (int j = 0; j<coursesList.size(); j++) {                //run through coursesList and get the course object and then remove from the indicator Courses association
               def courseToBeRemoved = Courses.get(coursesList[j])
-              i.removeFromClasses(courseToBeRemoved)
+              i.removeFromCourses(courseToBeRemoved)
            }
            c.each {
              def courseToAdd = Courses.get(it)
-             i.addToClasses(courseToAdd)
+             i.addToCourses(courseToAdd)
            }
           }
             if(!i.save(flush:true)){
-              return [indicator:i, Courses:classes]
+              return [indicator:i, Courses:courses]
               redirect(view:"/indicators/editIndicator")
             }
         }
         redirect(controller:"outcomes")
       }else{
         def i = Indicators.get(params.indicator)
-        return [indicator:i, Courses:classes]
+        return [indicator:i, Courses:courses]
         redirect(view:"/indicators/editIndicator")
       }
     }
