@@ -30,11 +30,11 @@
       <button id="Button" class="add">Switch Course</button>
       </g:form>
       <br>
-        <g:if test="${SelectValue = 2 }">
+        <g:if test="${SelectValue == 2 }">
           <g:render template="/templates/HTMLtoPDFOutcomes"/> <%-- render for outcomes --%>
         </g:if>
-        <g:elseif test="${SelectValue = 1}">
+        <g:if test="${SelectValue == 1 }">
           <g:render template="/templates/HTMLtoPDFCourses"/> <%-- render for courses --%>
-        </g:elseif>
+        </g:if>
     </body>
 </html>
