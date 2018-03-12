@@ -14,7 +14,7 @@ class coursesController {
    def classes = Classes.list()
    if (request.method == 'POST') {
      if(!params.submitButton.contains("Cancel")){
-       def c = new Classes()
+       def c = new Courses()
        c.title = params.title
        c.targetGoal = Integer.parseInt(params.targetGoal) // will throw error if null
        c.requiredAction = params.requiredAction

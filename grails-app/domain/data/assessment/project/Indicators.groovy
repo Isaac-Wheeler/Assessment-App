@@ -7,14 +7,14 @@ class Indicators {
       String indicatorDescription;
       String academicYear;
 
-      static hasMany = [ measures : Measures , classes : Classes ]
+      static hasMany = [ measures : Measures , classes : Courses ]
 
-      static belongsTo = [ outcome : Outcomes, class : Classes ]
+      static belongsTo = [ outcome : Outcomes, class : Courses ]
 
 
       static mapping = {
           measures sort: 'measureTitle', order: 'asc'
-          
+
       }
 
     static constraints = {
