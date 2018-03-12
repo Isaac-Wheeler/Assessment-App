@@ -17,8 +17,9 @@ class GenerateController {
           outcomes = Outcomes.findAllByAcademicYear(Settings.get(params.academicYear).academicYear)
           [Outcomes:outcomes, Settings:settings, Courses:courses, year:Settings.get(params.academicYear).id, SelectValue:YEAR_SELECT_VALUE]
         }else{ //Not a Selected Year
-          if(params.coursesSelect != 'null'){
+          if(params.coursesSelect != 'null'){ //selected course
             course = Classes.findAllByTitle(params.coursesSelect)
+            System.out.println(course)
             [Course:course, Settings:settings, Courses:courses, SelectValue:COURSE_SELECT_VALUE]
           }else{//ALL Years
             outcomes = Outcomes.list()
