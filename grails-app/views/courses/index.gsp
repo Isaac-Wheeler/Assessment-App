@@ -18,7 +18,7 @@
              				<g:renderErrors bean="${c}"/>
            			</div>
               </g:hasErrors>
-            		<g:each in="${Classes}" var="i">
+            		<g:each in="${Courses}" var="i">
             			<div class="listings" >
                 			<h1>${i.title}</h1>
                       <g:if test="${i.teachers != NULL}">

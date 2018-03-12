@@ -9,7 +9,7 @@ class GenerateController {
       //initialzation block
       def outcomes
       def settings = Settings.list()
-      def courses = Classes.list()
+      def courses = Courses.list()
       def course
 
       if (request.method == 'POST') { //check if first load or reply from user
@@ -18,7 +18,7 @@ class GenerateController {
           [Outcomes:outcomes, Settings:settings, Courses:courses, year:Settings.get(params.academicYear).id, SelectValue:YEAR_SELECT_VALUE]
         }else{ //Not a Selected Year
           if(params.coursesSelect != 'null'){ //selected course
-            course = Classes.findAllByTitle(params.coursesSelect)
+            course = Courses.findAllByTitle(params.coursesSelect)
             System.out.println(course)
             [Course:course, Settings:settings, Courses:courses, SelectValue:COURSE_SELECT_VALUE]
           }else{//ALL Years

@@ -12,7 +12,7 @@ class AssessmentsController {
   def index(){
     def outcomes = Outcomes.findAllByAcademicYear(BootStrap.GetYear(session))
     def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
-    def classes = Classes.list()
+    def classes = Courses.list()
     def measures = Measures.list()
     def year = BootStrap.GetYear(session)
 
@@ -25,7 +25,7 @@ class AssessmentsController {
       if(!params.submitButton.contains("Cancel")){
         if(params.submitButton.startsWith('new_')){
           mId = params.submitButton-"new_"
-          return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, measureID:mId, show:true, Year:year]
+          return [Outcomes:outcomes, Indicators:indicators, Courses:classes, measures:measures, measureID:mId, show:true, Year:year]
         }
 
       else{
@@ -78,7 +78,7 @@ class AssessmentsController {
           AD.setMeasure(measure)
         }
         if(!AD.save(flush:true)){
-          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, show:true, Year:year]
+          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Courses:classes, measures:measures, show:true, Year:year]
         }
         redirect(controller:"Assessments")
       }
@@ -88,7 +88,7 @@ class AssessmentsController {
     }
 
 
-    return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, Year:year]
+    return [Outcomes:outcomes, Indicators:indicators, Courses:classes, measures:measures, Year:year]
   }
 
   def deleteFile(long id) {
@@ -121,7 +121,7 @@ class AssessmentsController {
   def editAssessment() {
     def outcomes = Outcomes.findAllByAcademicYear(BootStrap.GetYear(session))
     def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
-    def classes = Classes.list()
+    def classes = Courses.list()
     def measures = Measures.list()
     def year = BootStrap.GetYear(session)
     def mId = null
@@ -134,7 +134,7 @@ class AssessmentsController {
         if(params.submitButton.startsWith('edit_')){
           def ADId = params.submitButton-"edit_"
           AD = Assessment_Documentation.get(ADId)
-          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, measureID:AD.measure.id, show:true, Year:year]
+          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Courses:classes, measures:measures, measureID:AD.measure.id, show:true, Year:year]
         }
 
       else{
@@ -183,7 +183,7 @@ class AssessmentsController {
           AD.setMeasure(measure)
         }
         if(!AD.save(flush:true)){
-          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, show:true, Year:year]
+          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Courses:classes, measures:measures, show:true, Year:year]
         }
         redirect(controller:"Assessments")
       }
@@ -192,7 +192,7 @@ class AssessmentsController {
       }
     }
 
-    return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, Year:year]
+    return [Outcomes:outcomes, Indicators:indicators, Courses:classes, measures:measures, Year:year]
   }
 
   def delete(){

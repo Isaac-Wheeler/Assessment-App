@@ -43,7 +43,7 @@
         </g:each>
       </div>
       <div class="Outcomes" id="Classes">
-        <g:each in="${Classes}" var="c">
+        <g:each in="${Courses}" var="c">
           <g:render template="/templates/showOwnedOnly" model="['item':c]">
             <details>
               <summary>${c.title}:</summary>
