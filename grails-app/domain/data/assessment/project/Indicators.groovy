@@ -7,9 +7,9 @@ class Indicators {
       String indicatorDescription;
       String academicYear;
 
-      static hasMany = [ measures : Measures , classes : Courses ]
+      static hasMany = [ measures : Measures , courses : Courses ]
 
-      static belongsTo = [ outcome : Outcomes, class : Courses ]
+      static belongsTo = [ outcome : Outcomes , class : Courses ]
 
 
       static mapping = {

@@ -37,7 +37,7 @@ class BootStrap {
             def d = new Measures(measureTitle: "Exam1", measureDescription: "Student will be able to")
             def e = new Assessment_Documentation(targetGoal: 20, numberOfStudents: 40, needsImprovement: 15, meetsExpectations: 15, exceedsExpectations: 10, assessmentDocTitle: "Question1", comments:"Hello World!", summary: "Student will be able to", requiredAction: "Hello World!", resultComment: "Hello World!",  complete: false)
             a.addToIndicators(c)
-            c.addToClasses(b)
+            c.addToCourses(b)
             c.addToMeasures(d)
             d.addToAssessment_documents(e)
             e.setMeasure(d)
@@ -92,8 +92,8 @@ class BootStrap {
             def i = new Courses(title: "CS452")
             h.save(flush: true)
             i.save(flush: true)
-            f.addToClasses(h)
-            f.addToClasses(i)
+            f.addToCourses(h)
+            f.addToCourses(i)
 
 
             a.addToIndicators(f)
