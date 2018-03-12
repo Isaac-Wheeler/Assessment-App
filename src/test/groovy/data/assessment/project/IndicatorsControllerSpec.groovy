@@ -7,7 +7,7 @@ import spock.lang.Specification
 
 
 @TestFor(IndicatorsController)
-@Mock([Outcomes, Indicators, Classes, Teacher, Measures, Document, Assessment_Documentation, Settings])
+@Mock([Outcomes, Indicators, Courses, Teacher, Measures, Document, Assessment_Documentation, Settings])
 class IndicatorsControllerSpec extends Specification  {
 
     def setup() {
@@ -21,7 +21,7 @@ class IndicatorsControllerSpec extends Specification  {
       def newIndicator2 = new Indicators(indicatorName: "b.1", indicatorDescription: "Students will be able to", academicYear: "2016-2017")
       newOutcome2.addToIndicators(newIndicator2)
       newOutcome2.save(flush:true)
-      def newClass = new Classes(title: "CS320")
+      def newClass = new Courses(title: "CS320")
       newClass.save(flush:true)
     }
 
@@ -67,7 +67,7 @@ class IndicatorsControllerSpec extends Specification  {
 
       when: "the create method is invoked and proper params are set for indicator creation"
         params.outcomeId = Outcomes.first().id
-        params.classId = Classes.first().id
+        params.classId = Courses.first().id
         params.indicatorName = "a.2"
         params.indicatorDescription = "Students are able to properly do..."
         params.submitButton = "Create"

@@ -6,7 +6,7 @@ import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
 @TestFor(GenerateController)
-@Mock([Outcomes, Indicators, Classes, Teacher, Measures, Document, Assessment_Documentation, Settings])
+@Mock([Outcomes, Indicators, Courses, Teacher, Measures, Document, Assessment_Documentation, Settings])
 class GenerateControllerSpec extends Specification {
 
     def setup() {

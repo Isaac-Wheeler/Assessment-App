@@ -22,7 +22,7 @@ class IndicatorsController {
           if(c != null){
             c.each {
               def courseToAdd = Courses.get(it)
-              i.addToCourses(courseToAdd)
+              i.addToClasses(courseToAdd)
             }
           }
             if(!i.save(flush:true)){
@@ -49,7 +49,7 @@ class IndicatorsController {
         }
         for (int j = 0; j<coursesList.size(); j++) {                //run through coursesList and get the course object and then remove from the indicator Courses association
             def courseToBeRemoved = Courses.get(coursesList[j])
-            i.removeFromCourses(courseToBeRemoved)
+            i.removeFromClasses(courseToBeRemoved)
         }
       }
       i.delete(flush:true)
@@ -71,11 +71,11 @@ class IndicatorsController {
            }
             for (int j = 0; j<coursesList.size(); j++) {                //run through coursesList and get the course object and then remove from the indicator Courses association
               def courseToBeRemoved = Courses.get(coursesList[j])
-              i.removeFromCourses(courseToBeRemoved)
+              i.removeFromClasses(courseToBeRemoved)
            }
            c.each {
              def courseToAdd = Courses.get(it)
-             i.addToCourses(courseToAdd)
+             i.addToClasses(courseToAdd)
            }
           }
             if(!i.save(flush:true)){
