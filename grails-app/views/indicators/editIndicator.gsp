@@ -32,9 +32,9 @@
                   </div>
                 </g:hasErrors>
                 <g:hiddenField name="id" value="${indicator?.id}" />
-                <label for="classes">Choose The Class: hold the Ctrl(windows)/Command(Mac) button to select multiple courses.</label>
+                <label for="courses">Choose The Class: hold the Ctrl(windows)/Command(Mac) button to select multiple courses.</label>
                 <br>
-                <g:select name="classId" from="${Courses}" id="classes" value="${indicator?.classes}" style="width:20%;" optionKey="id" optionValue="title" multiple="multiple" />
+                <g:select name="classId" from="${Courses}" id="courses" value="${indicator?.courses}" style="width:20%;" optionKey="id" optionValue="title" multiple="multiple" />
                 <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
                 <br>
                 <g:submitButton class="button" name="submitButton" value="Edit Indicator" />
