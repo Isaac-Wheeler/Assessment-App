@@ -2,6 +2,17 @@
 # Assessment Web App
 
 # Install Instructions
+## automatic (linux only currently)
+* run the ./build.sh script
+
+* war file will be located in the main direactory named Assessment-App.war
+
+* the war file can be ran in standared java way with the recomaned command of 
+
+java -server -Xmx921M -Dgrails.env=prod -jar DAA.war
+
+
+## Manual
 * in the Applicaton.yml located under grails-app/conf/ directory edit the environments: production: dataSource: url:, username:, password: values to your postgreSQL database info.
 
 * next edit the server: 'contextPath': item to desired contextPath
@@ -12,7 +23,7 @@ Windows | OSX | Linux
  --- | --- | ---
 grailsw.bat package | ./grailsw package | ./grailsw package 
 
-* the runnable war file will be located in build/libs named CS481-Project-0.1.war 
+* the runnable war file will be located in build/libs named Assessment-App-0.1.war 
 
 * the war file can be ran in standared java way with the recomaned command of 
 
