@@ -1,5 +1,6 @@
-# CS481-Project
 # Assessment Web App
+
+Welcome to the Assessment-App! This was created to assist the professors at York College of Pennsylvania with their assessments of their classes
 
 # Install Instructions
 ## automatic (linux only currently)
