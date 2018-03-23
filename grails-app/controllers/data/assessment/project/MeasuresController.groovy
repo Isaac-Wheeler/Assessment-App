@@ -27,6 +27,9 @@ class MeasuresController {
     }
 
     def delete(){
+      if(!BootStrap.isPerm(false, session)){
+        redirect(controller:'main')
+      }else{
       def m = Measures.get(params.measure)
       m.delete(flush:true)
       if(params.isadmin){
@@ -35,10 +38,14 @@ class MeasuresController {
         redirect(controller:"measures", action:"viewMeasuresUser")
       }
     }
+    }
 
     def create(){
       def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
       if (request.method == 'POST') {
+        if(!BootStrap.isPerm(false, session)){
+          redirect(controller:'main')
+        }else{
         if(params.containsKey("submitButton")){
           if(!params.submitButton.contains("Cancel")){
             def m = new Measures()
@@ -66,6 +73,7 @@ class MeasuresController {
           return [Measures:m, Iid:params.indicatorId, Indicators:indicators, isadmin:params.isadmin, indicatorDisc:disc]
         }
       }
+    }
       def disc = Indicators.first().indicatorDescription
       return [Indicators:indicators, isadmin:params.isadmin, indicatorDisc:disc]
     }
@@ -73,6 +81,9 @@ class MeasuresController {
     def edit(){
       def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
       if (request.method == 'POST') {
+        if(!BootStrap.isPerm(false, session)){
+          redirect(controller:'main')
+        }else{
         if(params.containsKey("submitButton")){
           if(!params.submitButton.contains("Cancel")){
             def m = Measures.get(params.measure)
@@ -99,6 +110,7 @@ class MeasuresController {
           def disc = Indicators.get(params.indicatorId).indicatorDescription
           return [Measures:m, measure:m.id,  Iid:params.indicatorId, Indicators:indicators, isadmin:params.isadmin, indicatorDisc:disc]
         }
+      }
       }
       def m = Measures.get(params.measure)
       def disc = Indicators.first().indicatorDescription

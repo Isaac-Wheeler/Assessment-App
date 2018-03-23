@@ -9,6 +9,9 @@ class SettingsController {
       def years = Settings.list()
 
         if (request.method == 'POST') {
+          if(!BootStrap.isPerm(true, session)){
+            redirect(controller:'main')
+          }else{
           //prevents someone form setting the current year as a new year
           if(params.academicYear != Settings.first().academicYear){
 
@@ -43,6 +46,7 @@ class SettingsController {
         }
 
         }
+      }
           [year:Settings.first().academicYear, Years:years, yearList:yearList]
      }
 

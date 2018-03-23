@@ -14,11 +14,15 @@ class userController {
         if (request.method == 'POST') {
           if(!params.submitButton.contains("Cancel")){
             // create domain object and assign parameters using data binding
-            def u = new Teacher(params)
-            u.passwordHashed = u.password.encodeAsPassword()
-            if (! u.save(flush:true)) {
+            if(!BootStrap.isPerm(true, session)){
+              redirect(controller:'main')
+            }else{
+              def u = new Teacher(params)
+              u.passwordHashed = u.password.encodeAsPassword()
+              if (! u.save(flush:true)) {
                 // validation failed, render registration page again
                 return [teacher:u]
+              }
             }
         }
         redirect(controller:'main')
@@ -49,32 +53,40 @@ class userController {
     }
 
     def delete = {
-      def u = Teacher.get(params.teacher)
-      u.delete(flush:true)
-      redirect(controller:'teachers')
+      if(!BootStrap.isPerm(true, session)){
+        redirect(controller:'main')
+      }else{
+        def u = Teacher.get(params.teacher)
+        u.delete(flush:true)
+        redirect(controller:'teachers')
+      }
     }
 
     def edit ={
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
           // create domain object and assign parameters using data binding
-          def u = Teacher.get(params.id)
-          u.username = params.username
-          u.lastName = params.lastName
-          u.firstName = params.firstName
-          if(params.admin){
-            u.admin = params.admin
-          }
-          if(params.password == null){
-          u.password = params.password
-          u.confirm = params.confirm
-          u.passwordHashed = u.password.encodeAsPassword()
-          }
-          if (! u.save(flush:true)) {
+          if(!BootStrap.isPerm(true, session)){
+            redirect(controller:'main')
+          }else{
+            def u = Teacher.get(params.id)
+            u.username = params.username
+            u.lastName = params.lastName
+            u.firstName = params.firstName
+            if(params.admin){
+              u.admin = params.admin
+            }
+            if(params.password == null){
+              u.password = params.password
+              u.confirm = params.confirm
+              u.passwordHashed = u.password.encodeAsPassword()
+            }
+            if (! u.save(flush:true)) {
               // validation failed, render registration page again
-              return [teacher:u, id:u.id]
+                return [teacher:u, id:u.id]
+              }
+            }
           }
-        }
         redirect(controller:'Teachers')
       }else{
         def u = Teacher.get(params.teacher)
@@ -86,6 +98,9 @@ class userController {
     def editFaculty ={
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
+          if(!BootStrap.isPerm(false, session)){
+            redirect(controller:'main')
+          }else{
           // create domain object and assign parameters using data binding
           def u = Teacher.get(params.id)
           u.lastName = params.lastName
@@ -113,7 +128,9 @@ class userController {
               // validation failed, render registration page again
               return [teacher:u, id:u.id]
           }
+
         }
+      }
         redirect(controller:'main')
       }else{
         def u = Teacher.get(params.teacher)
