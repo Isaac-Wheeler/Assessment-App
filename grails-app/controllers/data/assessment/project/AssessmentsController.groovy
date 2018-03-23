@@ -21,7 +21,7 @@ class AssessmentsController {
     def AD = null
 
     if (request.method == 'POST' || params.courseLink) {
-      if(!BootStrap.isPerm(true, session)){
+      if(!BootStrap.isPerm(false, session)){
         redirect(controller:'main')
       }else{
 
@@ -133,7 +133,7 @@ class AssessmentsController {
     def AD = null
 
     if (request.method == 'POST' || params.courseLink) {
-      if(!BootStrap.isPerm(true, session)){
+      if(!BootStrap.isPerm(false, session)){
         redirect(controller:'main')
       }else{
 
@@ -204,7 +204,7 @@ class AssessmentsController {
   }
 
   def delete(){
-    if(!BootStrap.isPerm(true, session)){
+    if(!BootStrap.isPerm(false, session)){
       redirect(controller:'main')
     }else{
     def ad = Assessment_Documentation.get(params.ad)
