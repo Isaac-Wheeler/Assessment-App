@@ -25,7 +25,7 @@ class BootStrap {
            u.passwordHashed = u.password.encodeAsPassword()
            u.save(flush: true)
            System.out.println("added default admin")
-           def t = new Teacher(firstName:"teacher", lastName:"DeleteMe", username:"teacher", password:"password", confirm:"password", admin:false)
+           def t = new Teacher(firstName:"teacher", lastName:"DeleteMe", username:"teacher", password:"password", confirm:"password", admin:false, urlSignup:true)
            t.passwordHashed = t.password.encodeAsPassword()
            t.save(flush: true)
            System.out.println("added default teacher")

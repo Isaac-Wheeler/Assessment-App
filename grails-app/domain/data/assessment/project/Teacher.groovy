@@ -16,6 +16,7 @@ class Teacher {
   String passwordHashed;
   boolean admin;
   Document profilePic;
+  boolean urlSignup;
 
 
   static mapping = {

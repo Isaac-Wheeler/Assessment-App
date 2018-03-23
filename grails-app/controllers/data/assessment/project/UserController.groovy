@@ -138,4 +138,48 @@ class userController {
         redirect(view:'edit')
       }
     }
+
+    def urlSignup = {
+      //localhost:8080/DAA/user/urlSignup?teacher=1
+      if (request.method == 'POST') {
+        if(!params.submitButton.contains("Cancel")){
+          // create domain object and assign parameters using data binding
+          def u = Teacher.get(params.id)
+          u.lastName = params.lastName
+          u.firstName = params.firstName
+          if(params.password == null){
+          u.password = params.password
+          u.confirm = params.confirm
+          u.passwordHashed = u.password.encodeAsPassword()
+          }
+
+          // fetch the uploaded image for assigning profile picture to teacher account
+
+            def file = request.getFile('profilePic')
+            if (file.isEmpty()) {
+            }
+            else {
+              def documentInstance = new Document();
+              documentInstance.filename = file.originalFilename
+              documentInstance.filedata = file.getBytes()
+              u.profilePic = documentInstance
+            }
+
+            u.urlSignup = false;
+          if (! u.save(flush:true)) {
+              // validation failed, render registration page again
+              return [teacher:u, id:u.id]
+          }
+
+        }
+        redirect(controller:'main')
+      }else{
+        def u = Teacher.get(params.teacher)
+        if(!u.urlSignup){
+          redirect(controller:'main')
+        }
+        return [teacher:u, id:u.id]
+        redirect(view:'edit')
+      }
+    }
 }

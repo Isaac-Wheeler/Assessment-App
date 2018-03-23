@@ -5,12 +5,11 @@
   <meta name="layout" content="dataInputLayout"/>
 </head>
 <body>
-  <g:render template="/templates/securityNotAdmin"/>
 	<div class="pageTitle">
-    		<h1>Edit Faculty</h1>
-      	<p>Complete the form below to edit account settings</p>
+    		<h1>Url Signup</h1>
+      	<p>Complete the form below to create account</p>
     </div>
-    <g:uploadForm class="simpleform" url="editFaculty">
+    <g:uploadForm class="simpleform" url="urlSignup">
    			 <g:hasErrors bean="${teacher}">
       			<div class="errors">
         				<g:renderErrors bean="${teacher}"/>
@@ -18,6 +17,8 @@
     			</g:hasErrors>
     		<div class="backgrounds">
           <div class="labels">
+            <label for="username">Username: ${teacher?.username}</label>
+            <br>
       			<label for="password">Password:</label>
       			<br>
       			<g:passwordField name="password" class="${hasErrors(bean:user,field:'password','errors')}" />
