@@ -2,6 +2,7 @@ package data.assessment.project
 
 class MeasuresController {
 
+
     def viewMeasuresAdmin() {
       return index()
     }
@@ -69,12 +70,20 @@ class MeasuresController {
           def m = new Measures()
           m.measureTitle = params.measureTitle
           m.measureDescription = params.measureDescription
-          def disc = Indicators.get(params.indicatorId).indicatorDescription
+          def i = Indicators.get(params.indicatorId)
+          def disc = "there are no indicators"
+          if(i != null){
+            disc = i.indicatorDescription
+          }
           return [Measures:m, Iid:params.indicatorId, Indicators:indicators, isadmin:params.isadmin, indicatorDisc:disc]
         }
       }
     }
-      def disc = Indicators.first().indicatorDescription
+    def i = Indicators.first()
+    def disc = "there are no indicators"
+    if(i != null){
+      disc = i.indicatorDescription
+    }
       return [Indicators:indicators, isadmin:params.isadmin, indicatorDisc:disc]
     }
 
@@ -107,13 +116,21 @@ class MeasuresController {
           def m = Measures.get(params.measure)
           m.measureTitle = params.measureTitle
           m.measureDescription = params.measureDescription
-          def disc = Indicators.get(params.indicatorId).indicatorDescription
+          def i = Indicators.get(params.indicatorId)
+          def disc = "there are no indicators"
+          if(i != null){
+            disc = i.indicatorDescription
+          }
           return [Measures:m, measure:m.id,  Iid:params.indicatorId, Indicators:indicators, isadmin:params.isadmin, indicatorDisc:disc]
         }
       }
       }
       def m = Measures.get(params.measure)
-      def disc = Indicators.first().indicatorDescription
+      def i = Indicators.first()
+      def disc = "there are no indicators"
+      if(i != null){
+        disc = i.indicatorDescription
+      }
       return [Measures:m, measure:m.id, Indicators:indicators, isadmin:params.isadmin, indicatorDisc:disc]
     }
 }
