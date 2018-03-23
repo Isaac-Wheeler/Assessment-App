@@ -81,6 +81,9 @@ class userController {
               u.confirm = params.confirm
               u.passwordHashed = u.password.encodeAsPassword()
             }
+            if(params.urlSignup){
+              u.urlSignup = params.urlSignup
+            }
             if (! u.save(flush:true)) {
               // validation failed, render registration page again
                 return [teacher:u, id:u.id]

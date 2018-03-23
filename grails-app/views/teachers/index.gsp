@@ -23,6 +23,12 @@
                 				<p>Admin</p>
 						          </g:if>
 						          <p>Registered: ${u.dateCreated}</p>
+                      <g:if test="${u.urlSignup == true}">
+                       <p>Url Signup Link: </p>
+                       <g:createLink controller="User" absolute="true" action="urlSignup" params="${[teacher:u.id]}"/>
+                      </g:if>
+                      <br>
+                      <br>
 						          <g:link controller="user" action="edit" params="[teacher:u.id]">
 							             <button class="add">Edit</button></g:link>
 						          <g:link controller="user" action="delete" params="[teacher:u.id]" onclick="return confirm('Are you sure you want to delete this teacher? teacher: $u.firstName $u.lastName')">
