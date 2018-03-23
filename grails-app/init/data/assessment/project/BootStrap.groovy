@@ -122,6 +122,42 @@ class BootStrap {
       }
     }
 
+    static Boolean isPerm(def admin, def session){
+      if(admin){
+        if(session.teacher == null){
+          return false
+        }
+        def id = session.teacher.id
+        if(id == null){
+          return false
+        }
+        def teacher = Teacher.get(id)
+        if(teacher == null){
+          return false
+        }
+        if(teacher.admin){
+          return true
+        }else{
+          return false
+        }
+      }else{
+        if(session.teacher == null){
+          return false
+        }
+        def id = session.teacher.id
+        if(id == null){
+          return false
+        }
+        def teacher = Teacher.get(id)
+        if(teacher == null){
+          return false
+        }
+        if(teacher == null){ //check if user exists
+          return false
+        }
+      }
+    }
+
     def destroy = {
     }
 }
