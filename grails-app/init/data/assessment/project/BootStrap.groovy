@@ -155,6 +155,7 @@ class BootStrap {
         if(teacher == null){ //check if user exists
           return false
         }
+        return true
       }
     }
 
