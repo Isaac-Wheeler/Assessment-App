@@ -10,6 +10,9 @@ class IndicatorsController {
     def create() {
       def courses = Courses.list()
       if (request.method == 'POST') {
+        if(!BootStrap.isPerm(true, session)){
+          redirect(controller:'main')
+        }else{
         if(!params.submitButton.contains("Cancel")){
           def i = new Indicators()
           def o = Outcomes.get(params.outcomeId)
@@ -36,10 +39,14 @@ class IndicatorsController {
         }
         redirect(controller:"outcomes")
       }
+    }
       return [outcomeId:params.outcomeId, Courses:courses]
     }
 
     def delete() {
+      if(!BootStrap.isPerm(true, session)){
+        redirect(controller:'main')
+      }else{
       def i = Indicators.get(params.indicator)
       if (i.courses != null) {
           def coursesList = []
@@ -55,10 +62,14 @@ class IndicatorsController {
       i.delete(flush:true)
       redirect(controller:'outcomes')
     }
+    }
 
     def editIndicator() {
       def courses = Courses.list()
       if (request.method == 'POST') {
+        if(!BootStrap.isPerm(true, session)){
+          redirect(controller:'main')
+        }else{
         if(!params.submitButton.contains("Cancel")){
           def i = Indicators.get(params.id)
           i.indicatorName = params.indicatorName
@@ -84,6 +95,7 @@ class IndicatorsController {
             }
         }
         redirect(controller:"outcomes")
+      }
       }else{
         def i = Indicators.get(params.indicator)
         return [indicator:i, Courses:courses]

@@ -18,7 +18,7 @@
             			<div class="listings">
                 			<h1>${m.measureTitle}</h1>
                       <p>Desc: ${m.measureDescription}</p>
-                      <p>Indicaotr: ${m.indicator.find().toString()} </p>
+                      <p>Indicator: ${m.indicator.find().toString()} </p>
                        <g:link controller="measures" action="edit" params="[measure:m.id, isadmin:true]">
            							<button class="add">Edit</button></g:link>
                         <g:link controller="measures" action="delete" params="[measure:m.id, isadmin:true]" onclick="return confirm('Are you sure you want to delete this measure? measure: $m.measureTitle')">

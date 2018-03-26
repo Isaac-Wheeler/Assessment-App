@@ -13,6 +13,9 @@ class GenerateController {
       def course
 
       if (request.method == 'POST') { //check if first load or reply from user
+        if(!BootStrap.isPerm(false, session)){
+          redirect(controller:'main')
+        }else{
         if(params.academicYear != 'null'){ //Selected Year
           outcomes = Outcomes.findAllByAcademicYear(Settings.get(params.academicYear).academicYear)
           [Outcomes:outcomes, Settings:settings, Courses:courses, year:Settings.get(params.academicYear).id, SelectValue:YEAR_SELECT_VALUE]
@@ -26,6 +29,7 @@ class GenerateController {
             [Outcomes:outcomes, Settings:settings, Courses:courses, SelectValue:YEAR_SELECT_VALUE]
           }
         }
+      }
       }else{//page default (currrent year)
         outcomes = Outcomes.findAllByAcademicYear(Settings.first().academicYear)
 

@@ -23,7 +23,7 @@
                   </div>
                 </g:hasErrors>
                 <br>
-                <label for="courseTargetGoal">Course Target Goal:</label>
+                <label for="courseTargetGoal">Course Target Goal(in Percent):</label>
                 <br>
                 <g:textField type="text" id="targetGoal" name="targetGoal" value="${course?.targetGoal}" placeholder="Target Goal"/>
                 <g:hasErrors bean="${course}" field="targetGoal">

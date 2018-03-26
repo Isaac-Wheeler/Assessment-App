@@ -21,11 +21,16 @@ class AssessmentsController {
     def AD = null
 
     if (request.method == 'POST' || params.courseLink) {
+      if(!BootStrap.isPerm(false, session)){
+        redirect(controller:'main')
+      }else{
 
       if(!params.submitButton.contains("Cancel")){
         if(params.submitButton.startsWith('new_')){
           mId = params.submitButton-"new_"
-          return [Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, measureID:mId, show:true, Year:year]
+          measure = Measures.get(Integer.parseInt(mId))
+          System.out.println(measure)
+          return [Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, measureID:mId, measure:measure, show:true, Year:year]
         }
 
       else{
@@ -78,7 +83,7 @@ class AssessmentsController {
           AD.setMeasure(measure)
         }
         if(!AD.save(flush:true)){
-          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, show:true, Year:year]
+          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, measure:measure, show:true, Year:year]
         }
         redirect(controller:"Assessments")
       }
@@ -86,6 +91,7 @@ class AssessmentsController {
         redirect(controller:"Assessments")
       }
     }
+  }
 
 
     return [Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, Year:year]
@@ -129,6 +135,9 @@ class AssessmentsController {
     def AD = null
 
     if (request.method == 'POST' || params.courseLink) {
+      if(!BootStrap.isPerm(false, session)){
+        redirect(controller:'main')
+      }else{
 
       if(!params.submitButton.contains("Cancel")){
         if(params.submitButton.startsWith('edit_')){
@@ -191,14 +200,19 @@ class AssessmentsController {
         redirect(controller:"Assessments")
       }
     }
+  }
 
     return [Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, Year:year]
   }
 
   def delete(){
+    if(!BootStrap.isPerm(false, session)){
+      redirect(controller:'main')
+    }else{
     def ad = Assessment_Documentation.get(params.ad)
     ad.delete(flush:true)
     redirect(controller:"assessments")
+    }
   }
 
 }
