@@ -28,7 +28,9 @@ class AssessmentsController {
       if(!params.submitButton.contains("Cancel")){
         if(params.submitButton.startsWith('new_')){
           mId = params.submitButton-"new_"
-          return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, measureID:mId, show:true, Year:year]
+          measure = Measures.get(Integer.parseInt(mId))
+          System.out.println(measure)
+          return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, measureID:mId, measure:measure, show:true, Year:year]
         }
 
       else{
@@ -81,7 +83,7 @@ class AssessmentsController {
           AD.setMeasure(measure)
         }
         if(!AD.save(flush:true)){
-          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, show:true, Year:year]
+          return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, measure:measure, show:true, Year:year]
         }
         redirect(controller:"Assessments")
       }
