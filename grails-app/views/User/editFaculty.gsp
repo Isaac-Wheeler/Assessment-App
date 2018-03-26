@@ -8,7 +8,7 @@
   <g:render template="/templates/securityNotAdmin"/>
 	<div class="pageTitle">
     		<h1>Edit Faculty</h1>
-      	<p>Complete the form below to create edit account settings</p>
+      	<p>Complete the form below to edit account settings</p>
     </div>
     <g:uploadForm class="simpleform" url="editFaculty">
    			 <g:hasErrors bean="${teacher}">

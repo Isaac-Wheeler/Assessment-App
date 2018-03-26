@@ -14,6 +14,9 @@ class OutcomesController {
   }
   def createOutcome() {
     if (request.method == 'POST') {
+      if(!BootStrap.isPerm(true, session)){
+        redirect(controller:'main')
+      }else{
       if(!params.submitButton.contains("Cancel")){
         def o = new Outcomes(outcomeCategory: params.outcomeCategory, outcomeCategoryDescription: params.outcomeCategoryDescription, academicYear:Settings.first().academicYear)
           if(!o.save(flush: true)){
@@ -25,9 +28,13 @@ class OutcomesController {
       redirect(view:"/outcome/index")
     }
   }
+  }
 
   def editOutcome() {
     if (request.method == 'POST') {
+      if(!BootStrap.isPerm(true, session)){
+        redirect(controller:'main')
+      }else{
       if(!params.submitButton.contains("Cancel")){
         def o = Outcomes.get(params.id)
           o.outcomeCategory = params.outcomeCategory
@@ -38,6 +45,7 @@ class OutcomesController {
           }
       }
       redirect(view:"/outcome/index")
+    }
     }else{
       def o = Outcomes.get(params.outcome)
       return [outcome:o, id:o.id]
@@ -46,6 +54,9 @@ class OutcomesController {
   }
 
   def deleteOutcome() {
+    if(!BootStrap.isPerm(true, session)){
+      redirect(controller:'main')
+    }else{
     def o = Outcomes.get(params.outcome)
     def indicList = []
     if (o.indicators != null) {
@@ -71,4 +82,5 @@ class OutcomesController {
     o.delete(flush:true)
     redirect(controller:'outcomes')
   }
+}
 }

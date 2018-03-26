@@ -21,6 +21,9 @@ class AssessmentsController {
     def AD = null
 
     if (request.method == 'POST' || params.courseLink) {
+      if(!BootStrap.isPerm(false, session)){
+        redirect(controller:'main')
+      }else{
 
       if(!params.submitButton.contains("Cancel")){
         if(params.submitButton.startsWith('new_')){
@@ -86,6 +89,7 @@ class AssessmentsController {
         redirect(controller:"Assessments")
       }
     }
+  }
 
 
     return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, Year:year]
@@ -129,6 +133,9 @@ class AssessmentsController {
     def AD = null
 
     if (request.method == 'POST' || params.courseLink) {
+      if(!BootStrap.isPerm(false, session)){
+        redirect(controller:'main')
+      }else{
 
       if(!params.submitButton.contains("Cancel")){
         if(params.submitButton.startsWith('edit_')){
@@ -191,14 +198,19 @@ class AssessmentsController {
         redirect(controller:"Assessments")
       }
     }
+  }
 
     return [Outcomes:outcomes, Indicators:indicators, Classes:classes, measures:measures, Year:year]
   }
 
   def delete(){
+    if(!BootStrap.isPerm(false, session)){
+      redirect(controller:'main')
+    }else{
     def ad = Assessment_Documentation.get(params.ad)
     ad.delete(flush:true)
     redirect(controller:"assessments")
+    }
   }
 
 }

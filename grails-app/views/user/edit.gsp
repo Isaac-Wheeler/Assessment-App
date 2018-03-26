@@ -42,6 +42,9 @@
       			<label for"admin">Admin:</label>
       			<g:checkBox name="admin" value="${teacher?.admin}" />
       			<br>
+            <label for"urlSignup">Url Signup:</label>
+            <g:checkBox name="urlSignup" value="${teacher?.urlSignup}" />
+            <br>
           		<g:hiddenField name="id" value="${id}" />
       			<g:submitButton class="button" name="submitButton" value="Edit Account" />
       			<g:submitButton class="button" name="submitButton" value="Cancel" />

@@ -13,6 +13,9 @@ class coursesController {
  def createCourse(){
    def classes = Classes.list()
    if (request.method == 'POST') {
+     if(!BootStrap.isPerm(true, session)){
+       redirect(controller:'main')
+     }else{
      if(!params.submitButton.contains("Cancel")){
        def c = new Classes()
        c.title = params.title
@@ -25,11 +28,15 @@ class coursesController {
        }
         redirect(controller:"courses", action:"index")
      }
+   }
 }
 
  def editCourse(){
    def classes = Classes.list()
    if (request.method == 'POST') {
+     if(!BootStrap.isPerm(true, session)){
+       redirect(controller:'main')
+     }else{
      if(!params.submitButton.contains("Cancel")){
        def c = Classes.get(params.course)
        c.title = params.title
@@ -41,12 +48,16 @@ class coursesController {
        }
         redirect(controller:"courses", action:"index")
      }
+   }
      def c = Classes.get(params.course)
      [course:c]
 }
 
 
  def assignNewTeacher(){
+   if(!BootStrap.isPerm(true, session)){
+     redirect(controller:'main')
+   }else{
    def classes = Classes.list()
    def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
    def teachers = Teacher.list()
@@ -59,20 +70,29 @@ class coursesController {
    }
    redirect(controller:"courses", action:"index")
  }
+ }
 
  def deleteAssignedTeacher(){
+   if(!BootStrap.isPerm(true, session)){
+     redirect(controller:'main')
+   }else{
    def c = Classes.get(params.classes)
    def t = Teacher.get(params.teacher)
    c.removeFromTeachers(t)
    c.save(flush:true)
    redirect(controller:"courses")
  }
+ }
 
 
  def delete() {
+   if(!BootStrap.isPerm(true, session)){
+     redirect(controller:'main')
+   }else{
    def c = Classes.get(params.classes)
    c.delete(flush:true)
    redirect(controller:"courses")
+  }
  }
 
 
