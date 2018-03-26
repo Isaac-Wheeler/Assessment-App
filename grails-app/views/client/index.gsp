@@ -11,7 +11,7 @@
           </p>
         </div>
         <div class="mainArea">
-        <g:each in="${Classes}" var="c">
+        <g:each in="${Courses}" var="c">
         <g:if test="${session.teacher != null}">
           <g:render template="/templates/showOwnedOnly" model="['item':c]">
             <div class="listings">

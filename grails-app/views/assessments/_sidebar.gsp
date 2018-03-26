@@ -10,7 +10,7 @@
         <g:each in="${Outcomes}" var="o">
           <g:if test="${o.indicators != NULL}">
             <g:each in="${o.indicators}">
-              <g:set var="c" value="${it.classes.find()}" />
+              <g:set var="c" value="${it.courses.find()}" />
               <g:render template="/templates/showOwnedOnly" model="['item':c]">
                 <details>
                   <summary>Outcome ${o.outcomeCategory}:</summary>
@@ -43,7 +43,7 @@
         </g:each>
       </div>
       <div class="Outcomes" id="Classes">
-        <g:each in="${Classes}" var="c">
+        <g:each in="${Courses}" var="c">
           <g:render template="/templates/showOwnedOnly" model="['item':c]">
             <details>
               <summary>${c.title}:</summary>

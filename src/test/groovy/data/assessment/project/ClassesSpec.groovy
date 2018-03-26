@@ -3,7 +3,7 @@ package data.assessment.project
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
+class CoursesSpec extends Specification implements DomainUnitTest<Courses> {
 
     def setup() {
     }
@@ -14,7 +14,7 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
     void "Testing adding and deleting a new class"() {
 
       given: "A brand new class"
-      def newClass = new Classes(title: "CS320")
+      def newClass = new Courses(title: "CS320")
 
       when: "The class is saved"
       newClass.save(flush:true)
@@ -22,22 +22,22 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
       then: "Is saved successfully and can be found in the DB"
       newClass.errors.errorCount == 0
       newClass.id != null
-      Classes.get(newClass.id).title == "CS320"
+      Courses.get(newClass.id).title == "CS320"
 
       when: "A property is changed changed"
-      def foundClass = Classes.get(newClass.id)
+      def foundClass = Courses.get(newClass.id)
       foundClass.title = "CS420"
       foundClass.save(flush:true)
 
       then: "the change should be reflected in the DB"
-      Classes.get(newClass.id).title == "CS420"
+      Courses.get(newClass.id).title == "CS420"
 
       when: "Class is deleted"
       foundClass.delete(flush:true)
 
       then: "the Class is removed from the DB"
-      !Classes.exists(foundClass.id)
-      !Classes.exists(newClass.id)
+      !Courses.exists(foundClass.id)
+      !Courses.exists(newClass.id)
       newClass.delete(flush:true)
 
 
@@ -46,7 +46,7 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
     void "Testing Clesses constraints"() {
 
       given: "a class has fields that fail constraints"
-      def newClass = new Classes(title: " ")
+      def newClass = new Courses(title: " ")
 
       when: "class is validated"
       newClass.validate()
@@ -56,7 +56,7 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
       newClass.errors['title'].code == 'nullable'   // convertEmptyStringsToNull grails property
 
       when: "testing validation on a new class that fails the minSize constraint on Title"
-      def newClass2 = new Classes(title: "CS42")
+      def newClass2 = new Courses(title: "CS42")
       newClass2.validate()
 
       then:
@@ -84,9 +84,9 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
       def newTeacher3 = new Teacher(firstName: "Jane", lastName: "Harley", username: "JHarley", password: "password",
                       confirm: "password", passwordHashed: "AASSHHDDST", admin: true)
 
-      def newClass = new Classes(title: "CS320")
-      def newClass2 = new Classes(title: "CS350")
-      def newClass3 = new Classes(title: "CS420")
+      def newClass = new Courses(title: "CS320")
+      def newClass2 = new Courses(title: "CS350")
+      def newClass3 = new Courses(title: "CS420")
 
       newClass.addToIndicators(newIndicator)
       newClass2.addToIndicators(newIndicator2)
@@ -101,14 +101,14 @@ class ClassesSpec extends Specification implements DomainUnitTest<Classes> {
       newClass3.save(flush:true)
 
         then: "the 3 classes and the 4 indicators and the 3 teachers should have been saved correctly"
-        Classes.count() == 3
+        Courses.count() == 3
         Indicators.count() == 3
         Teacher.count() == 3
 
       when: "finding all indicators associated with their classes"
-      def aa = Classes.findAllByTitle("CS320")
-      def bb = Classes.findAllByTitle("CS350")
-      def cc = Classes.findAllByTitle("CS420")
+      def aa = Courses.findAllByTitle("CS320")
+      def bb = Courses.findAllByTitle("CS350")
+      def cc = Courses.findAllByTitle("CS420")
 
         then: "There should be 2 indicators associated with CS320, and 1 indicator associated with the other two classes"
         aa.indicators.size() == 1

@@ -1,6 +1,6 @@
 package data.assessment.project
 
-class Classes {
+class Courses {
 
       //properties
       //NOTE: DB creates ID for table

@@ -8,7 +8,7 @@ class IndicatorsController {
     }
 
     def create() {
-      def classes = Classes.list()
+      def courses = Courses.list()
       if (request.method == 'POST') {
         if(!BootStrap.isPerm(true, session)){
           redirect(controller:'main')
@@ -16,7 +16,7 @@ class IndicatorsController {
         if(!params.submitButton.contains("Cancel")){
           def i = new Indicators()
           def o = Outcomes.get(params.outcomeId)
-          //def c = Classes.get(params.classId)
+          //def c = Courses.get(params.classId)
           def c = params.classId
           i.indicatorName = params.indicatorName
           i.indicatorDescription = params.indicatorDescription
@@ -24,23 +24,23 @@ class IndicatorsController {
           o.addToIndicators(i)
           if(c != null){
             c.each {
-              def courseToAdd = Classes.get(it)
-              i.addToClasses(courseToAdd)
+              def courseToAdd = Courses.get(it)
+              i.addToCourses(courseToAdd)
             }
           }
             if(!i.save(flush:true)){
-              return [indicator:i, outcomeId:params.outcomeId, Classes:classes]
+              return [indicator:i, outcomeId:params.outcomeId, Courses:courses]
               redirect(view:"/indicators/create")
             }
           if(!o.save(flush:true)){
-            return [indicator:i, outcomeId:params.outcomeId, Classes:classes]
+            return [indicator:i, outcomeId:params.outcomeId, Courses:courses]
             redirect(view:"/indicators/create")
           }
         }
         redirect(controller:"outcomes")
       }
     }
-      return [outcomeId:params.outcomeId, Classes:classes]
+      return [outcomeId:params.outcomeId, Courses:courses]
     }
 
     def delete() {
@@ -48,15 +48,15 @@ class IndicatorsController {
         redirect(controller:'main')
       }else{
       def i = Indicators.get(params.indicator)
-      if (i.classes != null) {
+      if (i.courses != null) {
           def coursesList = []
-          i.classes.each { course->
-            //i.removeFromClasses(course)                           //save the course IDs in a list for removing association from indicator
+          i.courses.each { course->
+            //i.removeFromCourses(course)                           //save the course IDs in a list for removing association from indicator
             coursesList.add(course.id)
         }
-        for (int j = 0; j<coursesList.size(); j++) {                //run through coursesList and get the course object and then remove from the indicator Classes association
-            def courseToBeRemoved = Classes.get(coursesList[j])
-            i.removeFromClasses(courseToBeRemoved)
+        for (int j = 0; j<coursesList.size(); j++) {                //run through coursesList and get the course object and then remove from the indicator Courses association
+            def courseToBeRemoved = Courses.get(coursesList[j])
+            i.removeFromCourses(courseToBeRemoved)
         }
       }
       i.delete(flush:true)
@@ -65,7 +65,7 @@ class IndicatorsController {
     }
 
     def editIndicator() {
-      def classes = Classes.list()
+      def courses = Courses.list()
       if (request.method == 'POST') {
         if(!BootStrap.isPerm(true, session)){
           redirect(controller:'main')
@@ -77,20 +77,20 @@ class IndicatorsController {
           def c = params.classId
           if (c != null) {
             def coursesList = []
-            i.classes.each { course->
+            i.courses.each { course->
               coursesList.add(course.id)
            }
-            for (int j = 0; j<coursesList.size(); j++) {                //run through coursesList and get the course object and then remove from the indicator Classes association
-              def courseToBeRemoved = Classes.get(coursesList[j])
-              i.removeFromClasses(courseToBeRemoved)
+            for (int j = 0; j<coursesList.size(); j++) {                //run through coursesList and get the course object and then remove from the indicator Courses association
+              def courseToBeRemoved = Courses.get(coursesList[j])
+              i.removeFromCourses(courseToBeRemoved)
            }
            c.each {
-             def courseToAdd = Classes.get(it)
-             i.addToClasses(courseToAdd)
+             def courseToAdd = Courses.get(it)
+             i.addToCourses(courseToAdd)
            }
           }
             if(!i.save(flush:true)){
-              return [indicator:i, Classes:classes]
+              return [indicator:i, Courses:courses]
               redirect(view:"/indicators/editIndicator")
             }
         }
@@ -98,7 +98,7 @@ class IndicatorsController {
       }
       }else{
         def i = Indicators.get(params.indicator)
-        return [indicator:i, Classes:classes]
+        return [indicator:i, Courses:courses]
         redirect(view:"/indicators/editIndicator")
       }
     }
