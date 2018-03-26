@@ -8,7 +8,7 @@ import spock.lang.Specification
 
 
 @TestFor(AssessmentsController)
-@Mock([Outcomes, Indicators, Classes, Teacher, Measures, Document, Assessment_Documentation, Settings])
+@Mock([Outcomes, Indicators, Courses, Teacher, Measures, Document, Assessment_Documentation, Settings])
 class AssessmentsControllerSpec extends Specification {
 
     def setup() {

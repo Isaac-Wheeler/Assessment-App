@@ -3,8 +3,8 @@ package data.assessment.project
 class ClientController {
 
     def index() {
-      def classes = Classes.list()
+      def courses = Courses.list()
       def year = BootStrap.GetYear(session)
-      [Classes:classes, year:year]
+      [Courses:courses, year:year]
      }
 }

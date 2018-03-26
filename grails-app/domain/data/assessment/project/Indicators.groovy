@@ -7,14 +7,14 @@ class Indicators {
       String indicatorDescription;
       String academicYear;
 
-      static hasMany = [ measures : Measures , classes : Classes ]
+      static hasMany = [ measures : Measures , courses : Courses ]
 
-      static belongsTo = [ outcome : Outcomes, class : Classes ]
+      static belongsTo = [ outcome : Outcomes , class : Courses ]
 
 
       static mapping = {
           measures sort: 'measureTitle', order: 'asc'
-          
+
       }
 
     static constraints = {
@@ -26,13 +26,13 @@ class Indicators {
 
     String toString(){
       def toStringDescription = indicatorName + " From Outcome: " + outcome.outcomeCategory
-      if (classes != null) {
+      if (courses != null) {
         toStringDescription = toStringDescription + " Course(s): "
-        if (classes.size() == 1) {
-          toStringDescription = toStringDescription + classes.first().title
+        if (courses.size() == 1) {
+          toStringDescription = toStringDescription + courses.first().title
         }
         else {
-          classes.each { course ->
+          courses.each { course ->
             toStringDescription = toStringDescription + course.title + ", "
           }
           toStringDescription = toStringDescription.substring(0, toStringDescription.length() - 2)

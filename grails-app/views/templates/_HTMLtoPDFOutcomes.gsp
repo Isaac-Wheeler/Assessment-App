@@ -4,7 +4,7 @@
     <p style="font-weight:bold; font-size:1.5em;">Outcome ${o.outcomeCategory}</p>
     <g:if test="${o.indicators != NULL}">
       <g:each in="${o.indicators}" var="i">
-        <g:each var="c" in="${i.classes}">
+        <g:each var="c" in="${i.courses}">
           <p>(${i.indicatorName}) - ${c.title}</p>
           <g:each in="${i.measures}" var="m">
             <g:set var="ad" value="${m.assessment_documents}"/>

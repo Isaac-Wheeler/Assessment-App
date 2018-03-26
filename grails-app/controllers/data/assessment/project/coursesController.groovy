@@ -3,21 +3,21 @@ package data.assessment.project
 class coursesController {
 
   def index() {
-    def classes = Classes.list()
+    def courses = Courses.list()
     def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
     def teachers = Teacher.list()
 
-    [Classes:classes, Indicators:indicators, Teacher:teachers]
+    [Courses:courses, Indicators:indicators, Teacher:teachers]
  }
 
  def createCourse(){
-   def classes = Classes.list()
+   def courses = Courses.list()
    if (request.method == 'POST') {
      if(!BootStrap.isPerm(true, session)){
        redirect(controller:'main')
      }else{
      if(!params.submitButton.contains("Cancel")){
-       def c = new Classes()
+       def c = new Courses()
        c.title = params.title
        c.targetGoal = Integer.parseInt(params.targetGoal) // will throw error if null
        c.requiredAction = params.requiredAction
@@ -32,13 +32,13 @@ class coursesController {
 }
 
  def editCourse(){
-   def classes = Classes.list()
+   def courses = Courses.list()
    if (request.method == 'POST') {
      if(!BootStrap.isPerm(true, session)){
        redirect(controller:'main')
      }else{
      if(!params.submitButton.contains("Cancel")){
-       def c = Classes.get(params.course)
+       def c = Courses.get(params.course)
        c.title = params.title
        c.targetGoal = Integer.parseInt(params.targetGoal) // will throw error if null
        c.requiredAction = params.requiredAction
@@ -49,7 +49,7 @@ class coursesController {
         redirect(controller:"courses", action:"index")
      }
    }
-     def c = Classes.get(params.course)
+     def c = Courses.get(params.course)
      [course:c]
 }
 
@@ -58,15 +58,15 @@ class coursesController {
    if(!BootStrap.isPerm(true, session)){
      redirect(controller:'main')
    }else{
-   def classes = Classes.list()
+   def courses = Courses.list()
    def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
    def teachers = Teacher.list()
 
-   def c = Classes.get(params.class)
+   def c = Courses.get(params.class)
    def teacher = Teacher.findByUsername(params.teacherUserName)
    c.addToTeachers(teacher)
    if(!c.save(flush:true)){
-     return [c:c, Classes:classes, Indicators:indicators, Teacher:teachers]
+     return [c:c, Courses:courses, Indicators:indicators, Teacher:teachers]
    }
    redirect(controller:"courses", action:"index")
  }
@@ -76,7 +76,7 @@ class coursesController {
    if(!BootStrap.isPerm(true, session)){
      redirect(controller:'main')
    }else{
-   def c = Classes.get(params.classes)
+   def c = Courses.get(params.courses)
    def t = Teacher.get(params.teacher)
    c.removeFromTeachers(t)
    c.save(flush:true)
@@ -89,7 +89,7 @@ class coursesController {
    if(!BootStrap.isPerm(true, session)){
      redirect(controller:'main')
    }else{
-   def c = Classes.get(params.classes)
+   def c = Courses.get(params.courses)
    c.delete(flush:true)
    redirect(controller:"courses")
   }
