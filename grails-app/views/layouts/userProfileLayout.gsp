@@ -54,7 +54,28 @@
         </div>
         <div class="rightPanel">
             	<g:layoutBody/>
-              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScsLJsl51BMK2BMBV3wjQgL0MhGHm-QAoWW0-RHVm1YNsM_uQ/viewform?embedded=true" width="80%" height="500" frameborder="5" marginheight="0" marginwidth="0">Loading...</iframe>
+              <div> <!-- get rid of this div-->
+                <script type="text/javascript">
+                  function display(){
+                    var div = document.getElementById("temp");
+                    if (div.style.display == 'none') {
+                      div.style.display = 'block';
+                    }
+                    else {
+                      div.style.display = 'none';
+                    }
+                  }
+                </script>
+                <style type="text/css">
+                  .temp{
+                    display: none;
+                  }
+                </style>
+              <button type="button" onclick="display()">Suggestions</button>
+              <div id="temp" class="temp">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScsLJsl51BMK2BMBV3wjQgL0MhGHm-QAoWW0-RHVm1YNsM_uQ/viewform?embedded=true" width="80%" height="500" frameborder="5" marginheight="0" marginwidth="0">Loading...</iframe>
+              </div>
+            </div>
         </div>
     </body>
 </html>
