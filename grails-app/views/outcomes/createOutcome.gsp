@@ -15,7 +15,7 @@
             <div class="labels">
                 <label for="outcomeTitle">Outcome Title:</label>
                 <br>
-                <g:textField type="text" id="outcomeCategory" maxlength="1" name="outcomeCategory" value="${outcome?.outcomeCategory}" placeholder="Title" class="${hasErrors(bean:outcome,field:'outcomeCategory','errors')}"/>
+                <g:textField type="text" id="outcomeCategory" name="outcomeCategory" value="${outcome?.outcomeCategory}" placeholder="Title" class="${hasErrors(bean:outcome,field:'outcomeCategory','errors')}"/>
                 <g:hasErrors bean="${outcome}" field="outcomeCategory">
              			<div class="errors">
                				<g:renderErrors bean="${outcome}" field="outcomeCategory"/>

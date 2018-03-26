@@ -6,7 +6,7 @@ import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
 @TestFor(MeasuresController)
-@Mock([Outcomes, Indicators, Classes, Teacher, Measures, Document, Assessment_Documentation, Settings])
+@Mock([Outcomes, Indicators, Courses, Teacher, Measures, Document, Assessment_Documentation, Settings])
 class MeasuresControllerSpec extends Specification {
 
     def setup() {
@@ -18,14 +18,14 @@ class MeasuresControllerSpec extends Specification {
       newOutcome.addToIndicators(newIndicator)
       newIndicator.addToMeasures(newMeasure)
       newOutcome.save(flush:true)
-      def newClass = new Classes(title: "CS320")
+      def newClass = new Courses(title: "CS320")
       newClass.save(flush:true)
     }
 
     def cleanup() {
     }
 
-    void "test viewMeasuresAdmin method and that the correct Measures and Classes are retrieved based upon the settings academic year"() {
+    void "test viewMeasuresAdmin method and that the correct Measures and Courses are retrieved based upon the settings academic year"() {
 
         expect: "Setup() ran correctly"
           Settings.count() == 1
@@ -38,12 +38,12 @@ class MeasuresControllerSpec extends Specification {
           controller.response.reset()
 
 
-        then: "model.Measures.size() should be equal to 1 and model.Classes.size() should be equal to 1"
+        then: "model.Measures.size() should be equal to 1 and model.Courses.size() should be equal to 1"
           model.Measures.size() == 1
 
       }
 
-      void "test viewMeasuresUser method and that the correct Measures and Classes are retrieved based upon the settings academic year"() {
+      void "test viewMeasuresUser method and that the correct Measures and Courses are retrieved based upon the settings academic year"() {
 
           expect: "Setup() ran correctly"
             Settings.count() == 1
@@ -56,7 +56,7 @@ class MeasuresControllerSpec extends Specification {
             controller.response.reset()
 
 
-          then: "model.Measures.size() should be equal to 1 and model.Classes.size() should be equal to 1"
+          then: "model.Measures.size() should be equal to 1 and model.Courses.size() should be equal to 1"
             model.Measures.size() == 1
 
         }
