@@ -11,7 +11,7 @@
             </div>
             <div class="mainArea">
             		<g:each in="${Outcomes}" var="o">
-            			<div class="listings">
+            			<div class="listings" style="font-size: 1.2em;">
                 			<h1>${o.outcomeCategory}</h1>
                 			<div class="outcomeDesc">Description: ${o.outcomeCategoryDescription}</div>
                       </br>
