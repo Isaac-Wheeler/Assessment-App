@@ -25,7 +25,13 @@
                 <br>
                 <label for="courseTargetGoal">Course Target Goal(in Percent):</label>
                 <br>
-                <g:textField type="text" id="targetGoal" name="targetGoal" value="${course?.targetGoal}" placeholder="Target Goal"/>
+                <g:textField type="text" id="targetGoal" list="target" name="targetGoal" value="${course?.targetGoal}" placeholder="Target Goal"/>
+                <datalist id="target">
+                  <option value="60">Freshman Course</option>
+                  <option value="70">Sophmore Course</option>
+                  <option value="80">Junior Course</option>
+                  <option value="90">Senior Course</option>
+                </datalist>
                 <g:hasErrors bean="${course}" field="targetGoal">
                   <div class="errors">
                       <g:renderErrors bean="${course}" field="targetGoal"/>
