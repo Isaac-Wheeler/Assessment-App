@@ -30,7 +30,7 @@ class BootStrap {
            t.save(flush: true)
            System.out.println("added default teacher")
           }
-          if (Outcomes.count() == 0 && Classes.count() == 0 && Indicators.count() == 0 && Measures.count() == 0&& Assessment_Documentation.count() == 0) {
+          if (Outcomes.count() == 0 && Courses.count() == 0 && Indicators.count() == 0 && Measures.count() == 0&& Assessment_Documentation.count() == 0) {
             def a = new Outcomes(outcomeCategory: 'A', outcomeCategoryDescription: "Students will learn how to...", academicYear:"2017-2018")
             def b = new Courses(title: "CS481")
             def c = new Indicators(indicatorName: "1", indicatorDescription: "Students will be able to", academicYear:"2017-2018")
