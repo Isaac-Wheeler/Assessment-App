@@ -4,7 +4,7 @@ class Outcomes {
 
 
     //NOTE: DB creates ID for table
-    char outcomeCategory;
+    String outcomeCategory;
     String outcomeCategoryDescription;
     String academicYear;
 

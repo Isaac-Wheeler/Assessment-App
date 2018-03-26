@@ -39,8 +39,8 @@ class SettingsControllerSpec extends Specification {
         controller.response.reset()
 
       then: "the Outcomes and Indicators should be copied objects and given the new academicYear!"
-        model.year == "2018-2019"
-        def mirrorOutcome = Outcomes.findByAcademicYear("2018-2019")
+        model.year == "2017-2018"
+        def mirrorOutcome = Outcomes.findByAcademicYear("2017-2018")
         mirrorOutcome.outcomeCategory == 'A'
 
 

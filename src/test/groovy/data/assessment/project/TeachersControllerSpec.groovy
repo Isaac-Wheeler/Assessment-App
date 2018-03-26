@@ -37,15 +37,7 @@ class TeachersControllerSpec extends Specification {
           then: "model.Teacher.size() should be equal to 2"
           model.Teacher.size() == 2  //the index controller returns a map [Teacher:teachers] so we can test to make sure that teacher.list() returned the correct amount of teachers
 
-          when: "The delete() method is invoked in the TeachersController"
-          params.teacher = Teacher.findByFirstName("Joe").id
-          controller.delete()
-          controller.response.reset()
-
-
-          then: "teacher.count() should be equal to 1 because the teacher was deleted successfully"
-          Teacher.count() == 1  //the index controller returns a map [Teacher:teachers] so we can test to make sure that teacher.list() returned the correct amount of teachers
-
+          
 
 
 
