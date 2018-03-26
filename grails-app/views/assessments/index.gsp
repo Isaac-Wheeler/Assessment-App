@@ -25,12 +25,13 @@
             <h1>Assessment Documentation</h1>
             <label for="assessmentDocTitle">Assessment Documentation Title(from Measure):</label>
             <br>
+
             <g:if test="${measureID != null}">
-              <g:field type="text" readonly="readonly" value="${measures.get(Integer.parseInt(measureID)).measureTitle}" id="assessmentDocTitle" name="assessmentDocTitle" style="width:35%;" placeholder="Title" class="shortText"/>
+              <g:field type="text" readonly="readonly" value="${measure.measureTitle}" id="assessmentDocTitle" name="assessmentDocTitle" style="width:35%;" placeholder="Title" class="shortText"/>
               <br>
               <label for="Desc">Description(from Measure):</label>
               <br>
-              <g:textArea id="Desc" readonly="readonly" value="${measures.get(Integer.parseInt(measureID)).measureDescription}" name="summary" rows="10" cols="100" resize="none"/>
+              <g:textArea id="Desc" readonly="readonly" value="${measure.measureDescription}" name="summary" rows="10" cols="100" resize="none"/>
               <br>
             </g:if>
             <label for="workUsed">Work Used:</label>
