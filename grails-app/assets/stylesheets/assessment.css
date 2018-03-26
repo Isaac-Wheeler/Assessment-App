@@ -51,6 +51,23 @@ h1{
 .button:active{
     box-shadow: 2px 2px 4px #000000;
 }
+.navButton {
+    background-color: #464646; /* Gray */
+    border: none;
+    color: white;
+    padding: 1% 2%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+}
+.navButton:active{
+    box-shadow: 2px 2px 4px #000000;
+	}
+.topNavBar {
+	background-color: #464646;
+	width: 100%;
+}
 
 input[type=text],input[type=file],input[type=password],textarea {
     width: 100%;

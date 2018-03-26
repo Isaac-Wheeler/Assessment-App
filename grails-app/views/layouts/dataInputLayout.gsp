@@ -9,6 +9,7 @@
             <g:layoutHead/>
 </head>
 <body>
+    <g:render template="/templates/topNavBar"/>
     <g:layoutBody/>
 </body>
 </html>
