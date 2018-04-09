@@ -36,6 +36,10 @@ class userController {
             if (u) {
                 // username and password match -> log in
                 session.teacher = u
+                u.lastLogin = new Date()
+                if(!u.save(flush:true)){
+                  //todo:add error thorwing
+                }
                 redirect(controller:'main')
             } else {
                 flash.error = "User/Password not found"

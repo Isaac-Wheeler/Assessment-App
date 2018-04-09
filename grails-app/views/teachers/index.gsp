@@ -23,6 +23,7 @@
                 				<p>Admin</p>
 						          </g:if>
 						          <p>Registered: ${u.dateCreated}</p>
+                      <p> Last login: ${u.lastLogin} </p>
                       <g:if test="${u.urlSignup == true}">
                        <p>Url Signup Link: </p>
                        <g:createLink controller="User" absolute="true" action="urlSignup" params="${[teacher:u.id]}"/>
