@@ -36,10 +36,6 @@ class AssessmentsController {
       else{
           AD = new Assessment_Documentation()
 
-          if(params.targetGoal != ""){
-            AD.targetGoal = Integer.parseInt(params.targetGoal)
-          }
-
           if (request.getFiles("myFile").get(0).isEmpty() == false) {   //code to handle all files uploaded and saving them/linking them to the current AD
           request.getFiles("myFile").each {
             def documentInstance = new Document();
@@ -148,9 +144,6 @@ class AssessmentsController {
 
       else{
           AD = Assessment_Documentation.get(params.ADID)
-
-          AD.targetGoal = Integer.parseInt(params.targetGoal)
-
 
           if (request.getFiles("myFile").get(0).isEmpty() == false) {   //code to handle all files uploaded and saving them/linking them to the current AD
           request.getFiles("myFile").each {

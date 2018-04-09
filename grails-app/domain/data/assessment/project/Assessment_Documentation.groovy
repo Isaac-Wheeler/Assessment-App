@@ -22,7 +22,7 @@ class Assessment_Documentation {
     static constraints = {
 
       comments blank:false
-      targetGoal blank:false
+      targetGoal blank:true
       needsImprovement blank:false
       meetsExpectations blank:false
       exceedsExpectations blank:false
