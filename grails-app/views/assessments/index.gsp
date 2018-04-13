@@ -43,7 +43,6 @@
             <br>
             <label for="targetGoal">Target Goal: ${assessment_documents?.targetGoal}%</label>
             <br>
-            <label for="targetGoal">Target Goal(in percent):</label>
             <label for="belowExpectation" class="labelEx" >Below Expectation:<a id="BE"></a></label>
             <label for="meetsExpectation" class="labelEx" style="margin-left:9%;">Meets Expectation:<a id="ME"></a></label>
             <label for="exceedsExpectation" class="labelEx" style="margin-left:8%;">Exceeds Expectation:<a id="EE"></a></label>
