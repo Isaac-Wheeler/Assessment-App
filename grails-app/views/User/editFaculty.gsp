@@ -20,11 +20,11 @@
           <div class="labels">
       			<label for="password">Password:</label>
       			<br>
-      			<g:passwordField name="password" class="${hasErrors(bean:user,field:'password','errors')}" />
+      			<g:passwordField name="password" class="${hasErrors(bean:user,field:'password','errors')}"  />
 				    <br>
       			<label for="confirm">Confirm Password:</label>
       			<br>
-      			<g:passwordField name="confirm" class="${hasErrors(bean:user,field:'password','errors')}" />
+      			<g:passwordField name="confirm" class="${hasErrors(bean:user,field:'password','errors')}"  />
 				    <br>
             <label for="firstName">First Name:</label>
       			<br>

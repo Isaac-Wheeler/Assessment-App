@@ -17,6 +17,7 @@ class Teacher {
   boolean admin;
   Document profilePic;
   boolean urlSignup;
+  Date lastLogin;
 
 
   static mapping = {
@@ -33,6 +34,7 @@ class Teacher {
       confirm blank:false
       lastName  blank:false
       profilePic nullable:true
+      lastLogin nullable:true
       username  blank:false, size:5..15, matches:/[\S]+/, unique:true
       password  blank:false, size:5..15, matches:/[\S]+/, validator:{ val, obj ->
           if (obj.password != obj.confirm)

@@ -36,6 +36,10 @@ class userController {
             if (u) {
                 // username and password match -> log in
                 session.teacher = u
+                u.lastLogin = new Date()
+                if(!u.save(flush:true)){
+                  //todo:add error thorwing
+                }
                 redirect(controller:'main')
             } else {
                 flash.error = "User/Password not found"
@@ -76,10 +80,12 @@ class userController {
             if(params.admin){
               u.admin = params.admin
             }
-            if(params.password == null){
-              u.password = params.password
-              u.confirm = params.confirm
-              u.passwordHashed = u.password.encodeAsPassword()
+            if(params.password){
+            u.password = params.password
+            u.confirm = params.confirm
+            u.passwordHashed = u.password.encodeAsPassword()
+            }
+            else {
             }
             if(params.urlSignup){
               u.urlSignup = params.urlSignup
@@ -108,11 +114,14 @@ class userController {
           def u = Teacher.get(params.id)
           u.lastName = params.lastName
           u.firstName = params.firstName
-          if(params.password == null){
+          if(params.password){
           u.password = params.password
           u.confirm = params.confirm
           u.passwordHashed = u.password.encodeAsPassword()
           }
+          else {
+          }
+
 
           // fetch the uploaded image for assigning profile picture to teacher account
 
@@ -125,6 +134,7 @@ class userController {
               documentInstance.filedata = file.getBytes()
               u.profilePic = documentInstance
             }
+
 
 
           if (! u.save(flush:true)) {
