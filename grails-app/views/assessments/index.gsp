@@ -41,8 +41,19 @@
               <br>
               <input type="file" name="myFile" multiple />
             <br>
-            <label for="targetGoal">Target Goal: ${assessment_documents?.targetGoal}%</label>
-            <br>
+            <g:if test="${measureID != null}">
+              <g:set var="indicator" value="${measure.indicator}" />
+              <g:set var="courses" value="${indicator.courses}" />
+              <g:each var="c" in="${courses}">
+                <label for="targetGoal">Target Goal for ${c.title}: ${c.targetGoal}%</label>
+                <br>
+              </g:each>
+            </g:if>
+            <g:else>
+              <label for="targetGoal">error with getting targetGoal</label>
+              <br>
+            </g:else>
+
             <label for="belowExpectation" class="labelEx" >Below Expectation:<a id="BE"></a></label>
             <label for="meetsExpectation" class="labelEx" style="margin-left:9%;">Meets Expectation:<a id="ME"></a></label>
             <label for="exceedsExpectation" class="labelEx" style="margin-left:8%;">Exceeds Expectation:<a id="EE"></a></label>
