@@ -79,6 +79,9 @@ class AssessmentsController {
           AD.setMeasure(measure)
         }
         if(!AD.save(flush:true)){
+          if(params.measureID != null){
+            return [assessment_documents:AD, measureID:params.measureID, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, measure:measure, show:true, Year:year]
+          }
           return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, measure:measure, show:true, Year:year]
         }
         redirect(controller:"Assessments")
@@ -185,6 +188,9 @@ class AssessmentsController {
           AD.setMeasure(measure)
         }
         if(!AD.save(flush:true)){
+          if(params.measureID != null){
+            return [assessment_documents:AD, measureID:params.measureID, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, measure:measure, show:true, Year:year]
+          }
           return [assessment_documents:AD, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, show:true, Year:year]
         }
         redirect(controller:"Assessments")
