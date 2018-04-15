@@ -182,7 +182,7 @@ input:checked + .slider:after
     background-color: #389244;
     border: none;
     color: white;
-    padding: 5%;
+    padding: 3%;
     padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
@@ -191,8 +191,8 @@ input:checked + .slider:after
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    width: 30%;
-    margin-left: 15%;
+    width: 22%;
+    margin-left: 2%;
     margin-top: 5%;
 }
 .button:active{

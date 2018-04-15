@@ -21,5 +21,6 @@ class UrlMappings {
         "/outcomes/create"(view:'/outcomes/create')
         "/assessments/editAssessment"(controller:"assessments", action:"editAssessment")
         "/assessments/index"(controller:"assessments", action:"index")
+        "/compare"(view:'/assessments/compare.gsp')
     }
 }
