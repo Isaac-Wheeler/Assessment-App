@@ -1,4 +1,4 @@
-<g:hasErrors bean="${assessment_documents}">
+<g:hasErrors bean="${assessment_documents}"><%--Main form for assessments made as a template for compare page with a few tweaks--%>
   <div class="errors">
       <g:renderErrors bean="${assessment_documents}"/>
   </div>
@@ -18,7 +18,7 @@
   <br>
   <label for="workUsed">Work Used:</label>
   <br>
-    <g:each in="${assessment_documents?.documents}" var="o">
+    <g:each in="${assessment_documents?.documents}" var="o"><%--For loop for displaying what files have been added to the AD--%>
       <g:link action="downloadFile" id="${o.id}">${o.filename}</g:link>
       <g:link action="deleteFile" id="${o.id}">Delete</g:link>
       <br>
@@ -39,10 +39,12 @@
     <br>
   </g:else>
 
-  <label for="belowExpectation" class="labelEx" >Below Expectation:<a id="BE"></a></label>
+  <label for="belowExpectation" class="labelEx" >Below Expectation:<a id="BE"></a></label> <%--Labels for below, meet, and exceeds expectation--%>
   <label for="meetsExpectation" class="labelEx" style="margin-left:9%;">Meets Expectation:<a id="ME"></a></label>
   <label for="exceedsExpectation" class="labelEx" style="margin-left:8%;">Exceeds Expectation:<a id="EE"></a></label>
   <br>
+  <%--Starts the set of minus,plus, and input of the EE,BE,ME inputs --%>
+  <%--Begining of Below Expectations--%>
   <input type="button" value="-" onclick="minusBelowExpectation();" style="margin-left:4%;"/>
   <g:if test="${assessment_documents?.needsImprovement != null}">
     <g:field type="number" id="belowExpectation" onchange="updateForm();"name="needsImprovement" value="${assessment_documents?.needsImprovement}" class="oneChar"/>
@@ -51,7 +53,8 @@
     <g:field type="number" id="belowExpectation" onchange="updateForm();"name="needsImprovement" value="0" class="oneChar"/>
   </g:else>
   <input type="button" onclick="addBelowExpectation();" value="+" />
-
+  <%--End of Below Expectations--%>
+  <%--Begining of Meets Expectations--%>
   <input type="button" value="-" onclick="minusMeetsExpectation();" style="margin-left:18%;">
   <g:if test="${assessment_documents?.meetsExpectations != null}">
     <g:field type="number" id="meetsExpectation" onchange="updateForm();"name="meetsExpectations" value="${assessment_documents?.meetsExpectations}" class="oneChar"/>
@@ -60,7 +63,8 @@
     <g:field type="number" id="meetsExpectation" onchange="updateForm();" name="meetsExpectations" value="0" class="oneChar"/>
   </g:else>
   <input type="button"  onclick="addMeetsExpectation();" value="+">
-
+  <%--End of Meets Expectations--%>
+  <%--Begining of Exceeds Expectations--%>
   <input type=button value="-" onclick="minusExceedsExpectation();" style="margin-left:18%;">
   <g:if test="${assessment_documents?.exceedsExpectations != null}">
     <g:field type="number" id="exceedsExpectation" onchange="updateForm();" name="exceedsExpectations" value="${assessment_documents?.exceedsExpectations}" class="oneChar"/>
@@ -70,6 +74,7 @@
   </g:else>
   <input type="button" onclick="addExceedsExpectation();" value="+">
   <br>
+  <%--End of Exceeds Expectations--%>
   <script>
   var valueBelow = parseInt(document.getElementById('belowExpectation').value, 10);
   var valueMeets = parseInt(document.getElementById('meetsExpectation').value, 10);
@@ -80,6 +85,7 @@
   document.getElementById("ME").innerHTML = Math.round((valueMeets/together)*100) + "%";
   document.getElementById("EE").innerHTML = Math.round((valueExceeds/together)*100) + "%";
   </script>
+  <%--EOF for BE,ME, and EE inputs--%>
   <label for="comment">Comment:</label>
   <br>
   <g:textArea id="comment" value="${assessment_documents?.comments}" name="comments" rows="10" cols="100" resize="none"/>

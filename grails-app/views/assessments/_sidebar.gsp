@@ -6,6 +6,8 @@
         <input type="checkbox" onclick="hideShowOutcomesClasses();" id="reveal-Classes"><span class="slider round" ></span></input>
     </label>            <!-- the slider switch bar at the top's right label-->
     <div class="fileFolders">
+      <%--Start of Outcomes organized folders--%>
+      <%--Display of the Outcomes--%>
       <div class="Outcomes" id="Outcomes">
         <g:each in="${Outcomes}" var="o">
           <g:if test="${o.indicators != NULL}">
@@ -15,10 +17,12 @@
                 <details>
                   <summary>Outcome ${o.outcomeCategory}:</summary>
                 <details>
+                <%--Display of Indicators----%>
                 <summary class="cat1">Indicator: ${it.indicatorName}</summary>
                   <g:if test="${it.measures != NULL}">
                     <g:each in="${it.measures}" var="m">
                       <details>
+                        <%--Display of Measures--%>
                         <summary class="cat2">Measure: ${m.measureTitle}</summary>
                           <g:if test="${m.assessment_documents != NULL}">
                             <g:each in="${m.assessment_documents}">
@@ -30,7 +34,7 @@
                             </g:each>
                           </g:if>
                           <g:else>
-                            <button class="newAssess"  name="submitButton" value="new_${m.id}">New  <div class="plus"> &oplus;</div></button>
+                            <button class="newAssess"  name="submitButton" value="new_${m.id}">New  <div class="plus"> &oplus;</div></button><%--Allows for deleting the AD--%>
                           </g:else>
                       </details>
                     </g:each>
@@ -42,6 +46,7 @@
           </details>
         </g:each>
       </div>
+      <%--Start of courses organized folders--%>
       <div class="Outcomes" id="Classes">
         <g:each in="${Courses}" var="c">
           <g:render template="/templates/showOwnedOnly" model="['item':c]">
@@ -51,10 +56,12 @@
                 <g:each in="${c.indicators}">
                   <details>
                     <g:if test="${it.academicYear == Year}">
+                      <%--Start of Indicators------%>
                       <summary class="cat1">Indicator: ${it.indicatorName}</summary>
                       <g:if test="${it.measures != NULL}">
                         <g:each in="${it.measures}" var="m">
                           <details>
+                          <%--Start of Measures--%>
                           <summary class="cat2">Measure: ${m.measureTitle}</summary>
                             <g:if test="${m.assessment_documents != NULL}">
                               <g:each in="${m.assessment_documents}">

@@ -15,7 +15,7 @@
         <g:if test="${session.teacher != null}">
           <g:render template="/templates/showOwnedOnly" model="['item':c]">
             <div class="listings">
-              <h1>${c.title}</h1>
+              <h1>${c.title}</h1> <%--Start of card displays--%>
               </br>
                 <div class="indicatorList">
                   <g:if test="${c.indicators != NULL}">
@@ -51,7 +51,7 @@
                       </g:if>
                     </g:each>
                   </g:if>
-                </div>
+                </div><%--End of card dispays--%>
                 </br>
               </div>
           </g:render>

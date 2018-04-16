@@ -8,7 +8,7 @@
     <body>
     		<div class="newTab">
           <p>Settings</p>
-        </div>
+        </div><%--Header Display--%>
         <div class="mainArea">
           <g:hasErrors bean="${c}">
             <div class="errors">
@@ -17,12 +17,12 @@
           </g:hasErrors>
           <g:form class="simpleform" url="index">
             <g:select id="academicYear"  name="academicYear" from="${yearList}"  value="${year}"/>
-            <button id="classButton" class="add">Set</button>
+            <button id="classButton" class="add">Set</button><%--Dispaly for setting the year for the system--%>
           </g:form>
-            Current Academic Year: ${year}
+            Current Academic Year: ${year} <%--Displaying the currently set year--%>
           </br>
           </br>
-            Past Years:
+            Past Years: <%--List of past years--%>
           </br>
               <g:each in="${Years}">
               <g:if test="${year != it.academicYear}">

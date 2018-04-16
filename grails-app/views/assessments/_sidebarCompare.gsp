@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar"><%--created for a side bar that wont add or delete--%>
     <!-- the slider switch bar at the top's left label-->
     <!-- the slider switch bar at the top-->
     <label class="switch">
