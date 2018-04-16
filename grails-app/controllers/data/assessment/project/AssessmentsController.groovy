@@ -238,7 +238,11 @@ class AssessmentsController {
         }
       }
     }else{
+<<<<<<< HEAD
         return [AD2:AD2, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, Year:sidebarYear, Years:years, selectLeft:false]
+=======
+        
+>>>>>>> c44880508877105a3bfcbe3e6d09fa060b820ad1
       }
   }
 
