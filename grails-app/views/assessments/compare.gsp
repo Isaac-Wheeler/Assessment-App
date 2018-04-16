@@ -46,11 +46,11 @@
             <g:render template="sidebarCompare"/>
           </g:if>
           <g:else>
-            <g:render template="mainFormCompare"/>
+            <g:render template="mainFormCompare" model="[assessment_documents:AD1, measureID:AD1.measure.id, show:true]"/>
           </g:else>
         </div>
         <div class="column">
-          <g:render template="mainFormCompare"/>
+            <g:render template="mainFormCompare" model="[assessment_documents:AD2, measureID:AD2.measure.id, show:true]"/>
         </div>
       </div>
     </body>
