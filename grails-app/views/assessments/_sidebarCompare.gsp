@@ -1,7 +1,6 @@
 <div class="sidebar">
     <!-- the slider switch bar at the top's left label-->
     <!-- the slider switch bar at the top-->
-    <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-top: 4%; margin-left: 3%"></g:link></i>
     <label class="switch">
         <input type="checkbox" onclick="hideShowOutcomesClasses();" id="reveal-Classes"><span class="slider round" ></span></input>
     </label>            <!-- the slider switch bar at the top's right label-->

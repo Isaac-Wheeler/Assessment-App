@@ -37,9 +37,10 @@
         }
       </style>
       <div class="row">
-        <div class="column">
+        <div class="column" >
           <g:form class="simpleform" url="index">
-            <g:select name="academicYear" from="${Settings}" value="${year}" style="width:20%;" optionKey="id" optionValue="academicYear" noSelection="['null':'All Year(s)']"/>
+            <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-top: 1%; margin-left: 1%; margin-right: 1%;"></g:link></i>
+            <g:select name="academicYear" from="${Settings}" value="${year}" style="width:35%;" optionKey="id" optionValue="academicYear" noSelection="['null':'All Year(s)']"/>
             <button id="Button" class="add">Switch Year</button>
           </g:form>
           <g:if test="${selectLeft == false}">

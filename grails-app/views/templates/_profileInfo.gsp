@@ -1,9 +1,9 @@
 <div class="profileInfo">
     <g:set var="teacheri" value="${session.teacher}" />
     <g:set var="profilePic" value="${teacheri.profilePic}" />
-<<<<<<< HEAD
-    <%--<p> ${profilePic.id} </p> --%>
-   <%--<g:if test="${profilePic == null}">
+<%--<<<<<<< HEAD
+    <p> ${profilePic.id} </p>
+   <g:if test="${profilePic == null}">
     <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
 =======
    <g:if test="${profilePic != null}">
@@ -16,5 +16,5 @@
     <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
   </g:else>
     <br>
-    <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
+    <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>--%>
 </div>
