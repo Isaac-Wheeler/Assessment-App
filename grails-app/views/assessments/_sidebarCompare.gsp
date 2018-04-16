@@ -22,7 +22,7 @@
                         <summary class="cat2">Measure: ${m.measureTitle}</summary>
                           <g:if test="${m.assessment_documents != NULL}">
                             <g:each in="${m.assessment_documents}">
-                              <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:'Choice_' + it.id]">
+                              <g:link controller="assessments" action="compare" params="[courseLink:true, submitButton:'Choice_' + it.id, AD2:AD2.id]">
                               <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.measure.find().measureTitle}</input></g:link>
                               <br>
                             </g:each>
@@ -56,7 +56,7 @@
                           <summary class="cat2">Measure: ${m.measureTitle}</summary>
                             <g:if test="${m.assessment_documents != NULL}">
                               <g:each in="${m.assessment_documents}">
-                                <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:'Choice_' + it.id]">
+                                <g:link controller="assessments" action="compare" params="[courseLink:true, submitButton:'Choice_' + it.id, AD2:AD2.id]">
                                 <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.measure.find().measureTitle}</input></g:link>
                                 <br>
                               </g:each>

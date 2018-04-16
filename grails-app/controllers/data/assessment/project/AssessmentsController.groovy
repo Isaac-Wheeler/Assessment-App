@@ -138,7 +138,10 @@ class AssessmentsController {
         redirect(controller:'main')
       }else{
 
-      if(!params.submitButton.contains("Cancel")){
+      if(params.submitButton.startsWith("Compare")){
+        redirect(controller:'Assessments', action:'compare', params:["AD2":params.ADID])
+      }else if(!params.submitButton.contains("Cancel")){
+
         if(params.submitButton.startsWith('edit_')){
           def ADId = params.submitButton-"edit_"
           AD = Assessment_Documentation.get(ADId)
@@ -214,7 +217,8 @@ class AssessmentsController {
     }
   }
 
-  def compare (){
+  def compare(){
+    def AD2 =  Assessment_Documentation.get(params.AD2)
     def courses = Courses.list()
     def years = Settings.list()
     def outcomes = Outcomes.findAllByAcademicYear(BootStrap.GetYear(session))
@@ -222,15 +226,19 @@ class AssessmentsController {
     def measures = Measures.findAllByAcademicYear(BootStrap.GetYear(session))
     def sidebarYear = BootStrap.GetYear(session)
 
-
     if (request.method == 'POST' || params.courseLink) {
       if(!BootStrap.isPerm(false, session)){
         redirect(controller:'main')
       }else{
-
+        if(params.submitButton.startsWith('Choice_')){
+          def ADId = params.submitButton-"Choice_"
+          def AD1 = Assessment_Documentation.get(ADId)
+          System.out.println(AD2)
+          return [AD1:AD1, AD2:AD2, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, show:true, Year:sidebarYear, Years:years, selectLeft:true]
+        }
       }
     }else{
-        return [Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, Year:sidebarYear, Years:]
+        return [AD2:AD2, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, Year:sidebarYear, Years:years, selectLeft:false]
       }
   }
 

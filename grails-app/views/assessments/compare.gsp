@@ -43,14 +43,14 @@
             <button id="Button" class="add">Switch Year</button>
           </g:form>
           <g:if test="${selectLeft == false}">
-            <g:render template="sidebarCompare"/>
+            <g:render template="sidebarCompare" model="[AD2:AD2]"/>
           </g:if>
           <g:else>
             <g:render template="mainFormCompare" model="[assessment_documents:AD1, measureID:AD1.measure.id, show:true]"/>
           </g:else>
         </div>
         <div class="column">
-            <g:render template="mainFormCompare" model="[assessment_documents:AD2, measureID:AD2.measure.id, show:true]"/>
+           <g:render template="mainFormCompare" model="[assessment_documents:AD2, measureID:AD2.measure.id, show:true]"/>
         </div>
       </div>
     </body>
