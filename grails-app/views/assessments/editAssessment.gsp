@@ -133,7 +133,7 @@
             </g:if>
             <g:submitButton class="button" name="submitButton" value="Submit" />
             <input type="button" class="button" onclick="clearForm();" value="Clear">
-            <input type="button" class="button" value="Compare">
+            <g:submitButton class="button" name="submitButton" value="Compare" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
           </div>
           <g:if test="${show}">
