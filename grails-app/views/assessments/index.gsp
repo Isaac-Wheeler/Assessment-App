@@ -122,7 +122,7 @@
             <g:hiddenField name="measureID" value="${measureID}"/>
             <g:submitButton class="button" name="submitButton" value="Submit" />
             <input type="button" class="button" value="Clear" onclick="clearForm();">
-            <input type="button" class="button" value="Compare" >
+            <g:submitButton class="button" name="submitButton" value="Compare" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
           </div>
           <g:if test="${show}">

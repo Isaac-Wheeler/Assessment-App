@@ -40,20 +40,14 @@
         <div class="column">
           <g:select name="academicYear1" from="${Settings}" value="${year}" style="width:20%;" optionKey="id" optionValue="academicYear"/>
           <g:if test="${selectLeft == false}">
-            <g:render template="sidebar"/>
+            <g:render template="sidebarCompare"/>
           </g:if>
           <g:else>
             <g:render template="mainForm" model="[assessment_documents:AD1, measureID:AD1.measure.id, show:true]"/>
           </g:else>
         </div>
         <div class="column">
-          <g:select name="academicYear2" from="${Settings}" value="${year}" style="width:20%;" optionKey="id" optionValue="academicYear"/>
-          <g:if test="${selectRight == false}">
-            <g:render template="sidebar"/>
-          </g:if>
-          <g:else>
             <g:render template="mainForm" model="[assessment_documents:AD2, measureID:AD2.measure.id, show:true]"/>
-          </g:else>
         </div>
       </div>
     </body>
