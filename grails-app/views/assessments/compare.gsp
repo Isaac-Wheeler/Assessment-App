@@ -38,7 +38,10 @@
       </style>
       <div class="row">
         <div class="column">
-          <g:select name="academicYear" from="${Settings}" value="${year}" style="width:20%;" optionKey="id" optionValue="academicYear"/>
+          <g:form class="simpleform" url="index">
+            <g:select name="academicYear" from="${Settings}" value="${year}" style="width:20%;" optionKey="id" optionValue="academicYear" noSelection="['null':'All Year(s)']"/>
+            <button id="Button" class="add">Switch Year</button>
+          </g:form>
           <g:if test="${selectLeft == false}">
             <g:render template="sidebarCompare"/>
           </g:if>
