@@ -230,7 +230,7 @@ class AssessmentsController {
 
       }
     }else{
-        return [Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, Year:sidebarYear, Years:]
+        
       }
   }
 

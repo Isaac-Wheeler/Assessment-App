@@ -6,7 +6,7 @@
         <asset:stylesheet src="adminProfile.css"/>
     </head>
     <body>
-        <div class="newTab">
+        <div class="newTab"> <%--Showing assigned courses on home page for users--%>
           <p>Assigned Courses
           </p>
         </div>

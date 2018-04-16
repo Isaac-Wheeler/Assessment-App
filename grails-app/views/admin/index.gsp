@@ -6,20 +6,20 @@
         <asset:stylesheet src="adminProfile.css"/>
     </head>
     <body>
-        <div class="newTab">
+        <div class="newTab"> <%-- This div is dedicated to the header on the right --%>
           <p>Assigned Courses
           </p>
         </div>
-        <div class="mainArea">
+        <div class="mainArea"><%-- Contains the "Main area" of the section on the right below the header --%>
         <g:each in="${Courses}" var="c">
         <g:if test="${session.teacher != null}">
-          <g:render template="/templates/showOwnedOnly" model="['item':c]">
+          <g:render template="/templates/lonelyAdmin" model="['item':c]"><%-- Shows the owners assigned courses if statement--%>
             <div class="listings">
               <h1>${c.title}</h1>
               </br>
                 <div class="indicatorList">
                   <g:if test="${c.indicators != NULL}">
-                    <g:each in="${c.indicators}" var="i">
+                    <g:each in="${c.indicators}" var="i"><%-- Start of the Cards for loop--%>
                       <g:if test="${i.academicYear == year}">
                         <h2>${i.indicatorName} - ${i.indicatorDescription}</h2>
                         <g:if test="${i.measures != NULL}">
@@ -46,7 +46,7 @@
                           </g:each>
                         </g:if>
                       </g:if>
-                    </g:each>
+                    </g:each><%-- End of the Cards for loop--%>
                   </g:if>
                 </div>
                 </br>
