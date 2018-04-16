@@ -214,4 +214,24 @@ class AssessmentsController {
     }
   }
 
+  def compare (){
+    def courses = Courses.list()
+    def years = Settings.list()
+    def outcomes = Outcomes.findAllByAcademicYear(BootStrap.GetYear(session))
+    def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
+    def measures = Measures.findAllByAcademicYear(BootStrap.GetYear(session))
+    def sidebarYear = BootStrap.GetYear(session)
+
+
+    if (request.method == 'POST' || params.courseLink) {
+      if(!BootStrap.isPerm(false, session)){
+        redirect(controller:'main')
+      }else{
+
+      }
+    }else{
+        return [Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, Year:sidebarYear, Years:]
+      }
+  }
+
 }
