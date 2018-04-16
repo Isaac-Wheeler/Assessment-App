@@ -133,6 +133,9 @@ class userController {
               documentInstance.filename = file.originalFilename
               documentInstance.filedata = file.getBytes()
               u.profilePic = documentInstance
+              if(! documentInstance.save(flush:true)){
+                System.out.println("error") //todo:fix 
+              }
             }
 
 
