@@ -36,6 +36,7 @@ class userController {
             if (u) {
                 // username and password match -> log in
                 session.teacher = u
+                session.profilePic = session.teacher.profilePic
                 u.lastLogin = new Date()
                 if(!u.save(flush:true)){
                   //todo:add error thorwing
@@ -134,7 +135,7 @@ class userController {
               documentInstance.filedata = file.getBytes()
               u.profilePic = documentInstance
               if(! documentInstance.save(flush:true)){
-                System.out.println("error") //todo:fix 
+                System.out.println("error") //todo:fix
               }
             }
 
