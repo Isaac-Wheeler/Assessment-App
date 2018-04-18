@@ -9,8 +9,8 @@
 	<div class="pageTitle">
     		<h1>Edit Indicator</h1>
       	<p>Complete the form below to edit an Indicator</p>
-    </div>
-    <g:form class="simpleform" url="editIndicator">
+    </div><%--Basic Header--%>
+    <g:form class="simpleform" url="editIndicator"><%--Basic Form below--%>
 
     		<div class="backgrounds">
             <div class="labels">
@@ -32,11 +32,11 @@
                   </div>
                 </g:hasErrors>
                 <g:hiddenField name="id" value="${indicator?.id}" />
-                <label for="courses">Choose The Class: hold the Ctrl(windows)/Command(Mac) button to select multiple courses.</label>
+                <label for="courses">Choose The Class: hold the Ctrl(windows)/Command(Mac) button to select multiple courses.</label> <%--Explains for selection of multiple cruydely done--%>
                 <br>
                 <g:select name="classId" from="${Courses}" id="courses" value="${indicator?.courses}" style="width:20%;" optionKey="id" optionValue="title" multiple="multiple" />
                 <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
-                <br>
+                <br><%--Action/submit buttons below--%>
                 <g:submitButton class="button" name="submitButton" value="Edit Indicator" />
                 <g:submitButton class="button" name="submitButton" value="Cancel" />
             </div>

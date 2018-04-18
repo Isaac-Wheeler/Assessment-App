@@ -9,11 +9,11 @@
 	<div class="pageTitle">
     		<h1>Edit Course</h1>
       	<p>Complete the form below to edit an Course</p>
-    </div>
+    </div> <%--The above div is the header--%>
     <g:form class="simpleform" url="editCourse">
 
     		<div class="backgrounds">
-            <div class="labels">
+            <div class="labels"><%--Simple form for inputing in the information--%>
                 <label for="courseName">Course Title:</label>
                 <br>
                 <g:textField type="text" id="title" name="title" value="${course?.title}" placeholder="Title"/>
@@ -31,13 +31,13 @@
                   <option value="70">Sophmore Course</option>
                   <option value="80">Junior Course</option>
                   <option value="90">Senior Course</option>
-                </datalist>
+                </datalist> <%--Planning on changing this above data list as its temporary untill put in database put option of changing in setting acessible by admin--%>
                 <g:hasErrors bean="${course}" field="targetGoal">
                   <div class="errors">
                       <g:renderErrors bean="${course}" field="targetGoal"/>
                   </div>
                 </g:hasErrors>
-                <label for="courseAction">Course Actions:</label>
+                <label for="courseAction">Course Actions:</label> <%--Actions for suggesting course has been changed to be set in here--%>
                 <br>
                 <g:hiddenField name="course" value="${course.id}" />
                 <g:textArea id="requiredAction" name="requiredAction" value="${course?.requiredAction}" rows="10" cols="50"/>

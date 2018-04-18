@@ -9,10 +9,10 @@
 	<div class="pageTitle">
     		<h1>Create Indicator</h1>
       	<p>Complete the form below to create an Indicator</p>
-    </div>
+    </div> <%--Basic Header above--%>
     <g:form class="simpleform" url="create">
     		<div class="backgrounds">
-            <div class="labels">
+            <div class="labels"> <%--BAsic Form--%>
                 <label for="indicatorTitle">Indicator Title:</label>
                 <br>
                 <g:textField type="text" id="indicatorName" name="indicatorName" value="${indicator?.indicatorName}" placeholder="Title"/>
@@ -36,11 +36,11 @@
                 <g:else>
                     <g:hiddenField name="outcomeId" value="${outcomeId}"/>
                 </g:else>
-                <label for="courses">Choose The Class: hold the Ctrl(windows)/Command(Mac) button to select multiple courses.</label>
+                <label for="courses">Choose The Class: hold the Ctrl(windows)/Command(Mac) button to select multiple courses.</label> <%--Explination for selecting many courses--%>
                 <br>
                 <g:select name="classId" from="${Courses}" id="courses" value="${indicator?.courses}" style="width:20%;" optionKey="id" optionValue="title" multiple="multiple" />
                 <p>Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.</p>
-                <br>
+                <br><%--Action/submit buttons below--%>
                 <g:submitButton class="button" name="submitButton" value="Create" />
                 <g:submitButton class="button" name="submitButton" value="Cancel" />
             </div>

@@ -19,15 +19,15 @@
     </head>
     <body>
       <g:render template="/templates/securityNotAdmin"/>
-      <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-left: 1%; margin-top: 1%;"></g:link></i>
+      <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-left: 1%; margin-top: 1%;"></g:link></i> <%--Home button--%>
       <br>
       <br>
       <g:form class="simpleform" url="index">
       <g:select name="academicYear" from="${Settings}" value="${year}" style="width:20%;" optionKey="id" optionValue="academicYear" noSelection="['null':'All Year(s)']"/>
-      <button id="Button" class="add">Switch Year</button>
+      <button id="Button" class="add">Switch Year</button> <%--Allows generating from any year--%>
       <br>
       <g:select name="coursesSelect" from="${Courses}" value="${title}" style="width:20%;" optionKey="title" optionValue="title" noSelection="['null':'All Course(s)']"/>
-      <button id="Button" class="add">Switch Course</button>
+      <button id="Button" class="add">Switch Course</button> <%--Allows generating for individual courses (all courses by default)--%>
       </g:form>
       <br>
         <g:if test="${SelectValue == 2 }">
