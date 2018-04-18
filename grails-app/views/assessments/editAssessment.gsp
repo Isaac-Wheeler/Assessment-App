@@ -19,7 +19,7 @@
     <body>
       <g:render template="/templates/securityNotAdmin"/>
       <g:uploadForm class="simpleform" url="editAssessment" >
-        <!-- right half of the page -->
+        <%-- right half of the page --%>
         <div class="main">
           <g:hasErrors bean="${assessment_documents}">
             <div class="errors">
@@ -28,7 +28,7 @@
           </g:hasErrors>
           <div class="info" id="info">
             <h1>Assessment Documentation</h1>
-            <label for="assessmentDocTitle">Assessment Documentation Title(from Measure):</label>
+            <label for="assessmentDocTitle">Assessment Documentation Title(from Measure):</label> <%-- header for right  half--%>
             <br>
             <g:if test="${measureID != null}">
               <g:field type="text" readonly="readonly" value="${assessment_documents.measure.measureTitle}" id="assessmentDocTitle" name="assessmentDocTitle" style="width:35%;" placeholder="Title" class="shortText"/>
@@ -125,18 +125,20 @@
             <g:checkBox style="display: inline-block;margin-left:0%;"id="completed" name="complete" value="${assessment_documents?.complete}"/>
             <br>
             <label for="requiredAction" id="actionLabel" class="actionsText">Required Actions:</label>
-            <g:textArea id="requiredAction" readonly="readonly" value="${assessment_documents?.requiredAction}" name="requiredAction" rows="10" cols="100" class="actionsText" />
+            <g:textArea id="requiredAction" readonly="readonly" value="${assessment_documents?.requiredAction}" name="requiredAction" rows="10" cols="100" class="actionsText" /> <%--Set in the class portion of the AD--%>
             <br>
             <g:hiddenField name="measureID" value="${measureID}"/>
             <g:if test="${assessment_documents != null}">
                 <g:hiddenField name="ADID" value="${assessment_documents.id}" />
             </g:if>
+            <%--The action/submit buttons--%>
             <g:submitButton class="button" name="submitButton" value="Submit" />
             <input type="button" class="button" onclick="clearForm();" value="Clear">
             <g:submitButton class="button" name="submitButton" value="Compare" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
           </div>
           <g:if test="${show}">
+          <%--small var set to allow the showing of the "info" or right half of the page--%>
           <script type="text/javascript" >
             if(${show}){
               document.getElementById("info").style.visibility = "visible";
@@ -144,6 +146,7 @@
           </script>
         </g:if>
         </div>
+        <%--end of right half of page--%>
         <g:render template="sidebar"/>
       </g:uploadForm>
     </body>

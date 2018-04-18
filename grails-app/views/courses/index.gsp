@@ -11,7 +11,7 @@
                   <g:link controller="courses" action="createCourse" params="[isadmin:true]">
                     <button class="add">New<div class="plus"> &oplus;</div></button>
                 </g:link></p>
-            </div>
+            </div> <%--Above div is the header on the right half--%>
             <div class="mainArea">
               <g:hasErrors bean="${c}">
            			<div class="errors">
@@ -19,7 +19,7 @@
            			</div>
               </g:hasErrors>
             		<g:each in="${Courses}" var="i">
-            			<div class="listings" >
+            			<div class="listings" > <%--Listing of courses in this div--%>
                 			<h1>${i.title}</h1>
                       <g:if test="${i.teachers != NULL}">
                           <div class="teach" style="margin-left: 40%;width: 20%; text-align: left;">
@@ -37,22 +37,22 @@
                         <datalist id="Teacher">
                           <g:each in="${Teacher}" var="t">
                             <option value="${t.username}">${t.toString()}</option>
-                          </g:each>
+                          </g:each> <%--Displays teachers in a searchable dropdwn list--%>
                         </datalist>
                         <%--<g:select name="teacherId" size="1" from="${Teacher}" id="teacherList" value="${Tid}" style="width:20%;" optionKey="id"/> --%>
                         <g:hiddenField name="type" value="assign" />
                         <g:hiddenField name="class" value="${i.id}" />
-							          <button id="assign" class="add">Assign</button>
+							          <button id="assign" class="add">Assign</button> <%--Assigns the teachers--%>
                       </g:form>
-                      <br>
+                      <br> <%--displays info on the course--%>
                       <p>Target Goal:${i.targetGoal}</p>
                       <p>Required Action:</p>
                       ${i.requiredAction}
                       <br>
                       <g:link controller="courses" action="editCourse" params="[course:i.id, isadmin:true]">
-                       <button class="add">Edit</button></g:link>
+                       <button class="add">Edit</button></g:link> <%--allows editing of course--%>
 						          <g:link controller="courses" action="delete" params="[courses:i.id]" onclick="return confirm('Are you sure you want to delete this course? course: $i.title')">
-							               <button class="add">Delete</button>
+							               <button class="add">Delete</button> <%--unassigns the teachers assigned--%>
 						          </g:link>
         				  </div>
         				<br/>

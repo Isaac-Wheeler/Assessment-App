@@ -19,7 +19,7 @@
     <body>
       <g:render template="/templates/securityNotAdmin"/>
       <g:uploadForm class="simpleform" url="index" >
-        <!-- right half of the page -->
+        <%-- right half of the page --%>
         <div class="main">
           <div class="info" id="info">
             <h1>Assessment Documentation</h1>
@@ -39,7 +39,7 @@
                 <g:link action="downloadFile" id="${o.id}">${o.filename}</g:link>
               </g:each>
               <br>
-              <input type="file" name="myFile" multiple />
+              <input type="file" name="myFile" multiple /> <%--allows for multiple file inputs--%>
             <br>
             <g:if test="${measureID != null}">
               <g:set var="indicator" value="${measure.indicator}" />
@@ -84,6 +84,7 @@
               <g:field type="text" id="exceedsExpectation" onchange="updateForm();" name="exceedsExpectations" value="0" class="oneChar"/>
             </g:else>
             <input type="button" onclick="addExceedsExpectation();" value="+">
+            <%-- Calculates values when they are changed next to the labels--%>
             <script>
             var valueBelow = parseInt(document.getElementById('belowExpectation').value, 10);
             var valueMeets = parseInt(document.getElementById('meetsExpectation').value, 10);
@@ -120,12 +121,13 @@
             <g:textArea id="requiredAction" readonly="readonly" value="${assessment_documents?.requiredAction}" name="requiredAction" rows="10" cols="100" class="actionsText" />
             <br>
             <g:hiddenField name="measureID" value="${measureID}"/>
+            <%-- The Submit/ Action Buttons--%>
             <g:submitButton class="button" name="submitButton" value="Submit" />
             <input type="button" class="button" value="Clear" onclick="clearForm();">
             <g:submitButton class="button" name="submitButton" value="Compare" />
             <g:submitButton class="button" name="submitButton" value="Cancel" />
           </div>
-          <g:if test="${show}">
+          <g:if test="${show}"> <%--allows to see the right half of the page when deciding to create a new AD--%>
           <script type="text/javascript" >
            console.log("ran");
             if(${show}){
@@ -135,6 +137,7 @@
           </script>
         </g:if>
         </div>
+        <%--Left Half of the page--%>
         <g:render template="sidebar"/>
       </g:uploadForm>
     </body>

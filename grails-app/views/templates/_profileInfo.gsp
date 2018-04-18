@@ -17,4 +17,7 @@
   </g:else>
     <br>
     <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>--%>
+    <g:img class="img-circle" dir="images" file="blankPerson.jpg"/>
+    <br>
+    <p>${session?.teacher?.firstName} ${session?.teacher?.lastName}<p>
 </div>

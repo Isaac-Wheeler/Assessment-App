@@ -23,7 +23,7 @@
                             <g:each in="${m.assessment_documents}">
                               <g:link controller="assessments" action="compare" params="[courseLink:true, submitButton:'Choice_' + it.id, AD2:AD2.id]">
                               <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.measure.find().measureTitle}</input></g:link>
-                              <br>
+                              <br><%--Main difference from "_sidebar" is the absence of creating and deleting old AD's --%>
                             </g:each>
                           </g:if>
                           <g:else>
@@ -57,7 +57,7 @@
                               <g:each in="${m.assessment_documents}">
                                 <g:link controller="assessments" action="compare" params="[courseLink:true, submitButton:'Choice_' + it.id, AD2:AD2.id]">
                                 <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.measure.find().measureTitle}</input></g:link>
-                                <br>
+                                <br><%--Main difference from "_sidebar" is the absence of creating and deleting old AD's --%>
                               </g:each>
                             </g:if>
                           </details>

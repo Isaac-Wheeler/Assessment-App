@@ -14,7 +14,7 @@
     <asset:javascript src="editAssessment.js"/>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
+  </head><%--Basic head including most style sheets--%>
   <body>
     <style>
       * {
@@ -39,19 +39,19 @@
       <div class="row">
         <div class="column" >
           <g:form class="simpleform" url="index">
-            <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-top: 1%; margin-left: 1%; margin-right: 1%;"></g:link></i>
-            <g:select name="academicYear" from="${Settings}" value="${year}" style="width:35%;" optionKey="id" optionValue="academicYear" noSelection="['null':'All Year(s)']"/>
-            <button id="Button" class="add">Switch Year</button>
+            <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-top: 1%; margin-left: 1%; margin-right: 1%;"></g:link></i> <%--home button to get back to main home--%>
+            <g:select name="academicYear" from="${Settings}" value="${year}" style="width:35%;" optionKey="id" optionValue="academicYear" noSelection="['null':'All Year(s)']"/><%--selects year for which of the AD's you want to compare to--%>
+            <button id="Button" class="add">Switch Year</button><%--Button to set compare year to--%>
           </g:form>
-          <g:if test="${selectLeft == false}">
+          <g:if test="${selectLeft == false}"> <%--determines if the user has selected the AD he wants to compare to--%>
             <g:render template="sidebarCompare" model="[AD2:AD2]"/>
           </g:if>
           <g:else>
             <g:render template="mainFormCompare" model="[assessment_documents:AD1, measureID:AD1.measure.id, show:true]"/>
-          </g:else>
+          </g:else> <%--When selected gives un editable form to display the information--%>
         </div>
         <div class="column">
-           <g:render template="mainFormCompare" model="[assessment_documents:AD2, measureID:AD2.measure.id, show:true]"/>
+           <g:render template="mainFormCompare" model="[assessment_documents:AD2, measureID:AD2.measure.id, show:true]"/> <%--this is the right half of the page that displays the current year form--%>
         </div>
       </div>
     </body>
