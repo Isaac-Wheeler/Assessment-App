@@ -42,8 +42,8 @@
             clear: both;
         }
       </style>
-      <div class="row">
-        <div class="column" >
+      <div class="rand">
+        <div class="sides" >
           <g:form class="simpleform" url="compare">
             <i class="w3-xlarge"> <g:link controller="main" class="fa fa-home"  style="float: left; margin-top: 1%; margin-left: 1%; margin-right: 1%;"></g:link></i> <%--home button to get back to main home--%>
             <g:select name="academicYear" from="${Years}" value="${year}" style="width:35%;" optionKey="id" optionValue="academicYear" noSelection="['null':'All Year(s)']"/><%--selects year for which of the AD's you want to compare to--%>
