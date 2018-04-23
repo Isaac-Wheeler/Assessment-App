@@ -6,9 +6,15 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.oreilly.servlet.MultipartRequest;
 
+
+/*
+* controller that handles all items to due with user/teacher methods
+*/
 class userController {
 
-
+    /*
+    * handles creating a new teacher item in the database (admin only)
+    */
     def register = {
         // new user posts his registration details
         if (request.method == 'POST') {
@@ -29,6 +35,9 @@ class userController {
       }
     }
 
+    /*
+    * handles teacher login
+    */
     def login = {
         if (request.method == 'POST') {
             def passwordHashed = params.password.encodeAsPassword()
@@ -52,13 +61,19 @@ class userController {
         }
     }
 
+    /*
+    * handles logout of teachers
+    */
     def logout = {
         session.invalidate()
         redirect(controller:'main')
     }
 
+    /*
+    * handles deleting of a teacher/user
+    */
     def delete = {
-      if(!BootStrap.isPerm(true, session)){
+      if(!BootStrap.isPerm(true, session)){ //checks if callie has perms to delete
         redirect(controller:'main')
       }else{
         def u = Teacher.get(params.teacher)
@@ -67,6 +82,9 @@ class userController {
       }
     }
 
+    /*
+    * handles editing of a teacher admin only.
+    */
     def edit ={
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
@@ -105,6 +123,9 @@ class userController {
       }
     }
 
+    /*
+    * handles editing of there own teacher user info
+    */
     def editFaculty ={
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
@@ -155,6 +176,11 @@ class userController {
         redirect(view:'edit')
       }
     }
+
+    /*
+    *allows for the teacher to use a url to edit there teacher info enabled at
+    * admin's discresion code is highly similer to edit except missing session id requirement
+    */
 
     def urlSignup = {
       //localhost:8080/DAA/user/urlSignup?teacher=1
