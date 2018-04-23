@@ -168,7 +168,7 @@ class userController {
     /*
     * private method to handle modifying teacher id's
     */
-   def modifyTeacher(){ //private method (groovy does not support Private)
+   def modifyTeacher = { //private method (groovy does not support Private)
      def u = Teacher.get(params.id)
      u.lastName = params.lastName
      u.firstName = params.firstName
