@@ -239,7 +239,6 @@ class AssessmentsController {
       }
     }else{
         return [AD2:AD2, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, Year:sidebarYear, Years:years, selectLeft:false]
-
       }
   }
 

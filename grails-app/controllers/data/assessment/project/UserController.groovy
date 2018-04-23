@@ -6,9 +6,15 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.oreilly.servlet.MultipartRequest;
 
+
+/*
+* controller that handles all items to due with user/teacher methods
+*/
 class userController {
 
-
+    /*
+    * handles creating a new teacher item in the database (admin only)
+    */
     def register = {
         // new user posts his registration details
         if (request.method == 'POST') {
@@ -29,6 +35,9 @@ class userController {
       }
     }
 
+    /*
+    * handles teacher login
+    */
     def login = {
         if (request.method == 'POST') {
             def passwordHashed = params.password.encodeAsPassword()
@@ -52,13 +61,19 @@ class userController {
         }
     }
 
+    /*
+    * handles logout of teachers
+    */
     def logout = {
         session.invalidate()
         redirect(controller:'main')
     }
 
+    /*
+    * handles deleting of a teacher/user
+    */
     def delete = {
-      if(!BootStrap.isPerm(true, session)){
+      if(!BootStrap.isPerm(true, session)){ //checks if callie has perms to delete
         redirect(controller:'main')
       }else{
         def u = Teacher.get(params.teacher)
@@ -67,6 +82,9 @@ class userController {
       }
     }
 
+    /*
+    * handles editing of a teacher admin only.
+    */
     def edit ={
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
@@ -105,47 +123,17 @@ class userController {
       }
     }
 
+    /*
+    * handles editing of there own teacher user info
+    */
     def editFaculty ={
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
           if(!BootStrap.isPerm(false, session)){
             redirect(controller:'main')
           }else{
-          // create domain object and assign parameters using data binding
-          def u = Teacher.get(params.id)
-          u.lastName = params.lastName
-          u.firstName = params.firstName
-          if(params.password){
-          u.password = params.password
-          u.confirm = params.confirm
-          u.passwordHashed = u.password.encodeAsPassword()
-          }
-          else {
-          }
-
-
-          // fetch the uploaded image for assigning profile picture to teacher account
-
-            def file = request.getFile('profilePic')
-            if (file.isEmpty()) {
-            }
-            else {
-              def documentInstance = new Document();
-              documentInstance.filename = file.originalFilename
-              documentInstance.filedata = file.getBytes()
-              u.profilePic = documentInstance
-              if(! documentInstance.save(flush:true)){
-                System.out.println("error") //todo:fix
-              }
-            }
-
-
-
-          if (! u.save(flush:true)) {
-              // validation failed, render registration page again
-              return [teacher:u, id:u.id]
-          }
-
+          // get domain object
+          modifyTeacher(params)
         }
       }
         redirect(controller:'main')
@@ -156,38 +144,15 @@ class userController {
       }
     }
 
+    /*
+    *allows for the teacher to use a url to edit there teacher info enabled at
+    * admin's discresion code is highly similer to edit except missing session id requirement
+    */
     def urlSignup = {
       //localhost:8080/DAA/user/urlSignup?teacher=1
       if (request.method == 'POST') {
         if(!params.submitButton.contains("Cancel")){
-          // create domain object and assign parameters using data binding
-          def u = Teacher.get(params.id)
-          u.lastName = params.lastName
-          u.firstName = params.firstName
-          if(params.password == null){
-          u.password = params.password
-          u.confirm = params.confirm
-          u.passwordHashed = u.password.encodeAsPassword()
-          }
-
-          // fetch the uploaded image for assigning profile picture to teacher account
-
-            def file = request.getFile('profilePic')
-            if (file.isEmpty()) {
-            }
-            else {
-              def documentInstance = new Document();
-              documentInstance.filename = file.originalFilename
-              documentInstance.filedata = file.getBytes()
-              u.profilePic = documentInstance
-            }
-
-            u.urlSignup = false;
-          if (! u.save(flush:true)) {
-              // validation failed, render registration page again
-              return [teacher:u, id:u.id]
-          }
-
+          modifyTeacher(params)
         }
         redirect(controller:'main')
       }else{
@@ -198,5 +163,38 @@ class userController {
         return [teacher:u, id:u.id]
         redirect(view:'edit')
       }
+    }
+
+    /*
+    * private method to handle modifying teacher id's
+    */
+   def modifyTeacher(){ //private method (groovy does not support Private)
+     def u = Teacher.get(params.id)
+     u.lastName = params.lastName
+     u.firstName = params.firstName
+     if(params.password == null){
+     u.password = params.password
+     u.confirm = params.confirm
+     u.passwordHashed = u.password.encodeAsPassword()
+     }
+
+     // fetch the uploaded image for assigning profile picture to teacher account
+
+       def file = request.getFile('profilePic')
+       if (file.isEmpty()) {
+       }
+       else {
+         def documentInstance = new Document();
+         documentInstance.filename = file.originalFilename
+         documentInstance.filedata = file.getBytes()
+         u.profilePic = documentInstance
+       }
+
+       u.urlSignup = false;
+     if (! u.save(flush:true)) {
+         // validation failed, render registration page again
+         return [teacher:u, id:u.id]
+     }
+
     }
 }
