@@ -99,7 +99,7 @@ class userController {
             if(params.admin){
               u.admin = params.admin
             }
-            if(params.password){
+            if(params.password){ //if a password was entered then make it the new password for the account.
             u.password = params.password
             u.confirm = params.confirm
             u.passwordHashed = u.password.encodeAsPassword()
@@ -136,7 +136,7 @@ class userController {
           def u = Teacher.get(params.id)
           u.lastName = params.lastName
           u.firstName = params.firstName
-          if(params.password){
+          if(params.password){    //if a password was entered then make it the new password for the account.
           u.password = params.password
           u.confirm = params.confirm
           u.passwordHashed = u.password.encodeAsPassword()
@@ -145,9 +145,7 @@ class userController {
           }
 
 
-          // fetch the uploaded image for assigning profile picture to teacher account
-
-            def file = request.getFile('profilePic')
+            def file = request.getFile('profilePic')              // fetch the uploaded image for assigning profile picture to teacher account
             if (file.isEmpty()) {
             }
             else {
