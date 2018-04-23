@@ -3,7 +3,7 @@
       <g:renderErrors bean="${assessment_documents}"/>
   </div>
 </g:hasErrors>
-<div class="info" id="info">
+<div class="info" id="inf">
   <h1>Assessment Documentation</h1>
   <label for="assessmentDocTitle">Assessment Documentation Title(from Measure):</label>
   <br>
@@ -121,7 +121,7 @@
 <g:if test="${show}">
   <script type="text/javascript" >
     if(${show}){
-      document.getElementById("info").style.visibility = "visible";
+      document.getElementById("inf").style.visibility = "visible";
     }
   </script>
 </g:if>
