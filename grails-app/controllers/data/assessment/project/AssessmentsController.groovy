@@ -218,13 +218,10 @@ class AssessmentsController {
   }
 
   def compare(){
+
     def AD2 =  Assessment_Documentation.get(params.AD2)
     def courses = Courses.list()
     def years = Settings.list()
-    def outcomes = Outcomes.findAllByAcademicYear(BootStrap.GetYear(session))
-    def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
-    def measures = Measures.findAllByAcademicYear(BootStrap.GetYear(session))
-    def sidebarYear = BootStrap.GetYear(session)
 
     if (request.method == 'POST' || params.courseLink) {
       if(!BootStrap.isPerm(false, session)){
@@ -233,11 +230,22 @@ class AssessmentsController {
         if(params.submitButton.startsWith('Choice_')){
           def ADId = params.submitButton-"Choice_"
           def AD1 = Assessment_Documentation.get(ADId)
-          System.out.println(AD2)
           return [AD1:AD1, AD2:AD2, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, show:true, Year:sidebarYear, Years:years, selectLeft:true]
+        }
+        if(params.submitButton.startsWith('yearSet')){
+          def academicYear = params.academicYear
+          def outcomes = Outcomes.findAllByAcademicYear(academicYear)
+          def indicators = Indicators.findAllByAcademicYear(academicYear)
+          def measures = Measures.findAllByAcademicYear(academicYear)
+          def sidebarYear = academicYear
+          return [AD2:AD2, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, Year:sidebarYear, Years:years, selectLeft:false]
         }
       }
     }else{
+        def outcomes = Outcomes.findAllByAcademicYear(BootStrap.GetYear(session))
+        def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
+        def measures = Measures.findAllByAcademicYear(BootStrap.GetYear(session))
+        def sidebarYear = BootStrap.GetYear(session)
         return [AD2:AD2, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, Year:sidebarYear, Years:years, selectLeft:false]
       }
   }
