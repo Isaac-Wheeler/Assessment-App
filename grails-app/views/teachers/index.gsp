@@ -17,7 +17,6 @@
             		<g:each in="${Teacher}" var="u">
             			<div class="listings"><%--display cards of each teacher with his/her info--%>
                 			<h1>${u.lastName}, ${u.firstName}</h1>
-                			<g:img class="img-teach" dir="images" file="blankPerson.jpg"/>
                 			<p>Username: ${u.username}</p>
                 			<g:if test="${true == u.admin}">
                 				<p>Admin</p>

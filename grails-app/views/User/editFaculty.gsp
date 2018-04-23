@@ -34,10 +34,6 @@
       			<br>
       			<g:textField name="lastName" value="${teacher?.lastName}" class="${hasErrors(bean:user,field:'lastName','errors')}" />
 				    <br>
-      			<label for="profilePic">Profile Picture:</label>
-      			<br>
-      			<input type="file" name="profilePic" />
-				    <br>
           	<g:hiddenField name="id" value="${id}" />
       			<g:submitButton class="button" name="submitButton" value="Edit Account" />
       			<g:submitButton class="button" name="submitButton" value="Cancel" />
