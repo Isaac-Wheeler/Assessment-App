@@ -1,16 +1,27 @@
 package data.assessment.project
 
+/*
+* handles all items related to Measures
+*/
 class MeasuresController {
 
-
+    /*
+    * needed for the view Measures Admin
+    */
     def viewMeasuresAdmin() {
       return index()
     }
 
+    /*
+    * needed for the view Measures User
+    */
     def viewMeasuresUser() {
       return index()
     }
 
+    /*
+    * gets measures for displaying useing indicators
+    */
     def index(){
       def measures
       def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
@@ -27,6 +38,9 @@ class MeasuresController {
       return [Measures:measures]
     }
 
+    /*
+    * allows deleting of Measures
+    */
     def delete(){
       if(!BootStrap.isPerm(false, session)){
         redirect(controller:'main')
@@ -41,6 +55,9 @@ class MeasuresController {
     }
     }
 
+    /*
+    * allows the creation of Measures
+    */
     def create(){
       def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
       if (request.method == 'POST') {
@@ -87,6 +104,9 @@ class MeasuresController {
       return [Indicators:indicators, isadmin:params.isadmin, indicatorDisc:disc]
     }
 
+    /*
+    * allows the editing of measures
+    */
     def edit(){
       def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
       if (request.method == 'POST') {

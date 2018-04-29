@@ -1,23 +1,38 @@
 package data.assessment.project
 
+/*
+* handles all items related to outcomes
+*/
 class OutcomesController {
 
+  /*
+  *sends outcomes and indicators to the index view for outcomes
+  */
   def index() {
     def outcomes = Outcomes.findAllByAcademicYear(BootStrap.GetYear(session))
     def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
     [Outcomes:outcomes, Indicators:indicators]
   }
+
+  /*
+  * sends outcomes and indicators to the view for the outcomes on the user side
+  */
   def viewOutcomesUser() {
     def outcomes = Outcomes.findAllByAcademicYear(BootStrap.GetYear(session))
     def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
     [Outcomes:outcomes, Indicators:indicators]
   }
+
+  /*
+  *creates a outcome
+  */
   def createOutcome() {
     if (request.method == 'POST') {
       if(!BootStrap.isPerm(true, session)){
         redirect(controller:'main')
       }else{
       if(!params.submitButton.contains("Cancel")){
+        //one of the ways of passing values into a new for creating
         def o = new Outcomes(outcomeCategory: params.outcomeCategory, outcomeCategoryDescription: params.outcomeCategoryDescription, academicYear:Settings.first().academicYear)
           if(!o.save(flush: true)){
             o.errors.allErrors.each { println it }
@@ -30,6 +45,9 @@ class OutcomesController {
   }
   }
 
+  /*
+  * edits a outcome so user can change whats said
+  */
   def editOutcome() {
     if (request.method == 'POST') {
       if(!BootStrap.isPerm(true, session)){
@@ -53,6 +71,9 @@ class OutcomesController {
     }
   }
 
+  /*
+  * allows deleting of outcomes
+  */
   def deleteOutcome() {
     if(!BootStrap.isPerm(true, session)){
       redirect(controller:'main')

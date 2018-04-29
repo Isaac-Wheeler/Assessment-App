@@ -1,13 +1,22 @@
 package data.assessment.project
 
+/*
+*Settings controller for handling changeing of years
+*/
 class SettingsController {
 
+    /*
+    * handles all actions for the index view of settings
+    */
     def index() {
-
+      //gets the current year
       def curYear = Calendar.getInstance().get(Calendar.YEAR)
+      //gets a dynamic list of years based on the current year
       def yearList = yearsList()
+      //gets the list of years saved in the database
       def years = Settings.list()
 
+        //checks if persion running has permisison to run
         if (request.method == 'POST') {
           if(!BootStrap.isPerm(true, session)){
             redirect(controller:'main')
@@ -50,7 +59,11 @@ class SettingsController {
           [year:Settings.first().academicYear, Years:years, yearList:yearList]
      }
 
+     /*
+     * copies the data from one year to a new one
+     */
      def yearChangeLoop(def oldSettings, def newYear){
+       //defining all items so they only have to exist once
        def outcomes = Outcomes.findAllByAcademicYear(oldSettings.academicYear)
        def indicators
        def measures
@@ -59,11 +72,13 @@ class SettingsController {
        def mNew
        def course
 
+       //looping thru each outcome and copying
        outcomes.each{o  ->
          oNew = new Outcomes(outcomeCategory: o.outcomeCategory, outcomeCategoryDescription: o.outcomeCategoryDescription, academicYear: newYear.academicYear)
            oNew.save(flush:true)
            indicators = outcomes.indicators
            if(indicators != null){
+             //looping thru each indicator and copying
              indicators.each{ i ->
                iNew = new Indicators()
                if(i.indicatorName.size() > 0 && i.indicatorDescription.size() > 0){
@@ -72,6 +87,7 @@ class SettingsController {
                }
                iNew.academicYear = newYear.academicYear
                measures = i.measures
+               //looping thru each measure and copying
                measures.each { m ->
                  mNew = new Measures()
                  if(m.measureTitle.size() > 0 && m.measureDescription.size() > 0){
