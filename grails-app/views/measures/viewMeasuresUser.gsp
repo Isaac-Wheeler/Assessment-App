@@ -10,14 +10,14 @@
                 <p>Measures
                   <g:link controller="measures" action="create" params="[isadmin:false]">
                     <button class="add">New<div class="plus"> &oplus;</div></button>
-                </g:link>
+                </g:link><%-- Header with new button --%>
                 </p>
       </div>
       <div class="mainArea">
         <g:each in="${Measures}" var="m" status="i">
           <g:each in="${Measures.indicator.find().courses.find()}" var="c">
             <g:render template="/templates/showOwnedOnly" model="['item':c]">
-                <div class="listings">
+                <div class="listings"><%-- Measure Cards --%>
                 			<h1>${m.measureTitle}</h1>
                       <p>Desc: ${m.measureDescription}</p>
                       <p>Indicator: ${m.indicator.find().toString()} </p>

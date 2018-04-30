@@ -10,19 +10,19 @@
                 <p>Outcomes
                   <g:link controller="Outcomes" action="createOutcome">
                     <button class="add">New<div class="plus"> &oplus;</div></button>
-                </g:link>
+                </g:link><%--Outcomes header with new button--%>
                 </p>
             </div>
             <div class="mainArea">
             		<g:each in="${Outcomes}" var="o">
-            			<div class="listings" style="font-size: 1.2em;">
+            			<div class="listings" style="font-size: 1.2em;"><%-- Start of Cards  --%>
                 			<h1>${o.outcomeCategory}</h1>
                 			<div class="outcomeDesc">Description: ${o.outcomeCategoryDescription}</div>
                       </br>
                 			<div class="indicatorList">
                         <g:if test="${o.indicators != NULL}">
                           <g:each in="${o.indicators}">
-                            &nbsp;Indicator: ${it.indicatorName} - ${it.indicatorDescription}
+                            &nbsp;Indicator: ${it.indicatorName} - ${it.indicatorDescription}<%-- Indicator section of card  --%>
                             <br>
                             <g:link controller="Indicators" action="editIndicator" params="[indicator:it.id]">
                               <button class="add" style="background-color: lightgray; padding: 1%; width: 17%;">Edit Indicator</button></g:link>
@@ -32,7 +32,7 @@
                           </g:each>
                         </g:if>
                 			</div>
-                      </br>
+                    </br><%-- Outcome section of Cards  --%>
                       <g:link controller="Outcomes" action="editOutcome" params="[outcome:o.id]">
 							               <button class="add">Edit Outcome</button></g:link>
 						          <g:link controller="Outcomes" action="deleteOutcome" params="[outcome:o.id]" onclick="return confirm('Are you sure you want to delete this outcome? outcome: $o.outcomeCategory')">
