@@ -1,5 +1,5 @@
 <g:if test="${session.teacher.admin}">
-  <div class="topNavBar">
+  <div class="topNavBar"><%--Top navigation bar for non navigation pages for admins--%>
     <g:link controller="admin">
       <button class="navButton">Home</button>
     </g:link>
@@ -29,7 +29,7 @@
     </g:link>
   </div>
 </g:if>
-<g:else>
+<g:else><%--Top navigation bar for non navigation pages for nonadmins--%>
   <div class="topNavBar">
     <g:link controller="admin">
       <button class="navButton">Home</button>

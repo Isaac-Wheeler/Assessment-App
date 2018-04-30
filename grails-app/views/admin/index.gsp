@@ -11,6 +11,11 @@
           </p>
         </div>
         <div class="mainArea"><%-- Contains the "Main area" of the section on the right below the header --%>
+        <div class="listings"><%--Admin completion level card--%>
+          <%--<g:each in="${}">
+          ${TEACHERNAME} Completed: ${COMPLETED ASSESSMENTS}/${TOTAL ASSESSMENTS}
+        </g:each>--%>
+        </div>
         <g:each in="${Courses}" var="c">
         <g:if test="${session.teacher != null}">
           <g:render template="/templates/lonelyAdmin" model="['item':c]"><%-- Shows the owners assigned courses if statement--%>
