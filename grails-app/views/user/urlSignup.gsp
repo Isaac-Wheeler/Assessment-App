@@ -8,14 +8,14 @@
 	<div class="pageTitle">
     		<h1>Url Signup</h1>
       	<p>Complete the form below to create account</p>
-    </div>
+    </div><%--Header--%>
     <g:uploadForm class="simpleform" url="urlSignup">
    			 <g:hasErrors bean="${teacher}">
       			<div class="errors">
         				<g:renderErrors bean="${teacher}"/>
       			</div>
     			</g:hasErrors>
-    		<div class="backgrounds">
+    		<div class="backgrounds"><%--user registration--%>
           <div class="labels">
             <label for="username">Username: ${teacher?.username}</label>
             <br>
@@ -35,7 +35,7 @@
       			<br>
       			<g:textField name="lastName" value="${teacher?.lastName}" class="${hasErrors(bean:user,field:'lastName','errors')}" />
 				    <br>
-          	<g:hiddenField name="id" value="${id}" />
+          	<g:hiddenField name="id" value="${id}" /><%--determines id--%>
       			<g:submitButton class="button" name="submitButton" value="Edit Account" />
       			<g:submitButton class="button" name="submitButton" value="Cancel" />
       		</div>

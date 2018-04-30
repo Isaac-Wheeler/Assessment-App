@@ -1,4 +1,4 @@
-<g:if test="${!session.teacher.admin}">
+<g:if test="${!session.teacher.admin}"> <%--showed only owned courses session check--%>
   <g:each var="c" in="${item.teachers}">
     <g:if test="${c.id == session.teacher.id}">
       ${raw(body())}

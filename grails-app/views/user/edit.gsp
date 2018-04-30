@@ -9,14 +9,14 @@
 	<div class="pageTitle">
     		<h1>Edit Faculty</h1>
       	<p>Complete the form below to create an Outcome</p>
-    </div>
+    </div><%--header--%>
     <g:form class="simpleform" url="edit">
    			 <g:hasErrors bean="${teacher}">
       			<div class="errors">
         				<g:renderErrors bean="${teacher}"/>
       			</div>
     			</g:hasErrors>
-    		<div class="backgrounds">
+    		<div class="backgrounds"><%--basic user registration info--%>
             <div class="labels">
             		<br>
       			<label for="username">Username:</label>
@@ -45,7 +45,7 @@
             <label for"urlSignup">Url Signup:</label>
             <g:checkBox name="urlSignup" value="${teacher?.urlSignup}" />
             <br>
-          		<g:hiddenField name="id" value="${id}" />
+          		<g:hiddenField name="id" value="${id}" /><%--determine user id --%>
       			<g:submitButton class="button" name="submitButton" value="Edit Account" />
       			<g:submitButton class="button" name="submitButton" value="Cancel" />
       		</div>

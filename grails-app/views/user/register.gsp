@@ -9,14 +9,14 @@
 	<div class="pageTitle">
     		<h1>Faculty Registration</h1>
       	<p>Complete the form below to create an account!</p>
-    </div>
+    </div><%--Header--%>
     <g:form class="simpleform" url="register">
    			 <g:hasErrors bean="${teacher}">
       			<div class="errors">
         				<g:renderErrors bean="${teacher}"/>
       			</div>
     			</g:hasErrors>
-    		<div class="backgrounds">
+    		<div class="backgrounds"><%--User registration form--%>
             <div class="labels">
             		<br>
       			<label for="username">Username:</label>

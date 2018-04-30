@@ -9,7 +9,7 @@
 	<div class="pageTitle">
     		<h1>Edit Faculty</h1>
       	<p>Complete the form below to edit account settings</p>
-    </div>
+    </div><%--header--%>
     <g:uploadForm class="simpleform" url="editFaculty">
    			 <g:hasErrors bean="${teacher}">
       			<div class="errors">
@@ -34,7 +34,7 @@
       			<br>
       			<g:textField name="lastName" value="${teacher?.lastName}" class="${hasErrors(bean:user,field:'lastName','errors')}" />
 				    <br>
-          	<g:hiddenField name="id" value="${id}" />
+          	<g:hiddenField name="id" value="${id}" /><%--determines user id--%>
       			<g:submitButton class="button" name="submitButton" value="Edit Account" />
       			<g:submitButton class="button" name="submitButton" value="Cancel" />
       		</div>
