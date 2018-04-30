@@ -18,8 +18,8 @@
       </g:if>
         <div class=leftPanel>
             <g:link controller="user" action="editFaculty" params="[teacher:session?.teacher?.id]">
-             <g:render template="/templates/profileInfo"/>
-            </g:link>
+             <g:render template="/templates/profileInfo"/><%--display name and user info--%>
+            </g:link><%--left column navigation buttons under name--%>
             <g:link controller="admin">
             		<button class="button">Home</button>
             </g:link>
@@ -44,8 +44,8 @@
             </g:link>
         </div>
         <div class="rightPanel">
-            	<g:layoutBody/>
-              <div> <!-- get rid of this div-->
+            	<g:layoutBody/><%--body interjection--%>
+              <div> <%-- get rid of this div--%>
                 <script type="text/javascript">
                   function display(){
                     var div = document.getElementById("temp");
