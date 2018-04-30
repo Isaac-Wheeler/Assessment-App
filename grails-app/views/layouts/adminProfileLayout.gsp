@@ -11,13 +11,13 @@
             <title>Data Assesment</title>
             <g:layoutHead/>
     </head>
-    <body>
+    <body><%--Template that contains left half of main pages for admins--%>
       <g:render template="/templates/security"/>
         <div class=leftPanel>
           <g:if test="${session.teacher != null}">
-          <g:render template="/templates/profileInfo"/>
+          <g:render template="/templates/profileInfo"/> <%--Displays name--%>
           </g:if>
-            <div class="changeYear">
+            <div class="changeYear"><%--Allows for changing of year drop down--%>
               <g:form class="simpleform" controller="Main" action="changeYear">
                   <g:hiddenField name="location" value="${request.getRequestURI()}" />
                   <select name="setYear" onchange="submit()" id="setYear">
@@ -25,7 +25,7 @@
                   </select>
               </g:form>
             </div>
-          <div class="buttons">
+          <div class="buttons"> <%--buttons displayed on left under name--%>
             <g:link controller="admin">
             		<button class="button">Home</button>
             </g:link>
@@ -63,9 +63,9 @@
             </g:link>
           </div>
         </div>
-        <div class="rightPanel">
+        <div class="rightPanel"><%--Right panel intergection--%>
         		<g:layoutBody/>
-            <div> <!-- get rid of this div-->
+            <div> <%-- get rid of this div--%>
               <script type="text/javascript">
                 function display(){
                   var div = document.getElementById("temp");
@@ -85,7 +85,7 @@
             <button type="button" onclick="display()">Suggestions</button>
             <div id="temp" class="temp">
               <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScsLJsl51BMK2BMBV3wjQgL0MhGHm-QAoWW0-RHVm1YNsM_uQ/viewform?embedded=true" width="80%" height="500" frameborder="5" marginheight="0" marginwidth="0">Loading...</iframe>
-            </div>
+            </div><%--Form fo suggestions REMOVE--%>
           </div>
     </body>
 </html>

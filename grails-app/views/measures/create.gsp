@@ -6,9 +6,9 @@
   <g:javascript library="jquery"/>
   <asset:javascript src="measureSelect.js"/>
 </head>
-<body>
+<body><%--measure continues from dataInputLayout--%>
   <g:render template="/templates/securityNotAdmin"/>
-	<div class="pageTitle">
+	<div class="pageTitle"><%--measure header--%>
     		<h1>Create Measure</h1>
       	<p>Complete the form below to create an Measure</p>
     </div>
@@ -20,15 +20,15 @@
     			</g:hasErrors>
     		<div class="backgrounds">
             <div class="labels">
-              <label for="Title">Measure Title:</label>
+              <label for="Title">Measure Title:</label><%--measure title--%>
               <br>
               <g:field type="text" id="measureTitle" value="${Measures?.measureTitle}" name="measureTitle" width="100px" placeholder="Title" class="shortText"/>
               <br>
-              <label for="selectIndicator">Select Indicator:</label>
+              <label for="selectIndicator">Select Indicator:</label><%--select indicators--%>
               <g:select name="indicatorId" from="${Indicators}" id="selectIndicator" onchange="submit()" value="${Iid}" style="width:40%;" optionKey="id"/>
               <p> ${indicatorDisc} </p>
               <br>
-              <label for="Desc">Description:</label>
+              <label for="Desc">Description:</label><%--measure descriptions--%>
               <br>
               <g:textArea id="measureDescription" name="measureDescription" value="${Measures?.measureDescription}" rows="10" cols="100" resize="none"/>
               <g:hiddenField name="isadmin" value="${isadmin}" />

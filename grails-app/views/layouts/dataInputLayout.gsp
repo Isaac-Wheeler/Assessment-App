@@ -8,7 +8,7 @@
             <asset:stylesheet src="assessment.css"/>
             <g:layoutHead/>
 </head>
-<body>
+<body><%--short layout for the top navigation bar and body of the input on forms--%>
     <g:render template="/templates/topNavBar"/>
     <g:layoutBody/>
 </body>
