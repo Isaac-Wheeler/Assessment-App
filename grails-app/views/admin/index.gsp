@@ -14,7 +14,8 @@
         <div class="listings"><%--Admin completion level card--%>
           <h2> Completion level </h2>
           <g:each in="${compleationLevel}" var="v">
-            <p id="completionLevel ${v}">${v}<p>
+            <p id="completionLevel ${v}">${v}<p><%--name of id has to be dynamic for the javascript to differentiate--%>
+            <%--this script is for creating the difference between completed and non completed visible to admin--%>
             <script>
              var str = "${v}";
              var complete = str.substring(str.indexOf(':') + 1,str.indexOf('/'));
