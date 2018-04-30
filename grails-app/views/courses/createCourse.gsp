@@ -26,11 +26,11 @@
                 <label for="courseTargetGoal">Course Target Goal(in Percent):</label>
                 <br>
                 <g:textField type="text" id="targetGoal" list="target" name="targetGoal" value="${course?.targetGoal}" placeholder="Target Goal"/>
-                <datalist id="target"><%--temporary set untill change is made for database input--%>
-                  <option value="60">Freshman Course</option>
-                  <option value="70">Sophmore Course</option>
-                  <option value="80">Junior Course</option>
-                  <option value="90">Senior Course</option>
+                <datalist id="target"><%--suggested target goals dynamically set in bootstrap--%>
+                  <option value="${STG[0].gradeLevelTargetGoal}">Freshman Course</option>
+                  <option value="${STG[1].gradeLevelTargetGoal}">Sophmore Course</option>
+                  <option value="${STG[2].gradeLevelTargetGoal}">Junior Course</option>
+                  <option value="${STG[3].gradeLevelTargetGoal}">Senior Course</option>
                 </datalist>
                 <g:hasErrors bean="${course}" field="targetGoal">
                   <div class="errors">
