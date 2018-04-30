@@ -14,8 +14,18 @@
         <div class="listings"><%--Admin completion level card--%>
           <h2> Completion level </h2>
           <g:each in="${compleationLevel}" var="v">
-            ${v}
-          </br>
+            <p id="completionLevel ${v}">${v}<p>
+            <script>
+             var str = "${v}";
+             var complete = str.substring(str.indexOf(':') + 1,str.indexOf('/'));
+             var outOf = str.substring(str.indexOf('/') + 1,str.length);
+             if(parseInt(complete,10) == parseInt(outOf,10)){
+               document.getElementById('completionLevel ${v}').style.backgroundColor = '#49fb35'
+             }
+             else{
+               document.getElementById('completionLevel ${v}').style.backgroundColor = 'red'
+             }
+            </script>
           </g:each>
         </div>
         <g:each in="${Courses}" var="c">
