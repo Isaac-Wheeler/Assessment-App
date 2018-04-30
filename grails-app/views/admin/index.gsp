@@ -12,9 +12,11 @@
         </div>
         <div class="mainArea"><%-- Contains the "Main area" of the section on the right below the header --%>
         <div class="listings"><%--Admin completion level card--%>
-          <%--<g:each in="${}">
-          ${TEACHERNAME} Completed: ${COMPLETED ASSESSMENTS}/${TOTAL ASSESSMENTS}
-        </g:each>--%>
+          <h2> Completion level </h2>
+          <g:each in="${compleationLevel}" var="v">
+            ${v}
+          </br>
+          </g:each>
         </div>
         <g:each in="${Courses}" var="c">
         <g:if test="${session.teacher != null}">
