@@ -1,7 +1,13 @@
 package data.assessment.project
 
+/*
+* controller for courses methods
+*/
 class coursesController {
 
+  /*
+  * sends data to the index view
+  */
   def index() {
     def courses = Courses.list()
     def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
@@ -10,6 +16,9 @@ class coursesController {
     [Courses:courses, Indicators:indicators, Teacher:teachers]
  }
 
+ /*
+ * allows for the creating of a course
+ */
  def createCourse(){
    def courses = Courses.list()
    if (request.method == 'POST') {
@@ -31,6 +40,9 @@ class coursesController {
    }
 }
 
+  /*
+  * allows for the editing of courses
+  */
  def editCourse(){
    def courses = Courses.list()
    if (request.method == 'POST') {
@@ -53,7 +65,9 @@ class coursesController {
      [course:c]
 }
 
-
+  /*
+  * allows for the assigning of a teacher to a course
+  */
  def assignNewTeacher(){
    if(!BootStrap.isPerm(true, session)){
      redirect(controller:'main')
@@ -72,6 +86,9 @@ class coursesController {
  }
  }
 
+ /*
+ * allows for the deletion of a assigned teacher
+ */
  def deleteAssignedTeacher(){
    if(!BootStrap.isPerm(true, session)){
      redirect(controller:'main')
@@ -84,7 +101,9 @@ class coursesController {
  }
  }
 
-
+ /*
+ * allows for the deletion of courses 
+ */
  def delete() {
    if(!BootStrap.isPerm(true, session)){
      redirect(controller:'main')

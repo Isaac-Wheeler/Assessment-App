@@ -1,22 +1,33 @@
 package data.assessment.project
-
+/*
+* controller for all indicator realated items
+*/
 class IndicatorsController {
 
+    /*
+    * sends the indicators to the index for displaying indicators, gets by current year
+    */
     def index() {
       def indicators = Indicators.findAllByAcademicYear(BootStrap.GetYear(session))
       [Indicators:indicators]
     }
 
+    /*
+    * allows for the creation of a indicator
+    */
     def create() {
+      //needed to link to the correct course
       def courses = Courses.list()
+      //checks if its data being passed or page load
       if (request.method == 'POST') {
+        //checks to make sure post is from someone with permission to create
         if(!BootStrap.isPerm(true, session)){
           redirect(controller:'main')
         }else{
+          //checks if the cancel button was clicked
         if(!params.submitButton.contains("Cancel")){
           def i = new Indicators()
           def o = Outcomes.get(params.outcomeId)
-          //def c = Courses.get(params.classId)
           def c = params.classId
           i.indicatorName = params.indicatorName
           i.indicatorDescription = params.indicatorDescription
@@ -43,6 +54,9 @@ class IndicatorsController {
       return [outcomeId:params.outcomeId, Courses:courses]
     }
 
+    /*
+    * allows for the deleting of indicators
+    */
     def delete() {
       if(!BootStrap.isPerm(true, session)){
         redirect(controller:'main')
@@ -64,6 +78,9 @@ class IndicatorsController {
     }
     }
 
+    /*
+    * allows for the editing of indicators
+    */
     def editIndicator() {
       def courses = Courses.list()
       if (request.method == 'POST') {

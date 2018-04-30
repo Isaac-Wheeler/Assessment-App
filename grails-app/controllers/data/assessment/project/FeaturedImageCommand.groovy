@@ -3,6 +3,9 @@ package data.assessment.project
 import grails.validation.Validateable
 import org.springframework.web.multipart.MultipartFile
 
+/*
+* image code thats not being used anymore
+*/
 class FeaturedImageCommand implements Validateable {
     MultipartFile featuredImageFile
     Long id
