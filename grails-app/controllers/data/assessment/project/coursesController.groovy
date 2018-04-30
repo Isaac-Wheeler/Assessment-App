@@ -21,6 +21,7 @@ class coursesController {
  */
  def createCourse(){
    def courses = Courses.list()
+   def suggestedTargetGoals = SuggestedTargetGoals.list()
    if (request.method == 'POST') {
      if(!BootStrap.isPerm(true, session)){
        redirect(controller:'main')
@@ -32,12 +33,13 @@ class coursesController {
        c.requiredAction = params.requiredAction
         if(!c.save(flush:true)){
           c.errors.allErrors.each { println it }
-          return [course:c]
+          return [course:c, STG:suggestedTargetGoals]
         }
        }
         redirect(controller:"courses", action:"index")
      }
    }
+   [STG:suggestedTargetGoals]
 }
 
   /*
@@ -45,6 +47,7 @@ class coursesController {
   */
  def editCourse(){
    def courses = Courses.list()
+   def suggestedTargetGoals = SuggestedTargetGoals.list()
    if (request.method == 'POST') {
      if(!BootStrap.isPerm(true, session)){
        redirect(controller:'main')
@@ -55,14 +58,14 @@ class coursesController {
        c.targetGoal = Integer.parseInt(params.targetGoal) // will throw error if null
        c.requiredAction = params.requiredAction
         if(!c.save(flush:true)){
-          return [course:c]
+          return [course:c, STG:suggestedTargetGoals]
         }
        }
         redirect(controller:"courses", action:"index")
      }
    }
      def c = Courses.get(params.course)
-     [course:c]
+     [course:c, STG:suggestedTargetGoals]
 }
 
   /*
@@ -102,7 +105,7 @@ class coursesController {
  }
 
  /*
- * allows for the deletion of courses 
+ * allows for the deletion of courses
  */
  def delete() {
    if(!BootStrap.isPerm(true, session)){

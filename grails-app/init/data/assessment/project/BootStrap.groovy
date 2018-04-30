@@ -14,6 +14,14 @@ class BootStrap {
            def settings = new Settings(academicYear:"2017-2018")
            settings.save(flush:true)
            System.out.println("added default year")
+           def STG = new SuggestedTargetGoals(gradeLevel:"Freshman", gradeLevelTargetGoal:50)
+           STG.save(flush:true)
+           STG = new SuggestedTargetGoals(gradeLevel:"Sophmore", gradeLevelTargetGoal:60)
+           STG.save(flush:true)
+           STG = new SuggestedTargetGoals(gradeLevel:"Junior", gradeLevelTargetGoal:70)
+           STG.save(flush:true)
+           STG = new SuggestedTargetGoals(gradeLevel:"Senior", gradeLevelTargetGoal:80)
+           STG.save(flush:true)
           }
         }
         development {
@@ -29,6 +37,14 @@ class BootStrap {
            t.passwordHashed = t.password.encodeAsPassword()
            t.save(flush: true)
            System.out.println("added default teacher")
+           def STG = new SuggestedTargetGoals(gradeLevel:"Freshman", gradeLevelTargetGoal:50)
+           STG.save(flush:true)
+           STG = new SuggestedTargetGoals(gradeLevel:"Sophmore", gradeLevelTargetGoal:60)
+           STG.save(flush:true)
+           STG = new SuggestedTargetGoals(gradeLevel:"Junior", gradeLevelTargetGoal:70)
+           STG.save(flush:true)
+           STG = new SuggestedTargetGoals(gradeLevel:"Senior", gradeLevelTargetGoal:80)
+           STG.save(flush:true)
           }
           if (Outcomes.count() == 0 && Courses.count() == 0 && Indicators.count() == 0 && Measures.count() == 0&& Assessment_Documentation.count() == 0) {
             def a = new Outcomes(outcomeCategory: 'A', outcomeCategoryDescription: "Students will learn how to...", academicYear:"2017-2018")
@@ -69,6 +85,14 @@ class BootStrap {
            b.save(flush: true)
            e.save(flush: true)
            System.out.println("added default admin")
+           def STG = new SuggestedTargetGoals(gradeLevel:"Freshman", gradeLevelTargetGoal:50)
+           STG.save(flush:true)
+           STG = new SuggestedTargetGoals(gradeLevel:"Sophmore", gradeLevelTargetGoal:60)
+           STG.save(flush:true)
+           STG = new SuggestedTargetGoals(gradeLevel:"Junior", gradeLevelTargetGoal:70)
+           STG.save(flush:true)
+           STG = new SuggestedTargetGoals(gradeLevel:"Senior", gradeLevelTargetGoal:80)
+           STG.save(flush:true)
           }
           if (Outcomes.count() == 0) {
 
