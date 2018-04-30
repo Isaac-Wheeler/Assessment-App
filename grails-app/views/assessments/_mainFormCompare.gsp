@@ -114,9 +114,6 @@
   <g:if test="${assessment_documents != null}">
       <g:hiddenField name="ADID" value="${assessment_documents.id}" />
   </g:if>
-  <g:submitButton class="button" name="submitButton" value="Submit" />
-  <input type="button" class="button" onclick="clearForm();" value="Clear">
-  <g:submitButton class="button" name="submitButton" value="Cancel" />
 </div>
 <g:if test="${show}">
   <script type="text/javascript" >

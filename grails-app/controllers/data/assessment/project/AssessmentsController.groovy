@@ -228,6 +228,11 @@ class AssessmentsController {
         redirect(controller:'main')
       }else{
         if(params.submitButton.startsWith('Choice_')){
+          def academicYear = params.academicYear
+          def outcomes = Outcomes.findAllByAcademicYear(academicYear)
+          def indicators = Indicators.findAllByAcademicYear(academicYear)
+          def measures = Measures.findAllByAcademicYear(academicYear)
+          def sidebarYear = academicYear
           def ADId = params.submitButton-"Choice_"
           def AD1 = Assessment_Documentation.get(ADId)
           return [AD1:AD1, AD2:AD2, Outcomes:outcomes, Indicators:indicators, Courses:courses, measures:measures, show:true, Year:sidebarYear, Years:years, selectLeft:true]

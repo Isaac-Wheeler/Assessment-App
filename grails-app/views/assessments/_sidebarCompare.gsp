@@ -1,4 +1,4 @@
-<div class="sidebar"><%--created for a side bar that wont add or delete--%>
+<div class="sidebar" style="background-color: #464646;"><%--created for a side bar that wont add or delete--%>
     <!-- the slider switch bar at the top's left label-->
     <!-- the slider switch bar at the top-->
     <label class="switch">
@@ -14,7 +14,7 @@
                 <details>
                   <summary>Outcome ${o.outcomeCategory}:</summary>
                 <details>
-                <summary class="cat1">Indicator: ${it.indicatorName}</summary>
+                <summary class="cat1" style="background-color:#464646">Indicator: ${it.indicatorName}</summary>
                   <g:if test="${it.measures != NULL}">
                     <g:each in="${it.measures}" var="m">
                       <details>
@@ -22,12 +22,11 @@
                           <g:if test="${m.assessment_documents != NULL}">
                             <g:each in="${m.assessment_documents}">
                               <g:link controller="assessments" action="compare" params="[courseLink:true, submitButton:'Choice_' + it.id, AD2:AD2.id]">
-                              <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.measure.find().measureTitle}</input></g:link>
+                              <input type="button" class="assess" name="submitButton"style="background-color:#464646" onclick="revealInfo();">Assessment: ${it.measure.find().measureTitle}</input></g:link>
                               <br><%--Main difference from "_sidebar" is the absence of creating and deleting old AD's --%>
                             </g:each>
                           </g:if>
                           <g:else>
-                            <button class="newAssess"  name="submitButton" value="new_${m.id}">New  <div class="plus"> &oplus;</div></button>
                           </g:else>
                       </details>
                     </g:each>
@@ -56,7 +55,7 @@
                             <g:if test="${m.assessment_documents != NULL}">
                               <g:each in="${m.assessment_documents}">
                                 <g:link controller="assessments" action="compare" params="[courseLink:true, submitButton:'Choice_' + it.id, AD2:AD2.id]">
-                                <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.measure.find().measureTitle}</input></g:link>
+                                <input type="button" class="assess" name="submitButton" style="background-color:#464646" onclick="revealInfo();">Assessment: ${it.measure.find().measureTitle}</input></g:link>
                                 <br><%--Main difference from "_sidebar" is the absence of creating and deleting old AD's --%>
                               </g:each>
                             </g:if>

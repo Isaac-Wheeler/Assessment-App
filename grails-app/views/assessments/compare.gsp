@@ -31,7 +31,7 @@
             /*height: 300px;  Should be removed. Only for demonstration */
         }
         .rand{
-          margin-left: 5%;
+          margin-left: 2.5%;
           width: 100%;
         }
         /* Clear floats after the columns */
