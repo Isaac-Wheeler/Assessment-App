@@ -25,7 +25,6 @@
                           <summary class="cat2">Measure: ${m.measureTitle}</summary>
                             <g:if test="${m.assessment_documents != NULL}">
                               <g:each in="${m.assessment_documents}">
-                                <g:link controller="assessments" action="delete" params="[ad:it.id]" onclick="return confirm('Are you sure you want to delete this assessment? Assessment for Measure: $m.measureTitle')">
                                 <g:link controller="assessments" action="editAssessment" params="[courseLink:true, submitButton:'edit_' + it.id]">
                                 <input type="button" class="assess" name="submitButton" onclick="revealInfo();">Assessment: ${it.measure.find().measureTitle}</input></g:link>
                                 <br>
